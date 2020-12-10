@@ -18,3 +18,11 @@
 1. Menggunakan Library Myth/Auth
 2. Sweet Alert 2
 3. reCaptcha 2
+
+## User Role :
+
+#### Admin
+
+### Petugas
+
+### Masyarakat
