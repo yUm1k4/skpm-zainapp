@@ -1,0 +1,36 @@
+<!-- Aplikasi SKPM - Zain App -->
+
+<!-- Beberapa fitur : -->
+1. Mengguanakan Library Myth/Auth :
+# 1.1. Login, bisa menggunakan email atau username
+# 1.2. Register, terdapat form Keamanan Akun dan form Informasi Pribadi yg harus diisi
+# 1.3. Lupa Password menggunakan Email
+# 1.4. Remember Me selama 7 hari
+# 1.5. Fitur-fitur di atas sudah termasuk validasi
+
+2. Menggunakan Library Faker :
+# 2.1. Dapat membuat data penduduk dummy untuk testing
+
+3. Menggunakan Library Monken/CLI-Create :
+# 3.1. Dapat membuat controller atau model menggunakan php spark create:~ di command-line
+
+4. Custom Helper :
+# 4.1. Helper Tanggal
+# # 4.1.1. Default date, dengan format (5 Desember 2020)
+# # 4.1.2. Short date, dengan format (5/09/2020)
+# # 4.1.3. Medium date, dengan format (5-Sep-2020)
+# # 4.1.4. Long date, dengan format (Sabtu, 05 Desember 2020)
+# 4.2. Sedikit Helper XSS
+
+5. Role / Group :
+# 5.1. Admin
+
+# 5.2. Petugas
+
+# 5.3. Masyarakat
+
+6.
+
+<!-- Saran : -->
+1. Validasi untuk data upload, jangan kasih tar,gz,zip,rar,php,phtml,js,html
+2. Pakai Index di DB untuk meload data agar ringan

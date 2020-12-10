@@ -1,0 +1,52 @@
+<div class="left-side-bar">
+    <div class="brand-logo">
+        <a href="<?= base_url('dashboard') ?>">
+            <!-- <img src="<?= base_url() ?>/vendors/images/deskapp-logo.svg" alt="" class="dark-logo"> -->
+            <!-- <img src="<?= base_url() ?>/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo"> -->
+            <p class="text-white text-center align-center mx-auto my-auto">Zain App</p>
+        </a>
+        <div class="close-sidebar" data-toggle="left-sidebar-close">
+            <i class="ion-close-round"></i>
+        </div>
+    </div>
+    <div class="menu-block customscroll">
+        <div class="sidebar-menu">
+            <ul id="accordion-menu">
+                <li>
+                    <a href="<?= base_url('dashboard') ?>" class="dropdown-toggle no-arrow <?= (uri_string() === '/') ? 'active' : ''; ?>">
+                        <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('pengaduan') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'pengaduan' ?>">
+                        <span class="micon dw dw-edit2"></span><span class="mtext">Pengaduan</span>
+                    </a>
+                </li>
+                <?php if (in_groups('Admin')) : ?>
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle 
+                    <?= uri_string() === 'admin' ||
+                        uri_string() === 'petugas' ||
+                        uri_string() === 'masyarakat' || uri_string() === 'masyarakat/create' || uri_string() === 'masyarakat/update'
+                        ? 'active' : '';
+                    ?>">
+                            <span class="micon dw dw-diagram"></span><span class="mtext">Master Data</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="#">Admin</a></li>
+                            <li><a href="#">Petugas</a></li>
+                            <li><a href="<?= base_url('/masyarakat') ?>">Masyarakat</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-invoice"></span><span class="mtext">Laporan</span>
+                        </a>
+                    </li>
+                <?php endif ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="mobile-menu-overlay"></div>
