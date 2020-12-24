@@ -32,11 +32,14 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
+// ---> Front
 // Home
 $routes->get('/', 'Home::index');
 $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
 $routes->post('lapor', 'Home::kirimLaporan', ['filter' => 'role:Masyarakat']);
 
+
+// ---> Back
 // Notif
 $routes->post('notif/kirimNotif', 'Notif::kirimNotif');
 
@@ -71,6 +74,10 @@ $routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);
 $routes->get('/pengaduan', 'Pengaduan::index', ['filter' => 'role:Admin,Petugas']);
 $routes->get('/pengaduan/create', 'Pengaduan::create', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1', ['filter' => 'role:Admin,Petugas']);
+
+// Quotes
+$routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
+$routes->get('/quotes/create', 'Quotes::create', ['filter' => 'role:Admin']);
 
 /**
  * --------------------------------------------------------------------
