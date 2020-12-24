@@ -93,21 +93,21 @@ class Home extends BaseController
         }
 
         // Validasi Form reCaptcha
-        // if (isset($_POST['g-recaptcha-response'])) {
-        //     $captcha = $_POST['g-recaptcha-response'];
-        // }
-        // if (!$captcha) {
-        //     return redirect()->back()->withInput()->with('error', 'Silahkan checklist form reCaptcha');
-        // }
-        // $secretKey = "6LcAK_oZAAAAAKDwp8_LQAgCSnJM47sKqMJ3u00V";
-        // $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
-        // $response = file_get_contents($url);
-        // $responseKeys = json_decode($response, true);
-        // if ($responseKeys["success"]) {
-        //     echo '<h2>Terima Kasih...</h2>';
-        // } else {
-        //     echo '<h2>Kamu Spammer ! Silahkan Pergi...!!</h2>';
-        // }
+        if (isset($_POST['g-recaptcha-response'])) {
+            $captcha = $_POST['g-recaptcha-response'];
+        }
+        if (!$captcha) {
+            return redirect()->back()->withInput()->with('error', 'Silahkan checklist form reCaptcha');
+        }
+        $secretKey = "6LcAK_oZAAAAAKDwp8_LQAgCSnJM47sKqMJ3u00V";
+        $url = 'https://www.google.com/recaptcha/api/siteverify?secret=' . urlencode($secretKey) .  '&response=' . urlencode($captcha);
+        $response = file_get_contents($url);
+        $responseKeys = json_decode($response, true);
+        if ($responseKeys["success"]) {
+            echo '<h2>Terima Kasih...</h2>';
+        } else {
+            echo '<h2>Kamu Spammer ! Silahkan Pergi...!!</h2>';
+        }
 
         // Cek Anonim
         $anonim = (bool)$this->request->getPost('anonim');

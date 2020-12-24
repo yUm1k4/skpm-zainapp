@@ -50,13 +50,22 @@ $routes->get('/profile', 'Profile::index', ['filter' => 'role:Admin,Petugas']);
 // Dashboard
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'role:Admin,Petugas']);
 
-// Masyarakat
+// Data Admin
+$routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
+
+// Data Petugas
+$routes->get('/petugas', 'Petugas::index', ['filter' => 'role:Admin']);
+
+// Data Masyarakat
 $routes->get('/masyarakat', 'Masyarakat::index', ['filter' => 'role:Admin'], ['as' => 'masyarakat']);
 $routes->get('/masyarakat/create', 'Masyarakat::create', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat', 'Masyarakat::save', ['filter' => 'role:Admin']);
 $routes->get('/masyarakat/edit/(:num)', 'Masyarakat::edit/$1', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/update/(:num)', 'Masyarakat::update/$1', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/delete/(:num)', 'Masyarakat::delete/$1', ['filter' => 'role:Admin']);
+
+// Data Semua Pengguna
+$routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);
 
 // Pengaduan
 $routes->get('/pengaduan', 'Pengaduan::index', ['filter' => 'role:Admin,Petugas']);

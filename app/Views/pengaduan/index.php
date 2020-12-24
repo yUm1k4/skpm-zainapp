@@ -32,17 +32,17 @@
                     ?>
                         <tr>
                             <td class="text-center"><?= $i++ ?>.</td>
-                            <td><?= xss($p->fullname) ?></td>
+                            <td><?= $p->fullname ?></td>
 
-                            <td><?= xss($p->kode_pengaduan) ?></td>
+                            <td><?= $p->kode_pengaduan ?></td>
 
-                            <td><?= xss(limit_word($p->isi_laporan, 4)) ?></td>
+                            <td><?= limit_word($p->isi_laporan, 4) ?></td>
 
                             <?php
                             $phpdate = strtotime($p->pengaduan_dibuat);
                             $tanggal = date('Y-m-d', $phpdate)
                             ?>
-                            <td><?= xss(mediumdate_indo($tanggal)) ?></td>
+                            <td><?= mediumdate_indo($tanggal) ?></td>
 
                             <?php if ($p->ket == 'pending') : ?>
                                 <td><button class="badge badge-warning">Pending</button></td>

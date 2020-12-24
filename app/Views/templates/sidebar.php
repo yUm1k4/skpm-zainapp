@@ -31,12 +31,13 @@
                         uri_string() === 'masyarakat' || uri_string() === 'masyarakat/create' || uri_string() === 'masyarakat/update'
                         ? 'active' : '';
                     ?>">
-                            <span class="micon dw dw-diagram"></span><span class="mtext">Master Data</span>
+                            <span class="micon dw dw-user-11"></span><span class="mtext">Data Pengguna</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="#">Admin</a></li>
-                            <li><a href="#">Petugas</a></li>
+                            <li><a href="<?= base_url('/admin') ?>">Admin</a></li>
+                            <li><a href="<?= base_url('/petugas') ?>">Petugas</a></li>
                             <li><a href="<?= base_url('/masyarakat') ?>">Masyarakat</a></li>
+                            <li><a href="<?= base_url('/all-user') ?>">Semua Pengguna</a></li>
                         </ul>
                     </li>
                     <li>
