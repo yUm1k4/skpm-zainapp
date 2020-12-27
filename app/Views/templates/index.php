@@ -24,6 +24,11 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -151,10 +156,12 @@
     <script src="<?= base_url() ?>/jquery-steps/jquery.steps.js"></script>
     <script src="<?= base_url() ?>/vendors/scripts/steps-setting.js"></script>
 
-
     <!-- Sweet Alert 2 -->
     <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
     <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.custom.js"></script>
+
+    <!-- Parsley -->
+    <script src="<?= base_url() ?>/vendors/parsley/parsley.min.js"></script>
 
     <!-- Untuk Foto Profil User -->
     <script>

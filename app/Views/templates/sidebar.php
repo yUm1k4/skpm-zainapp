@@ -46,6 +46,12 @@
                         </a>
                     </li>
                 <?php endif ?>
+                <li>
+                    <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'quotes' ?>">
+                        <span class="micon dw dw dw-quotation"></span><span class="mtext">Quotes</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

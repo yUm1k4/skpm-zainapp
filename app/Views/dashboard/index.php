@@ -11,7 +11,13 @@
                 <h4 class="font-20 weight-500 mb-10 text-capitalize">
                     <?= salam(date('H:i')) ?>, <div class="weight-600 font-30 text-blue"><?= xss(user()->fullname) ?>!</div>
                 </h4>
-                <p class="font-18 max-width-600"><i class="fa fa-quote-left"></i> Jangan menyerah jika doa-doamu belum terjawab. Jika kau mampu bersabar, Allah bisa memberikan lebih dari apa yang kau minta. <i class="fa fa-quote-right"></i></p>
+                <p class="font-18 max-width-600">
+                    <i class="fa fa-quote-left"></i>
+                    <?php foreach ($quote as $quotes) { ?>
+                        <?= $quotes->quote ?>
+                    <?php } ?>
+                    <i class="fa fa-quote-right"></i>
+                </p>
             </div>
         </div>
     </div>

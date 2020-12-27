@@ -1,0 +1,22 @@
+.error {
+    color: #ff0000;
+  }
+  
+  .parsley-error {
+    border-color: #dc3545;
+  }
+  .parsley-errors-list {
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .parsley-errors-list.filled {
+    display: block;
+  }
+  .parsley-errors-list > li {
+    font-size: 80%;
+    list-style: none;
+    color: #dc3545;
+    margin-top: .25rem;
+    width: 100%;
+  }

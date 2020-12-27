@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\MyUserModel;
 use App\Models\PengaduanModel;
+use App\Models\QuotesModel;
 
 class Dashboard extends BaseController
 {
@@ -13,18 +14,21 @@ class Dashboard extends BaseController
 	{
 		$this->user = new MyUserModel;
 		$this->pengaduan = new PengaduanModel;
+		$this->quotes = new QuotesModel;
 	}
 
 	public function index()
 	{
 		$data['title'] = 'Dashboard';
 
+		// Quotes
+		$data['quote'] = $this->quotes->getRandom();
+
 		// Data Jumlah Pengaduan
 		$data['pengaduan_pending'] = $this->pengaduan->select('status')->where('status', 'pending')->countAllResults();
 		$data['pengaduan_proses'] = $this->pengaduan->select('status')->where('status', 'proses')->countAllResults();
 		$data['pengaduan_selesai'] = $this->pengaduan->select('status')->where('status', 'selesai')->countAllResults();
 		$data['total_pengaduan'] = $this->pengaduan->countAll();
-
 
 		// Data User
 		$groupIdAdmin = 1;

@@ -77,7 +77,8 @@ $routes->post('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1', ['filter' => '
 
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
-$routes->get('/quotes/create', 'Quotes::create', ['filter' => 'role:Admin']);
+$routes->get('/quotes/reload', 'Quotes::tableQuotes', ['filter' => 'role:Admin']);
+$routes->post('/quotes/store', 'Quotes::store', ['filter' => 'role:Admin']);
 
 /**
  * --------------------------------------------------------------------
