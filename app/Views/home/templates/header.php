@@ -7,7 +7,7 @@
                     <!-- Logo -->
                     <div class="col-xl-2 col-lg-2 col-md-1">
                         <div class="logo">
-                            <a href="<?= base_url() ?>" class="text-biru-tua">
+                            <a href="<?= base_url('/') ?>" class="text-biru-tua">
                                 <h5>SKPM - Zain App</h5>
                             </a>
                         </div>
@@ -17,24 +17,25 @@
                         <div class="main-menu f-right d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a href="<?= base_url() ?>">Home</a></li>
+                                    <li><a href="<?= base_url('/') ?>">Home</a></li>
                                     <?php if (in_groups('Masyarakat')) : ?>
                                         <li><a href="<?= base_url('lapor') ?>">Lapor!</a></li>
                                     <?php endif; ?>
                                     <li><a href="#"> Cari Laporan</a></li>
-                                    <li><a href="#">Tentang Kami</a>
+                                    <li><a href="javascript:;">Tentang Kami</a>
                                         <ul class="submenu">
                                             <li><a href="#">Tentang Kami</a></li>
                                             <li><a href="#">Hubungi Kami</a></li>
                                         </ul>
                                     </li>
                                     <?php if (logged_in()) : ?>
-                                        <li><a href="#">Hi, <?= user()->username ?>!</a>
+                                        <li><a href="javascript:;" class="text-decoration-none">Hi, <?= user()->username ?></a>
                                             <ul class="submenu">
 
                                                 <?php if (in_groups(['Admin', 'Petugas'])) : ?>
                                                     <li><a hidden href="#">Laporan Saya</a></li>
                                                     <li><a href="<?= base_url('profile') ?>">Profil Saya</a></li>
+                                                    <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
                                                 <?php else : ?>
                                                     <li><a href="#">Laporan Saya</a></li>
                                                     <li><a href="<?= base_url('user-profile') ?>" class="text-pink">Profil Saya</a></li>

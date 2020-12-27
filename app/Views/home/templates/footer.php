@@ -62,9 +62,9 @@
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
                                 <p>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                    Copyright &copy; <?= date('Y') ?> All rights reserved | Build with CodeIgniter 4 by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a> | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+
+                                    Copyright &copy; <?= date('Y') ?> All rights reserved | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | Develop and Re-Design by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a>
+
                                 </p>
                             </div>
                         </div>
