@@ -77,8 +77,13 @@ $routes->post('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1', ['filter' => '
 
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
-$routes->get('/quotes/reload', 'Quotes::tableQuotes', ['filter' => 'role:Admin']);
-$routes->post('/quotes/store', 'Quotes::store', ['filter' => 'role:Admin']);
+$routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin']);
+$routes->get('/quotes/ambildata', 'Quotes::ambildata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/formtambah', 'Quotes::formtambah', ['filter' => 'role:Admin']);
+$routes->get('/quotes/simpandata', 'Quotes::simpandata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin']);
+$routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
 
 /**
  * --------------------------------------------------------------------
