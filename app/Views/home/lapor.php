@@ -35,7 +35,7 @@
                     <?= csrf_field() ?>
 
                     <h3>Informasi Pribadi Anda :</h3>
-                    <div class="row ml-3">
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Nama Lengkap</label>
@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <h3>Sampaikan Keluhan Anda :</h3>
-                    <div class="row ml-3">
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Kode Pengaduan</label>
@@ -124,7 +124,7 @@
                             </div>
                         </div>
                         <div class="col-sm-12 mb-3">
-                            <p class="text-ungu">*Format File yang diperbolehkan: *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal file 2MB</p>
+                            <p class="text-ungu">*Format File yang diperbolehkan: *.JPG, *.PNG, *.DOC, *.DOCX, *.PDF dan ukuran maksimal 2MB</p>
                         </div>
                         <div class="col-sm-12">
                             <div class="form d-flex mb-2">

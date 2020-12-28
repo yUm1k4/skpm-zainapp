@@ -278,7 +278,7 @@ class Masyarakat extends BaseController
 
         // $this->userModel->update($id, $data);
         session()->setFlashdata('message', 'Data berhasil diubah');
-        return redirect()->to('/masyarakat');
+        return redirect()->to(base_url('/masyarakat'));
     }
 
 
@@ -294,6 +294,6 @@ class Masyarakat extends BaseController
 
         $this->userModel->delete($id);
         session()->setFlashdata('message', 'Data Berhasil Dihapus');
-        return redirect()->to('/masyarakat');
+        return redirect()->to(base_url('/masyarakat'));
     }
 }

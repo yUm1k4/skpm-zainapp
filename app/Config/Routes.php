@@ -73,6 +73,7 @@ $routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);
 // Pengaduan
 $routes->get('/pengaduan', 'Pengaduan::index', ['filter' => 'role:Admin,Petugas']);
 $routes->get('/pengaduan/create', 'Pengaduan::create', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/pengaduan/balas/(:any)', 'Pengaduan::balas/$1', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes

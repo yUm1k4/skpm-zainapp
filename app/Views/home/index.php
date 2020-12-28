@@ -3,29 +3,29 @@
 <?= $this->section('content'); ?>
 <!-- Slider Area Start-->
 <div class="slider-area ">
-    <!-- <div class="slider-active"> -->
-    <div class="single-slider slider-height d-flex align-items-center" data-background="<?= base_url() ?>/home/img/hero/h1_hero.png">
-        <div class="container">
-            <div class="row d-flex align-items-center">
-                <div class="col-lg-7 col-md-9 ">
-                    <div class="hero__caption">
-                        <h4> Sampaikan <span id="typed"></span> Anda</h4>
-                        <p>Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
-                        <!-- Hero-btn -->
-                        <div class="hero__btn">
-                            <a href="<?= base_url('lapor') ?>" class="btn hero-btn">LAPOR!</a>
+    <div class="slider-active">
+        <div class="single-slider slider-height d-flex align-items-center" data-background="<?= base_url() ?>/home/img/hero/h1_hero.png">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-7 col-md-9 ">
+                        <div class="hero__caption">
+                            <h2> Sampaikan <span id="typed"></span> Anda</h2>
+                            <p>Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
+                            <!-- Hero-btn -->
+                            <div class="hero__btn">
+                                <a href="<?= base_url('lapor') ?>" class="btn hero-btn">LAPOR!</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-5">
-                    <div class="hero__img d-none d-lg-block">
-                        <img class="pr-0" src="<?= base_url() ?>/home/img/hero/hero_right.png" alt="">
+                    <div class="col-lg-5">
+                        <div class="hero__img d-none d-lg-block">
+                            <img src="<?= base_url() ?>/home/img/hero/hero_right.png" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 </div>
 <!-- Slider Area End-->
 
@@ -45,7 +45,7 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="300">
                 <div class="single-do text-center mb-30">
                     <div class="do-icon">
-                        <span class="flaticon-secret-file"></span>
+                        <span class="flaticon-chart"></span>
                     </div>
                     <div class="do-caption">
                         <h4>Keamanan</h4>
@@ -56,7 +56,7 @@
             <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="300">
                 <div class="single-do active text-center mb-30">
                     <div class="do-icon">
-                        <span class="flaticon-no-money"></span>
+                        <span class="flaticon-growth"></span>
                     </div>
                     <div class="do-caption">
                         <h4>Gratis</h4>
@@ -67,7 +67,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single-do text-center mb-30" data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="300">
                     <div class="do-icon">
-                        <span class="flaticon-anonymous"></span>
+                        <span class="flaticon-speaker"></span>
                     </div>
                     <div class="do-caption">
                         <h4>Anonim</h4>

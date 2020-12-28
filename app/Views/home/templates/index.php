@@ -10,25 +10,16 @@
 
     <!-- CSS here -->
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>/home/css/owl.carousel.min.css"> -->
+    <link rel="stylesheet" href="<?= base_url() ?>/home/css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/flaticon.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/slicknav.css">
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>/home/css/animate.min.css"> -->
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>/home/css/magnific-popup.css"> -->
+    <link rel="stylesheet" href="<?= base_url() ?>/home/css/animate.min.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/home/css/magnific-popup.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/fontawesome-all.min.css">
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>/home/css/themify-icons.css"> -->
+    <link rel="stylesheet" href="<?= base_url() ?>/home/css/themify-icons.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/slick.css">
-    <!-- <link rel="stylesheet" href="<?= base_url() ?>/home/css/nice-select.css"> -->
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-    <style>
-        html,
-        body {
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-    </style>
 
 </head>
 

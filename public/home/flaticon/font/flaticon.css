@@ -25,11 +25,9 @@
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
-        font-size: 20px;
-font-style: normal;
-margin-left: 20px;
 }
 
 .flaticon-secret-file:before { content: "\f100"; }
 .flaticon-anonymous:before { content: "\f101"; }
 .flaticon-no-money:before { content: "\f102"; }
+.flaticon-quote:before { content: "\f107"; }

@@ -6,6 +6,10 @@ class UserProfile extends BaseController
 {
     public function index()
     {
-        return view('home/userProfile');
+        $userName = user()->fullname;
+        $data = [
+            'title' => "User Profile $userName | "
+        ];
+        return view('home/userProfile', $data);
     }
 }

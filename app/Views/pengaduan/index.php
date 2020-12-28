@@ -62,7 +62,7 @@
                                             <i class=" dw dw-eye"></i> Detail
                                         </a>
 
-                                        <a class="dropdown-item" href="<?= base_url('/pengaduan/edit/' . $p->id_pengaduan) ?>"><i class="dw dw-chat3"></i> Balas</a>
+                                        <a class="dropdown-item" href="<?= base_url('/pengaduan/balas/' . $p->kode_pengaduan) ?>"><i class="dw dw-chat3"></i> Balas</a>
 
                                         <a href="<?= base_url('/pengaduan/delete/' . $p->id_pengaduan) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
@@ -84,9 +84,9 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <div class="text-center my-n3">
+                <!-- <div class="text-center my-n3">
                     <img class="img-fluid" src="<?= base_url() . '/images/user-images/' . $p->user_image ?>" width="250px" alt="User Image">
-                </div>
+                </div> -->
                 <div class="wizard-content">
                     <section>
                         <div class="row">
@@ -171,13 +171,6 @@
                                 <textarea class="form-control" id="isi_laporan" readonly></textarea>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label>Lampiran :</label>
-                                <input type="file" class="form-control" id="lampiran" readonly>
-                            </div>
-                        </div>
                     </section>
                 </div>
             </div>
@@ -208,7 +201,7 @@
             var kategori = $(this).data('kategori');
             var tanggal = $(this).data('tanggal');
             var isi = $(this).data('isi');
-            var lampiran = $(this).data('lampiran');
+            // var lampiran = $(this).data('lampiran');
 
             // mengirim ke modal sesuai nama idnya
             $('#userid').val(userid);
@@ -223,7 +216,7 @@
             $('#kategori').val(kategori);
             $('#tanggal').val(tanggal);
             $('#isi_laporan').val(isi);
-            $('#lampiran').val(lampiran);
+            // $('#lampiran').href(lampiran);
         });
     });
 </script>
