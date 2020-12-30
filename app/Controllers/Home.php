@@ -30,6 +30,7 @@ class Home extends BaseController
     public function index()
     {
         $data['title'] = '';
+        $data['total_pengaduan'] = $this->pengaduanModel->countAll();
         return view('home/index', $data);
     }
 

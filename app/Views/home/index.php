@@ -1,5 +1,26 @@
 <?= $this->extend('home/templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    .numberCount {
+        line-height: 100px;
+        color: white;
+        /* margin-left: 30px; */
+        font-size: 100px;
+    }
+
+    @media (max-width: 767px) {
+        .haveAproject .wantToWork-caption p {
+            font-size: 3.5rem;
+        }
+
+        .haveAproject .wantToWork-caption h2 {
+            font-size: 21px;
+        }
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('content'); ?>
 <!-- Slider Area Start-->
 <div class="slider-area ">
@@ -9,9 +30,8 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-7 col-md-9 ">
                         <div class="hero__caption">
-                            <h2> Sampaikan <span id="typed"></span> Anda</h2>
-                            <p>Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
-                            <!-- Hero-btn -->
+                            <h2 data-animation="fadeInLeft" data-delay=".4s"> Sampaikan <span id="typed"></span> Anda</h2>
+                            <p data-animation="fadeInLeft" data-delay=".4s">Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
                             <div class="hero__btn">
                                 <a href="<?= base_url('lapor') ?>" class="btn hero-btn">LAPOR!</a>
                             </div>
@@ -79,8 +99,26 @@
         </div>
     </div>
 </div>
-
 <!-- What We do End-->
+
+
+<!-- Jumlah Laporan Start-->
+<div class="have-project footer-padding numberDiv">
+    <div class="container" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
+        <div class="haveAproject" data-background="<?= base_url() ?>/home/img/hero/have.jpg">
+            <div class="row d-flex align-items-center">
+                <div class="col-xl-12 col-lg-12 col-md-12">
+                    <div class="wantToWork-caption text-center">
+                        <h2>Jumlah Laporan Saat Ini</h2>
+                        <p class="numberCount"><?= $total_pengaduan ?></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Jumlah Laporan End -->
+
 <!-- We Create Start -->
 <div class="we-create-area create-padding">
     <div class="container">
@@ -178,7 +216,7 @@
 </div>
 <!-- Testimonial End -->
 
-<!-- have-project Start-->
+<!-- Saran Start-->
 <div class="have-project footer-padding">
     <div class="container" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
         <div class="haveAproject" data-background="<?= base_url() ?>/home/img/hero/have.jpg">
@@ -198,7 +236,7 @@
         </div>
     </div>
 </div>
-<!-- have-project End -->
+<!-- Saran End -->
 
 <!-- Typed Script -->
 <script src="<?= base_url() ?>/home/js/typed.min.js"></script>
@@ -214,6 +252,30 @@
         backSpeed: 120,
         backDelay: 5000,
         loop: true
+    });
+
+    var section = document.querySelector('.numberDiv');
+    var hasEntered = false;
+
+    window.addEventListener('scroll', (e) => {
+        var shouldAnimate = (window.scrollY + window.innerHeight) >= section.offsetTop;
+
+        if (shouldAnimate && !hasEntered) {
+            hasEntered = true;
+
+            $('.numberCount').each(function() {
+                $(this).prop('Counter', 0).animate({
+                    Counter: $(this).text()
+                }, {
+                    duration: 4000,
+                    easing: 'swing',
+                    step: function(now) {
+                        $(this).text(Math.ceil(now));
+                    }
+                });
+            });
+
+        }
     });
 </script>
 <?= $this->endSection(); ?>

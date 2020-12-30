@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+
+    <?= $this->renderSection('my-css') ?>
+
 </head>
 
 <body>
@@ -55,6 +58,7 @@
 
     <!-- Footer -->
     <?= $this->include('home/templates/footer'); ?>
+
 
     <!-- JS here -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
