@@ -10,11 +10,16 @@
     }
 
     @media (max-width: 767px) {
-        .haveAproject .wantToWork-caption p {
+        .numberDiv {
+            padding-bottom: 80px;
+            padding-top: 0px;
+        }
+
+        .haveAproject .numberText p {
             font-size: 3.5rem;
         }
 
-        .haveAproject .wantToWork-caption h2 {
+        .haveAproject .numberText h2 {
             font-size: 21px;
         }
     }
@@ -108,7 +113,7 @@
         <div class="haveAproject" data-background="<?= base_url() ?>/home/img/hero/have.jpg">
             <div class="row d-flex align-items-center">
                 <div class="col-xl-12 col-lg-12 col-md-12">
-                    <div class="wantToWork-caption text-center">
+                    <div class="wantToWork-caption numberText text-center">
                         <h2>Jumlah Laporan Saat Ini</h2>
                         <p class="numberCount"><?= $total_pengaduan ?></p>
                     </div>
@@ -241,41 +246,43 @@
 <!-- Typed Script -->
 <script src="<?= base_url() ?>/home/js/typed.min.js"></script>
 <script type="text/javascript">
-    var typed = new Typed('#typed', {
-        strings: [
-            'Aspirasi',
-            'Laporan',
-            'Pengaduan',
-            'Keluhan'
-        ],
-        typeSpeed: 120,
-        backSpeed: 120,
-        backDelay: 5000,
-        loop: true
-    });
+    $(document).ready(function() {
+        var typed = new Typed('#typed', {
+            strings: [
+                'Aspirasi',
+                'Laporan',
+                'Pengaduan',
+                'Keluhan'
+            ],
+            typeSpeed: 120,
+            backSpeed: 120,
+            backDelay: 5000,
+            loop: true
+        });
 
-    var section = document.querySelector('.numberDiv');
-    var hasEntered = false;
+        var section = document.querySelector('.numberDiv');
+        var hasEntered = false;
 
-    window.addEventListener('scroll', (e) => {
-        var shouldAnimate = (window.scrollY + window.innerHeight) >= section.offsetTop;
+        window.addEventListener('scroll', (e) => {
+            var shouldAnimate = (window.scrollY + window.innerHeight) >= section.offsetTop;
 
-        if (shouldAnimate && !hasEntered) {
-            hasEntered = true;
+            if (shouldAnimate && !hasEntered) {
+                hasEntered = true;
 
-            $('.numberCount').each(function() {
-                $(this).prop('Counter', 0).animate({
-                    Counter: $(this).text()
-                }, {
-                    duration: 4000,
-                    easing: 'swing',
-                    step: function(now) {
-                        $(this).text(Math.ceil(now));
-                    }
+                $('.numberCount').each(function() {
+                    $(this).prop('Counter', 0).animate({
+                        Counter: $(this).text()
+                    }, {
+                        duration: 4000,
+                        easing: 'swing',
+                        step: function(now) {
+                            $(this).text(Math.ceil(now));
+                        }
+                    });
                 });
-            });
 
-        }
-    });
+            }
+        });
+    })
 </script>
 <?= $this->endSection(); ?>

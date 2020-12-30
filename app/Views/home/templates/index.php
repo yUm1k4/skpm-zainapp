@@ -21,6 +21,9 @@
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/style.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+    <!-- JS here -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
     <?= $this->renderSection('my-css') ?>
 
@@ -58,10 +61,6 @@
 
     <!-- Footer -->
     <?= $this->include('home/templates/footer'); ?>
-
-
-    <!-- JS here -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- All JS Custom Plugins Link Here here -->
     <script src="<?= base_url() ?>/home/js/vendor/modernizr-3.5.0.min.js"></script>
