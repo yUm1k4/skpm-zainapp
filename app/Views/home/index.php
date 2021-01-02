@@ -9,6 +9,14 @@
         font-size: 100px;
     }
 
+    .numberDiv {
+        padding-top: 0px;
+    }
+
+    .we-padding {
+        padding-bottom: 140px;
+    }
+
     @media (max-width: 767px) {
         .numberDiv {
             padding-bottom: 80px;
@@ -21,6 +29,12 @@
 
         .haveAproject .numberText h2 {
             font-size: 21px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .we-padding {
+            padding-bottom: 70px;
         }
     }
 </style>
@@ -50,6 +64,27 @@
                 </div>
             </div>
         </div>
+        <div class="single-slider slider-height d-flex align-items-center" data-background="<?= base_url() ?>/home/img/hero/h1_hero.png">
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-7 col-md-9 ">
+                        <div class="hero__caption">
+                            <h1 data-animation="fadeInLeft" data-delay=".4s">We Collect<br> High Quality Leads</h1>
+                            <p data-animation="fadeInLeft" data-delay=".6s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravi.</p>
+                            <!-- Hero-btn -->
+                            <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s">
+                                <a href="industries.html" class="btn hero-btn">Contact Us</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="hero__img d-none d-lg-block">
+                            <img src="<?= base_url() ?>/home/img/hero/hero_right.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <!-- Slider Area End-->
@@ -60,14 +95,14 @@
         <!-- Section-tittle -->
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8">
-                <div class="section-tittle text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+                <div class="section-tittle text-center">
                     <h2>Keunggualan Aplikasi Kami</h2>
                     <!-- <div id="counter">100</div> -->
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in-left" data-aos-duration="1000" data-aos-delay="300">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-do text-center mb-30">
                     <div class="do-icon">
                         <span class="flaticon-chart"></span>
@@ -78,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6" data-aos="zoom-in-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="col-lg-4 col-md-6">
                 <div class="single-do active text-center mb-30">
                     <div class="do-icon">
                         <span class="flaticon-growth"></span>
@@ -90,13 +125,12 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
-                <div class="single-do text-center mb-30" data-aos="zoom-in-right" data-aos-duration="1000" data-aos-delay="300">
+                <div class="single-do text-center mb-30">
                     <div class="do-icon">
                         <span class="flaticon-speaker"></span>
                     </div>
                     <div class="do-caption">
                         <h4>Anonim</h4>
-                        <!-- <p>Pengguna mendapatkan jaminan anonimitas dan kerahasian keluhan yang dikirimkan.</p> -->
                         <p>Pengguna memiliki hak jaminan anonimitas dan kerahasiaan keluhan yang dikirimkan.</p>
                     </div>
                 </div>
@@ -109,7 +143,7 @@
 
 <!-- Jumlah Laporan Start-->
 <div class="have-project footer-padding numberDiv">
-    <div class="container" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
+    <div class="container">
         <div class="haveAproject" data-background="<?= base_url() ?>/home/img/hero/have.jpg">
             <div class="row d-flex align-items-center">
                 <div class="col-xl-12 col-lg-12 col-md-12">
@@ -129,14 +163,14 @@
     <div class="container">
         <div class="row d-flex align-items-end">
             <div class="col-lg-6 col-md-12">
-                <div class="we-create-img" data-aos-easing="inline" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100">
+                <div class="we-create-img">
                     <img src="<?= base_url() ?>/home/img/service/we-create.png" alt="">
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
                 <div class="we-create-cap">
-                    <h3 class="mb-5" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">Kami Sangat Peduli Dengan Keluh Kesah Anda</h3>
-                    <p data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300">Untuk itulah kami membuat aplikasi ini. Sistem Keluhan dan Pengaduan Masyarak (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan untuk masyarakat Indonesia, yang dapat diakses Online dengan mudah melalui web browser.</p>
+                    <h3 class="mb-5">Kami Sangat Peduli Dengan Keluh Kesah Anda</h3>
+                    <p>Untuk itulah kami membuat aplikasi ini. Sistem Keluhan dan Pengaduan Masyarak (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan untuk masyarakat Indonesia, yang dapat diakses Online dengan mudah melalui web browser.</p>
                     <div></div>
                     <!-- <a href="#" class="btn">Contact Us</a> -->
                 </div>
@@ -153,7 +187,7 @@
             <!-- Section-tittle -->
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-5  col-md-8 pr-0">
-                    <div class="section-tittle text-center" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="1000">
+                    <div class="section-tittle text-center">
                         <h2>Apa Kata Mereka?</h2>
                     </div>
                 </div>
@@ -223,7 +257,7 @@
 
 <!-- Saran Start-->
 <div class="have-project footer-padding">
-    <div class="container" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="1000">
+    <div class="container">
         <div class="haveAproject" data-background="<?= base_url() ?>/home/img/hero/have.jpg">
             <div class="row d-flex align-items-center">
                 <div class="col-xl-7 col-lg-9 col-md-12">
@@ -273,7 +307,7 @@
                     $(this).prop('Counter', 0).animate({
                         Counter: $(this).text()
                     }, {
-                        duration: 4000,
+                        duration: 5000,
                         easing: 'swing',
                         step: function(now) {
                             $(this).text(Math.ceil(now));

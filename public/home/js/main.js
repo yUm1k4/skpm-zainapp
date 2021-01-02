@@ -197,14 +197,18 @@
 /* 8. sildeBar scroll */
     $.scrollUp({
       scrollName: 'scrollUp', // Element ID
-      topDistance: '300', // Distance from top before showing element (px)
-      topSpeed: 300, // Speed back to top (ms)
-      animation: 'fade', // Fade, slide, none
+      topDistance: '900', // Distance from top before showing element (px)
+      topSpeed: 900, // Speed back to top (ms)
+      animation: 'slide', // Fade, slide, none
       animationInSpeed: 200, // Animation in speed (ms)
       animationOutSpeed: 200, // Animation out speed (ms)
       scrollText: '<i class="fa fa-arrow-up"></i>', // Text for element
       activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
     });
+    // $('#scrollUp').click(function(){
+    //   $("html, body").scrollTop(5000);
+    //   return false;
+    // });
 
 
 /* 9. data-background */
