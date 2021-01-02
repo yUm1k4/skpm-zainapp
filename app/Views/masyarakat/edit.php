@@ -94,7 +94,12 @@
                             <label>Foto Profil :</label>
                             <div class="row">
                                 <div class="col-sm-2">
-                                    <img src="<?= base_url() ?>/images/user-images/<?= $masyarakat[0]->user_image ?>" class="img-thumbnail img-preview">
+                                    <?php if ($masyarakat[0]->user_image == null) : ?>
+                                        <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
+                                    <?php else : ?>
+                                        <img src="<?= base_url() ?>/images/user-images/<?= $masyarakat[0]->user_image ?>" class="img-thumbnail img-preview">
+                                    <?php endif; ?>
+
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="custom-file">

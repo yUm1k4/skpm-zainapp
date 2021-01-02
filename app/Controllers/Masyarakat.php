@@ -257,12 +257,8 @@ class Masyarakat extends BaseController
             // pindahkan profil
             $fileProfil->move('images/user-images', $namaProfil);
 
-            // hapus file lama jika nama file bukan avatar.png
-            // if ($namaProfil != "avatar.png") {
-            //     unlink('images/user-images/' . $this->request->getVar('profilLama'));
-            // } else {
-            //     return "avatar.png";
-            // }
+            // hapus file lama 
+            unlink('images/user-images/' . $this->request->getVar('profilLama'));
         }
 
         $this->masyarakatModel->save([

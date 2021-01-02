@@ -55,7 +55,7 @@
                             <?php if (in_groups(['Admin', 'Petugas'])) : ?>
                                 <a href="<?= base_url('dashboard') ?>" class="btn header-btn">Dashboard</a>
                             <?php elseif (in_groups('Masyarakat')) : ?>
-                                <a href="<?= base_url('my-profile') ?>" class="btn header-btn">Profil</a>
+                                <a href="<?= base_url('user-profile') ?>" class="btn header-btn">Profil</a>
                             <?php else : ?>
                                 <a href="<?= base_url('login') ?>" class="btn header-btn">Log In</a>
                             <?php endif; ?>

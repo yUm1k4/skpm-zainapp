@@ -42,7 +42,11 @@
                         <tr>
                             <td class="text-center"><?= $i++ ?>.</td>
                             <td>
-                                <img src="<?= base_url('images/user-images/' . $m->user_image) ?>" width="90" class="img-fluid">
+                                <?php if ($m->user_image == null) : ?>
+                                    <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
+                                <?php else : ?>
+                                    <img src="<?= base_url('images/user-images/' . $m->user_image) ?>" width="90" class="img-fluid">
+                                <?php endif; ?>
                             </td>
                             <td><?= xss($m->nik) ?></td>
                             <td><?= xss($m->fullname) ?></td>

@@ -32,7 +32,7 @@
 <body>
 
     <!-- Preloader Start -->
-    <div id="preloader-active">
+    <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
                 <div class="preloader-circle"></div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- Preloader Start -->
 
     <!-- Sweet Alert login -->
@@ -50,6 +50,8 @@
     <div class="swal-kirimSukses" data-swallapor="<?= session()->get('kirimSukses'); ?>"></div>
     <!-- Sweet Alert gagal kirim laporan -->
     <div class="swal-kirimGagal" data-swallapor="<?= session()->get('error'); ?>"></div>
+    <!-- Sweet Alert gagal success CRUD -->
+    <div class="swal-crud" data-swalcrud="<?= session()->get('success'); ?>"></div>
 
     <!-- Header / Topbar -->
     <?= $this->include('home/templates/header'); ?>

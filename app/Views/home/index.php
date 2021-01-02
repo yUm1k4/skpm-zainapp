@@ -30,9 +30,7 @@
         .haveAproject .numberText h2 {
             font-size: 21px;
         }
-    }
 
-    @media (max-width: 767px) {
         .we-padding {
             padding-bottom: 70px;
         }
@@ -51,13 +49,13 @@
                         <div class="hero__caption">
                             <h2 data-animation="fadeInLeft" data-delay=".4s"> Sampaikan <span id="typed"></span> Anda</h2>
                             <p data-animation="fadeInLeft" data-delay=".4s">Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
-                            <div class="hero__btn">
+                            <div class="hero__btn" data-animation="fadeInLeft" data-delay=".4s">
                                 <a href="<?= base_url('lapor') ?>" class="btn hero-btn">LAPOR!</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-5">
-                        <div class="hero__img d-none d-lg-block">
+                        <div class="hero__img d-none d-lg-block" data-animation="fadeInRight" data-delay=".4s">
                             <img src="<?= base_url() ?>/home/img/hero/hero_right.png" alt="">
                         </div>
                     </div>
@@ -69,11 +67,11 @@
                 <div class="row d-flex align-items-center">
                     <div class="col-lg-7 col-md-9 ">
                         <div class="hero__caption">
-                            <h1 data-animation="fadeInLeft" data-delay=".4s">We Collect<br> High Quality Leads</h1>
-                            <p data-animation="fadeInLeft" data-delay=".6s">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravi.</p>
+                            <h1 data-animation="fadeInLeft" data-delay=".4s">Sampaikan<br> Pengaduan Anda</h1>
+                            <p data-animation="fadeInLeft" data-delay=".6s">Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
                             <!-- Hero-btn -->
                             <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s">
-                                <a href="industries.html" class="btn hero-btn">Contact Us</a>
+                                <a href="<?= base_url() ?>" class="btn hero-btn">Cari Pengaduan</a>
                             </div>
                         </div>
                     </div>

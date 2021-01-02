@@ -1,5 +1,35 @@
 <?= $this->extend('home/templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    .single-post-area .blog-author {
+        margin-top: 0px;
+    }
+
+    @media (max-width: 768px) {
+        .single-post-area .blog-author h4 {
+            font-size: 15px;
+        }
+
+        .section-padding {
+            padding-top: 80px;
+        }
+    }
+</style>
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-css'); ?>
+<style>
+    @media (max-width: 600px) {
+        .single-post-area .blog-author img {
+            width: 75px !important;
+            height: 75px !important;
+            margin-left: 15px;
+        }
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('content'); ?>
 
 <!--================User Profile Area =================-->
@@ -11,13 +41,21 @@
                     <div class="media align-items-center">
                         <img src="<?= base_url('images/user-images') . '/' . user()->user_image ?>" alt="">
                         <div class="media-body">
-                            <div class="d-flex justify-content-between">
-                                <a href="">
-                                    <h4><?= xss(user()->fullname); ?></h4>
-                                </a>
+                            <div>
+
+                                <h4><?= xss(user()->fullname); ?></h4>
+
                                 <div>
-                                    <a href="">
-                                        <h4 href="#" class="text-biru-gelap text-uppercase"><i class="fa fa-cog"></i> Edit</h4>
+                                    <a href="<?= base_url('user-profile/edit/' . user()->id) ?>">
+                                        <h4 href="javascript:;" class="text-biru-gelap"><i class="fa fa-cog"></i> Edit Profil</h4>
+                                    </a>
+                                </div>
+
+                                <div>
+                                    <a href="<?= base_url('user-profile/change-password/' . user()->id) ?>">
+                                        <h4 href="javascript:;" class="text-biru-gelap">
+                                            <i class="fa fa-lock"></i> Ganti Password
+                                        </h4>
                                     </a>
                                 </div>
                             </div>
@@ -80,7 +118,7 @@
                         </form>
                     </aside>
                     <aside class="single_sidebar_widget newsletter_widget">
-                        <h4 class="widget_title">Subscribe</h4>
+                        <h4 class="widget_title mb-3">Subscribe</h4>
                         <p>Untuk Mendapatkan Info Terbaru</p>
                         <form action="#">
                             <div class="form-group">

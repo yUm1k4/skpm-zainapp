@@ -55,7 +55,11 @@
             <div class="dropdown">
                 <a class="dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown">
                     <span class="user-icon">
-                        <img src="<?= base_url() ?>/images/admin-images/<?= user()->user_image ?>" alt="">
+                        <?php if (user()->user_image == null) : ?>
+                            <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
+                        <?php else : ?>
+                            <img src="<?= base_url() ?>/images/admin-images/<?= user()->user_image ?>" alt="">
+                        <?php endif; ?>
                     </span>
                     <span class="user-name"><?= user()->username; ?></span>
                 </a>

@@ -32,20 +32,22 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-// ---> Front
+// ---> Front End
 // Home
 $routes->get('/', 'Home::index');
 $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
 $routes->post('lapor', 'Home::kirimLaporan', ['filter' => 'role:Masyarakat']);
 
 
-// ---> Back
+// ---> Back End
 // Notif
 $routes->post('notif/kirimNotif', 'Notif::kirimNotif');
 
 // My Profile
 // -- Masyarakat
 $routes->get('/user-profile', 'UserProfile::index', ['filter' => 'role:Masyarakat']);
+$routes->get('/user-profile/edit/(:num)', 'UserProfile::edit/$1', ['filter' => 'role:Masyarakat']);
+$routes->post('/user-profile/update/(:num)', 'UserProfile::update/$1', ['filter' => 'role:Masyarakat']);
 
 // -- Admin & Petugas
 $routes->get('/profile', 'Profile::index', ['filter' => 'role:Admin,Petugas']);

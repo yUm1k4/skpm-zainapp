@@ -45,7 +45,7 @@ class Home extends BaseController
         $data['pengaduan'] = $query->getResult();
         // dd($tess);
 
-        // generate kode v2
+        // generate kode v1
         $random = random_string('numeric', 3);
         $ambil_field = $this->pengaduanModel->selectMax('kode_pengaduan')->where('user_id = ' . user_id());
         $query = $ambil_field->get()->getRow();
@@ -53,6 +53,22 @@ class Home extends BaseController
         $kode_tambah++;
         $nomor = str_pad($kode_tambah, 4, '0', STR_PAD_LEFT);
         $data['kode_pengaduan'] = 'K' . user_id() . '-' . $nomor;
+
+        // generate kode v2 (belum jalan)
+        // $this->db = \Config\Database::connect();
+        // $sql = "SELECT MAX(MID(kode_pengaduan,9,4))
+        //         FROM pengaduan
+        //         WHERE MID(kode_pengaduan,3,6) = DATE_FORMAT(CURDATE(), '%y%m%d')";
+
+        // $query = $this->db->query($sql);
+        // if ($query->countAll() > 0) {
+        //     $row = $query->row();
+        //     $n = ((int)$row->kode_pengaduan) + 1;
+        //     $no = sprintf("%' . 04d", $n);
+        // } else {
+        //     $no = "0001";
+        // }
+        // $data['kode_pengaduan'] = 'K' . date('ymd') . $no;
 
         $data['title'] = 'Lapor | ';
         $data['validation'] = \Config\Services::validation();
