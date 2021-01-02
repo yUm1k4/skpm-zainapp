@@ -183,9 +183,6 @@
 
 <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
-<!-- JS here -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
 <!-- Sweet Alert 2 -->
 <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
 

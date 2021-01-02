@@ -40,6 +40,12 @@ class Home extends BaseController
         return view('home/tentang', $data);
     }
 
+    public function hubungi()
+    {
+        $data['title'] = 'Hubungi Kami | ';
+        return view('home/Hubungi', $data);
+    }
+
     public function lapor()
     {
         $this->pengaduanModel->select('*, pengaduan.created_at as pengaduan_dibuat');
