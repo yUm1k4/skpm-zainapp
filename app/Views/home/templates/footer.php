@@ -35,10 +35,10 @@
                                 <h4>Link Cepat</h4>
                                 <ul>
                                     <li><a href="<?= base_url() ?>">Home</a></li>
-                                    <li><a href="">Lapor!</a></li>
-                                    <li><a href="">Tentang Kami</a></li>
-                                    <li><a href="single-blog.html">Hubungi Kami</a></li>
-                                    <li><a href="blog.html">Cari Laporan</a></li>
+                                    <li><a href="<?= base_url('/lapor') ?>">Lapor!</a></li>
+                                    <li><a href="<?= base_url('/tentang') ?>">Tentang Kami</a></li>
+                                    <li><a href="<?= base_url('/hubungi') ?>">Hubungi Kami</a></li>
+                                    <li><a href="<?= base_url('/cari-laporan') ?>">Cari Laporan</a></li>
                                 </ul>
                             </div>
                         </div>
