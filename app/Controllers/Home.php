@@ -40,6 +40,12 @@ class Home extends BaseController
         return view('home/tentang', $data);
     }
 
+    public function ketentuan()
+    {
+        $data['title'] = 'Ketentuan Kami | ';
+        return view('home/ketentuan', $data);
+    }
+
     public function hubungi()
     {
         $data['title'] = 'Hubungi Kami | ';

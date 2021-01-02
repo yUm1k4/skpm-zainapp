@@ -48,6 +48,7 @@ $routes->post('/user-profile/update/(:num)', 'UserProfile::update/$1', ['filter'
 // Tentang Kami
 $routes->get('tentang', 'Home::tentang');
 $routes->get('hubungi', 'Home::hubungi');
+$routes->get('ketentuan', 'Home::ketentuan');
 
 
 

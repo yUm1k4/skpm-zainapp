@@ -19,9 +19,13 @@
                                 <ul id="navigation">
                                     <li><a href="<?= base_url('/') ?>">Home</a></li>
                                     <?php if (in_groups('Masyarakat')) : ?>
-                                        <li><a href="<?= base_url('lapor') ?>">Lapor!</a></li>
+                                        <li><a href="javascript:;">Lapor</a>
+                                            <ul class="submenu">
+                                                <li><a href="<?= base_url('lapor') ?>">Sampaikan Laporan</a></li>
+                                                <li><a href="<?= base_url('cari-laporan') ?>"> Cari Laporan</a></li>
+                                            </ul>
+                                        </li>
                                     <?php endif; ?>
-                                    <li><a href="#"> Cari Laporan</a></li>
                                     <li><a href="javascript:;">Tentang</a>
                                         <ul class="submenu">
                                             <li><a href="<?= base_url('/tentang') ?>">Tentang Kami</a></li>

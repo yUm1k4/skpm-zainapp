@@ -138,7 +138,6 @@
 </div>
 <!-- What We do End-->
 
-
 <!-- Jumlah Laporan Start-->
 <div class="have-project footer-padding numberDiv">
     <div class="container">
@@ -147,7 +146,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12">
                     <div class="wantToWork-caption numberText text-center">
                         <h2>Jumlah Laporan Saat Ini</h2>
-                        <p class="numberCount"><?= $total_pengaduan ?></p>
+                        <p class="numberCount"><?= number_format($total_pengaduan) ?></p>
                     </div>
                 </div>
             </div>
@@ -266,7 +265,7 @@
                 </div>
                 <div class="col-xl-5 col-lg-3 col-md-12">
                     <div class="wantToWork-btn f-right">
-                        <a href="#" class="btn btn-ans">Kontak Kami</a>
+                        <a href="<?= base_url('/hubungi') ?>" class="btn btn-ans">Hubungi Kami</a>
                     </div>
                 </div>
             </div>

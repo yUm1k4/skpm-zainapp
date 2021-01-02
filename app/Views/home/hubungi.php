@@ -31,7 +31,7 @@
 
         <div class="row">
             <div class="col-12">
-                <h2 class="contact-title">Kontak Kami</h2>
+                <h2 class="contact-title">Hubungi Kami</h2>
             </div>
             <div class="col-lg-8">
                 <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
@@ -56,7 +56,7 @@
                                 <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Isi Pesan Anda'" placeholder="Isi Pesan Anda"></textarea>
                             </div>
                         </div>
-                        
+
 
                     </div>
                     <div class="form-group mt-3">
