@@ -2,7 +2,7 @@
 
 <?= $this->section('content'); ?>
 
-<!-- Slider Area Start-->
+<!-- Header Area Start-->
 <div class="services-area">
     <div class="container">
         <!-- Section-tittle -->
@@ -16,7 +16,7 @@
         </div>
     </div>
 </div>
-<!-- Slider Area End-->
+<!-- Header Area End-->
 
 <!-- ================ contact section start ================= -->
 <section class="contact-section">

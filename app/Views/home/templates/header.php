@@ -22,10 +22,11 @@
                                         <li><a href="<?= base_url('lapor') ?>">Lapor!</a></li>
                                     <?php endif; ?>
                                     <li><a href="#"> Cari Laporan</a></li>
-                                    <li><a href="javascript:;">Tentang Kami</a>
+                                    <li><a href="javascript:;">Tentang</a>
                                         <ul class="submenu">
-                                            <li><a href="#">Tentang Kami</a></li>
-                                            <li><a href="#">Hubungi Kami</a></li>
+                                            <li><a href="<?= base_url('/tentang') ?>">Tentang Kami</a></li>
+                                            <li><a href="<?= base_url('/hubungi') ?>">Hubungi Kami</a></li>
+                                            <li><a href="<?= base_url('/ketentuan') ?>">Ketentuan Layanan</a></li>
                                         </ul>
                                     </li>
                                     <?php if (logged_in()) : ?>
