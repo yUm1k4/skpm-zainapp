@@ -18,6 +18,7 @@
                             <nav>
                                 <ul id="navigation">
                                     <li><a href="<?= base_url('/') ?>">Home</a></li>
+                                    <li class="d-lg-none d-sm-block"><a href="<?= base_url('/login') ?>">Login</a></li>
                                     <?php if (in_groups('Masyarakat')) : ?>
                                         <li><a href="javascript:;">Lapor</a>
                                             <ul class="submenu">
