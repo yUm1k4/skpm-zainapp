@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Database\Migrations\Pengaduan;
 use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
-use \App\Models\NotifModel;
 use \Pusher\Pusher;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
@@ -21,7 +20,6 @@ class Home extends BaseController
     {
         $this->pengaduanModel = new PengaduanModel;
         $this->kategoriModel = new KategoriModel;
-        $this->notifModel = new NotifModel;
         $this->config = config('Auth');
 
         // $this->session = service('session');
@@ -166,36 +164,6 @@ class Home extends BaseController
         ];
         // dd($save);
         $this->pengaduanModel->save($save);
-
-        // Notifikasi
-        // require __DIR__ . '/vendor/autoload.php';
-        // ROOTPATH adlh Jalur ke direktori root, tepat di atas APPPATH (kalo APPATH itu app).
-        require ROOTPATH . '/vendor/autoload.php';
-
-        $options = array(
-            'cluster' => 'ap1',
-            'useTLS' => true
-        );
-
-        $pusher = new \Pusher\Pusher(
-            '58fc28c4dc0c682f10c9',
-            '96246b91bff8d8f39abf',
-            '1119869',
-            $options
-        );
-
-        $data['notif'] = $this->request->getPost('isi_laporan');
-        $pusher->trigger('my-channel', 'my-event', $data);
-
-        $notif = [
-            'kode_pengaduan_ref'    => $this->request->getPost('kode_pengaduan'),
-            'user_id_pengirim'      => user_id(),
-            'isi_notif'             => $this->request->getPost('isi_laporan'),
-            'jenis'                 => "Keluhan Masyarakat",
-            'tanggal'               => date('Y-m-d H:i:s')
-        ];
-        // dd($notif);
-        $this->notifModel->save($notif);
 
         if ($save) {
             session()->setFlashdata('kirimSukses', 'Laporan berhasil dikirim, tunggu balasan dari petugas dalam beberapa hari.');

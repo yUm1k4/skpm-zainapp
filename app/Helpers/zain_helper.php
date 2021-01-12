@@ -52,25 +52,6 @@ function clean_text($text)
     return trim(preg_replace('/ +/', ' ', preg_replace('/[^A-Za-z0-9 ]/', ' ', urldecode(html_entity_decode(strip_tags($text))))));
 }
 
-// ---> Helper Notifikasi
-if (!function_exists('list_notifikasi')) {
-    function list_notifikasi()
-    {
-        $db      = \Config\Database::connect();
-        $session = session();
-        return $db->table('notif')
-            ->select('notif.*, u.fullname, u.user_image, u.id')
-            ->join('users u', 'u.id = notif.user_id_pengirim', 'left')
-            // where user_id_penerima sesuai id yg lgi login
-            // ->where(['notif.user_id_penerima' => $session->id, 'baca' => 'T'])
-            // where baca 'T artinya belum dibaca
-            ->where(['baca' => 'T'])
-            ->limit(10)
-            ->orderBy('tanggal', 'desc')
-            ->get()->getResultArray();
-    }
-}
-
 // ---> Helper Tanggal
 #1. Default date, dengan format (’5 September 2017’)        | date_indo()
 #2. Short date, dengan format (‘5/09/2017’)                 | shortdate_indo()
