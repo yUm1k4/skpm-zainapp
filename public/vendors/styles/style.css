@@ -33,6 +33,9 @@ Author: Ankit Hingarajiya - DeskApp
         font-weight: 400 !important;
         color: #031e23;
     }
+    .wizard-content .wizard>.actions>ul>li>a {
+        font-weight: 400;
+    }
 }
 
 .pre-loader{background-size:43%}.xs-pd-20-10{padding:20px 10px}.xs-mb-20{margin-bottom:20px}.h1,h1{font-size:2rem}.h2,h2{font-size:1.6rem}.h4,h4{font-size:1.4rem}.main-container,.timeline ul li{padding-bottom:0}.footer-wrap{position:relative;height:auto}.user-notification{margin-right:5px}.user-notification .dropdown-menu{width:100%;min-width:300px}.user-info-dropdown .dropdown-toggle .user-name{display:none}.page-header{margin-bottom:30px}.forgot-password{text-align:center}.ionicons-list li{width:16.6%}.timeline .timeline-date{position:relative;top:0;margin-bottom:20px;left:35px}.timeline ul:before{left:10px}.timeline ul li{padding-left:0}.timeline ul li:before{left:2px;top:28px}.fc-toolbar .fc-left,.fc-toolbar .fc-right{float:none!important;padding-bottom:10px}.fc-toolbar .fc-left:after,.fc-toolbar .fc-right:after{content:"";clear:both;display:table}.faq-wrap .card-header .btn{font-size:17px}.error-page h1{font-size:150px}}@media (max-width:660px){.docs-buttons .btn-group-crop{display:block}.select-role .btn-group .btn{padding-left:35px;font-size:14px}.select-role .btn-group .btn .icon{left:5px;width:25px;height:25px}.select-role .btn-group .btn .icon .svg{width:25px;height:25px}.forgot-password a{font-size:14px;font-weight:600}.btn-group-lg>.btn,.btn-lg{font-size:16px}.register-page-wrap .wizard-content .wizard{padding-left:0}.register-page-wrap .wizard-content .wizard .steps{display:none}}

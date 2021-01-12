@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-sm-4 col-form-label">Nomor Handphone</label>
+                                        <label class="col-sm-4 col-form-label">Nomor Handphone<i class="text-danger">*</i></label>
                                         <div class="col-sm-8">
                                             <input type="number" class="form-control <?php if (session('errors.no_hp')) : ?>is-invalid<?php endif ?>" name="no_hp" value="<?= old('no_hp') ?>">
                                             <div class="invalid-feedback">
