@@ -23,7 +23,7 @@
 
                         <?php if ($config->validFields === ['email']) : ?>
                             <div class="input-group custom">
-                                <input type="email" name="login" class="form-control form-control-lg mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.email') ?>">
+                                <input type="email" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.email') ?>">
                                 <div class="input-group-append custom">
                                     <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="icon-copy dw dw-email1"></i></span>
                                 </div>
@@ -33,7 +33,7 @@
                             </div>
                         <?php else : ?>
                             <div class="input-group custom">
-                                <input type="text" name="login" class="form-control form-control-lg mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                <input type="text" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.emailOrUsername') ?>">
                                 <div class="input-group-append custom">
                                     <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="icon-copy dw dw-user1"></i></span>
                                 </div>
@@ -44,7 +44,7 @@
                         <?php endif; ?>
 
                         <div class="input-group custom">
-                            <input type="password" class="form-control form-control-lg mr-5 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="**********" name="password">
+                            <input type="password" class="form-control form-control-md mr-5 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="**********" name="password">
                             <div class="input-group-append custom">
                                 <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="dw dw-padlock1"></i></span>
                             </div>
@@ -72,12 +72,12 @@
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="input-group mb-0">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Log In</button>
+                                    <button class="btn btn-primary btn-md btn-block" type="submit">Log In</button>
                                 </div>
                                 <?php if ($config->allowRegistration) : ?>
                                     <div class="font-16 weight-600 pt-10 pb-10 text-center" data-color="#707373"> OR</div>
                                     <div class="input-group mb-0">
-                                        <a class="btn btn-outline-primary btn-lg btn-block" href="<?= base_url('register') ?>">Register</a>
+                                        <a class="btn btn-outline-primary btn-md btn-block" href="<?= base_url('register') ?>">Register</a>
                                     </div>
                                 <?php endif; ?>
                             </div>
