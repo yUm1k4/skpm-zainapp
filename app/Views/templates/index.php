@@ -69,7 +69,7 @@
 <body>
 
     <!-- Loader -->
-    <div class="pre-loader">
+    <!-- <div class="pre-loader">
         <div class="pre-loader-box">
             <div class="loader-logo">
                 <h5 class="text-blue">SKPM - Zain App</h5>
@@ -82,7 +82,7 @@
                 Mohon Tunggu...
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Sweet Alert login -->
     <div class="swal-loginSuccess" data-swallogin="<?= session()->get('successLogin'); ?>"></div>

@@ -31,6 +31,7 @@
                         <th>NIK</th>
                         <th>Nama</th>
                         <th>No HP</th>
+                        <th>Role</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
                     </tr>
                 </thead>
@@ -42,11 +43,24 @@
                         <tr>
                             <td class="text-center"><?= $i++ ?>.</td>
                             <td>
-                                <img src="<?= base_url('images/user-images/' . $au->user_image) ?>" width="90" class="img-fluid">
+                                <?php if ($au->user_image == null) : ?>
+                                    <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
+                                <?php else : ?>
+                                    <img src="<?= base_url('images/user-images/' . $au->user_image) ?>" width="90" class="img-fluid">
+                                <?php endif; ?>
                             </td>
                             <td><?= xss($au->nik) ?></td>
                             <td><?= xss($au->fullname) ?></td>
                             <td><?= xss($au->no_hp) ?></td>
+                            <td>
+                                <?php if ($au->group_id == 1) { ?>
+                                    <button class="badge badge-primary">Admin</button>
+                                <?php } elseif ($au->group_id == 2) { ?>
+                                    <button class="badge badge-success">Petugas</button>
+                                <?php } elseif ($au->group_id == 3) { ?>
+                                    <button class="badge badge-warning">Masyarakat</button>
+                                <?php } ?>
+                            </td>
 
                             <td class="text-center">
                                 <div class="dropdown">
@@ -54,10 +68,14 @@
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>">
+                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $au->group_id; ?>">
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
-                                        <a class="dropdown-item" href="<?= base_url('/alluser/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                        <?php if ($au->group_id == 1) { ?>
+                                            <!-- No Edit -->
+                                        <?php } else { ?>
+                                            <a class="dropdown-item" href="<?= base_url('/alluser/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                        <?php } ?>
                                         <a href="<?= base_url('/alluser/delete/' . $au->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
@@ -120,6 +138,14 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label>Role :</label>
+                                    <input readonly type="text" class="form-control" id="role">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
                                     <label>Alamat Lengkap :</label>
                                     <input readonly type="text" class="form-control" id="alamat">
                                 </div>
@@ -149,6 +175,7 @@
             var fullname = $(this).data('fullname');
             var nik = $(this).data('nik');
             var nohp = $(this).data('nohp');
+            var role = $(this).data('role');
             var alamat = $(this).data('alamat');
 
             // mengirim ke modal sesuai nama classnya
@@ -158,6 +185,7 @@
             $('#fullname').val(fullname);
             $('#nik').val(nik);
             $('#no_hp').val(nohp);
+            $('#role').val(role);
             $('#alamat').val(alamat);
         });
     });

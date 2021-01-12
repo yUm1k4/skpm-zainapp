@@ -42,7 +42,7 @@ class Home extends BaseController
 
     public function ketentuan()
     {
-        $data['title'] = 'Ketentuan Kami | ';
+        $data['title'] = "Ketentuan Pengguna (Terms of Use) | ";
         return view('home/ketentuan', $data);
     }
 

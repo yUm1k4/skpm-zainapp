@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="col-auto">
-            <a href="<?= base_url('/masyarakat') ?>" class="btn btn-sm btn-secondary btn-icon-split">
+            <a href="<?= base_url('/pengaduan') ?>" class="btn btn-sm btn-secondary btn-icon-split">
                 <span class="icon">
                     <i class="dw dw-left-arrow2"></i>
                 </span>
@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="wizard-content">
-        <form class="tab-wizard2 wizard-circle wizard" action="<?= base_url('/masyarakat/update/' . $pengaduan[0]->id_pengaduan) ?>" method="post" enctype="multipart/form-data">
+        <form class="tab-wizard2 wizard-circle wizard" action="<?= base_url('/pengaduan/update/' . $pengaduan[0]->id_pengaduan) ?>" method="post" enctype="multipart/form-data">
             <?= csrf_field() ?>
 
             <input type="hidden" name="id_pengaduan" value="<?= $pengaduan[0]->id_pengaduan ?>">
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col-md-4">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <label class="text-primary">Email :</label>
                             <input type="email" readonly class="form-control-plaintext <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" value="<?= (old('email')) ? old('email') : xss($pengaduan[0]->email) ?>">

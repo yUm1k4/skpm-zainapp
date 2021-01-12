@@ -42,7 +42,11 @@
                         <tr>
                             <td class="text-center"><?= $i++ ?>.</td>
                             <td>
-                                <img src="<?= base_url('images/user-images/' . $a->user_image) ?>" width="90" class="img-fluid">
+                                <?php if ($a->user_image == null) : ?>
+                                    <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
+                                <?php else : ?>
+                                    <img src="<?= base_url('images/user-images/' . $a->user_image) ?>" width="90" class="img-fluid">
+                                <?php endif; ?>
                             </td>
                             <td><?= xss($a->nik) ?></td>
                             <td><?= xss($a->fullname) ?></td>
@@ -57,7 +61,7 @@
                                         <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-admin-modal" type="button" data-userid="<?= $a->userid; ?>" data-username="<?= $a->username; ?>" data-email="<?= $a->email; ?>" data-fullname="<?= $a->fullname; ?>" data-nik="<?= $a->nik; ?>" data-nohp="<?= $a->no_hp; ?>" data-alamat="<?= $a->alamat; ?>">
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
-                                        <a class="dropdown-item" href="<?= base_url('/admin/edit/' . $a->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                        <!-- <a class="dropdown-item" href="<?= base_url('/admin/edit/' . $a->userid) ?>"><i class="dw dw-edit2"></i> Edit</a> -->
                                         <a href="<?= base_url('/admin/delete/' . $a->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>

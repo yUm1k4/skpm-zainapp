@@ -42,11 +42,12 @@ class Pengaduan extends BaseController
         $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');
         $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
         $this->pengaduanModel->orderBy('pengaduan_dibuat', 'DESC');
+        $this->pengaduanModel->where('pengaduan.kode_pengaduan =', $kode_pengaduan);
 
         $query = $this->pengaduanModel->get();
         $data['pengaduan'] = $query->getResult();
 
-        return view('pengaduan/balas', $data);
+        return view('pengaduan/balas2', $data);
     }
 
     public function delete($id)

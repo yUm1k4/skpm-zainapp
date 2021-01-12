@@ -30,7 +30,7 @@
                                         <ul class="submenu">
                                             <li><a href="<?= base_url('/tentang') ?>">Tentang Kami</a></li>
                                             <li><a href="<?= base_url('/hubungi') ?>">Hubungi Kami</a></li>
-                                            <li><a href="<?= base_url('/ketentuan') ?>">Ketentuan Layanan</a></li>
+                                            <li><a href="<?= base_url('/ketentuan') ?>">Ketentuan Pengguna</a></li>
                                         </ul>
                                     </li>
                                     <?php if (logged_in()) : ?>
