@@ -12,10 +12,14 @@
     <div class="menu-block customscroll">
         <div class="sidebar-menu">
             <ul id="accordion-menu">
-                <li>
-                    <a href="<?= base_url('dashboard') ?>" class="dropdown-toggle no-arrow <?= (uri_string() === '/') ? 'active' : ''; ?>">
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle <?= (uri_string() === '/') ? 'active' : ''; ?>">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
                     </a>
+                    <ul class="submenu">
+                        <li><a href="<?= base_url('/dashboard') ?>">Dashboard</a></li>
+                        <li><a href="<?= base_url('/') ?>">Home</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="<?= base_url('pengaduan') ?>" class="dropdown-toggle no-arrow 

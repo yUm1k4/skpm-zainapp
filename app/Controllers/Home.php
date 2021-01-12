@@ -5,7 +5,6 @@ namespace App\Controllers;
 use App\Database\Migrations\Pengaduan;
 use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
-use \Pusher\Pusher;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 
