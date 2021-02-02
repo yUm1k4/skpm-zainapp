@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/themify-icons.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/slick.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/style.css">
+    <link rel="stylesheet" href="<?= base_url() ?>/home/css/responsive.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- JS here -->

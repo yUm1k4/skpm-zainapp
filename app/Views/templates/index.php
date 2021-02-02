@@ -26,6 +26,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
 
+    <?= $this->renderSection('my-css') ?>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -42,10 +43,8 @@
     </script> -->
 
     <!-- Pusher -->
-    <!-- Pusher -->
-    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <!-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
     <script>
-        // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
         var pusher = new Pusher('58fc28c4dc0c682f10c9', {
@@ -63,7 +62,7 @@
                 }
             })
         });
-    </script>
+    </script> -->
 </head>
 
 <body>
@@ -216,6 +215,8 @@
         }
         jam();
     </script>
+
+    <?= $this->renderSection('my-js') ?>
 </body>
 
 </html>

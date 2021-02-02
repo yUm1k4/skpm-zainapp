@@ -13,9 +13,5 @@ class PercakapanModel extends Model
         'pengaduan_id', 'user_id', 'percakapan'
     ];
 
-    protected $useTimestamps = true;
-
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = false;
 }
