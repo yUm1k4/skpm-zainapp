@@ -102,16 +102,16 @@ class Home extends BaseController
                 'errors'    => ['required'  => 'Kategori Pengaduan harus dipilih']
             ],
             'isi_laporan'   => [
-                'rules'     => 'required|min_length[25]',
+                'rules'     => 'required|min_length[45]',
                 'errors'    => [
-                    'required'      => 'Wajib di isi, dan Mohon di isi secara terperinci dan lengkap',
+                    'required'      => 'Harap di isi, dan Mohon di isi secara terperinci dan lengkap',
                     'min_length' => 'Isi Laporan terlalu singkat, isi secara terperinci dan lengkap'
                 ]
             ],
             'lampiran'  => [
-                'rules' => 'uploaded[lampiran]|max_size[lampiran,2048]|mime_in[lampiran,image/jpg,image/png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document]',
+                'rules' => 'uploaded[lampiran]|max_size[lampiran,2048]|mime_in[lampiran,image/jpg,image/jpeg,image/pjpeg,image/png,image/x-png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document]',
                 'errors' => [
-                    'uploaded' => 'Wajib upload file bukti',
+                    'uploaded' => 'Harap upload file bukti',
                     'max_size' => 'Ukuran file hanya boleh 2MB',
                     'mime_in'  => 'Oops.. yang Anda pilih bukan format file yang diperbolehkan'
                 ]
@@ -152,7 +152,7 @@ class Home extends BaseController
             $lamp->move('laporan/lampiran', $namaFile);
         }
 
-        $save = [
+        $savePengaduan = [
             'kode_pengaduan'    => $this->request->getPost('kode_pengaduan'),
             'user_id'           => user_id(),
             'kategori_id'       => $this->request->getPost('kategori_id'),
@@ -161,12 +161,28 @@ class Home extends BaseController
             'anonim'            => $anonim,
             'lampiran'          => $namaFile
         ];
-        // dd($save);
-        $this->pengaduanModel->save($save);
+        // dd($savePengaduan);
+        $this->pengaduanModel->save($savePengaduan);
 
-        if ($save) {
+        if ($savePengaduan) {
             session()->setFlashdata('kirimSukses', 'Laporan berhasil dikirim, tunggu balasan dari petugas dalam beberapa hari.');
             return redirect()->to('lapor');
         }
+    }
+
+    public function laporanSaya($id_user)
+    {
+        $data['title'] = 'Laporan Saya | ';
+        // $this->db = \Config\Database::connect();
+        // $this->builder = $this->db->table('users');
+        $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
+        $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');
+        $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
+        $this->pengaduanModel->orderBy('pengaduan_dibuat', 'DESC');
+        $this->pengaduanModel->where('users.id =', $id_user);
+        $listAduan = $this->pengaduanModel->get();
+        $data['listAduan'] = $listAduan->getResult();
+
+        return view('home/laporanSaya', $data);
     }
 }

@@ -2,14 +2,23 @@
 
 namespace App\Controllers;
 
-use \App\Models\PengaduanModel;
+use App\Controllers\BaseController;
+use CodeIgniter\API\ResponseTrait;
+// use App\Models\PengaduanModel;
+use App\Models\{
+    PengaduanModel,
+    MyUserModel,
+    PercakapanModel
+};
 
 class Pengaduan extends BaseController
 {
+    use ResponseTrait;
 
     public function __construct()
     {
         $this->pengaduanModel = new PengaduanModel;
+        $this->percakapanModel = new PercakapanModel;
         $this->db = \Config\Database::connect();
         $this->builder = $this->db->table('pengaduan');
     }
@@ -38,16 +47,59 @@ class Pengaduan extends BaseController
             'title' => 'Balas Pengaduan'
         ];
 
-        $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
+        $petugasid = user_id();
+
+        $data['percakapan'] = $this->percakapanModel->getPercakapan($kode_pengaduan, $petugasid);
+        // var_dump($data['percakapan']);
+        // exit();
+
+        $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat, users.id as userid');
         $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');
         $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
         $this->pengaduanModel->orderBy('pengaduan_dibuat', 'DESC');
         $this->pengaduanModel->where('pengaduan.kode_pengaduan =', $kode_pengaduan);
 
-        $query = $this->pengaduanModel->get();
-        $data['pengaduan'] = $query->getResult();
+        $qPengaduan = $this->pengaduanModel->get();
+        $data['pengaduan'] = $qPengaduan->getResult();
 
         return view('pengaduan/balas2', $data);
+    }
+
+    public function kirimBalasan($id_pengaduan, $kode_pengaduan, $userid)
+    {
+        $rules = [
+            'pesan' => [
+                'rules'     => 'required|max_length[65534]|min_length[3]',
+                'errors'    => [
+                    'required'  => 'Pesan harus diisi',
+                    'max_length' => 'Mohon maaf, Pesan terlalu panjang',
+                    'min_length' => 'Mohon maaf, Pesan terlalu singkat'
+                ]
+            ]
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+        }
+
+        $savePengaduan = [
+            'status'            => 'proses'
+        ];
+
+        $savePercakapan = [
+            'kode_pengaduan'    => $kode_pengaduan,
+            'user_id'           => $userid,
+            'petugas_id'        => user_id(),
+            'percakapan'        => $this->request->getPost('pesan')
+        ];
+
+        $this->pengaduanModel->update($id_pengaduan, $savePengaduan);
+        $this->percakapanModel->save($savePercakapan);
+
+        if ($savePercakapan) {
+            session()->setFlashdata('message', 'Pesan berhasil terkirim');
+            return redirect()->to(base_url('/pengaduan/balas/' . $kode_pengaduan));
+        }
     }
 
     public function delete($id)

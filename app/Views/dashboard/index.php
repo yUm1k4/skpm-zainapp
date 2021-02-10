@@ -126,7 +126,7 @@
         <div class="row text-center">
             <div class="col">
                 <div class="title">
-                    <h5>Data Pengaduan Terbaru</h5>
+                    <h5>10 Data Pengaduan Terbaru</h5>
                 </div>
             </div>
         </div>
@@ -150,7 +150,7 @@
                         <tr class="text-center">
                             <td><?= xss($pt->fullname) ?></td>
                             <td><?= xss($pt->kode_pengaduan) ?></td>
-                            <td><?= xss(limit_word($pt->isi_laporan, 3)) ?></td>
+                            <td><?= xss(limit_word($pt->isi_laporan, 20)) ?></td>
                             <?php
                             $phpdate = strtotime($pt->pengaduan_dibuat);
                             $tanggal = date('Y-m-d', $phpdate)

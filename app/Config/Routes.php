@@ -39,6 +39,8 @@ $routes->get('/', 'Home::index');
 // Lapor
 $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
 $routes->post('lapor', 'Home::kirimLaporan', ['filter' => 'role:Masyarakat']);
+$routes->get('laporan-saya/(:num)', 'Home::laporanSaya/$1', ['filter' => 'role:Masyarakat']);
+
 
 // My Profile (Masyarakat)
 $routes->get('/user-profile', 'UserProfile::index', ['filter' => 'role:Masyarakat']);
@@ -83,6 +85,7 @@ $routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);
 $routes->get('/pengaduan', 'Pengaduan::index', ['filter' => 'role:Admin,Petugas']);
 $routes->get('/pengaduan/create', 'Pengaduan::create', ['filter' => 'role:Admin,Petugas']);
 $routes->get('/pengaduan/balas/(:any)', 'Pengaduan::balas/$1', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/balas/(:num)/(:any)/(:num)', 'Pengaduan::kirimBalasan/$1/$2/$3', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/delete/(:num)', 'Pengaduan::delete/$1', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes

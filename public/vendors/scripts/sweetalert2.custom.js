@@ -46,8 +46,8 @@ if (swalLaporSukses) {
         icon: 'success',
         title: 'Terima Kasih',
         text: swalLaporSukses,
-        timer: 9000,
-        timerProgressBar: true,
+        // timer: 9000,
+        // timerProgressBar: true,
         showConfirmButton: true,
     });
 }

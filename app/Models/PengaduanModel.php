@@ -35,6 +35,16 @@ class PengaduanModel extends Model
         // return $query->getResult();
     }
 
+    // public function getPengaduanId($kode_pengaduan)
+    // {
+    //     $this->builder->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
+    //     $this->builder->join('users', 'users.id = pengaduan.user_id');
+    //     $this->builder->where('pengaduan.kode_pengaduan =', $kode_pengaduan);
+
+    //     $query = $this->builder->get();
+    //     return $query->getResult();
+    // }
+
     public function getKode()
     {
         // // generate kode v1

@@ -15,15 +15,18 @@ class Percakapan extends Migration
 				'unsigned' => TRUE,
 				'auto_increment' => TRUE
 			],
-			'pengaduan_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => TRUE,
+			'kode_pengaduan' => [
+				'type' => 'VARCHAR',
+				'constraint' => 255,
 			],
 			'user_id' => [
 				'type' => 'INT',
 				'constraint' => 11,
 				'unsigned' => TRUE,
+			],
+			'petugas_id' => [
+				'type' => 'INT',
+				'constraint' => 11,
 			],
 			'percakapan' => [
 				'type' => 'TEXT',
@@ -41,7 +44,6 @@ class Percakapan extends Migration
 
 		$this->forge->addKey('id_percakapan', TRUE);
 		$this->forge->addForeignKey('user_id', 'users', 'id');
-		$this->forge->addForeignKey('pengaduan_id', 'pengaduan', 'id_pengaduan');
 		$this->forge->createTable('percakapan');
 	}
 

@@ -27,7 +27,7 @@ ul.chat {
 
 #chating .chat li.left .chat-body {
     margin-left: 60px;
-    margin-right: 50px;
+    margin-right: 20px;
     background-color: #f4f1f1;
     box-shadow: 0 0 9px rgba(0,0,0,.08);
 }
@@ -36,6 +36,7 @@ ul.chat {
     position: relative;
     padding: 10px;
     border: 1px solid #f1f5fc;
+    border-radius: 15px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -moz-box-shadow: 0 1px 1px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
@@ -58,6 +59,36 @@ ul.chat {
     -ms-transform: rotate(-45deg);
     -o-transform: rotate(-45deg);
 }
+
+#chating .chat li.right .chat-body:before {
+	position: absolute;
+	top: 10px;
+	right: -8px;
+	display: inline-block;
+	background: #f4f1f1;
+	width: 16px;
+	height: 16px;
+	border-top: 1px solid #f1f5fc;
+	border-right: 1px solid #f1f5fc;
+	content: '';
+	transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+}
+
+#chating .chat li.right .chat-body {
+	margin-right: 60px;
+	margin-left: 20px;
+	background-color: #f4f1f1;
+	border: 1px solid #f4f1f1 !important;
+    box-shadow: 0 0 9px rgba(0,0,0,.08) !important;
+	/* box-shadow: 0 1px 1px  rgba(0,0,0,.05) !important; */
+	/* -moz-box-shadow: 0 1px 1px  rgba(0,0,0,.05) !important;
+    -webkit-box-shadow: 0 1px 1px  rgba(0,0,0,.05) !important; */
+}
+
 
 #chating .chat li .chat-body .kepala {
     padding-bottom: 2px;
@@ -113,6 +144,10 @@ ul.chat {
         margin-right: 0px;
         margin-left: 10px;
     }
+    #chating .chat li.right .chat-body {
+        margin-right: 10px;
+        margin-left: 0px;
+    }
     .chat-body p.msg {
         font-size: 14px;
     }
@@ -126,6 +161,9 @@ ul.chat {
         padding: 5px 6px;
         margin-top: 10px;
     }
+    #chating .primary-font {
+        font-size: 14px;
+    }
 }
 
 /* mmin 321px | max 425px */
@@ -134,7 +172,14 @@ ul.chat {
         margin-right: 0px;
         margin-left: 10px;
     }
+    #chating .chat li.right .chat-body {
+        margin-right: 10px;
+        margin-left: 0px;
+    }
     .chat-body p.msg {
+        font-size: 14px;
+    }
+    #chating .primary-font {
         font-size: 14px;
     }
 }
@@ -146,7 +191,14 @@ ul.chat {
         margin-right: 0px;
         margin-left: 10px;
     }
+    #chating .chat li.right .chat-body {
+        margin-right: 10px;
+        margin-left: 0px;
+    }
     .chat-body p.msg {
+        font-size: 14px;
+    }
+    #chating .primary-font {
         font-size: 14px;
     }
 }
