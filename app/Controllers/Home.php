@@ -180,8 +180,15 @@ class Home extends BaseController
         $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
         $this->pengaduanModel->orderBy('pengaduan_dibuat', 'DESC');
         $this->pengaduanModel->where('users.id =', $id_user);
-        $listAduan = $this->pengaduanModel->get();
-        $data['listAduan'] = $listAduan->getResult();
+
+        $data['listAduan'] = $this->pengaduanModel->get()->getResult();
+        $data['totalPengaduan'] = $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults();
+        $data['pengaduanPending'] = $this->pengaduanModel->select('id_pengaduan')
+            ->where('user_id =', $id_user)->where('status', 'pending')->countAllResults();
+        $data['pengaduanProses'] = $this->pengaduanModel->select('id_pengaduan')
+            ->where('user_id =', $id_user)->where('status', 'proses')->countAllResults();
+        $data['pengaduanSelesai'] = $this->pengaduanModel->select('id_pengaduan')
+            ->where('user_id =', $id_user)->where('status', 'selesai')->countAllResults();
 
         return view('home/laporanSaya', $data);
     }

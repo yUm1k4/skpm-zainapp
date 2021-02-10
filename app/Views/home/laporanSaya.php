@@ -48,6 +48,30 @@
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="comments-area">
+
+                    <div class="row">
+                        <div class="col-lg-12 mb-10 posts-list">
+                            <div class="single-post">
+                                <ul class="blog-info-link mt-3 mb-4">
+                                    <li>
+                                        <a href="javascript:;" class="text-primary"><i class="dw dw-edit-file"></i> <?= $totalPengaduan ?> Pengaduan Dibuat</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="text-warning"><i class="dw dw-stop"></i> <?= $pengaduanPending ?> Pending</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="text-success"><i class="dw dw-refresh1"></i> <?= $pengaduanProses ?> Ditanggapi</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:;" class="text-primary"><i class="dw dw-file-31"></i> <?= $pengaduanSelesai ?> Selesai</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <h5 class="mb-3"> Pengaduan telah dibuat</h5> -->
                     <?php foreach ($listAduan as $la) { ?>
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
