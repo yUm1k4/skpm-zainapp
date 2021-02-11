@@ -48,7 +48,6 @@
         <div class="row">
             <div class="col-lg-8 posts-list">
                 <div class="comments-area">
-
                     <div class="row">
                         <div class="col-lg-12 mb-10 posts-list">
                             <div class="single-post">
@@ -63,7 +62,7 @@
                                         <a href="javascript:;" class="text-success"><i class="dw dw-refresh1"></i> <?= $pengaduanProses ?> Ditanggapi</a>
                                     </li>
                                     <li>
-                                        <a href="javascript:;" class="text-primary"><i class="dw dw-file-31"></i> <?= $pengaduanSelesai ?> Selesai</a>
+                                        <a href="javascript:;" class="text-dark"><i class="dw dw-file-31"></i> <?= $pengaduanSelesai ?> Selesai</a>
                                     </li>
 
                                 </ul>
@@ -73,36 +72,40 @@
 
                     <!-- <h5 class="mb-3"> Pengaduan telah dibuat</h5> -->
                     <?php foreach ($listAduan as $la) { ?>
+                        <?php
+                        // dd($listAduan)
+                        ?>
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
                                 <div class="col-md-12 user d-flex px-0">
                                     <div class="thumb thumb--img">
-                                        <?php if ($listAduan[0]->user_image == null) { ?>
+                                        <?php if ($la['user_image'] == null) { ?>
                                             <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
                                         <?php } else { ?>
-                                            <img src="<?= base_url('images/user-images/' . $la->user_image) ?>" class="img--user" alt="">
+                                            <img src="<?= base_url('images/user-images/' . $la['user_image']) ?>" class="img--user" alt="">
                                         <?php } ?>
                                     </div>
                                     <div class="col-md-12 desc px-0">
                                         <p class="comment">
-                                            <?= limit_word($la->isi_laporan, 50) ?>
+                                            <?= limit_word($la['isi_laporan'], 50) ?>
                                         </p>
                                         <?php
-                                        $phpdate = strtotime($la->pengaduan_dibuat);
+                                        $phpdate = strtotime($la['pengaduan_dibuat']);
                                         $tanggal = date('Y-m-d H:i:s', $phpdate)
                                         ?>
                                         <div class="row">
-                                            <p class="col-md-4 date ml-0"><?= format_indo($tanggal) ?></p>
-                                            <p class="col-md-8 date ml-0">Kategori: <?= $la->nama_kategori ?></p>
+                                            <p class="col-md-4 col-sm-12 date ml-0"><?= format_indo($tanggal) ?></p>
+                                            <p class="col-md-3 col-sm-12 date ml-0">Kode: <?= $la['kode_pengaduan'] ?></p>
+                                            <p class="col-md-5 col-sm-12 date ml-0">Kategori: <?= $la['nama_kategori'] ?></p>
                                         </div>
                                         <div class="d-flex">
                                             <div class="d-flex align-items-center">
                                                 <h5>
-                                                    <?php if ($la->ket == 'pending') : ?>
+                                                    <?php if ($la['ket'] == 'pending') : ?>
                                                         <a href="javascript:;" class="text-warning text-uppercase">Pending</a>
-                                                    <?php elseif ($la->ket == 'arsip') : ?>
+                                                    <?php elseif ($la['ket'] == 'arsip') : ?>
                                                         <a href="javascript:;" class="text-danger text-uppercase">Diarsipkan</a>
-                                                    <?php elseif ($la->ket == 'proses') : ?>
+                                                    <?php elseif ($la['ket'] == 'proses') : ?>
                                                         <a href="javascript:;" class="text-success text-uppercase">Ditanggapi</a>
                                                     <?php else : ?>
                                                         <a href="javascript:;" class="text-primary text-uppercase">Selesai</a>
@@ -110,7 +113,7 @@
                                                 </h5>
                                             </div>
                                             <div class="reply-btn">
-                                                <a href="<?= base_url('laporan/' . $la->id_pengaduan . '/' . $la->kode_pengaduan) ?>" class="btn-reply">Cek Detail <i class="dw dw-left-arrow-11"></i></a>
+                                                <a href="<?= base_url('laporan/' . $la['id_pengaduan'] . '/' . $la['kode_pengaduan']) ?>" class="btn-reply">Cek Detail <i class="dw dw-search1"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -118,6 +121,10 @@
                             </div>
                         </div>
                     <?php } ?>
+
+                    <!-- Pagination Start -->
+                    <?= $pager->links('pengaduan', 'laporanSayaPagination'); ?>
+                    <!-- Pagination End -->
                 </div>
             </div>
             <div class="col-lg-4">

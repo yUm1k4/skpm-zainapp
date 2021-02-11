@@ -18,14 +18,16 @@ class PengaduanModel extends Model
     protected $updatedField  = 'updated_at';
     protected $deletedField  = 'deleted_at';
 
-    public function __construct()
-    {
-        $this->db = \Config\Database::connect();
-        $this->builder = $this->db->table('pengaduan');
-    }
+    // public function __construct()
+    // {
+    //     $this->db = \Config\Database::connect();
+    //     $this->builder = $this->db->table('pengaduan');
+    // }
 
     public function getData()
     {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('pengaduan');
         $this->builder->select('*, pengaduan.created_at as pengaduan_dibuat');
         $this->builder->join('users', 'users.id = pengaduan.user_id');
         $this->builder->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');

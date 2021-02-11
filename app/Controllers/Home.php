@@ -172,23 +172,21 @@ class Home extends BaseController
 
     public function laporanSaya($id_user)
     {
-        $data['title'] = 'Laporan Saya | ';
-        // $this->db = \Config\Database::connect();
-        // $this->builder = $this->db->table('users');
-        $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
-        $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');
-        $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
-        $this->pengaduanModel->orderBy('pengaduan_dibuat', 'DESC');
-        $this->pengaduanModel->where('users.id =', $id_user);
+        $query = $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->orderBy('pengaduan_dibuat', 'DESC')
+            ->where('users.id =', $id_user);
 
-        $data['listAduan'] = $this->pengaduanModel->get()->getResult();
-        $data['totalPengaduan'] = $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults();
-        $data['pengaduanPending'] = $this->pengaduanModel->select('id_pengaduan')
-            ->where('user_id =', $id_user)->where('status', 'pending')->countAllResults();
-        $data['pengaduanProses'] = $this->pengaduanModel->select('id_pengaduan')
-            ->where('user_id =', $id_user)->where('status', 'proses')->countAllResults();
-        $data['pengaduanSelesai'] = $this->pengaduanModel->select('id_pengaduan')
-            ->where('user_id =', $id_user)->where('status', 'selesai')->countAllResults();
+        // paginate() -> @jumlah, @nama_tabel
+        $data = [
+            'title'             => 'Laporan Saya | ',
+            'listAduan'         => $query->paginate(10, 'pengaduan'),
+            'pager'             => $this->pengaduanModel->pager,
+            'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults(), 'pengaduanProses'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'proses')->countAllResults(),
+            'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults(), 'pengaduanPending'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'pending')->countAllResults(),
+            'pengaduanSelesai'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'selesai')->countAllResults()
+        ];
 
         return view('home/laporanSaya', $data);
     }
