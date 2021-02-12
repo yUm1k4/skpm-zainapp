@@ -29,11 +29,23 @@
     .text--logo {
         margin-top: 20px;
     }   
+    .blog-pagination .page-link {
+        font-size: 12px;
+        line-height: 33px;
+        width: 33px;
+        height: 33px;
+    }
 }
 
 /* small mobile :320px. */
 @media (max-width: 320px) {
     .text--logo {
         margin-top: 20px;
-    }   
+    } 
+    .blog-pagination .page-link {
+        font-size: 12px;
+        line-height: 33px;
+        width: 33px;
+        height: 33px;
+    }  
 }
