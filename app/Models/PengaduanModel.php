@@ -65,6 +65,14 @@ class PengaduanModel extends Model
         // $kode_tambah++;
         // $nomor = str_pad($kode_tambah, 4, '0', STR_PAD_LEFT);
         // $data['kode_pengaduan'] = 'K' . user_id() . '-' . $nomor;
+    }
 
+    public function cariLaporan($keyword)
+    {
+        return $this->table('pengaduan')
+            ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->orderBy('pengaduan_dibuat', 'DESC')->like('kode_pengaduan', $keyword);
     }
 }

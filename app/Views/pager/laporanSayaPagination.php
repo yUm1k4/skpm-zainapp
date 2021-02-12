@@ -1,6 +1,6 @@
 <?php $pager->setSurroundCount(3) ?>
 
-<nav class="blog-pagination justify-content-center d-flex">
+<nav class="blog-pagination justify-content-center d-flex mt-1">
     <ul class="pagination">
         <?php if ($pager->hasPrevious()) : ?>
             <li class="page-item">

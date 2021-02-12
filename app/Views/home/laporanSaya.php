@@ -42,6 +42,9 @@
 
 <?= $this->section('content'); ?>
 
+
+<div class="swal-dataKosong" data-swaldataKosong="<?= session()->get('dataKosong'); ?>"></div>
+
 <!--================Blog Area =================-->
 <section class="blog_area single-post-area section-padding">
     <div class="container">
@@ -77,7 +80,7 @@
                         ?>
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
-                                <div class="col-md-12 user d-flex px-0">
+                                <div class="user d-flex">
                                     <div class="thumb thumb--img">
                                         <?php if ($la['user_image'] == null) { ?>
                                             <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
@@ -85,7 +88,7 @@
                                             <img src="<?= base_url('images/user-images/' . $la['user_image']) ?>" class="img--user" alt="">
                                         <?php } ?>
                                     </div>
-                                    <div class="col-md-12 desc px-0">
+                                    <div class="desc">
                                         <p class="comment">
                                             <?= limit_word($la['isi_laporan'], 50) ?>
                                         </p>
@@ -128,7 +131,37 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="blog_right_sidebar">
+                <div class="blog_right_sidebar mt-5">
+                    <!-- Search Start -->
+                    <aside class="single_sidebar_widget search_widget">
+                        <form action="<?= base_url('/cari-laporan') ?>" method="get">
+                            <div class="form-group">
+                                <div class="input-group mb-3">
+                                    <input minlength="5" type="text" class="form-control" placeholder='Cari pengaduan berdasarkan kode' onfocus="this.placeholder = ''" onblur="this.placeholder = 'Cari pengaduan berdasarkan kode'" name="keyword" required>
+                                    <div class="input-group-append">
+                                        <button class="btns" type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit" name="submit">Search</button>
+                        </form>
+                    </aside>
+                    <!-- Search End -->
+
+                    <!-- List Kategori Start -->
+                    <aside class="single_sidebar_widget post_category_widget">
+                        <h4 class="widget_title">List Kategori</h4>
+                        <ul class="list cat-list">
+                            <?php foreach ($listKategori as $lk) { ?>
+                                <li>
+                                    <a href="javascript:;" class="d-flex">
+                                        <p><?= $lk->nama_kategori ?></p>
+                                    </a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </aside>
+                    <!-- List Kategori End -->
                 </div>
             </div>
         </div>

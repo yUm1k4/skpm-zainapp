@@ -45,7 +45,7 @@
     <div class="login-header box-shadow">
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
-                <a href="<?= base_url('') ?>" class="text-primary">
+                <a href="<?= base_url('/') ?>" class="text-primary">
                     SKPM - Zain App
                 </a>
             </div>

@@ -41,6 +41,7 @@ $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => '
 $routes->post('lapor', 'Home::kirimLaporan', ['filter' => 'role:Masyarakat']);
 $routes->get('laporan-saya/(:num)', 'Home::laporanSaya/$1', ['filter' => 'role:Masyarakat']);
 $routes->get('laporan-detail/(:num)/:(any)', 'Home::laporanDetail/$1/$2', ['filter' => 'role:Masyarakat']);
+$routes->get('cari-laporan', 'Home::cariLaporan', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
 
 
 // My Profile (Masyarakat)

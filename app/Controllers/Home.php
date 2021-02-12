@@ -7,6 +7,7 @@ use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
+use phpDocumentor\Reflection\Types\Nullable;
 
 use function Composer\Autoload\includeFile;
 
@@ -166,7 +167,7 @@ class Home extends BaseController
 
         if ($savePengaduan) {
             session()->setFlashdata('kirimSukses', 'Laporan berhasil dikirim, tunggu balasan dari petugas dalam beberapa hari.');
-            return redirect()->to('lapor');
+            return redirect()->to(base_url('lapor'));
         }
     }
 
@@ -181,13 +182,49 @@ class Home extends BaseController
         // paginate() -> @jumlah, @nama_tabel
         $data = [
             'title'             => 'Laporan Saya | ',
-            'listAduan'         => $query->paginate(10, 'pengaduan'),
+            'listAduan'         => $query->paginate(2, 'pengaduan'),
             'pager'             => $this->pengaduanModel->pager,
+            'listKategori'      => $this->kategoriModel->get()->getResult(),
             'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults(), 'pengaduanProses'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'proses')->countAllResults(),
             'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults(), 'pengaduanPending'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'pending')->countAllResults(),
             'pengaduanSelesai'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'selesai')->countAllResults()
         ];
 
         return view('home/laporanSaya', $data);
+    }
+
+    public function cariLaporan()
+    {
+        $keyword = $this->request->getVar('keyword');
+
+        // jika ada inputan searching
+        if ($keyword) {
+            $jmlHasil = $this->pengaduanModel->cariLaporan($keyword)->countAllResults();
+            // dd($hasil);
+            // jika jumlah hasil inputan tidak kosong
+            if ($jmlHasil != 0) {
+                $hasil2 = $this->pengaduanModel->cariLaporan($keyword);
+                $data = [
+                    'title'             => 'Cari Laporan | ',
+                    'hasil'             => $hasil2->paginate(7, 'pengaduan'),
+                    'pager'             => $this->pengaduanModel->pager,
+                    'listKategori'      => $this->kategoriModel->get()->getResult(),
+                ];
+                return view('home/cariLaporan', $data);
+                // jika hasil inputan kosong
+            } else {
+                session()->setFlashdata('error', 'Maaf, Pengaduan yang anda cari tidak ada, silahkan cek kode pengaduannya');
+                return redirect()->to(base_url('cari-laporan'));
+            }
+            // jika tidak ada inputan keyword
+        } else {
+            $data = [
+                'title'             => 'Cari Laporan | ',
+                'hasil'             => null,
+                'pager'             => null,
+                'listKategori'      => $this->kategoriModel->get()->getResult(),
+            ];
+            return view('home/cariLaporan', $data);
+        }
     }
 }
