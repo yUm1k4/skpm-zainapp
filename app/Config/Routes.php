@@ -35,6 +35,7 @@ $routes->setAutoRoute(true);
 // ### ---> Front End
 // Home
 $routes->get('/', 'Home::index');
+$routes->post('/subscribe-email/(:num)/(:any)', 'Home::subscribeEmail/$1/$2');
 
 // Lapor
 $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);

@@ -50,6 +50,27 @@ class Home extends BaseController
         return view('home/Hubungi', $data);
     }
 
+    public function subscribeEmail($id, $username)
+    {
+        $rules = [
+            'email'        => [
+                'rules'     => 'required|valid_email|is_unique[users.email]',
+                'errors'    => [
+                    'required'        => 'Maaf, alamat email harus di isi',
+                    'valid_email'    => 'Maaf, alamat email tidak valid',
+                    'is_unique'        => 'Email sudah terdaftar sebagai subscriber kami ^_^'
+                ]
+            ],
+        ];
+
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+        }
+
+        session()->setFlashdata('success', 'Terimakasih! Selanjutnya Anda akan mendapatkan info terbaru mengenai SKPM Zain App');
+        return redirect()->back();
+    }
+
     public function lapor()
     {
         $this->pengaduanModel->select('*, pengaduan.created_at as pengaduan_dibuat');
@@ -69,22 +90,6 @@ class Home extends BaseController
         $kode_tambah++;
         $nomor = str_pad($kode_tambah, 4, '0', STR_PAD_LEFT);
         $data['kode_pengaduan'] = 'K' . user_id() . '-' . $nomor;
-
-        // generate kode v2 (belum jalan)
-        // $this->db = \Config\Database::connect();
-        // $sql = "SELECT MAX(MID(kode_pengaduan,9,4))
-        //         FROM pengaduan
-        //         WHERE MID(kode_pengaduan,3,6) = DATE_FORMAT(CURDATE(), '%y%m%d')";
-
-        // $query = $this->db->query($sql);
-        // if ($query->countAll() > 0) {
-        //     $row = $query->row();
-        //     $n = ((int)$row->kode_pengaduan) + 1;
-        //     $no = sprintf("%' . 04d", $n);
-        // } else {
-        //     $no = "0001";
-        // }
-        // $data['kode_pengaduan'] = 'K' . date('ymd') . $no;
 
         $data['title'] = 'Lapor | ';
         $data['validation'] = \Config\Services::validation();

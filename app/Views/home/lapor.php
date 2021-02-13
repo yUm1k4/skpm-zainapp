@@ -153,27 +153,15 @@
             </div>
 
             <!-- Right Side -->
-            <div class="col-lg-3 offset-lg-1">
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="fa fa-home"></i></span>
-                    <div class="media-body">
-                        <h3>Jl. Lap. Bola Rawa Butun</h3>
-                        <p>Bekasi, 17153 - Indonesia</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="fa fa-tablet-alt"></i></span>
-                    <div class="media-body">
-                        <h3>+62 812 9267 6265</h3>
-                        <p>Biasanya membalas cepat</p>
-                    </div>
-                </div>
-                <div class="media contact-info">
-                    <span class="contact-info__icon"><i class="fa fa-envelope section-tittle"></i></span>
-                    <div class="media-body">
-                        <h3>yumikasoftware@gmail.com</h3>
-                        <p>Kirim pertanyaan mu!</p>
-                    </div>
+            <div class="col-lg-3 4">
+                <div class="blog_right_sidebar">
+                    <!-- Search Start -->
+                    <?= $this->include('home/widget/search') ?>
+                    <!-- Search End -->
+
+                    <!-- Sub Email Start -->
+                    <?= $this->include('home/widget/subscribeEmail') ?>
+                    <!-- Sub Email End -->
                 </div>
             </div>
         </div>

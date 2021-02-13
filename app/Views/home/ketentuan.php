@@ -62,8 +62,8 @@
 
             <li><span><b>Pentingnya Ketentuan Penggunaan Layanan</b></span>
                 <ol class="ordered-list-alpha pl-0">
-                    <li><span>Dengan mengunduh, mengakses, menjelajahi dan atau menggunakan layanan SKPM - Zain App ini, berarti Pengguna setuju untuk terikat oleh Ketentuan Penggunaan Layanan ini. Jika Pengguna tidak setuju dengan Syarat dan Ketentuan Penggunaan ini, pengguna harus segera menghentikan akses dan penggunaan layanan yang ditawarkan pada SP4N-LAPOR!</span></li>
-                    <li><span>Kebijakan ini berlaku untuk semua pengguna layanan SP4N-LAPOR!</span></li>
+                    <li><span>Dengan mengunduh, mengakses, menjelajahi dan atau menggunakan layanan SKPM - Zain App ini, berarti Pengguna setuju untuk terikat oleh Ketentuan Penggunaan Layanan ini. Jika Pengguna tidak setuju dengan Syarat dan Ketentuan Penggunaan ini, pengguna harus segera menghentikan akses dan penggunaan layanan yang ditawarkan pada SKPM - Zain App</span></li>
+                    <li><span>Kebijakan ini berlaku untuk semua pengguna layanan SKPM - Zain App</span></li>
                 </ol>
             </li>
             <li><span><b>Perubahan Ketentuan Penggunaan Layanan</b></span>
@@ -73,19 +73,19 @@
             </li>
             <li><span><b>Syarat Penggunaan</b></span>
                 <ol class="ordered-list-alpha pl-0">
-                    <li><span>Aplikasi SP4N-LAPOR! hanya digunakan untuk menyampaikan keluhan, aspirasi, laporan, pengaduan, komentar dan permintaan informasi terkait dengan pelayanan publik.</span></li>
-                    <li><span>Pengguna tidak diperbolehkan untuk menggunakan identitas pribadi milik orang lain untuk menggunakan layanan SP4N-LAPOR! dan wajib menjaga kerahasiaan informasi yang didapatkan di aplikasi SP4N-LAPOR!.</span></li>
-                    <li><span>Pengguna tidak diperkenankan menyalahgunakan data dan informasi yang terdapat dalam layanan aplikasi SP4N-LAPOR! untuk tujuan yang merugikan pihak lain serta melanggar peraturan perundang-undangan yang berlaku.</span></li>
+                    <li><span>Aplikasi SKPM - Zain App hanya digunakan untuk menyampaikan keluhan, aspirasi, laporan, pengaduan, komentar dan permintaan informasi terkait dengan pelayanan publik.</span></li>
+                    <li><span>Pengguna tidak diperbolehkan untuk menggunakan identitas pribadi milik orang lain untuk menggunakan layanan SKPM - Zain App dan wajib menjaga kerahasiaan informasi yang didapatkan di aplikasi SKPM - Zain App.</span></li>
+                    <li><span>Pengguna tidak diperkenankan menyalahgunakan data dan informasi yang terdapat dalam layanan aplikasi SKPM - Zain App untuk tujuan yang merugikan pihak lain serta melanggar peraturan perundang-undangan yang berlaku.</span></li>
                     <li><span>Pengguna tidak diperbolehkan memberikan pengaduan dan informasi yang mengandung unsur diskriminasi atau berpotensi menimbulkan konflik suku, agama, ras, dan antar-golongan (SARA), menistakan, melecehkan, dan/atau menodai nilai-nilai agama.</span></li>
-                    <li><span>Penggunaan layanan SP4N-LAPOR! adalah untuk kepentingan pribadi, non-komersial, dan tidak boleh digunakan untuk tujuan yang merugikan pihak lain.</span></li>
+                    <li><span>Penggunaan layanan SKPM - Zain App adalah untuk kepentingan pribadi, non-komersial, dan tidak boleh digunakan untuk tujuan yang merugikan pihak lain.</span></li>
                     <li><span>Dengan mengirimkan teks, gambar, video, file dan lampiran lain saat menggunakan layanan, pengguna dengan ini memberikan lisensi kepada pengelola layanan atas materi tersebut dengan ketentuan bebas royalti atas penggunaan dan pendistribusian materi tersebut kepada pihak ketiga.</span></li>
                     <li><span>Penyedia layanan tidak memungut biaya apapun terhadap penggunaan layanan. Namun segala bentuk biaya yang diperlukan termasuk penyediaan telepon seluler, komputer, dan atau peralatan lain yang diperlukan untuk mengakses layanan, koneksi internet, dan keperluan telekomunikasi lainnya merupakan tanggung jawab pengguna. </span></li>
                 </ol>
             </li>
             <li><span><b>Kerahasiaan dan Informasi Pribadi</b></span>
                 <ol class="ordered-list-alpha pl-0">
-                    <li><span>Dengan menggunakan layanan pengaduan ini, pengguna setuju dan memahami bahwa informasi yang terkait dengan data pribadi dan data pengaduan atau aspirasi dari pengguna akan diberikan kepada penyedia layanan. Namun demikian, pengelola layanan memberikan jaminan kerahasiaan data dan informasi pada SP4N-LAPOR!.</span></li>
-                    <li><span>Layanan SP4N-LAPOR! mengumpulkan data pribadi pengguna sebagai jaminan keabsahan dari aduan atau aspirasi yang disampaikan. Adapun data pribadi yang dikumpulkan adalah sebagai berikut:</span>
+                    <li><span>Dengan menggunakan layanan pengaduan ini, pengguna setuju dan memahami bahwa informasi yang terkait dengan data pribadi dan data pengaduan atau aspirasi dari pengguna akan diberikan kepada penyedia layanan. Namun demikian, pengelola layanan memberikan jaminan kerahasiaan data dan informasi pada SKPM - Zain App.</span></li>
+                    <li><span>Layanan SKPM - Zain App mengumpulkan data pribadi pengguna sebagai jaminan keabsahan dari aduan atau aspirasi yang disampaikan. Adapun data pribadi yang dikumpulkan adalah sebagai berikut:</span>
                         <ol class="ordered-list-roman pl-0">
                             <li><span>Nama pengguna sebagai pengenal identitas</span></li>
                             <li><span>No Identitas meliputi no KTP, SIM, atau NIK sebagai pengenal identitas</span></li>
@@ -121,7 +121,7 @@
                     <li><span>Pengelola layanan berhak membatalkan segala transaksi yang mencurigakan atau tidak sesuai dengan syarat penggunaan dan kewajiban pengguna.</span></li>
                 </ol>
             </li>
-            <li><span><b>Kewajiban Pengelola SP4N-LAPOR!</b></span>
+            <li><span><b>Kewajiban Pengelola SKPM - Zain App</b></span>
                 <ol class="ordered-list-alpha pl-0">
                     <li><span>Pengelola layanan wajib memiliki mekanisme untuk menjamin kerahasiaan data dan informasi yang tersimpan di dalam sistem.</span></li>
                     <li><span>Pengelola layanan wajib memiliki mekanisme untuk menjaga kerahasiaan informasi pribadi pengguna yang tersimpan di dalam sistem.</span></li>
@@ -130,7 +130,7 @@
             </li>
             <li><span><b>Pernyataan dan Pengecualian Kewajiban Penyedia Layanan</b></span>
                 <ol class="ordered-list-alpha pl-0">
-                    <li><span>Pengelola layanan tidak menjamin bahwa SP4N-LAPOR! akan selalu dapat diakses, tanpa gangguan, tepat waktu, aman, bebas dari kesalahan atau bebas dari virus komputer atau hal yang merusak lainnya, dan atau bahwa layanan tidak akan terpengaruh oleh fasilitas infrastruktur, listrik atau telekomunikasi, kurangnya infrastruktur atau kegagalan teknologi informasi.</span></li>
+                    <li><span>Pengelola layanan tidak menjamin bahwa SKPM - Zain App akan selalu dapat diakses, tanpa gangguan, tepat waktu, aman, bebas dari kesalahan atau bebas dari virus komputer atau hal yang merusak lainnya, dan atau bahwa layanan tidak akan terpengaruh oleh fasilitas infrastruktur, listrik atau telekomunikasi, kurangnya infrastruktur atau kegagalan teknologi informasi.</span></li>
                     <li><span>Pengelola layanan tidak bertanggung jawab atas kesalahan menjelajahi situs yang dilakukan pengguna dan ketidakcocokan perangkat yang digunakan pengguna, serta dampak resiko yang terjadi akibatnya. </span></li>
                     <li><span>Jika pengguna terbukti menggunakan aplikasi untuk tujuan yang membahayakan, merugikan, atau di luar tujuan penggunaan yang dimaksudkan dalam aplikasi ini, maka penyedia layanan aplikasi tidak bertanggung jawab terhadap dampak yang ditimbulkan.</span></li>
                     <li><span>Pengelola layanan tidak memiliki kewajiban menghilangkan informasi pengguna atau laporan yang tampil pada hasil pencarian mesin pencari.</span></li>
