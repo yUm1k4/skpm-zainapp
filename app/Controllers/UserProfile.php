@@ -3,13 +3,31 @@
 namespace App\Controllers;
 
 use App\Models\MyUserModel;
+use Myth\Auth\Entities\User;
 
 class UserProfile extends BaseController
 {
+    protected $auth;
+    /**
+     * @var Auth
+     */
+    protected $config;
+
+    /**
+     * @var \CodeIgniter\Session\Session
+     */
+    protected $session;
 
     public function __construct()
     {
         $this->userModel = new MyUserModel;
+        // // Most services in this controller require
+        // // the session to be started - so fire it up!
+        // $this->session = service('session');
+        // // $this->validation = service('validation');
+
+        $this->config = config('Auth');
+        // $this->auth = service('authentication');
     }
 
     public function index()
@@ -157,6 +175,86 @@ class UserProfile extends BaseController
         if ($save) {
             session()->setFlashdata('success', 'Data profil berhasil diubah');
             return redirect()->to(base_url('/user-profile'));
+        }
+    }
+
+    public function changePassword($id, $username)
+    {
+        $data = [
+            'title' => "Ubah Password | ",
+            'user'  => $this->userModel->getId('3', $id)
+        ];
+
+        return view('home/user/changePassword', $data);
+    }
+
+    public function attemptChangePassword($id, $username)
+    {
+        $rules = [
+            'password_lama'  => [
+                'rules'     => 'required',
+                'errors'     => [
+                    'required'        => 'Pasasword Lama harus di isi',
+                ]
+            ],
+            'password_baru'     => [
+                'rules'        => 'required|strong_password',
+                'errors'    => [
+                    'required'        => 'Password Baru harus di isi',
+                    'strong_password'    => 'Password terlalu mudah',
+                ]
+            ],
+            'ulangi_password' => [
+                'rules'        => 'required|matches[password_baru]',
+                'errors'    => [
+                    'required'        => 'Harap ulangi password',
+                    'matches'        => 'Password tidak sesuai',
+                ]
+            ],
+        ];
+
+        // jika tdk tervalidasi, kembalikan dan tampilkan errors
+        if (!$this->validate($rules)) {
+            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+        }
+
+        $pwLama = $this->request->getPost('password_lama');
+        $pwBaru = $this->request->getPost('password_baru');
+
+        // ambil 1 data row yg  login 
+        $user = $this->userModel->select('*')
+            ->where('id', $id)
+            ->where('username', $username)
+            ->get()->getRowArray();
+        // dd($user['password_hash']);
+
+        // password_verify utk menyamakan inputan pwLama denganpassword yg di database
+        // dan ditambah menggunakan hash tambahan dari myth/auth
+        $result = password_verify(
+            base64_encode(hash('sha384', $pwLama, true)),
+            $user['password_hash']
+        );
+
+        // jika paswod lama tidak sama dengan password yg di database
+        if (!$result) {
+            session()->setFlashdata('error', 'Maaf, password lama salah');
+            return redirect()->back()->withInput();
+        } else {
+            if ($pwLama == $pwBaru) {
+                session()->setFlashdata('error', 'Mohon maaf, password baru tidak boleh sama dengan password lama');
+                return redirect()->back()->withInput();
+            } else {
+                // Success! simpan password baru
+                $users = model('UserModel');
+                $new = $users->where('id', $id)
+                    ->where('username', $username)
+                    ->first();
+                $new->password  = $pwBaru;
+                $users->save($new);
+                session()->setFlashdata('success', 'Password berhasil diubah!');
+                return redirect()->back();
+                // return redirect()->to(base_url('user-profile/change-password/' . user()->id . '/' . user()->username));
+            }
         }
     }
 }

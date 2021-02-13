@@ -7,13 +7,13 @@
         padding: 0px;
     }
 
+    .comments-area .date {
+        font-size: 13px;
+    }
+
     @media (min-width: 320px) and (max-width: 425px) {
         .comments-area {
             padding: 30px 0px;
-        }
-
-        .comments-area .date {
-            font-size: 13px;
         }
 
         .comments-area .thumb.thumb--img img {

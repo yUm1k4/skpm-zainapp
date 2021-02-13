@@ -87,12 +87,12 @@ if (swalError) {
 
 if (swalLogin) {
     Swal.fire({
-        // imageUrl: '<?= base_url('') ?>/images/mirage-welcome.png',
-        imageUrl: "<?= base_url('') ?>/images/mello.svg",
+        imageUrl: "<?= base_url('') ?>/images/mirage-welcome.png",
+        // imageUrl: "<?= base_url('') ?>/images/mello.svg",
         imageHeight: 250,
         timer: 7000,
         title: swalLogin,
-        confirmButtonText: 'Hallo..!!',
+        confirmButtonText: 'Hi..!!',
     });
 }
 

@@ -36,7 +36,7 @@
 
                             <td><?= $p->kode_pengaduan ?></td>
 
-                            <td><?= limit_word($p->isi_laporan, 4) ?></td>
+                            <td><?= limit_word($p->isi_laporan, 10) ?></td>
 
                             <?php
                             $phpdate = strtotime($p->pengaduan_dibuat);

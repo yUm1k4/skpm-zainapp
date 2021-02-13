@@ -82,7 +82,11 @@
                                     <label>Foto Profil :</label>
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <img src="<?= base_url() ?>/images/user-images/<?= user()->user_image ?>" class="img-thumbnail img-preview">
+                                            <?php if (user()->user_image == null) { ?>
+                                                <img src="<?= base_url() ?>/images/avatar.png" class="img-thumbnail img-preview">
+                                            <?php } else { ?>
+                                                <img src="<?= base_url() ?>/images/user-images/<?= user()->user_image ?>" class="img-thumbnail img-preview">
+                                            <?php } ?>
                                         </div>
                                         <div class="col-sm-9">
                                             <div class="custom-file">
@@ -118,7 +122,7 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Nama Lengkap :</label>
-                                <input type="text" class="form-control <?php if (session('errors.fullname')) : ?>is-invalid <?php endif ?>" name="fullname" value="<?= user()->fullname ?>">
+                                <input type="text" class="form-control <?php if (session('errors.fullname')) : ?>is-invalid <?php endif ?>" name="fullname" value="<?= (old('fullname')) ? old('fullname') : user()->fullname ?>">
                                 <div class="invalid-feedback">
                                     <?= session('errors.fullname') ?>
                                 </div>
@@ -135,14 +139,14 @@
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <label>Nomor Handphone :</label>
-                                <input type="text" class="form-control <?php if (session('errors.no_hp')) : ?>is-invalid <?php endif ?>" name="no_hp" value="<?= user()->no_hp ?>">
+                                <input type="text" class="form-control <?php if (session('errors.no_hp')) : ?>is-invalid <?php endif ?>" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : user()->no_hp ?>">
                                 <div class="invalid-feedback">
                                     <?= session('errors.no_hp') ?>
                                 </div>
                             </div>
                             <div class="col-md-6 form-group">
                                 <label>Alamat Lengkap :</label>
-                                <input type="text" class="form-control <?php if (session('errors.alamat')) : ?>is-invalid <?php endif ?>" name="alamat" value="<?= user()->alamat ?>">
+                                <input type="text" class="form-control <?php if (session('errors.alamat')) : ?>is-invalid <?php endif ?>" name="alamat" value="<?= (old('alamat')) ? old('alamat') : user()->alamat ?>">
                                 <div class="invalid-feedback">
                                     <?= session('errors.alamat') ?>
                                 </div>

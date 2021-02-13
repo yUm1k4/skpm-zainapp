@@ -103,7 +103,7 @@ class Home extends BaseController
                 'errors'    => ['required'  => 'Kategori Pengaduan harus dipilih']
             ],
             'isi_laporan'   => [
-                'rules'     => 'required|min_length[45]',
+                'rules'     => 'required|min_length[110]',
                 'errors'    => [
                     'required'      => 'Harap di isi, dan Mohon di isi secara terperinci dan lengkap',
                     'min_length' => 'Isi Laporan terlalu singkat, isi secara terperinci dan lengkap'
@@ -182,7 +182,7 @@ class Home extends BaseController
         // paginate() -> @jumlah, @nama_tabel
         $data = [
             'title'             => 'Laporan Saya | ',
-            'listAduan'         => $query->paginate(2, 'pengaduan'),
+            'listAduan'         => $query->paginate(7, 'pengaduan'),
             'pager'             => $this->pengaduanModel->pager,
             'listKategori'      => $this->kategoriModel->get()->getResult(),
             'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->countAllResults(), 'pengaduanProses'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $id_user)->where('status', 'proses')->countAllResults(),

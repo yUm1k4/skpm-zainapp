@@ -15,11 +15,7 @@
             padding-top: 80px;
         }
     }
-</style>
-<?= $this->endSection(); ?>
 
-<?= $this->section('my-css'); ?>
-<style>
     @media (max-width: 600px) {
         .single-post-area .blog-author img {
             width: 75px !important;
@@ -39,7 +35,11 @@
             <div class="col-lg-8 posts-list">
                 <div class="blog-author">
                     <div class="media align-items-center">
-                        <img src="<?= base_url('images/user-images') . '/' . user()->user_image ?>" alt="">
+                        <?php if (user()->user_image == null) { ?>
+                            <img src="<?= base_url('images/avatar.png') ?>" alt="">
+                        <?php } else { ?>
+                            <img src="<?= base_url('images/user-images') . '/' . user()->user_image ?>" alt="">
+                        <?php } ?>
                         <div class="media-body">
                             <div>
 
@@ -52,7 +52,7 @@
                                 </div>
 
                                 <div>
-                                    <a href="<?= base_url('user-profile/change-password/' . user()->id) ?>">
+                                    <a href="<?= base_url('user-profile/change-password/' . user()->id . '/' .  user()->username) ?>">
                                         <h4 href="javascript:;" class="text-biru-gelap">
                                             <i class="fa fa-lock"></i> Ganti Password
                                         </h4>

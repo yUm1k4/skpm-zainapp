@@ -62,6 +62,7 @@
     </div>
 
     <!-- sweet alert 2 -->
+    <div class="swal-loginSuccess" data-swallogin="<?= session()->get('successLogin'); ?>"></div>
     <div class="swal" data-swal="<?= session()->get('message'); ?>"></div>
     <div class="swalError" data-swal="<?= session()->get('error'); ?>"></div>
     <div class="swalWarn" data-swal="<?= session()->get('warning'); ?>"></div>
@@ -78,6 +79,7 @@
 
     <!-- Sweet Alert 2 -->
     <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
+    <!-- <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.custom.js"></script> -->
     <!-- Sweet Alert Setting -->
     <script>
         // ambil pesan

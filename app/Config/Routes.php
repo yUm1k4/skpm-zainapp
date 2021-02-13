@@ -48,6 +48,8 @@ $routes->get('cari-laporan', 'Home::cariLaporan', ['filter' => 'role:Masyarakat'
 $routes->get('/user-profile', 'UserProfile::index', ['filter' => 'role:Masyarakat']);
 $routes->get('/user-profile/edit/(:num)', 'UserProfile::edit/$1', ['filter' => 'role:Masyarakat']);
 $routes->post('/user-profile/update/(:num)', 'UserProfile::update/$1', ['filter' => 'role:Masyarakat']);
+$routes->get('/user-profile/change-password/(:num)/(:any)', 'UserProfile::changePassword/$1/$2', ['filter' => 'role:Masyarakat']);
+$routes->post('/user-profile/change-password/(:num)/(:any)', 'UserProfile::attemptChangePassword/$1/$2', ['filter' => 'role:Masyarakat']);
 
 // Tentang Kami
 $routes->get('tentang', 'Home::tentang');
