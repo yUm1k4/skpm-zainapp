@@ -76,7 +76,6 @@
                                         </span>
                                         <div class="chat-body clearfix">
                                             <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
-                                                <!-- <small class="pull-right text-muted"> <i class="fa fa-clock-o"></i> 4 yrs ago</small> -->
                                             </div>
                                             <p class="msg m-0">
                                                 <?= xss($pengaduan[0]->isi_laporan) ?>
@@ -84,31 +83,39 @@
                                         </div>
                                     </li>
                                     <?php foreach ($percakapan as $chat) { ?>
-                                        <?php if ($pengaduan[0]->user_id == in_groups('Masyarakat')) : ?>
-                                            <li class="left clearfix"><span class="chat-img pull-left d-none d-md-block d-sm-block"><img src="<?= base_url() . '/images/user-images/' . $pengaduan[0]->user_image ?>" alt="User Avatar"></span>
+                                        <?php if ($chat->petugas_Id != 0) : ?>
+                                            <li class="right clearfix">
+                                                <span class="chat-img pull-right d-none d-md-block d-sm-block">
+                                                    <?php if ($chat->user_image == null) { ?>
+                                                        <img src="<?= base_url() . '/images/admin-images/indonesia.png' ?>">
+                                                    <?php } else { ?>
+                                                        <img src="<?= base_url() . '/images/admin-images/' . $chat->user_image ?>">
+                                                    <?php } ?>
+                                                </span>
                                                 <div class="chat-body clearfix">
-                                                    <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
-                                                        <!-- <small class="pull-right text-muted"> <i class="fa fa-clock-o"></i> 4 yrs ago</small> -->
+                                                    <div class="kepala"><strong class="primary-font"> Admin | </strong> <?= $chat->fullname ?>
                                                     </div>
                                                     <p class="msg m-0">
-                                                        <?= xss($pengaduan[0]->isi_laporan) ?>
+                                                        <?= xss($chat->percakapan) ?>
                                                     </p>
                                                 </div>
                                             </li>
                                         <?php else : ?>
-                                            <li class="right clearfix"><span class="chat-img pull-right d-none d-md-block d-sm-block">
+                                            <li class="left clearfix">
+                                                <span class="chat-img pull-left d-none d-md-block d-sm-block">
                                                     <?php if ($chat->user_image == null) { ?>
-                                                        <img src="<?= base_url() . '/images/admin-images/indonesia.png' ?>"></span>
-                                            <?php } else { ?>
-                                                <img src="<?= base_url() . '/images/admin-images/' . $chat->user_image ?>"></span>
-                                            <?php } ?>
-                                            <div class="chat-body clearfix">
-                                                <div class="kepala"><strong class="primary-font">Admin</strong> | <?= $chat->fullname ?>
+                                                        <img src="<?= base_url() . '/images/avatar.png' ?>">
+                                                    <?php } else { ?>
+                                                        <img src="<?= base_url() . '/images/user-images/' . $chat->user_image ?>">
+                                                    <?php } ?>
+                                                </span>
+                                                <div class="chat-body clearfix">
+                                                    <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
+                                                    </div>
+                                                    <p class="msg m-0">
+                                                        <?= xss($chat->percakapan) ?>
+                                                    </p>
                                                 </div>
-                                                <p class="msg m-0">
-                                                    <?= xss($chat->percakapan) ?>
-                                                </p>
-                                            </div>
                                             </li>
                                         <?php endif ?>
                                     <?php } ?>
@@ -117,6 +124,7 @@
                                     <form action="<?= base_url('/pengaduan/balas/' . $pengaduan[0]->id_pengaduan . '/' . $pengaduan[0]->kode_pengaduan . '/' . $pengaduan[0]->userid) ?>" method="post">
                                         <div class="input-group">
                                             <input id="message" name="pesan" type="text" class="form-control border no-shadow no-rounded mr-1" placeholder="Ketik pesan" required>
+                                            <!-- textarea -->
                                             <span class="input-group-btn">
                                                 <button class="btn btn-success no-rounded" id="send" type="submit">Kirim</button>
                                             </span>

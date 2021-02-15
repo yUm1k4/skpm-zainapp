@@ -41,8 +41,9 @@ $routes->post('/subscribe-email/(:num)/(:any)', 'Home::subscribeEmail/$1/$2');
 $routes->get('lapor', 'Home::lapor', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
 $routes->post('lapor', 'Home::kirimLaporan', ['filter' => 'role:Masyarakat']);
 $routes->get('laporan-saya/(:num)', 'Home::laporanSaya/$1', ['filter' => 'role:Masyarakat']);
-$routes->get('laporan-detail/(:num)/:(any)', 'Home::laporanDetail/$1/$2', ['filter' => 'role:Masyarakat']);
+$routes->get('laporan-detail/(:num)/(:any)', 'Home::laporanDetail/$1/$2', ['filter' => 'role:Masyarakat']);
 $routes->get('cari-laporan', 'Home::cariLaporan', ['filter' => 'role:Masyarakat'], ['as' => 'lapor']);
+$routes->post('/pengaduan/balasMasyarakat/(:num)/(:any)/(:num)', 'Pengaduan::kirimBalasanMasyarakat/$1/$2/$3', ['filter' => 'role:Masyarakat']);
 
 
 // My Profile (Masyarakat)

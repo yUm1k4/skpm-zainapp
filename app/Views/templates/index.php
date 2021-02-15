@@ -25,6 +25,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
+    <!-- Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
 
     <?= $this->renderSection('my-css') ?>
 
@@ -214,6 +217,18 @@
             setTimeout("jam()", 1000);
         }
         jam();
+    </script>
+
+    <!-- SummoerNote JS  -->
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            tabsize: 2,
+            minHeight: 300,
+            height: 500,
+        });
+
+        $('#summernote_disable').summernote('disable');
     </script>
 
     <?= $this->renderSection('my-js') ?>

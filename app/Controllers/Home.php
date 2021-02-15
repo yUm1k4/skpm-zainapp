@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Database\Migrations\Pengaduan;
 use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
+use \App\Models\PercakapanModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -20,6 +21,7 @@ class Home extends BaseController
     {
         $this->pengaduanModel = new PengaduanModel;
         $this->kategoriModel = new KategoriModel;
+        $this->percakapanModel = new PercakapanModel;
         $this->config = config('Auth');
 
         // $this->session = service('session');
@@ -96,6 +98,28 @@ class Home extends BaseController
         $data['pengaduan_kategori'] = $this->kategoriModel->findAll();
 
         return view('home/lapor', $data);
+    }
+
+    public function laporanDetail($idPengaduan, $kodePengaduan)
+    {
+        $qPengaduan = $this->pengaduanModel
+            ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat, users.id as userid')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->orderBy('pengaduan_dibuat', 'DESC')
+            ->where('pengaduan.kode_pengaduan =', $kodePengaduan)
+            ->where('pengaduan.id_pengaduan =', $idPengaduan)
+            ->get();
+
+        $data = [
+            'title'             => 'Detail Pengaduan | ',
+            'pengaduan'         => $qPengaduan->getRow(),
+            'listKategori'      => $this->kategoriModel->get()->getResult(),
+            'percakapan'        => $this->percakapanModel->getPercakapan($kodePengaduan)
+        ];
+
+
+        return view('home/detailPengaduan', $data);
     }
 
     public function kirimLaporan()

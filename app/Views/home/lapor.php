@@ -105,7 +105,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Isi Laporan</label>
-                                <textarea class="form-control w-100 is-invalid" name="isi_laporan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lebih terperinci anda menginput, lebih baik'" placeholder=" Lebih terperinci anda menginput, lebih baik"><?= set_value('isi_laporan'); ?></textarea>
+                                <textarea class="form-control w-100 is-invalid" name="isi_laporan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lebih terperinci anda menginput, lebih baik'"><?= set_value('isi_laporan'); ?></textarea>
                                 <div class="invalid-feedback">
                                     <?= session('errors.isi_laporan') ?>
                                 </div>
@@ -153,7 +153,7 @@
             </div>
 
             <!-- Right Side -->
-            <div class="col-lg-3 4">
+            <div class="col-lg-4">
                 <div class="blog_right_sidebar">
                     <!-- Search Start -->
                     <?= $this->include('home/widget/search') ?>
@@ -173,6 +173,8 @@
 
 <!-- Sweet Alert 2 -->
 <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
+<!-- <script type="text/javascript" src="<?= base_url() ?>/vendors/watermark/jquery.watermark.js"></script> -->
+
 
 <script>
     function lampView() {
@@ -181,8 +183,9 @@
         const lampLabel = document.querySelector('.custom-file-label');
 
         lampLabel.textContent = lamp.files[0].name;
-
     }
+    // $('textarea.form-control').watermark();
 </script>
+
 
 <?= $this->endSection(); ?>

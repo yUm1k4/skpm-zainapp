@@ -79,7 +79,9 @@ class Pengaduan extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            // return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            session()->setFlashdata('message', $this->validator->getErrors());
+            return redirect()->back();
         }
 
         $savePengaduan = [
@@ -99,6 +101,39 @@ class Pengaduan extends BaseController
         if ($savePercakapan) {
             session()->setFlashdata('message', 'Pesan berhasil terkirim');
             return redirect()->to(base_url('/pengaduan/balas/' . $kode_pengaduan));
+        }
+    }
+
+    public function kirimBalasanMasyarakat($id_pengaduan, $kode_pengaduan, $userid)
+    {
+        $rules = [
+            'pesan' => [
+                'rules'     => 'required|max_length[65534]|min_length[3]',
+                'errors'    => [
+                    'required'  => 'Pesan harus diisi',
+                    'max_length' => 'Mohon maaf, Pesan terlalu panjang',
+                    'min_length' => 'Mohon maaf, Pesan terlalu singkat'
+                ]
+            ]
+        ];
+
+        if (!$this->validate($rules)) {
+            // return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            session()->setFlashdata('message', $this->validator->getErrors());
+            return redirect()->back();
+        }
+
+        $savePercakapan = [
+            'kode_pengaduan'    => $kode_pengaduan,
+            'user_id'           => user()->id,
+            'percakapan'        => $this->request->getPost('pesan')
+        ];
+
+        $this->percakapanModel->save($savePercakapan);
+
+        if ($savePercakapan) {
+            session()->setFlashdata('success', 'Pesan berhasil terkirim');
+            return redirect()->back();
         }
     }
 

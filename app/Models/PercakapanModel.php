@@ -25,10 +25,10 @@ class PercakapanModel extends Model
         $this->builder = $this->db->table('percakapan');
     }
 
-    public function getPercakapan($kode_pengaduan, $petugasid)
+    public function getPercakapan($kode_pengaduan, $petugasid = null)
     {
         $this->builder->select('*, percakapan.petugas_id as nama_petugas');
-        $this->builder->join('users', 'users.id = percakapan.petugas_id');
+        $this->builder->join('users', 'users.id = percakapan.petugas_id', 'left');
         // $this->builder->join('users', 'users.id = pengaduan.user_id');
         // $this->builder->where('percakapan.petugas_id =', $petugasid);
         $this->builder->where('percakapan.kode_pengaduan =', $kode_pengaduan);

@@ -97,7 +97,7 @@
                                                     </h5>
                                                 </div>
                                                 <div class="reply-btn">
-                                                    <a href="<?= base_url('laporan/' . $la['id_pengaduan'] . '/' . $la['kode_pengaduan']) ?>" class="btn-reply">Cek Detail <i class="dw dw-search1"></i></a>
+                                                    <a href="<?= base_url('laporan-detail/' . $la['id_pengaduan'] . '/' . $la['kode_pengaduan']) ?>" class="btn-reply">Cek Detail <i class="dw dw-search1"></i></a>
                                                 </div>
                                             </div>
                                         </div>
