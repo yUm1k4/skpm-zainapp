@@ -32,7 +32,12 @@
                     ?>
                         <tr>
                             <td class="text-center"><?= $i++ ?>.</td>
-                            <td><?= $p->fullname ?></td>
+
+                            <?php if ($p->anonim == 1) : ?>
+                                <td><?= $p->fullname ?> <i class="text-primary">(Anonim)</i></td>
+                            <?php else : ?>
+                                <td><?= $p->fullname ?></td>
+                            <?php endif; ?>
 
                             <td><?= $p->kode_pengaduan ?></td>
 

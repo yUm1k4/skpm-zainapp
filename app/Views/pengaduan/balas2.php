@@ -17,7 +17,13 @@
                         <img src="<?= base_url() . '/images/user-images/' . $pengaduan[0]->user_image ?>" alt="" class="avatar-photo">
                     <?php endif; ?>
                 </div>
-                <h5 class="text-center h5 mb-3"><?= (old('fullname')) ? old('fullname') : xss($pengaduan[0]->fullname) ?></h5>
+                <h5 class="text-center h5 mb-3">
+                    <?php if ($pengaduan[0]->anonim == 1) : ?>
+                        <?= (old('fullname')) ? old('fullname') : xss($pengaduan[0]->fullname) ?> <br><i>(Melapor sebagai Anonim)</i>
+                    <?php else : ?>
+                        <?= (old('fullname')) ? old('fullname') : xss($pengaduan[0]->fullname) ?>
+                    <?php endif; ?>
+                </h5>
                 <div class="profile-info">
                     <h5 class="mb-10 h5 text-blue">Informasi User</h5>
                     <ul>
@@ -75,8 +81,7 @@
                                             <?php } ?>
                                         </span>
                                         <div class="chat-body clearfix">
-                                            <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
-                                            </div>
+                                            <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong></div>
                                             <p class="msg m-0">
                                                 <?= xss($pengaduan[0]->isi_laporan) ?>
                                             </p>
@@ -104,10 +109,10 @@
                                         <?php else : ?>
                                             <li class="left clearfix">
                                                 <span class="chat-img pull-left d-none d-md-block d-sm-block">
-                                                    <?php if ($chat->user_image == null) { ?>
-                                                        <img src="<?= base_url() . '/images/avatar.png' ?>">
+                                                    <?php if ($pengaduan[0]->user_image != null) { ?>
+                                                        <img src="<?= base_url() . '/images/user-images/' . $pengaduan[0]->user_image ?>" alt="User Avatar">
                                                     <?php } else { ?>
-                                                        <img src="<?= base_url() . '/images/user-images/' . $chat->user_image ?>">
+                                                        <img src="<?= base_url('images/avatar.png/') ?>" alt="User Avatar">
                                                     <?php } ?>
                                                 </span>
                                                 <div class="chat-body clearfix">
