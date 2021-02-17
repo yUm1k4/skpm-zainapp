@@ -58,7 +58,7 @@
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#chating" role="tab">Chating</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item hr-right">
                                 <a class="nav-link" data-toggle="tab" href="#info" role="tab">Info Pengaduan</a>
                             </li>
                         </ul>
@@ -83,7 +83,8 @@
                                         </div>
                                     </li>
                                     <?php foreach ($percakapan as $chat) { ?>
-                                        <?php if ($chat->petugas_Id != 0) : ?>
+                                        <?php
+                                        if ($chat->petugas_id != 0) : ?>
                                             <li class="right clearfix">
                                                 <span class="chat-img pull-right d-none d-md-block d-sm-block">
                                                     <?php if ($chat->user_image == null) { ?>
@@ -149,6 +150,14 @@
                                                 Proses
                                             <?php else : ?>
                                                 Selesai
+                                            <?php endif; ?>
+                                        </li>
+                                        <li>
+                                            <span>Anonimitas:</span>
+                                            <?php if ($pengaduan[0]->anonim == 1) : ?>
+                                                Ya
+                                            <?php else : ?>
+                                                Tidak
                                             <?php endif; ?>
                                         </li>
                                         <li>

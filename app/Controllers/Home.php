@@ -6,6 +6,7 @@ use App\Database\Migrations\Pengaduan;
 use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
 use \App\Models\PercakapanModel;
+use \App\Models\SubscriberModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -22,6 +23,7 @@ class Home extends BaseController
         $this->pengaduanModel = new PengaduanModel;
         $this->kategoriModel = new KategoriModel;
         $this->percakapanModel = new PercakapanModel;
+        $this->subModel = new SubscriberModel;
         $this->config = config('Auth');
 
         // $this->session = service('session');
@@ -52,11 +54,11 @@ class Home extends BaseController
         return view('home/Hubungi', $data);
     }
 
-    public function subscribeEmail($id, $username)
+    public function subscribeEmail($id, $username = null)
     {
         $rules = [
-            'email'        => [
-                'rules'     => 'required|valid_email|is_unique[users.email]',
+            'subEmail'        => [
+                'rules'     => 'required|valid_email|is_unique[subscriber.email]',
                 'errors'    => [
                     'required'        => 'Maaf, alamat email harus di isi',
                     'valid_email'    => 'Maaf, alamat email tidak valid',
@@ -66,11 +68,21 @@ class Home extends BaseController
         ];
 
         if (!$this->validate($rules)) {
-            return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
+            return redirect()->back()->withInput()
+                ->with('errors', service('validation')->getErrors());
         }
 
-        session()->setFlashdata('success', 'Terimakasih! Selanjutnya Anda akan mendapatkan info terbaru mengenai SKPM Zain App');
-        return redirect()->back();
+        $saveSub = [
+            'email'     => $this->request->getPost('subEmail'),
+            'user_id'   => $id
+        ];
+
+        $this->subModel->save($saveSub);
+
+        if ($saveSub) {
+            session()->setFlashdata('success', 'Terimakasih, selanjutnya Anda akan mendapatkan info terbaru mengenai SKPM Zain App ^_^');
+            return redirect()->back();
+        }
     }
 
     public function lapor()

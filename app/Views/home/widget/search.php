@@ -8,6 +8,6 @@
                 </div>
             </div>
         </div>
-        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit" name="submit">Search</button>
+        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn" type="submit">Search</button>
     </form>
 </aside>

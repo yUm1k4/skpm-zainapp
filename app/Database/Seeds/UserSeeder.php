@@ -13,7 +13,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
     {
         $faker = \Faker\Factory::create('id_ID');
 
-        for ($i = 0; $i < 1; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data = [
                 'nik'           => $faker->nik,
                 'email'         => $faker->email,
@@ -22,7 +22,7 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
                 'password_hash' => $faker->password,
                 'no_hp'         => $faker->phoneNumber,
                 'alamat'        => $faker->address,
-                'active'        => 1,
+                'active'        => 0,
                 'created_at'    => Time::now(),
                 'updated_at'    => Time::now()
             ];

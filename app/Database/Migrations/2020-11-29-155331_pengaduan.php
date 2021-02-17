@@ -15,7 +15,16 @@ class Pengaduan extends Migration
 				'unsigned'       => true,
 				'auto_increment' => true,
 			],
+			'kode_pengaduan' => [
+				'type'			=> 'VARCHAR',
+				'constraint'	=> 255
+			],
 			'user_id'		=> [
+				'type'			=> 'int',
+				'constraint'	=> 11,
+				'unsigned'		=> true
+			],
+			'kategori_id'		=> [
 				'type'			=> 'int',
 				'constraint'	=> 11
 			],
@@ -26,7 +35,11 @@ class Pengaduan extends Migration
 				'type'			=> 'varchar',
 				'constraint'	=> 255
 			],
-			'foto'			=> [
+			'anonim'		=> [
+				'type'			=> 'int',
+				'constraint'	=> 11
+			],
+			'lampiran'			=> [
 				'type'			=> 'varchar',
 				'constraint'	=> 255
 			],
@@ -41,6 +54,7 @@ class Pengaduan extends Migration
 			],
 		]);
 		$this->forge->addKey('id_pengaduan', true);
+		$this->forge->addForeignKey('user_id', 'users', 'id');
 		$this->forge->createTable('pengaduan');
 	}
 

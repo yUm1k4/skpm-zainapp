@@ -104,6 +104,11 @@ $routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin'])
 $routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin']);
 $routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
 
+// Subscriber
+$routes->get('/subscriber', 'Subscriber::index', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/subscriber/delete/(:num)', 'Subscriber::delete/$1', ['filter' => 'role:Admin,Petugas']);
+
+
 /**
  * --------------------------------------------------------------------
  * Additional Routing

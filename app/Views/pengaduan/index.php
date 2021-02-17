@@ -84,9 +84,6 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <!-- <div class="text-center my-n3">
-                    <img class="img-fluid" src="<?= base_url() . '/images/user-images/' . $p->user_image ?>" width="250px" alt="User Image">
-                </div> -->
                 <div class="wizard-content">
                     <section>
                         <div class="row">

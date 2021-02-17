@@ -21,11 +21,18 @@
                         <li><a href="<?= base_url('/') ?>">Home</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="<?= base_url('pengaduan') ?>" class="dropdown-toggle no-arrow 
-                    <?= uri_string() === 'pengaduan' ?>">
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle align-content-center
+                    <?= uri_string() === 'pengaduan' ||
+                        uri_string() === 'pengaduan-kategori'
+                        ? 'active' : '';
+                    ?>">
                         <span class="micon dw dw-edit2"></span><span class="mtext">Pengaduan</span>
                     </a>
+                    <ul class="submenu">
+                        <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
+                        <li><a href="<?= base_url('pengaduan-kategori') ?>">Kategori Pengaduan</a></li>
+                    </ul>
                 </li>
                 <?php if (in_groups('Admin')) : ?>
                     <li class="dropdown">
@@ -52,8 +59,14 @@
                 <?php endif ?>
                 <li>
                     <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
-                    <?= uri_string() === 'quotes' ?>">
+                    <?= uri_string() === 'quotes' ? 'active' : '' ?>">
                         <span class="micon dw dw dw-quotation"></span><span class="mtext">Quotes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('subscriber') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'subscriber' ? 'active' : '' ?>">
+                        <span class="micon dw dw dw-star"></span><span class="mtext">Subscriber</span>
                     </a>
                 </li>
             </ul>

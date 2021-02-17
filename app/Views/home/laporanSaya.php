@@ -70,6 +70,12 @@
                         </div>
                     </div>
 
+                    <?php if (!$listAduan) : ?>
+                        <div class="search-img row justify-content-center mt-3">
+                            <img src="<?= base_url('/home/img/undraw_laporan.png') ?>" class="img-responsive" alt="" width="50%">
+                        </div>
+                    <?php endif; ?>
+
                     <!-- <h5 class="mb-3"> Pengaduan telah dibuat</h5> -->
                     <?php foreach ($listAduan as $la) { ?>
                         <?php
@@ -82,12 +88,25 @@
                                         <?php if ($la['user_image'] == null) { ?>
                                             <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
                                         <?php } else { ?>
-                                            <img src="<?= base_url('images/user-images/' . $la['user_image']) ?>" class="img--user" alt="">
+                                            <?php if ($la['anonim'] == 1) : ?>
+                                                <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
+                                            <?php else : ?>
+                                                <img src="<?= base_url('images/user-images/' . $la['user_image']) ?>" class="img--user" alt="">
+                                            <?php endif; ?>
                                         <?php } ?>
                                     </div>
                                     <div class="desc">
+                                        <?php if ($la['anonim'] == 1) : ?>
+                                            <div class="comment mb-0">
+                                                <a href="javascript:;" class="text-success">Melapor sebagai Anonim</a>
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="comment mb-0">
+                                                <a href="javascript:;" class="text-biru-tua"><?= $la['fullname'] ?></a>
+                                            </div>
+                                        <?php endif; ?>
                                         <p class="comment">
-                                            <?= limit_word($la['isi_laporan'], 50) ?>
+                                            <?= xss(limit_word($la['isi_laporan'], 50)) ?>
                                         </p>
                                         <?php
                                         $phpdate = strtotime($la['pengaduan_dibuat']);

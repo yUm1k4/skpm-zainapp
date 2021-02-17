@@ -245,6 +245,7 @@ class Masyarakat extends BaseController
 
         // jika validasi berhasil, kelola file gambar yg baru
         $fileProfil = $this->request->getFile('user_image');
+        $fileLama = $this->request->getVar('profilLama');
 
         // cek profil, jika profil lama :
         if ($fileProfil->getError() == 4) {
@@ -256,9 +257,11 @@ class Masyarakat extends BaseController
             $namaProfil = $fileProfil->getRandomName();
             // pindahkan profil
             $fileProfil->move('images/user-images', $namaProfil);
-
-            // hapus file lama 
-            unlink('images/user-images/' . $this->request->getVar('profilLama'));
+            // jika fileLama itu masih default
+            if ($fileLama != "") {
+                // hapus file lama 
+                unlink('images/user-images/' . $fileLama);
+            }
         }
 
         $this->masyarakatModel->save([

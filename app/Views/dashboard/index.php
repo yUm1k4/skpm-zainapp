@@ -82,7 +82,11 @@
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
-                        <div class="h4 mb-0"><?= xss($total_admin[0]->total); ?></div>
+                        <?php if ($total_admin == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($total_admin[0]->total); ?></div>
+                        <?php endif ?>
                         <div class="weight-600 font-14">Jumlah Admin</div>
                     </div>
                     <div class="col-auto">
@@ -95,7 +99,11 @@
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
-                        <div class="h4 mb-0"><?= xss($total_petugas[0]->total); ?></div>
+                        <?php if ($total_petugas == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($total_petugas[0]->total); ?></div>
+                        <?php endif ?>
                         <div class="weight-600 font-14">Jumlah Petugas</div>
                     </div>
                     <div class="col-auto">
@@ -108,7 +116,11 @@
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
-                        <div class="h4 mb-0"><?= xss($total_masyarakat[0]->total); ?></div>
+                        <?php if ($total_masyarakat == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($total_masyarakat[0]->total); ?></div>
+                        <?php endif ?>
                         <div class="weight-600 font-14">Jumlah Masyarakat</div>
                     </div>
                     <div class="col-auto">
