@@ -129,7 +129,7 @@
                                 <div class="chat-box">
                                     <form action="<?= base_url('/pengaduan/balas/' . $pengaduan[0]->id_pengaduan . '/' . $pengaduan[0]->kode_pengaduan . '/' . $pengaduan[0]->userid) ?>" method="post">
                                         <div class="input-group">
-                                            <input id="message" name="pesan" type="text" class="form-control border no-shadow no-rounded mr-1" placeholder="Ketik pesan" required>
+                                            <textarea name="pesan" rows="1" class="form-control border no-shadow no-rounded mr-1" placeholder="Ketik pesan" required></textarea>
                                             <!-- textarea -->
                                             <span class="input-group-btn">
                                                 <button class="btn btn-success no-rounded" id="send" type="submit">Kirim</button>

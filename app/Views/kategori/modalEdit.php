@@ -3,10 +3,10 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Form Edit Quote</h4>
+                <h4 class="modal-title" id="myLargeModalLabel">Form Edit Kategori</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <?= form_open('quotes/updatedata', ['class' => 'formQuotes'], ['id_quotes' => $id_quotes]) ?>
+            <?= form_open('pengaduan-kategori/updatedata', ['class' => 'formKategori'], ['id_pengaduan_kategori' => $id_pengaduan_kategori]) ?>
             <div class="modal-body">
                 <div class="wizard-content">
                     <section>
@@ -15,10 +15,9 @@
 
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="quote">Quotes :</label>
-                                    <textarea id="quote" name="quote" class="form-control" required data-parsley-required-message="Quote harus diisi jika ingin menyimpan" data-parsley-length="[20,200]" data-parsley-length-message="Minimal 20 karakter, maksimal 200 karakter" data-parsley-trigger="keyup"><?= set_value('quote', $quote) ?></textarea>
-                                    <div class="invalid-feedback errorQuote">
-
+                                    <label for="nama_kategori">Nama Kategori :</label>
+                                    <input type="text" id="nama_kategori" name="nama_kategori" class="form-control " required data-parsley-required-message="Kategori harus diisi jika ingin menyimpan" data-parsley-length="[3,40]" data-parsley-length-message="Minimal 3 karakter, maksimal 40 karakter" data-parsley-trigger="keyup" value="<?= set_value('nama_kategori', $nama_kategori) ?>">
+                                    <div class="invalid-feedback errorKat">
                                     </div>
                                 </div>
 
@@ -45,7 +44,7 @@
 
 <script>
     $(document).ready(function() {
-        $('.formQuotes').submit(function(e) {
+        $('.formKategori').submit(function(e) {
             e.preventDefault();
             $.ajax({
                 type: "POST",
@@ -63,16 +62,16 @@
                 success: function(response) {
                     // jika ada error
                     if (response.error) {
-                        // respon quote
-                        if (response.error.quote) {
+                        // respon nama_kategori
+                        if (response.error.nama_kategori) {
                             // jika ada error maka tampilkan pesan errornya
-                            $('#quote').addClass('is-invalid');
-                            $('.errorQuote').html(response.error.quote);
+                            $('#nama_kategori').addClass('is-invalid');
+                            $('.errorKat').html(response.error.nama_kategori);
                         } else {
                             // jika tdk ada error
-                            $('#quote').removeClass('is-invalid');
-                            $('#quote').addClass('is-valid');
-                            $('.errorQuote').html('');
+                            $('#nama_kategori').removeClass('is-invalid');
+                            $('#nama_kategori').addClass('is-valid');
+                            $('.errorKat').html('');
                         }
                     } else {
                         // jika tidak ada error
@@ -84,8 +83,8 @@
                         });
                         // tutup modal
                         $('#modaledit').modal('hide');
-                        // lalu load tbl dataQuotes
-                        dataQuotes();
+                        // lalu load tbl dataKategori
+                        dataKategori();
                     }
                 },
                 // menampilkan pesan error:

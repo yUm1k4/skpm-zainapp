@@ -1,8 +1,6 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="<?= base_url('dashboard') ?>">
-            <!-- <img src="<?= base_url() ?>/vendors/images/deskapp-logo.svg" alt="" class="dark-logo"> -->
-            <!-- <img src="<?= base_url() ?>/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo"> -->
             <p class="text-white text-center align-center mx-auto my-auto">Zain App</p>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
@@ -13,12 +11,12 @@
         <div class="sidebar-menu">
             <ul id="accordion-menu">
                 <li class="dropdown">
-                    <a href="javascript:;" class="dropdown-toggle <?= (uri_string() === '/') ? 'active' : ''; ?>">
+                    <a href="javascript:;" class="dropdown-toggle <?= uri_string() === 'dashboard' ? 'active' : ''; ?>">
                         <span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="<?= base_url('/dashboard') ?>">Dashboard</a></li>
-                        <li><a href="<?= base_url('/') ?>">Home</a></li>
+                        <li><a href="<?= base_url('/') ?>" target="_blank">Home</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -39,7 +37,8 @@
                         <a href="javascript:;" class="dropdown-toggle 
                     <?= uri_string() === 'admin' ||
                         uri_string() === 'petugas' ||
-                        uri_string() === 'masyarakat' || uri_string() === 'masyarakat/create' || uri_string() === 'masyarakat/update'
+                        uri_string() === 'masyarakat' || uri_string() === 'masyarakat/create' || uri_string() === 'masyarakat/update' ||
+                        uri_string() === 'all-user'
                         ? 'active' : '';
                     ?>">
                             <span class="micon dw dw-user-11"></span><span class="mtext">Data Pengguna</span>
