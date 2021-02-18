@@ -137,11 +137,14 @@ class Pengaduan extends BaseController
         }
     }
 
-    public function delete($id)
+    public function delete($id_percakapan, $kode_pengaduan)
     {
-        $this->pengaduanModel->where('id_pengaduan', $id)->delete();
+        // hapus percakapan
+        $this->percakapanModel->where('kode_pengaduan', $kode_pengaduan)->delete();
+        // hapus pengaduan
+        $this->pengaduanModel->where('id_pengaduan', $id_percakapan)->delete();
 
-        session()->setFlashdata('message', 'Data Berhasil Dihapus');
+        session()->setFlashdata('message', 'Data percakapan dan pengaduan berhasil dihapus');
         return redirect()->to(base_url('/pengaduan'));
     }
 }

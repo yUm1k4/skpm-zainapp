@@ -69,7 +69,7 @@
 
                                         <a class="dropdown-item" href="<?= base_url('/pengaduan/balas/' . $p->kode_pengaduan) ?>"><i class="dw dw-chat3"></i> Balas</a>
 
-                                        <a href="<?= base_url('/pengaduan/delete/' . $p->id_pengaduan) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
+                                        <a href="<?= base_url('/pengaduan/delete/' . $p->id_pengaduan . '/' . $p->kode_pengaduan) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
                             </td>
