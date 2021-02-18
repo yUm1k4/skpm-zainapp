@@ -98,7 +98,7 @@ class AuthController extends Controller
 		// return redirect()->to($redirectURL)->withCookies()->with('message', lang('Auth.loginSuccess'));
 
 		if ($type) {
-			session()->setFlashdata('successLogin', lang('Auth.loginSuccess'));
+			session()->setFlashdata('success', lang('Auth.loginSuccess'));
 			// return redirect()->to($redirectURL)->withCookies();
 			return redirect()->back()->withCookies();
 		}
@@ -113,7 +113,7 @@ class AuthController extends Controller
 			$this->auth->logout();
 		}
 
-		session()->setFlashdata('message', 'Semoga Hari Mu Menyenangkan..');
+		session()->setFlashdata('success', 'Anda berhasil logout. Semoga hari Mu menyenangkan ^_^');
 		return redirect()->to(base_url('/'));
 	}
 

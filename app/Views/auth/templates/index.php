@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/icon-font.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/jquery-steps/jquery.steps.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
 </head>
 
 <body class="login-page">
@@ -81,6 +82,9 @@
     <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
     <!-- <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.custom.js"></script> -->
     <!-- Sweet Alert Setting -->
+
+    <!-- Parsley -->
+    <script src="<?= base_url() ?>/vendors/parsley/parsley.min.js"></script>
     <script>
         // ambil pesan
         const swal = $('.swal').data('swal');
@@ -117,6 +121,8 @@
             })
         }
     </script>
+
+    <?= $this->renderSection('my-js') ?>
 </body>
 
 </html>

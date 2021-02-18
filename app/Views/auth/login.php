@@ -18,12 +18,12 @@
                     ?>
                     <div class="swal" data-swal="<?= session()->get('message'); ?>"></div>
 
-                    <form action="<?= base_url(route_to('login')) ?>" method="post">
+                    <form action="<?= base_url(route_to('login')) ?>" method="post" id="form">
                         <?= csrf_field() ?>
 
                         <?php if ($config->validFields === ['email']) : ?>
                             <div class="input-group custom">
-                                <input type="email" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.email') ?>">
+                                <input type="email" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.email') ?>" required>
                                 <div class="input-group-append custom">
                                     <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="icon-copy dw dw-email1"></i></span>
                                 </div>
@@ -33,7 +33,7 @@
                             </div>
                         <?php else : ?>
                             <div class="input-group custom">
-                                <input type="text" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.emailOrUsername') ?>">
+                                <input type="text" name="login" class="form-control form-control-md mr-5 <?php if (session('errors.login')) : ?>is-invalid<?php endif ?>" placeholder="<?= lang('Auth.emailOrUsername') ?>" required>
                                 <div class="input-group-append custom">
                                     <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="icon-copy dw dw-user1"></i></span>
                                 </div>
@@ -44,7 +44,7 @@
                         <?php endif; ?>
 
                         <div class="input-group custom">
-                            <input type="password" class="form-control form-control-md mr-5 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="**********" name="password">
+                            <input type="password" class="form-control form-control-md mr-5 <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" placeholder="**********" name="password" required>
                             <div class="input-group-append custom">
                                 <span class="input-group-text <?php if (session('errors.login')) : ?>mb-4<?php endif ?>"><i class="dw dw-padlock1"></i></span>
                             </div>
