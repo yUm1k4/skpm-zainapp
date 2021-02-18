@@ -114,24 +114,27 @@ class Home extends BaseController
 
     public function laporanDetail($idPengaduan, $kodePengaduan)
     {
-        $qPengaduan = $this->pengaduanModel
+        $query = $this->pengaduanModel
             ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat, users.id as userid')
             ->join('users', 'users.id = pengaduan.user_id')
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
             ->orderBy('pengaduan_dibuat', 'DESC')
             ->where('pengaduan.kode_pengaduan =', $kodePengaduan)
-            ->where('pengaduan.id_pengaduan =', $idPengaduan)
-            ->get();
+            ->where('pengaduan.id_pengaduan =', $idPengaduan);
+        $qPengaduan = $query->get()->getRow();
 
-        $data = [
-            'title'             => 'Detail Pengaduan | ',
-            'pengaduan'         => $qPengaduan->getRow(),
-            'listKategori'      => $this->kategoriModel->get()->getResult(),
-            'percakapan'        => $this->percakapanModel->getPercakapan($kodePengaduan)
-        ];
-
-
-        return view('home/detailPengaduan', $data);
+        if ($qPengaduan == null) {
+            session()->setFlashdata('error', 'Maaf Laporan yang anda cari tidak ada.');
+            return redirect()->to(base_url('cari-laporan'));
+        } else {
+            $data = [
+                'title'             => 'Detail Pengaduan | ',
+                'pengaduan'         => $qPengaduan,
+                'listKategori'      => $this->kategoriModel->get()->getResult(),
+                'percakapan'        => $this->percakapanModel->getPercakapan($kodePengaduan)
+            ];
+            return view('home/detailPengaduan', $data);
+        }
     }
 
     public function kirimLaporan()

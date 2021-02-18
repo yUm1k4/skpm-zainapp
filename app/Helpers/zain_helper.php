@@ -28,6 +28,10 @@ function salam($jam)
     return 'Selamat ' . $salam;
 }
 
+function nl2br_xss($str)
+{
+    echo nl2br(htmlspecialchars($str, ENT_QUOTES));
+}
 
 // ---> Helper anti scrip XSS
 function xss($str)
@@ -57,7 +61,7 @@ function clean_text($text)
 #2. Short date, dengan format (‘5/09/2017’)                 | shortdate_indo()
 #3. Medium date, dengan format (‘5-Sep-2017’)               | mediumdate_indo()
 #4. Long date, dengan format (‘Selasa, 5 September 2017’)   | longdate_indo()
-#5. Waktu Format Indp, dgn format ("Selasa, 09 Des 2020 09:46) | format_indo()
+#5. Waktu Format Indp, dgn format ("Selasa, 09 Des 2020 09:46) | format_indo($tanggal)
 
 // Waktu dan Tanggal
 if (!function_exists('format_indo')) {

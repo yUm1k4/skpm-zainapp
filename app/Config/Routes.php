@@ -103,6 +103,10 @@ $routes->post('/pengaduan-kategori/formedit', 'KategoriPengaduan::formedit', ['f
 $routes->post('/pengaduan-kategori/updatedata', 'KategoriPengaduan::updatedata', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan-kategori/hapus', 'KategoriPengaduan::hapus', ['filter' => 'role:Admin,Petugas']);
 
+// Laporan
+$routes->get('report', 'Laporan::index', ['filter' => 'role:Admin,Petugas']);
+$routes->post('cetak', 'Laporan::cetak', ['filter' => 'role:Admin,Petugas']);
+
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
 $routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin']);

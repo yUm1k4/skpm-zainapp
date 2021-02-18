@@ -37,36 +37,6 @@ class PengaduanModel extends Model
         // return $query->getResult();
     }
 
-    // public function getPengaduanId($kode_pengaduan)
-    // {
-    //     $this->builder->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
-    //     $this->builder->join('users', 'users.id = pengaduan.user_id');
-    //     $this->builder->where('pengaduan.kode_pengaduan =', $kode_pengaduan);
-
-    //     $query = $this->builder->get();
-    //     return $query->getResult();
-    // }
-
-    public function getKode()
-    {
-        // // generate kode v1
-        // $ambil_field = $this->pengaduanModel->selectMax('kode_pengaduan');
-        // $query = $ambil_field->get()->getRow();
-        // $kode_tambah = substr($query->kode_pengaduan, -5, 5);
-        // $kode_tambah++;
-        // $nomor = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
-        // // dd($nomor);
-        // $data['kode_pengaduan'] = 'K-' . user_id() . '-' . $nomor;
-
-        // // generate kode v2
-        // $ambil_field = $this->pengaduanModel->selectMax('kode_pengaduan')->where('user_id = ' . user_id());
-        // $query = $ambil_field->get()->getRow();
-        // $kode_tambah = substr($query->kode_pengaduan, -4, 4);
-        // $kode_tambah++;
-        // $nomor = str_pad($kode_tambah, 4, '0', STR_PAD_LEFT);
-        // $data['kode_pengaduan'] = 'K' . user_id() . '-' . $nomor;
-    }
-
     public function cariLaporan($keyword)
     {
         return $this->table('pengaduan')
@@ -74,5 +44,17 @@ class PengaduanModel extends Model
             ->join('users', 'users.id = pengaduan.user_id')
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
             ->orderBy('pengaduan_dibuat', 'DESC')->like('kode_pengaduan', $keyword);
+    }
+
+    public function cetakRangeTanggal($range)
+    {
+        $query = $this->table('pengaduan')
+            ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->where('pengaduan.created_at' . ' >=', $range['mulai'])
+            ->where('pengaduan.created_at' . ' <=', $range['akhir'])
+            ->orderBy('id_pengaduan', 'DESC');
+        return $query->get()->getResultArray();
     }
 }

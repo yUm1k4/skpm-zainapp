@@ -1,24 +1,24 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-main',
+    'version' => 'dev-main',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '88ef3d637a836a42e9d780d88b30e7481a1d0395',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
   array (
     'codeigniter4/appstarter' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-main',
+      'version' => 'dev-main',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '88ef3d637a836a42e9d780d88b30e7481a1d0395',
     ),
     'codeigniter4/framework' => 
     array (
@@ -91,6 +91,15 @@
       array (
       ),
       'reference' => 'fed7013dd3b2038aad27b3ea12cc647d0cd88d91',
+    ),
+    'mpdf/mpdf' => 
+    array (
+      'pretty_version' => 'v8.0.10',
+      'version' => '8.0.10.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '1333a962cd2f7ae1a127b7534b7734b58179186f',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -365,6 +374,15 @@
       array (
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
+    ),
+    'setasign/fpdi' => 
+    array (
+      'pretty_version' => 'v2.3.6',
+      'version' => '2.3.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
     ),
     'symfony/polyfill-ctype' => 
     array (

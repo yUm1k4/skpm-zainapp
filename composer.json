@@ -12,7 +12,8 @@
 		"myth/auth": "^1.0@beta",
 		"fzaninotto/faker": "^1.9",
 		"monken/cli-create": "^0.3.1",
-		"pusher/pusher-php-server": "^4.1"
+		"pusher/pusher-php-server": "^4.1",
+		"mpdf/mpdf": "^8.0"
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",

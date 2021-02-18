@@ -161,7 +161,7 @@
                                                                 </div>
                                                             <?php endif; ?>
                                                             <p class="msg m-0">
-                                                                <?= xss($pengaduan->isi_laporan) ?>
+                                                                <?= nl2br_xss($pengaduan->isi_laporan) ?>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -188,7 +188,7 @@
                                                                         </div>
                                                                     <?php endif; ?>
                                                                     <p class="msg m-0">
-                                                                        <?= xss($chat->percakapan) ?>
+                                                                        <?= nl2br(htmlspecialchars($chat->percakapan, ENT_QUOTES)) ?>
                                                                     </p>
                                                                 </div>
                                                             </li>
@@ -201,7 +201,7 @@
                                                                     <div class="kepala"><strong class="primary-font">Admin | </strong><?= $chat->fullname ?>
                                                                     </div>
                                                                     <p class="msg m-0">
-                                                                        <?= xss($chat->percakapan) ?>
+                                                                        <?= nl2br(htmlspecialchars($chat->percakapan, ENT_QUOTES)) ?>
                                                                     </p>
                                                                 </div>
                                                             </li>
@@ -227,7 +227,7 @@
                                                     <ul class="col">
                                                         <li>
                                                             <span>Kode Pengaduan:</span>
-                                                            <?= xss($pengaduan->kode_pengaduan) ?>
+                                                            <?= nl2br_xss($pengaduan->kode_pengaduan) ?>
                                                         </li>
                                                         <li>
                                                             <span>Status Pengaduan:</span>

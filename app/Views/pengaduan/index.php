@@ -13,7 +13,7 @@
     </div>
     <div class="pb-20">
         <div class="table-responsive">
-            <table class="data-table table hover">
+            <table class="data-table table hover table-sm">
                 <thead class="text-center">
                     <tr>
                         <th>No.</th>

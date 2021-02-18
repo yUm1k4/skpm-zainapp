@@ -52,15 +52,16 @@
                 <div class="profile-tab height-100-p">
                     <div class="tab height-100-p">
                         <ul class="nav nav-tabs customtab" role="tablist">
-                            <!-- <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="<?= base_url('/pengaduan') ?>" role="tab"><span class="icon">
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="<?= base_url('/pengaduan') ?>" role="tab">
+                                    <span class="icon">
                                         <i class="dw dw-left-arrow2"></i>
                                     </span>
                                     <span class="text">
                                         Kembali
                                     </span>
                                 </a>
-                            </li> -->
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#chating" role="tab">Chating</a>
                             </li>
@@ -83,13 +84,14 @@
                                         <div class="chat-body clearfix">
                                             <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong></div>
                                             <p class="msg m-0">
-                                                <?= xss($pengaduan[0]->isi_laporan) ?>
+                                                <?= nl2br_xss($pengaduan[0]->isi_laporan) ?>
                                             </p>
                                         </div>
                                     </li>
                                     <?php foreach ($percakapan as $chat) { ?>
                                         <?php
                                         if ($chat->petugas_id != 0) : ?>
+                                            <!-- Petugas/Admin chat -->
                                             <li class="right clearfix">
                                                 <span class="chat-img pull-right d-none d-md-block d-sm-block">
                                                     <?php if ($chat->user_image == null) { ?>
@@ -102,11 +104,12 @@
                                                     <div class="kepala"><strong class="primary-font"> Admin | </strong> <?= $chat->fullname ?>
                                                     </div>
                                                     <p class="msg m-0">
-                                                        <?= xss($chat->percakapan) ?>
+                                                        <?= nl2br_xss($chat->percakapan) ?>
                                                     </p>
                                                 </div>
                                             </li>
                                         <?php else : ?>
+                                            <!-- User Chat -->
                                             <li class="left clearfix">
                                                 <span class="chat-img pull-left d-none d-md-block d-sm-block">
                                                     <?php if ($pengaduan[0]->user_image != null) { ?>
@@ -119,7 +122,9 @@
                                                     <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
                                                     </div>
                                                     <p class="msg m-0">
-                                                        <?= xss($chat->percakapan) ?>
+                                                        <?= nl2br_xss($chat->percakapan) ?>
+                                                        <?php // xss()->nama_field 
+                                                        ?>
                                                     </p>
                                                 </div>
                                             </li>

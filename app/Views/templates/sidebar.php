@@ -51,7 +51,8 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#" class="dropdown-toggle no-arrow">
+                        <a href="<?= base_url('report') ?>" class="dropdown-toggle no-arrow 
+                        <?= uri_string() === 'report' ? 'active' : '' ?>">
                             <span class="micon dw dw-invoice"></span><span class="mtext">Laporan</span>
                         </a>
                     </li>
