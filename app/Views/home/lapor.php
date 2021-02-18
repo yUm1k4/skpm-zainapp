@@ -1,5 +1,9 @@
 <?= $this->extend('home/templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
+<?= $this->endSection(); ?>
+
 <?= $this->section('content'); ?>
 
 <!-- Header Area Start-->
@@ -88,7 +92,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Kategori Pengaduan</label>
-                                <select name="kategori_id" id="kategori_id" class="form-control wide m-0 <?php if (session('errors.kategori_id')) : ?>is-invalid<?php endif ?>">
+                                <select name="kategori_id" id="kategori_id" class="form-control wide m-0 <?php if (session('errors.kategori_id')) : ?>is-invalid<?php endif ?>" required data-parsley-required-message="Pilih kategori dahulu" data-parsley-trigger="keyup">
                                     <option value="0" selected disabled> Pilih Kategori</option>
                                     <?php foreach ($pengaduan_kategori as $pk) : ?>
                                         <option <?= set_select('kategori_id', $pk['id_pengaduan_kategori']) ?> value="<?= $pk['id_pengaduan_kategori'] ?>"><?= $pk['nama_kategori'] ?></option>
@@ -105,7 +109,7 @@
                         <div class="col-sm-12">
                             <div class="form-group">
                                 <label>Isi Laporan</label>
-                                <textarea class="form-control w-100 is-invalid" name="isi_laporan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lebih terperinci anda menginput, lebih baik'"><?= set_value('isi_laporan'); ?></textarea>
+                                <textarea class="form-control w-100 is-invalid" name="isi_laporan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lebih terperinci anda menginput, lebih baik'" required data-parsley-required-message="Laporan harus di isi" data-parsley-minlength="110" data-parsley-minlength-message="Isi Laporan terlalu singkat, isi secara terperinci dan lengkap"><?= set_value('isi_laporan'); ?></textarea>
                                 <div class="invalid-feedback">
                                     <?= session('errors.isi_laporan') ?>
                                 </div>
@@ -115,7 +119,7 @@
                             <div class="form-group">
                                 <label>Lampirkan File Bukti</label>
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input <?php if (session('errors.lampiran')) : ?>is-invalid <?php endif ?>" name="lampiran" id="lampiran" onchange="lampView()">
+                                    <input type="file" class="custom-file-input <?php if (session('errors.lampiran')) : ?>is-invalid <?php endif ?>" name="lampiran" id="lampiran" onchange="lampView()" required data-parsley-required-message="Mohon lampirkan file bukti">
                                     <div class="invalid-feedback">
                                         <?= session('errors.lampiran') ?>
                                     </div>
@@ -169,6 +173,9 @@
 </section>
 <!-- ================ contact section end ================= -->
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-js'); ?>
 <script src='https://www.google.com/recaptcha/api.js' async defer></script>
 
 <!-- Sweet Alert 2 -->
@@ -187,5 +194,10 @@
     // $('textarea.form-control').watermark();
 </script>
 
-
+<script src="<?= base_url() ?>/vendors/parsley/parsley.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('form').parsley();
+    });
+</script>
 <?= $this->endSection(); ?>

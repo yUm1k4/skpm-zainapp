@@ -156,7 +156,7 @@ class Home extends BaseController
             'lampiran'  => [
                 'rules' => 'uploaded[lampiran]|max_size[lampiran,2048]|mime_in[lampiran,image/jpg,image/jpeg,image/pjpeg,image/png,image/x-png,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document]',
                 'errors' => [
-                    'uploaded' => 'Harap upload file bukti',
+                    'uploaded' => 'Mohon lampirkan file bukti',
                     'max_size' => 'Ukuran file hanya boleh 2MB',
                     'mime_in'  => 'Oops.. yang Anda pilih bukan format file yang diperbolehkan'
                 ]
