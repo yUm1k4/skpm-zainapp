@@ -45,7 +45,7 @@
                                 <?php if ($p->user_image == null) : ?>
                                     <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
                                 <?php else : ?>
-                                    <img src="<?= base_url('images/user-images/' . $p->user_image) ?>" width="90" class="img-fluid">
+                                    <img src="<?= base_url('images/admin-images/' . $p->user_image) ?>" width="90" class="img-fluid">
                                 <?php endif; ?>
                             </td>
                             <td><?= xss($p->nik) ?></td>
@@ -62,7 +62,7 @@
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
                                         <a class="dropdown-item" href="<?= base_url('/petugas/edit/' . $p->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
-                                        <a href="<?= base_url('/petugas/delete/' . $p->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
+                                        <a href="<?= base_url('/petugas/delete/' . $p->userid . '/' . $p->username) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
                             </td>

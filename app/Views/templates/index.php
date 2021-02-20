@@ -25,9 +25,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
-    <!-- Summernote CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
 
     <?= $this->renderSection('my-css') ?>
 
@@ -179,6 +176,7 @@
             // === Ini utk tulisan labelnya
             // ambil profilLabel, trus textContent nya (isi nya) di ambil dari files profil yg diupload, index ke 0, ambil namanya
             profilLabel.textContent = profil.files[0].name;
+            console.log(profilLabel.textContent);
 
             // === Ini utk mengganti Preview
             // ini adlh variabel baru utk ngambil file yg diupload
@@ -191,7 +189,6 @@
                 // si image preview, source nya diganti dgn gambar yg baru di upload di atas
                 imgPreview.src = e.target.result;
             }
-
         }
     </script>
 
@@ -217,18 +214,6 @@
             setTimeout("jam()", 1000);
         }
         jam();
-    </script>
-
-    <!-- SummoerNote JS  -->
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-    <script>
-        $('#summernote').summernote({
-            tabsize: 2,
-            minHeight: 300,
-            height: 500,
-        });
-
-        $('#summernote_disable').summernote('disable');
     </script>
 
     <?= $this->renderSection('my-js') ?>

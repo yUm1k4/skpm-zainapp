@@ -78,13 +78,17 @@ $routes->get('/admin/delete/(:num)/(:any)', 'Admin::delete/$1/$2', ['filter' => 
 
 // Data Petugas
 $routes->get('/petugas', 'Petugas::index', ['filter' => 'role:Admin']);
+$routes->get('/petugas/create', 'Petugas::create', ['filter' => 'role:Admin']);
+$routes->post('/petugas', 'Petugas::save', ['filter' => 'role:Admin']);
+$routes->get('/petugas/delete/(:num)/(:any)', 'Petugas::delete/$1/$2', ['filter' => 'role:Admin']);
+$routes->get('/petugas/edit/(:num)', 'Petugas::edit/$1', ['filter' => 'role:Admin']);
+$routes->post('/petugas/update/(:num)', 'Petugas::update/$1', ['filter' => 'role:Admin']);
+$routes->post('/petugas/delete/(:num)/(:any)', 'Petugas::delete/$1', ['filter' => 'role:Admin']);
 
 // Data Masyarakat
 $routes->get('/masyarakat', 'Masyarakat::index', ['filter' => 'role:Admin'], ['as' => 'masyarakat']);
 $routes->get('/masyarakat/create', 'Masyarakat::create', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat', 'Masyarakat::save', ['filter' => 'role:Admin']);
-$routes->get('/masyarakat/edit/(:num)', 'Masyarakat::edit/$1', ['filter' => 'role:Admin']);
-$routes->post('/masyarakat/update/(:num)', 'Masyarakat::update/$1', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/delete/(:num)', 'Masyarakat::delete/$1', ['filter' => 'role:Admin']);
 
 // Data Semua Pengguna
