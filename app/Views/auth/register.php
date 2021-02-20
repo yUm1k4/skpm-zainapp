@@ -64,7 +64,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Nama Lengkap<i class="text-danger">*</i></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control <?php if (session('errors.fullname')) : ?>is-invalid<?php endif ?>" name="fullname" value="<?= old('fullname') ?>" required data-parsley-required-message="Nama harus diisi" data-parsley-length="[3,40]" data-parsley-length-message="Minimal 3 karakter, maksimal 40 karakter" data-parsley-trigger="keyup">
+                                            <input type="text" class="form-control <?php if (session('errors.fullname')) : ?>is-invalid<?php endif ?>" name="fullname" value="<?= old('fullname') ?>" required data-parsley-required-message="Nama harus diisi" data-parsley-length="[3,50]" data-parsley-length-message="Minimal 3 karakter, maksimal 50 karakter" data-parsley-trigger="keyup">
                                             <div class="invalid-feedback">
                                                 <?= session('errors.fullname') ?>
                                             </div>
@@ -91,7 +91,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label">Alamat Lengkap<i class="text-danger">*</i></label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control <?php if (session('errors.alamat')) : ?>is-invalid<?php endif ?>" name="alamat" value="<?= old('alamat') ?>" required data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="100" data-parsley-maxlength-message="Alamat terlalu panjang" data-parsley-trigger="keyup">
+                                            <input type="text" class="form-control <?php if (session('errors.alamat')) : ?>is-invalid<?php endif ?>" name="alamat" value="<?= old('alamat') ?>" required data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="200" data-parsley-maxlength-message="Alamat terlalu panjang" data-parsley-trigger="keyup">
                                             <div class="invalid-feedback">
                                                 <?= session('errors.alamat') ?>
                                             </div>

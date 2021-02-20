@@ -12,6 +12,15 @@
         font-size: 13px;
     }
 
+    hr.custom-hr {
+        border-bottom: 2px solid #6f42c1;
+        margin: 20px 0px;
+    }
+
+    .row p a {
+        color: #6f42c1;
+    }
+
     @media (min-width: 320px) and (max-width: 425px) {
         .comments-area {
             padding: 30px 0px;
@@ -36,6 +45,11 @@
         .section-padding {
             padding-top: 10px;
             padding-bottom: 10px;
+        }
+
+        hr.custom-hr {
+            border-bottom: 2px solid #6f42c1;
+            margin: 20px 0px;
         }
     }
 </style>
@@ -75,8 +89,16 @@
                                             </div>
                                         <?php endif; ?>
                                         <p class="comment">
-                                            <?= xss(limit_word($pengaduan->isi_laporan, 50)) ?>
+                                            <?php if ($pengaduan->userid == user()->id) : ?>
+                                                <?= nl2br_xss(limit_word($pengaduan->isi_laporan, 50)) ?>
+                                            <?php else : ?>
+                                                <?= nl2br_xss($pengaduan->isi_laporan) ?>
+                                            <?php endif; ?>
                                         </p>
+                                        <hr class="custom-hr">
+                                        <div class="row">
+                                            <p class="col-md-12 col-sm-12 date ml-0">Lamppiran: <a href="<?= base_url('laporan/lampiran/' . $pengaduan->lampiran) ?>" target="_blank"><?= $pengaduan->lampiran ?></a></p>
+                                        </div>
                                         <?php
                                         $phpdate = strtotime($pengaduan->pengaduan_dibuat);
                                         $tanggal = date('Y-m-d H:i:s', $phpdate)

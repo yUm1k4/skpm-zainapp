@@ -72,6 +72,9 @@ $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'role:Admin,Petugas'
 
 // Data Admin
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
+$routes->get('/admin/create', 'Admin::create', ['filter' => 'role:Admin']);
+$routes->post('/admin', 'Admin::save', ['filter' => 'role:Admin']);
+$routes->get('/admin/delete/(:num)/(:any)', 'Admin::delete/$1/$2', ['filter' => 'role:Admin']);
 
 // Data Petugas
 $routes->get('/petugas', 'Petugas::index', ['filter' => 'role:Admin']);

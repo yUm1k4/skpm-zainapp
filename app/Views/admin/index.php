@@ -1,6 +1,7 @@
 <?= $this->extend('templates/index'); ?>
 
 <?= $this->section('main-content'); ?>
+
 <div class="card-box mb-30">
     <div class="pd-20">
         <div class="row">
@@ -62,7 +63,7 @@
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
                                         <!-- <a class="dropdown-item" href="<?= base_url('/admin/edit/' . $a->userid) ?>"><i class="dw dw-edit2"></i> Edit</a> -->
-                                        <a href="<?= base_url('/admin/delete/' . $a->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
+                                        <a href="<?= base_url('/admin/delete/' . $a->userid) . '/' . $a->username ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
                             </td>
