@@ -3,6 +3,8 @@
 <?= $this->section('main-content'); ?>
 <div class="min-height-200px">
     <div class="row">
+
+        <!-- Sidebar Start -->
         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 mb-30">
             <div class="pd-20 card-box">
                 <div class="profile-photo">
@@ -74,10 +76,13 @@
                 </div>
             </div>
         </div>
+        <!-- Sidebar End -->
+
+        <!-- Content Start -->
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 mb-30">
-            <div class="card-box height-100-p overflow-hidden">
-                <div class="profile-tab height-100-p">
-                    <div class="tab height-100-p">
+            <div class="card-box overflow-hidden">
+                <div class="profile-tab">
+                    <div class="tab">
                         <ul class="nav nav-tabs customtab" role="tablist">
                             <li class="nav-item">
                                 <a href="<?= previous_url() ?>" class="nav-link">
@@ -87,6 +92,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#myProfile" role="tab">My Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#changePassword" role="tab">Ubah Password</a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -169,11 +177,62 @@
                                 </div>
                             </div>
                             <!-- My Profile Tab End -->
+
+                            <!-- Ubah Password Tab Start -->
+                            <div class="tab-pane fade" id="changePassword" role="tabpanel">
+                                <div class="profile-setting">
+                                    <form action="<?= base_url('/admin-profile/change-password/' . user()->id . '/' . user()->username) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <ul class="profile-edit-list row py-0">
+                                            <li class="weight-500 col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Password Lama</label>
+                                                            <input class="form-control form-control-lg <?php if (session('errors.password_lama')) : ?>is-invalid <?php endif ?>" type="password" name="password_lama" required data-parsley-trigger="keyup" data-parsley-required-message="Password harus diisi">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.password_lama') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Password Baru</label>
+                                                            <input class="form-control form-control-lg <?php if (session('errors.password_baru')) : ?>is-invalid <?php endif ?>" type="password" name="password_baru" id="password_baru" required data-parsley-trigger="keyup" data-parsley-required-message="Password Baru harus diisi" data-parsley-minlength="8" data-parsley-minlength-message="Password terlalu singkat">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.password_baru') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Ulangi Password</label>
+                                                            <input type="password" class="form-control form-control-lg <?php if (session('errors.ulangi_password')) : ?>is-invalid <?php endif ?>" name="ulangi_password" required data-parsley-trigger="keyup" data-parsley-required-message="Ulangi Password harus diisi" data-parsley-equalto="#password_baru" data-parsley-equalto-message="Password tidak sesuai">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.ulangi_password') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <button type="submit" class="btn btn-primary">Update Password</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Ubah Password Tab End -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Content End -->
+
     </div>
 </div>
 <?= $this->endSection(); ?>

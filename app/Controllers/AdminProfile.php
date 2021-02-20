@@ -188,16 +188,6 @@ class AdminProfile extends BaseController
 
     public function changePassword($id, $username)
     {
-        $data = [
-            'title' => "Ubah Password | ",
-            'user'  => $this->userModel->getId('3', $id)
-        ];
-
-        return view('profile/user/changePassword', $data);
-    }
-
-    public function attemptChangePassword($id, $username)
-    {
         $rules = [
             'password_lama'  => [
                 'rules'     => 'required',
@@ -259,9 +249,8 @@ class AdminProfile extends BaseController
                     ->first();
                 $new->password  = $pwBaru;
                 $users->save($new);
-                session()->setFlashdata('success', 'Password berhasil diubah!');
+                session()->setFlashdata('message', 'Password berhasil diubah!');
                 return redirect()->back();
-                // return redirect()->to(base_url('user-profile/change-password/' . user()->id . '/' . user()->username));
             }
         }
     }
