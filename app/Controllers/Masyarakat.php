@@ -284,11 +284,12 @@ class Masyarakat extends BaseController
     public function delete($id)
     {
         // cari file berdasarkan id
-        $masyarakat = $this->masyarakatModel->find($id);
+        $petugas = $this->masyarakatModel->where('id', $id)->get()->getResultArray();
+        // dd($petugas);
 
-        // jika file nya bukan gambar avatar.png
-        if ($masyarakat['user_image'] != 'avatar.png') {
-            unlink('images/user-images/' . $masyarakat['user_image']);
+        // jika file nya bukan bukan null
+        if ($petugas[0]['user_image'] != NULL) {
+            unlink('images/user-images/' . $petugas[0]['user_image']);
         }
 
         $this->userModel->delete($id);

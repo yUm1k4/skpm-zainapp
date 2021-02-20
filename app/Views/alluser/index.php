@@ -46,7 +46,11 @@
                                 <?php if ($au->user_image == null) : ?>
                                     <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
                                 <?php else : ?>
-                                    <img src="<?= base_url('images/user-images/' . $au->user_image) ?>" width="90" class="img-fluid">
+                                    <?php if ($au->group_id == 3) { ?>
+                                        <img src="<?= base_url('images/user-images/' . $au->user_image) ?>" width="90" class="img-fluid">
+                                    <?php } else { ?>
+                                        <img src="<?= base_url('images/admin-images/' . $au->user_image) ?>" width="90" class="img-fluid">
+                                    <?php } ?>
                                 <?php endif; ?>
                             </td>
                             <td><?= xss($au->nik) ?></td>
@@ -71,12 +75,16 @@
                                         <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $au->group_id; ?>">
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
+
                                         <?php if ($au->group_id == 1) { ?>
-                                            <!-- No Edit -->
+                                            <a href="<?= base_url('/admin/delete/' . $au->userid) . '/' . $au->username ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
+                                        <?php } elseif ($au->group_id == 2) { ?>
+                                            <a class="dropdown-item" href="<?= base_url('/petugas/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a href="<?= base_url('/petugas/delete/' . $au->userid . '/' . $au->username) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                         <?php } else { ?>
-                                            <a class="dropdown-item" href="<?= base_url('/alluser/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a class="dropdown-item" href="<?= base_url('/masyarakat/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+                                            <a href="<?= base_url('/masyarakat/delete/' . $au->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                         <?php } ?>
-                                        <a href="<?= base_url('/alluser/delete/' . $au->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
                             </td>
