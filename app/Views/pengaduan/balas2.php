@@ -53,13 +53,9 @@
                     <div class="tab height-100-p">
                         <ul class="nav nav-tabs customtab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="<?= base_url('/pengaduan') ?>" role="tab">
-                                    <span class="icon">
-                                        <i class="dw dw-left-arrow2"></i>
-                                    </span>
-                                    <span class="text">
-                                        Kembali
-                                    </span>
+                                <a href="<?= base_url('/pengaduan') ?>" class="nav-link">
+                                    <i class="dw dw-left-arrow2"></i>
+                                    Kembali
                                 </a>
                             </li>
                             <li class="nav-item">

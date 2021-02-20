@@ -9,7 +9,13 @@
     <?php } else { ?>
         <title><?= $title; ?>SKPM - Zain App </title>
     <?php } ?>
-    <meta name="description" content="">
+
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/images/favicon.ico">
+
+    <meta name="description" content="Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS here -->

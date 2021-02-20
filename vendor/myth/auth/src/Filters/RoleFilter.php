@@ -57,7 +57,9 @@ class RoleFilter implements FilterInterface
 			unset($_SESSION['redirect_url']);
 			return redirect()->to($redirectURL)->with('error', lang('Auth.notEnoughPrivilege'));
 		} else {
-			throw new \RuntimeException(lang('Auth.notEnoughPrivilege'));
+			// throw new \RuntimeException(lang('Auth.notEnoughPrivilege'));
+			session()->setFlashdata('error', 'Maaf sepertinya ada sesuatu yang salah, coba lagi nanti atau segera hubungi Admin/Petugas');
+			return redirect()->back();
 		}
 	}
 

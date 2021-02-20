@@ -40,8 +40,11 @@
                                         <li><a href="javascript:;" class="text-decoration-none">Hi, <?= user()->username ?></a>
                                             <ul class="submenu">
 
-                                                <?php if (in_groups(['Admin', 'Petugas'])) : ?>
-                                                    <li><a href="<?= base_url('profile') ?>">Profil Saya</a></li>
+                                                <?php if (in_groups('Admin')) : ?>
+                                                    <li><a href="<?= base_url('admin-profile/' . user()->id) ?>">Profil Saya</a></li>
+                                                    <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
+                                                <?php elseif (in_groups('Petugas')) : ?>
+                                                    <li><a href="<?= base_url('petugas-profile/' . user()->id) ?>">Profil Saya</a></li>
                                                     <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
                                                 <?php else : ?>
                                                     <li><a href="<?= base_url('laporan-saya/' . user()->id) ?>">Laporan Saya</a></li>

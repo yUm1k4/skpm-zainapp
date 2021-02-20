@@ -40,7 +40,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Alamat Email :</label>
-                            <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" value="<?= (old('email')) ? old('email') : xss($petugas[0]->email) ?>" equired data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
+                            <input type="email" class="form-control <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" value="<?= (old('email')) ? old('email') : xss($petugas[0]->email) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
                             <div class="invalid-feedback">
                                 <?= session('errors.email') ?>
                             </div>
@@ -103,7 +103,7 @@
                                 </div>
                                 <div class="col-sm-10">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input <?php if (session('errors.user_image')) : ?>is-invalid <?php endif ?>" name="user_image" id="user_image" onchange="preViewImg()" data-parsley-max-file-size="1024" data-parsley-trigger="keyup">
+                                        <input type="file" class="custom-file-input <?php if (session('errors.user_image')) : ?>is-invalid <?php endif ?>" name="user_image" id="user_image" onchange="preViewImg()" data-parsley-max-file-size="1024" data-parsley-trigger="click">
                                         <div class="invalid-feedback">
                                             <?= session('errors.user_image') ?>
                                         </div>
