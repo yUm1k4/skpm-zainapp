@@ -27,9 +27,13 @@
                     <span class="user-name"><?= user()->username; ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="<?= base_url('/profile') ?>"><i class="dw dw-user1"></i> Profile</a>
-                    <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
-                    <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
+                    <?php if (in_groups('Admin')) { ?>
+                        <a class="dropdown-item" href="<?= base_url('admin-profile/' . user()->id) ?>"><i class="dw dw-user1"></i>My Profile</a>
+                    <?php } else { ?>
+                        <a class="dropdown-item" href="<?= base_url('/petugas-profile') ?>"><i class="dw dw-user1"></i>My Profile</a>
+                    <?php } ?>
+                    <a class="dropdown-item" href="<?= base_url('/setting') ?>"><i class="dw dw-settings2"></i> Settings</a>
+                    <!-- <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a> -->
                     <a class="dropdown-item btn-logout" href="<?= base_url('logout') ?>"><i class="dw dw-logout"></i> Log Out</a>
                 </div>
             </div>

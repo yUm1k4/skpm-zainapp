@@ -64,8 +64,12 @@ $routes->get('ketentuan', 'Home::ketentuan');
 // Notif
 $routes->post('notif/kirimNotif', 'Notif::kirimNotif');
 
-// -- Admin & Petugas
-$routes->get('/profile', 'Profile::index', ['filter' => 'role:Admin,Petugas']);
+// My Profile (Admin)
+$routes->get('/admin-profile/(:num)', 'AdminProfile::index/$1', ['filter' => 'role:Admin']);
+$routes->post('/admin-profile/update/(:num)', 'AdminProfile::update/$1', ['filter' => 'role:Admin']);
+$routes->post('/admin-profile/updateFoto/(:num)', 'AdminProfile::updateFoto/$1', ['filter' => 'role:Admin']);
+$routes->get('/admin-profile/change-password/(:num)/(:any)', 'AdminProfile::changePassword/$1/$2', ['filter' => 'role:Admin']);
+$routes->post('/admin-profile/change-password/(:num)/(:any)', 'AdminProfile::attemptChangePassword/$1/$2', ['filter' => 'role:Admin']);
 
 // Dashboard
 $routes->get('/dashboard', 'Dashboard::index', ['filter' => 'role:Admin,Petugas']);
