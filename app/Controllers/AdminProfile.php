@@ -83,7 +83,7 @@ class AdminProfile extends BaseController
         $this->userModel->save($save);
 
         if ($save) {
-            session()->setFlashdata('success', 'Foto profil berhasil diubah');
+            session()->setFlashdata('message', 'Foto profil berhasil diubah');
             return redirect()->back();
         }
     }
@@ -163,35 +163,12 @@ class AdminProfile extends BaseController
                     'required'      => 'Alamat harus di isi',
                     'min_length'    => 'Alamat kurang lengkap'
                 ]
-            ],
+            ]
         ];
 
         // jika tdk tervalidasi, kembalikan dan tampilkan errors
         if (!$this->validate($rules)) {
             return redirect()->back()->withInput()->with('errors', service('validation')->getErrors());
-        }
-        // jika validasi berhasil, kelola file gambar yg baru
-        $fileProfil = $this->request->getFile('user_image');
-        $fileLama = $this->request->getVar('profilLama');
-        // dd($fileLama);
-
-        // cek profil, jika profil lama :
-        if ($fileProfil->getError() == 4) {
-            // pakai yang sebelumnya
-            $namaProfil = $this->request->getVar('profilLama');
-            // dd($namaProfil);
-            // jika upload profil baru :
-        } else {
-            // generate nama file random
-            $namaProfil = $fileProfil->getRandomName();
-            // pindahkan profil
-            $fileProfil->move('images/user-images', $namaProfil);
-
-            // jika fileLama itu masih default
-            if ($fileLama != "") {
-                // hapus file lama 
-                unlink('images/user-images/' . $fileLama);
-            }
         }
 
         $save = [
@@ -201,16 +178,12 @@ class AdminProfile extends BaseController
             'nik'       => $this->request->getVar('nik'),
             'fullname'  => $this->request->getVar('fullname'),
             'no_hp'     => $this->request->getVar('no_hp'),
-            'alamat'    => $this->request->getVar('alamat'),
-            'user_image' => $namaProfil
+            'alamat'    => $this->request->getVar('alamat')
         ];
         // dd($save);
         $this->userModel->save($save);
-
-        if ($save) {
-            session()->setFlashdata('success', 'Data profil berhasil diubah');
-            return redirect()->to(base_url('/user-profile'));
-        }
+        session()->setFlashdata('message', 'Data profil berhasil diubah');
+        return redirect()->back();
     }
 
     public function changePassword($id, $username)

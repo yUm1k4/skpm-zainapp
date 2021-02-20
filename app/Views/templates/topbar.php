@@ -29,11 +29,10 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <?php if (in_groups('Admin')) { ?>
                         <a class="dropdown-item" href="<?= base_url('admin-profile/' . user()->id) ?>"><i class="dw dw-user1"></i>My Profile</a>
+                        <a class="dropdown-item" href="<?= base_url('change-password/' . user()->id . '/' . user()->username) ?>"><i class="dw dw-padlock1"></i> Ubah Password</a>
                     <?php } else { ?>
                         <a class="dropdown-item" href="<?= base_url('/petugas-profile') ?>"><i class="dw dw-user1"></i>My Profile</a>
                     <?php } ?>
-                    <a class="dropdown-item" href="<?= base_url('/setting') ?>"><i class="dw dw-settings2"></i> Settings</a>
-                    <!-- <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a> -->
                     <a class="dropdown-item btn-logout" href="<?= base_url('logout') ?>"><i class="dw dw-logout"></i> Log Out</a>
                 </div>
             </div>

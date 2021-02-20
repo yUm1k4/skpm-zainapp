@@ -18,9 +18,9 @@
                         <form action="<?= base_url('/admin-profile/updateFoto/' . user()->id) ?>" method="POST" enctype="multipart/form-data">
                             <?= csrf_field() ?>
                             <input type="hidden" name="profilLama" value="<?= $admin[0]->user_image ?>">
-                            <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
-                                    <div class="modal-body pd-5">
+                                    <div class="modal-body p-4">
                                         <div class="img-container">
                                             <?php if ($admin[0]->user_image == null) : ?>
                                                 <img src="<?= base_url('images/avatar.png/') ?>" class="img-thumbnail img-preview">
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-primary">Ubah</button>
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                                     </div>
                                 </div>
                             </div>
@@ -50,6 +50,10 @@
                 <div class="profile-info">
                     <h5 class="mb-20 h5 text-blue">Kontak Informasi</h5>
                     <ul>
+                        <li>
+                            <span>Role Group:</span>
+                            Administrator
+                        </li>
                         <li>
                             <span>Nomor Induk Kependudukan:</span>
                             <?= $admin[0]->nik ?>
@@ -65,10 +69,6 @@
                         <li>
                             <span>Alamat Rumah:</span>
                             <?= $admin[0]->alamat ?>
-                        </li>
-                        <li>
-                            <span>Role Group:</span>
-                            Administrator
                         </li>
                     </ul>
                 </div>
@@ -93,30 +93,79 @@
                             <!-- My Profile Tab start -->
                             <div class="tab-pane fade show active" id="myProfile" role="tabpanel">
                                 <div class="profile-setting">
-                                    <ul class="profile-edit-list row pt-0">
-                                        <li class="weight-500 col-md-12">
-                                            <h4 class="text-blue h5 mb-10"><?= $title ?></h4>
-                                            <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input class="form-control form-control-lg" type="text">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Email</label>
-                                                <input class="form-control form-control-lg" type="email">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Phone Number</label>
-                                                <input class="form-control form-control-lg" type="text">
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Address</label>
-                                                <textarea class="form-control"></textarea>
-                                            </div>
-                                            <div class="form-group mb-0">
-                                                <input type="submit" class="btn btn-primary" value="Update Information">
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <form action="<?= base_url('/admin-profile/update/' . user()->id) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <ul class="profile-edit-list row py-0">
+                                            <li class="weight-500 col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Nama Lengkap</label>
+                                                            <input class="form-control form-control-lg <?php if (session('errors.fullname')) : ?>is-invalid <?php endif ?>" type="text" name="fullname" value="<?= xss($admin[0]->fullname) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Nama harus diisi" data-parsley-length="[3,50]" data-parsley-length-message="Minimal 3 karakter, maksimal 50 karakter">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.fullname') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Username</label>
+                                                            <input class="form-control form-control-lg <?php if (session('errors.username')) : ?>is-invalid <?php endif ?>" type="text" name="username" value="<?= (old('username')) ? old('username') : xss($admin[0]->username) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Username harus diisi" data-parsley-length="[3,15]" data-parsley-length-message="Minimal 3 karakter, maksimal 15 karakter" data-parsley-type="alphanum" data-parsley-type-message="Username tidak boleh spesial">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.username') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12">
+                                                        <div class="form-group">
+                                                            <label>Alamat Email</label>
+                                                            <input type="email" class="form-control form-control-lg <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" value="<?= (old('email')) ? old('email') : xss($admin[0]->email) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.email') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>Nomor Induk Kependudukan</label>
+                                                            <input type="number" class="form-control form-control-lg <?php if (session('errors.nik')) : ?>is-invalid <?php endif ?>" name="nik" value="<?= (old('nik')) ? old('nik') : xss($admin[0]->nik) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="NIK harus diisi" data-parsley-length="[16,16]" data-parsley-length-message="NIK harus berjumlah 16 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.nik') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-6">
+                                                        <div class="form-group">
+                                                            <label>No Handphone</label>
+                                                            <input class="form-control form-control-lg <?php if (session('errors.no_hp')) : ?>is-invalid <?php endif ?>" name="no_hp" value="<?= xss($admin[0]->no_hp) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="No HP harus diisi" data-parsley-length="[10,13]" data-parsley-length-message="No HP minimal 10 digit, maximal 13 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.no_hp') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <label>Alamat Tempat Tinggal</label>
+                                                            <textarea class="form-control <?php if (session('errors.alamat')) : ?>is-invalid <?php endif ?>" name="alamat" required data-parsley-trigger="keyup" data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="200" data-parsley-maxlength-message="Alamat terlalu panjang"><?= xss($admin[0]->alamat) ?></textarea>
+                                                            <div class="invalid-feedback">
+                                                                <?= session('errors.alamat') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group mb-0">
+                                                    <button type="submit" class="btn btn-primary">Update Informasi</button>
+                                                </div>
+                                            </li>
+                                        </ul>
+
+                                    </form>
                                 </div>
                             </div>
                             <!-- My Profile Tab End -->
