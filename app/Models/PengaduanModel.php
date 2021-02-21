@@ -10,7 +10,7 @@ class PengaduanModel extends Model
     protected $table      = 'pengaduan';
     protected $primaryKey = 'id_pengaduan';
 
-    protected $allowedFields = ['id_pengaduan', 'user_id', 'kategori_id', 'kode_pengaduan', 'isi_laporan', 'status', 'anonim', 'lampiran'];
+    protected $allowedFields = ['id_pengaduan', 'user_id', 'kategori_id', 'kode_pengaduan', 'isi_laporan', 'status', 'anonim', 'lampiran', 'hasil_akhir'];
 
     protected $useTimestamps = true;
 

@@ -109,6 +109,8 @@ $routes->get('/pengaduan/create', 'Pengaduan::create', ['filter' => 'role:Admin,
 $routes->get('/pengaduan/balas/(:any)', 'Pengaduan::balas/$1', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/balas/(:num)/(:any)/(:num)', 'Pengaduan::kirimBalasan/$1/$2/$3', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/delete/(:num)/(:any)', 'Pengaduan::delete/$1/$2', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/formSelesai/(:num)', 'Pengaduan::formSelesai/$1/$2', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/updateSelesai', 'Pengaduan::updateSelesai', ['filter' => 'role:Admin,Petugas']);
 
 // Pengaduan Kategori
 $routes->get('/pengaduan-kategori', 'KategoriPengaduan::index', ['filter' => 'role:Admin,Petugas']);
@@ -124,14 +126,14 @@ $routes->get('report', 'Laporan::index', ['filter' => 'role:Admin,Petugas']);
 $routes->post('cetak', 'Laporan::cetak', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes
-$routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
-$routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin']);
-$routes->get('/quotes/ambildata', 'Quotes::ambildata', ['filter' => 'role:Admin']);
-$routes->get('/quotes/formtambah', 'Quotes::formtambah', ['filter' => 'role:Admin']);
-$routes->get('/quotes/simpandata', 'Quotes::simpandata', ['filter' => 'role:Admin']);
-$routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin']);
-$routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin']);
-$routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
+$routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/ambildata', 'Quotes::ambildata', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/formtambah', 'Quotes::formtambah', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/simpandata', 'Quotes::simpandata', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin,Petugas']);
 
 // Subscriber
 $routes->get('/subscriber', 'Subscriber::index', ['filter' => 'role:Admin,Petugas']);

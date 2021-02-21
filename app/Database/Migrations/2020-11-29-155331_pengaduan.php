@@ -43,6 +43,9 @@ class Pengaduan extends Migration
 				'type'			=> 'varchar',
 				'constraint'	=> 255
 			],
+			'hasil_akhir'	=> [
+				'type'			=> 'text',
+			],
 			'created_at'       => [
 				'type' => 'datetime', 'null' => true
 			],

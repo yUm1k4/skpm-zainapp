@@ -137,14 +137,55 @@ class Pengaduan extends BaseController
         }
     }
 
-    public function delete($id_percakapan, $kode_pengaduan)
+    public function delete($id_pengaduan, $kode_pengaduan)
     {
         // hapus percakapan
         $this->percakapanModel->where('kode_pengaduan', $kode_pengaduan)->delete();
         // hapus pengaduan
-        $this->pengaduanModel->where('id_pengaduan', $id_percakapan)->delete();
+        $this->pengaduanModel->where('id_pengaduan', $id_pengaduan)->delete();
 
         session()->setFlashdata('message', 'Data percakapan dan pengaduan berhasil dihapus');
         return redirect()->to(base_url('/pengaduan'));
+    }
+
+    public function formSelesai()
+    {
+        if ($this->request->isAJAX()) {
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+            $row = $this->pengaduanModel->find($id_pengaduan);
+            // d($data);
+
+            $data = [
+                'id_pengaduan' => $row['id_pengaduan'],
+                'hasil_akhir' => $row['hasil_akhir'],
+            ];
+
+            $msg = [
+                'sukses' => view('pengaduan/modalSelesai', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            exit('Maaf tidak dapat diproses');
+        }
+    }
+
+    public function updateSelesai()
+    {
+        if ($this->request->isAJAX()) {
+            $data = [
+                'id_pengaduan'  =>  $this->request->getVar('id_pengaduan'),
+                'hasil_akhir'   =>  $this->request->getVar('hasil_akhir'),
+                'status'        => 'selesai'
+            ];
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+
+            $this->pengaduanModel->update($id_pengaduan, $data);
+            $msg = ['sukses' => 'Status Pengaduan telah selesai!'];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
     }
 }

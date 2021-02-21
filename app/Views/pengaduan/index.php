@@ -52,7 +52,8 @@
                             <?php if ($p->ket == 'pending') : ?>
                                 <td><button class="badge badge-warning">Pending</button></td>
                             <?php elseif ($p->ket == 'proses') : ?>
-                                <td><button class="badge badge-success">Proses</button></td>
+                                <!-- <td><a class="badge badge-success" href="javascript:;" data-toggle="modal" data-target="#modalselesai">Proses</a></td> -->
+                                <td><button class="badge badge-success" onclick="selesai(<?= $p->id_pengaduan ?>)">Proses</button></td>
                             <?php else : ?>
                                 <td><button class="badge badge-primary">Selesai</button></td>
                             <?php endif; ?>
@@ -81,6 +82,7 @@
     </div>
 </div>
 
+<!-- Modal -->
 <div class="modal fade bs-example-modal-lg" id="show-detail-pengaduan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
@@ -183,10 +185,35 @@
     </div>
 </div>
 
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<div class="viewmodal" style="display: none;"></div>
+<!-- End Modal -->
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-js'); ?>
 
 <script>
+    function selesai(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formSelesai/' . $p->id_pengaduan) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalselesai').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
     // Detail Data
     $(document).ready(function() {
         $(document).on('click', '#detailData', function() {
@@ -222,5 +249,4 @@
         });
     });
 </script>
-
 <?= $this->endSection(); ?>

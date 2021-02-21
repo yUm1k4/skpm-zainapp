@@ -33,7 +33,8 @@ class Quotes extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit('Maaf tidak dapat diproses');
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
         }
     }
 
@@ -46,7 +47,8 @@ class Quotes extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit('Maaf tidak dapat diproses');
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
         }
     }
 
@@ -106,7 +108,8 @@ class Quotes extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit('Maaf tidak dapat diproses');
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
         }
     }
 
@@ -123,7 +126,8 @@ class Quotes extends BaseController
             $msg = ['sukses' => 'Quote berhasil diupdate'];
             echo json_encode($msg);
         } else {
-            exit('Maaf tidak dapat diproses');
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
         }
     }
 
