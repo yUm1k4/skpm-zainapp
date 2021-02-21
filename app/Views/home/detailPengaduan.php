@@ -291,18 +291,20 @@
                                             </div>
                                             <!-- Setting Tab End -->
 
-                                            <!-- Hasil Akhir Tab start -->
-                                            <div class="tab-pane fade height-100-p p-3" id="hasil" role="tabpanel">
-                                                <div class="profile-setting">
-                                                    <ul class="col">
-                                                        <li>
-                                                            <span>Hasil Akhir / Kesimpulan:</span>
-                                                            <?= nl2br_xss($pengaduan->hasil_akhir) ?>
-                                                        </li>
-                                                    </ul>
+                                            <?php if ($pengaduan->hasil_akhir) { ?>
+                                                <!-- Hasil Akhir Tab start -->
+                                                <div class="tab-pane fade height-100-p p-3" id="hasil" role="tabpanel">
+                                                    <div class="profile-setting">
+                                                        <ul class="col">
+                                                            <li>
+                                                                <span>Hasil Akhir / Kesimpulan:</span>
+                                                                <?= nl2br_xss($pengaduan->hasil_akhir) ?>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- Hasil Akhir Tab End -->
+                                                <!-- Hasil Akhir Tab End -->
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -314,6 +316,16 @@
                                     <p class="primary-font font-italic"><strong> Pengadu melapor sebagai Anonim, informasi yang dapat dilihat terbatas</strong></p>
                                 <?php } ?>
                             </div>
+                            <?php if ($pengaduan->hasil_akhir && $pengaduan->ket == "selesai") { ?>
+                                <div class="blog_details">
+                                    <h2>Hasil Akhir / Kesimpulan:</h2>
+                                    <div class="quote-wrapper">
+                                        <div class="quotes">
+                                            <?= nl2br_xss($pengaduan->hasil_akhir) ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="search-img row justify-content-center mt-3">
                                 <img src="<?= base_url('/home/img/undraw_secret.png') ?>" class="img-responsive" alt="" width="50%">
                             </div>
