@@ -64,14 +64,20 @@ $routes->get('ketentuan', 'Home::ketentuan');
 // Notif
 $routes->post('notif/kirimNotif', 'Notif::kirimNotif');
 
+// Dashboard
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'role:Admin,Petugas']);
+
 // My Profile (Admin)
 $routes->get('/admin-profile/(:num)', 'AdminProfile::index/$1', ['filter' => 'role:Admin']);
 $routes->post('/admin-profile/update/(:num)', 'AdminProfile::update/$1', ['filter' => 'role:Admin']);
 $routes->post('/admin-profile/updateFoto/(:num)', 'AdminProfile::updateFoto/$1', ['filter' => 'role:Admin']);
 $routes->post('/admin-profile/change-password/(:num)/(:any)', 'AdminProfile::changePassword/$1/$2', ['filter' => 'role:Admin']);
 
-// Dashboard
-$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'role:Admin,Petugas']);
+// My Profile (Petugas)
+$routes->get('/petugas-profile/(:num)', 'PetugasProfile::index/$1', ['filter' => 'role:Petugas']);
+$routes->post('/petugas-profile/update/(:num)', 'PetugasProfile::update/$1', ['filter' => 'role:Petugas']);
+$routes->post('/petugas-profile/updateFoto/(:num)', 'PetugasProfile::updateFoto/$1', ['filter' => 'role:Petugas']);
+$routes->post('/petugas-profile/change-password/(:num)/(:any)', 'PetugasProfile::changePassword/$1/$2', ['filter' => 'role:Petugas']);
 
 // Data Admin
 $routes->get('/admin', 'Admin::index', ['filter' => 'role:Admin']);
