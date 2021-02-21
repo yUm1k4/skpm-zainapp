@@ -151,6 +151,11 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="#info" role="tab">Info Pengaduan</a>
                                             </li>
+                                            <?php if ($pengaduan->hasil_akhir) { ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="#hasil" role="tab">Hasil Akhir</a>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                         <div class="tab-content">
                                             <!-- Chat Pengaduan start -->
@@ -285,6 +290,19 @@
                                                 </div>
                                             </div>
                                             <!-- Setting Tab End -->
+
+                                            <!-- Hasil Akhir Tab start -->
+                                            <div class="tab-pane fade height-100-p p-3" id="hasil" role="tabpanel">
+                                                <div class="profile-setting">
+                                                    <ul class="col">
+                                                        <li>
+                                                            <span>Hasil Akhir / Kesimpulan:</span>
+                                                            <?= nl2br_xss($pengaduan->hasil_akhir) ?>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- Hasil Akhir Tab End -->
                                         </div>
                                     </div>
                                 </div>
