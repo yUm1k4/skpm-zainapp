@@ -13,7 +13,8 @@
 		"fzaninotto/faker": "^1.9",
 		"monken/cli-create": "^0.3.1",
 		"pusher/pusher-php-server": "^4.1",
-		"phpmailer/phpmailer": "^6.3"
+		"phpmailer/phpmailer": "^6.3",
+		"tecnickcom/tcpdf": "^6.3"
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",

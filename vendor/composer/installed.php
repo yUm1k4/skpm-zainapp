@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'ad1d45470a9c84ef93eff7aae7910179b4a936a7',
+    'reference' => '96891ffad320e3bc793648e33f7f72728e846908',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'ad1d45470a9c84ef93eff7aae7910179b4a936a7',
+      'reference' => '96891ffad320e3bc793648e33f7f72728e846908',
     ),
     'codeigniter4/framework' => 
     array (
@@ -91,15 +91,6 @@
       array (
       ),
       'reference' => 'fed7013dd3b2038aad27b3ea12cc647d0cd88d91',
-    ),
-    'mpdf/mpdf' => 
-    array (
-      'pretty_version' => 'v8.0.10',
-      'version' => '8.0.10.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '1333a962cd2f7ae1a127b7534b7734b58179186f',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -384,15 +375,6 @@
       ),
       'reference' => '99732be0ddb3361e16ad77b68ba41efc8e979019',
     ),
-    'setasign/fpdi' => 
-    array (
-      'pretty_version' => 'v2.3.6',
-      'version' => '2.3.6.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
-    ),
     'symfony/polyfill-ctype' => 
     array (
       'pretty_version' => 'v1.20.0',
@@ -401,6 +383,15 @@
       array (
       ),
       'reference' => 'f4ba089a5b6366e453971d3aad5fe8e897b37f41',
+    ),
+    'tecnickcom/tcpdf' => 
+    array (
+      'pretty_version' => '6.3.5',
+      'version' => '6.3.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '19a535eaa7fb1c1cac499109deeb1a7a201b4549',
     ),
     'theseer/tokenizer' => 
     array (
