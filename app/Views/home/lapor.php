@@ -180,8 +180,6 @@
 
 <!-- Sweet Alert 2 -->
 <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.all.min.js"></script>
-<!-- <script type="text/javascript" src="<?= base_url() ?>/vendors/watermark/jquery.watermark.js"></script> -->
-
 
 <script>
     function lampView() {

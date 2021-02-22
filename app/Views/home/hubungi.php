@@ -75,7 +75,14 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="g-recaptcha" name="g-recaptcha-response" data-sitekey="6LcAK_oZAAAAAKTxUO0ICHecOSGwN4iTqswXm_mw"></div>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.g-recaptcha-response') ?>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <div class="form-group mt-3">
@@ -96,6 +103,7 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('my-js'); ?>
+<script src='https://www.google.com/recaptcha/api.js' async defer></script>
 <script src="<?= base_url() ?>/vendors/parsley/parsley.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
