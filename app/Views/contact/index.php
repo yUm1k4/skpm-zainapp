@@ -41,7 +41,7 @@
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-detail-contact" type="button" data-contactid="<?= xss($c->id_contact); ?>" data-username="<?= xss($c->username); ?>" data-cemail="<?= xss($c->contact_email); ?>" data-nama_lengkap="<?= xss($c->nama_lengkap); ?>" data-fullname="<?= xss($c->fullname); ?>" data-subject="<?= xss($c->subject); ?>" data-pesan="<?= nl2br_xss($c->pesan); ?>">
+                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-detail-contact" type="button" data-contactid="<?= xss($c->id_contact); ?>" data-username="<?= xss($c->username); ?>" data-cemail="<?= xss($c->contact_email); ?>" data-nama_lengkap="<?= xss($c->nama_lengkap); ?>" data-fullname="<?= xss($c->fullname); ?>" data-subject="<?= xss($c->subject); ?>" data-pesan="<?= xss($c->pesan); ?>">
                                             <i class=" dw dw-eye"></i> Detail
                                         </a>
 
