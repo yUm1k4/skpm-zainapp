@@ -58,15 +58,21 @@
                     </li>
                 <?php endif ?>
                 <li>
+                    <a href="<?= base_url('contact') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'contact' ? 'active' : '' ?>">
+                        <span class="micon dw dw-email1"></span><span class="mtext">Contact Us</span>
+                    </a>
+                </li>
+                <li>
                     <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
                     <?= uri_string() === 'quotes' ? 'active' : '' ?>">
-                        <span class="micon dw dw dw-quotation"></span><span class="mtext">Quotes</span>
+                        <span class="micon dw dw-quotation"></span><span class="mtext">Quotes</span>
                     </a>
                 </li>
                 <li>
                     <a href="<?= base_url('subscriber') ?>" class="dropdown-toggle no-arrow 
                     <?= uri_string() === 'subscriber' ? 'active' : '' ?>">
-                        <span class="micon dw dw dw-star"></span><span class="mtext">Subscriber</span>
+                        <span class="micon dw dw-star"></span><span class="mtext">Subscriber</span>
                     </a>
                 </li>
             </ul>
