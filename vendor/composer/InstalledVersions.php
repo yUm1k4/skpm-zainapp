@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '88ef3d637a836a42e9d780d88b30e7481a1d0395',
+    'reference' => 'ad1d45470a9c84ef93eff7aae7910179b4a936a7',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '88ef3d637a836a42e9d780d88b30e7481a1d0395',
+      'reference' => 'ad1d45470a9c84ef93eff7aae7910179b4a936a7',
     ),
     'codeigniter4/framework' => 
     array (
@@ -198,6 +198,15 @@ private static $installed = array (
       array (
       ),
       'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
+    ),
+    'phpmailer/phpmailer' => 
+    array (
+      'pretty_version' => 'v6.3.0',
+      'version' => '6.3.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4a08cf4cdd2c38d12ee2b9fa69e5d235f37a6dcb',
     ),
     'phpspec/prophecy' => 
     array (

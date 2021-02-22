@@ -7,11 +7,15 @@ use \App\Models\PengaduanModel;
 use \App\Models\KategoriModel;
 use \App\Models\PercakapanModel;
 use \App\Models\SubscriberModel;
+use \App\Models\ContactModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 use phpDocumentor\Reflection\Types\Nullable;
-
 use function Composer\Autoload\includeFile;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 
 class Home extends BaseController
 {
@@ -52,6 +56,101 @@ class Home extends BaseController
     {
         $data['title'] = 'Hubungi Kami | ';
         return view('home/Hubungi', $data);
+    }
+
+    public function kirimEmail()
+    {
+        if (user_id() == NULL) {
+            session()->setFlashdata('error', "Mohon Maaf, jika ingin mengirim email, harap login terlebih dahulu");
+            return redirect()->back();
+        } else {
+            $rules = [
+                'subject' => [
+                    'rules'     => 'required|min_length[20]',
+                    'errors'    => [
+                        'required'   => 'Subject harus di isi',
+                        'min_length' => 'Subject terlalu singkat'
+                    ]
+                ],
+                'nama_lengkap' => [
+                    'rules'     => 'required|min_length[5]|max_length[50]',
+                    'errors'    => [
+                        'required'  => 'Mohon isi Nama Anda',
+                        'min_length' => 'Nama Lengkap terlalu singkat',
+                        'max_length' => 'Nama Lengkap terllau panjang'
+                    ]
+                ],
+                'email'        => [
+                    'rules'     => 'required|valid_email|min_length[10]',
+                    'errors'    => [
+                        'required'        => 'Maaf, alamat email harus di isi',
+                        'valid_email'    => 'Maaf, alamat email tidak valid',
+                        'min_length'    => 'Email terlalu singkat'
+                    ]
+                ],
+                'pesan'   => [
+                    'rules'     => 'required|min_length[110]',
+                    'errors'    => [
+                        'required'      => 'Harap di isi, dan Mohon di isi secara terperinci dan lengkap',
+                        'min_length' => 'Pesan terlalu singkat, isi secara terperinci dan lengkap'
+                    ]
+                ]
+            ];
+
+            if (!$this->validate($rules)) {
+                return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+            }
+
+            $subject         = $this->request->getPost('subject');
+            $nama_lengkap    = $this->request->getPost('nama_lengkap');
+            $email           = $this->request->getPost('email');
+            $pesan           = $this->request->getPost('pesan');
+            // --> Kirim Email
+            $mail = new PHPMailer(true);
+            try {
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->isSMTP();
+                $mail->Host       = 'smtp.googlemail.com';
+                $mail->SMTPAuth   = true;
+                $mail->Username   = 'yumikasoftware@gmail.com'; // silahkan ganti dengan alamat email Anda
+                $mail->Password   = 'zxc1123241101002'; // silahkan ganti dengan password email Anda
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port       = 465;
+
+                $mail->setFrom($email, $nama_lengkap);
+                $mail->addReplyTo($email, $nama_lengkap);
+                $mail->addAddress('yumikasoftware@gmail.com');
+                // Content
+                $mail->isHTML(true);
+                $mail->Subject = $subject;
+                $mail->Body    = nl2br($pesan, false);
+
+                $send = $mail->send();
+            } catch (Exception $e) {
+                session()->setFlashdata('error', "Kirim email gagal. Something Wrong");
+                return redirect()->back()->withInput();
+            }
+
+            // --> kirim data ke DB
+            $contactModel = new ContactModel;
+            $saveEmail = [
+                'user_id'       => user_id(),
+                'subject'       => $subject,
+                'nama_lengkap'  => $nama_lengkap,
+                'email'         => $email,
+                'pesan'         => $pesan,
+            ];
+
+            $contactModel->save($saveEmail);
+
+            if ($saveEmail && $send) {
+                session()->setFlashdata('success', 'Terimakasih, E-Mail berhasil terkirim ^_^');
+                return redirect()->back();
+            } else {
+                session()->setFlashdata('error', 'Maaf, Sepertinya ada sesuatu yang salah');
+                return redirect()->back();
+            }
+        }
     }
 
     public function subscribeEmail($id, $username = null)

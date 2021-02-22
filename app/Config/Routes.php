@@ -56,6 +56,7 @@ $routes->post('/user-profile/change-password/(:num)/(:any)', 'UserProfile::attem
 // Tentang Kami
 $routes->get('tentang', 'Home::tentang');
 $routes->get('hubungi', 'Home::hubungi');
+$routes->post('home/kirimEmail', 'Home::kirimEmail');
 $routes->get('ketentuan', 'Home::ketentuan');
 
 

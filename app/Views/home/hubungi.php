@@ -2,6 +2,11 @@
 
 <?= $this->section('my-css'); ?>
 <style>
+    .parsley-errors-list {
+        margin-top: .25rem;
+        font-size: 80%;
+        color: #dc3545;
+    }
 </style>
 <?= $this->endSection(); ?>
 
@@ -34,26 +39,40 @@
                 <h2 class="contact-title">Hubungi Kami</h2>
             </div>
             <div class="col-lg-8">
-                <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                <form class="form-contact" action="<?= base_url('home/kirimEmail') ?>" method="post">
+                    <?= csrf_field() ?>
+
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
-                                <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" placeholder="Subject">
+                                <input class="form-control <?php if (session('errors.subject')) : ?>is-invalid <?php endif ?>" name="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'" placeholder="Subject" value="<?= old('subject') ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Subject harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Subject terlalu singkat">
+                                <div class="invalid-feedback">
+                                    <?= session('errors.subject') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control valid" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap Anda'" placeholder="Nama Lengkap Anda">
+                                <input class="form-control <?php if (session('errors.nama_lengkap')) : ?>is-invalid <?php endif ?>" name="nama_lengkap" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Nama Lengkap Anda'" placeholder="Nama Lengkap Anda" value="<?= old('nama_lengkap') ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Nama harus diisi" data-parsley-length="[5,50]" data-parsley-length-message="Minimal 5 karakter, maksimal 50 karakter">
+                                <div class="invalid-feedback">
+                                    <?= session('errors.nama_lengkap') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control valid" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat Email Anda'" placeholder="Alamat Email Anda">
+                                <input class="form-control <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'contoh@gmail.com'" placeholder="contoh@gmail.com" value="<?= old('email') ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
+                                <div class="invalid-feedback">
+                                    <?= session('errors.email') ?>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12">
                             <div class="form-group">
-                                <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Isi Pesan Anda'" placeholder="Isi Pesan Anda"></textarea>
+                                <textarea class="form-control w-100" name="pesan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Isi Pesan Anda'" placeholder="Isi Pesan Anda" required data-parsley-required-message="Pesan harus di isi" data-parsley-minlength="110" data-parsley-minlength-message="Isi Pesan terlalu singkat, isi secara terperinci dan lengkap" data-parsley-trigger="keyup"><?= set_value('pesan'); ?></textarea>
+                                <div class="invalid-feedback">
+                                    <?= session('errors.pesan') ?>
+                                </div>
                             </div>
                         </div>
 
@@ -75,3 +94,12 @@
 <!-- ================ contact section end ================= -->
 
 <?= $this->endSection() ?>
+
+<?= $this->section('my-js'); ?>
+<script src="<?= base_url() ?>/vendors/parsley/parsley.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('form').parsley();
+    });
+</script>
+<?= $this->endSection(); ?>
