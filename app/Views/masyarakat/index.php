@@ -71,7 +71,7 @@
                                         <a class="dropdown-item" href="<?= base_url('/masyarakat/edit/' . $m->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
 
                                         <?php if ($m->status == 'banned') { ?>
-                                            <a href="javascript:;" class="dropdown-item" onclick="unban(<?= $m->userid ?>)"><i class="dw dw-ban"></i> unBan!</a>
+                                            <a href="<?= base_url('/masyarakat/unban/' . $m->userid) ?>" class="dropdown-item btn-unban"><i class=" dw dw-ban"></i> unBan!</a>
                                         <?php } else { ?>
                                             <a href="javascript:;" class="dropdown-item" onclick="banned(<?= $m->userid ?>)"><i class="dw dw-ban"></i> Ban!</a>
                                         <?php } ?>
@@ -154,9 +154,10 @@
 
 
 <div class="viewmodal" style="display: none;"></div>
-<!-- jQuery -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-js'); ?>
 <script>
     // Detail Data
     $(document).ready(function() {
@@ -201,6 +202,34 @@
             }
         });
     }
-</script>
 
+    $(document).on('click', '.btn-unban', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Apakah Kamu Yakin?',
+            text: 'Jika kamu Unban user tersebut, akun user dan hak aksesnya akan dikembalikan',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Unban',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                    'Batal Unban',
+                    'Akun tersebut masih berstatus banned!',
+                    'error'
+                )
+            }
+        })
+    })
+</script>
 <?= $this->endSection(); ?>

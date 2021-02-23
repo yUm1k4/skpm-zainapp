@@ -359,4 +359,19 @@ class Masyarakat extends BaseController
             return redirect()->back();
         }
     }
+
+    public function unban($user_id)
+    {
+        if ($user_id != null) {
+            $save = [
+                'status'    => 'unban',
+                'status_message' => null
+            ];
+            $this->masyarakatModel->update($user_id, $save);
+            session()->setFlashdata('message', 'User berhasil diunbanned!');
+        } else {
+            session()->setFlashdata('error', 'Maaf user tidak ada');
+        }
+        return redirect()->back();
+    }
 }
