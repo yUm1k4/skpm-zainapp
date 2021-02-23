@@ -166,7 +166,8 @@ class Pengaduan extends BaseController
 
             echo json_encode($msg);
         } else {
-            exit('Maaf tidak dapat diproses');
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
         }
     }
 

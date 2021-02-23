@@ -128,7 +128,7 @@
             <?= $this->renderSection('main-content') ?>
 
             <div class="footer-wrap pd-20 mb-20 card-box">
-                <small><a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a> - UJIKOM | Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a></small>
+                <small>Develop and Re-Design by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a> - UJIKOM | Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a></small>
             </div>
         </div>
     </div>

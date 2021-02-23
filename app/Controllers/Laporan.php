@@ -7,7 +7,7 @@ use App\Models\{
 	MyUserModel,
 };
 use CodeIgniter\I18n\Time;
-use TCPDF;
+use \TCPDF;
 
 class Laporan extends BaseController
 {
@@ -48,10 +48,12 @@ class Laporan extends BaseController
 		// dd($query);
 		// $this->_cetak($query, $tanggal);
 
-		$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+		// require_once(ROOTPATH . '/vendor/tecnickcom/tcpdf/examples/tcpdf_include.php');
+
+		$pdf = new TCPDF('P', PDF_UNIT, 'A4', true, 'UTF-8', false);
 
 		// lembar informasi
-		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetCreator('Zainudin Abdullah');
 		$pdf->SetAuthor('Zainudin Abdullah');
 		$pdf->SetTitle('Laporan Pengaduan');
 		$pdf->SetSubject('Laporan Pengaduan');
@@ -102,12 +104,11 @@ class Laporan extends BaseController
 			$pdf->Ln();
 		}
 
-		// reset pointer to the last page
-		$pdf->lastPage();
 		// $pdf->writeHTML($html, true, false, true, false, '');
 		// response (sangat penting)
 		$this->response->setContentType('application/pdf');
 		// output
+		// header("Content-Disposition: attachment;filename=Laporan Data Pengaduan | SKPM - Zain App.pdf");
 		$pdf->Output('Laporan Data Pengaduan | SKPM - Zain App.pdf', 'I');
 	}
 }

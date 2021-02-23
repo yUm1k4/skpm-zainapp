@@ -46,7 +46,7 @@
                                 <?php if ($a->user_image == null) : ?>
                                     <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
                                 <?php else : ?>
-                                    <img src="<?= base_url('images/user-images/' . $a->user_image) ?>" width="90" class="img-fluid">
+                                    <img src="<?= base_url('images/admin-images/' . $a->user_image) ?>" width="90" class="img-fluid">
                                 <?php endif; ?>
                             </td>
                             <td><?= xss($a->nik) ?></td>

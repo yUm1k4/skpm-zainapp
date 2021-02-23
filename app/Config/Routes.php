@@ -100,6 +100,8 @@ $routes->get('/masyarakat', 'Masyarakat::index', ['filter' => 'role:Admin'], ['a
 $routes->get('/masyarakat/create', 'Masyarakat::create', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat', 'Masyarakat::save', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/delete/(:num)', 'Masyarakat::delete/$1', ['filter' => 'role:Admin']);
+$routes->post('/masyarakat/bannedForm', 'Masyarakat::bannedForm', ['filter' => 'role:Admin']);
+$routes->post('/masyarakat/banned', 'Masyarakat::banned', ['filter' => 'role:Admin']);
 
 // Data Semua Pengguna
 $routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);

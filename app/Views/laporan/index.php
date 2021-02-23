@@ -18,7 +18,7 @@
                     <form action="<?= base_url('/cetak') ?>" method="POST" target="_blank">
                         <div class="form-group">
                             <label>Rentan Tanggal</label>
-                            <input class="form-control datetimepicker-range" placeholder="Pilih rentan tanggal" type="text" name="tanggal" autocomplete="off" autofocus required data-parsley-trigger="keyup" data-parsley-required-message="Harap pilih tanggal dahulu">
+                            <input class="form-control datetimepicker-range" placeholder="Pilih rentan tanggal" type="text" name="tanggal" autocomplete="off" required data-parsley-trigger="keyup" data-parsley-required-message="Harap pilih tanggal dahulu">
                         </div>
                         <button type="submit" class="btn btn-outline-primary">Cetak</button>
                     </form>

@@ -21,7 +21,7 @@ class Masyarakat extends BaseController
     {
         $data['title'] = 'Data Masyarakat';
 
-        $this->userModel->select('users.id as userid, username, email, fullname, nik, user_image, no_hp, alamat, name');
+        $this->userModel->select('users.id as userid, username, email, fullname, nik, user_image, no_hp, alamat, name, status');
         $this->userModel->join('auth_groups_users agu', 'agu.user_id = users.id');
         $this->userModel->join('auth_groups ag', 'ag.id = agu.group_id');
         $this->userModel->where('ag.id =', 3);
@@ -284,16 +284,79 @@ class Masyarakat extends BaseController
     public function delete($id)
     {
         // cari file berdasarkan id
-        $petugas = $this->masyarakatModel->where('id', $id)->get()->getResultArray();
-        // dd($petugas);
+        $masyarakat = $this->masyarakatModel->where('id', $id)->get()->getResultArray();
+        // dd($masyarakat);
 
         // jika file nya bukan bukan null
-        if ($petugas[0]['user_image'] != NULL) {
-            unlink('images/user-images/' . $petugas[0]['user_image']);
+        if ($masyarakat[0]['user_image'] != NULL) {
+            unlink('images/user-images/' . $masyarakat[0]['user_image']);
         }
 
         $this->userModel->delete($id);
         session()->setFlashdata('message', 'Data Berhasil Dihapus');
         return redirect()->to(base_url('/masyarakat'));
+    }
+
+    public function bannedForm()
+    {
+        if ($this->request->isAJAX()) {
+            $user_id = $this->request->getVar('userid');
+            $row = $this->masyarakatModel->find($user_id);
+            // dd($row);
+
+            $data = [
+                'user_id' => $row['id'],
+                'alasan' => $row['status_message'],
+            ];
+
+            $msg = [
+                'sukses' => view('masyarakat/modalBanned', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function banned()
+    {
+        if ($this->request->isAJAX()) {
+            $rules = [
+                'alasan'  => [
+                    'label' => 'Alasan',
+                    'rules' => 'required|min_length[10]|max_length[200]',
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'min_length' => '{field} minimal 10 karakter',
+                        'max_length' => '{field} maximal 200 karakter',
+                    ]
+                ]
+            ];
+
+            // jika tidak valid (Ada yg salah)
+            if (!$this->validate($rules)) {
+                $msg = [
+                    'error' => [
+                        'alasan'  => $this->validator->getError('alasan')
+                    ]
+                ];
+            } else {
+                $user_id = $this->request->getVar('user_id');
+                $data = [
+                    'id'                =>  $user_id,
+                    'status'            => 'banned',
+                    'status_message'    =>  $this->request->getVar('alasan'),
+                ];
+
+                $this->masyarakatModel->update($user_id, $data);
+                $msg = ['sukses' => 'User berhasil dibanned!'];
+            }
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
     }
 }

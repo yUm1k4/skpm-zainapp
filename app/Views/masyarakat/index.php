@@ -30,6 +30,7 @@
                         <th>Foto</th>
                         <th>NIK</th>
                         <th>Nama</th>
+                        <th>Username</th>
                         <th>No HP</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
                     </tr>
@@ -49,7 +50,13 @@
                                 <?php endif; ?>
                             </td>
                             <td><?= xss($m->nik) ?></td>
-                            <td><?= xss($m->fullname) ?></td>
+                            <?php if ($m->status == 'banned') { ?>
+                                <td class="text-danger"><?= xss($m->fullname) ?></td>
+                                <td class="text-danger"><?= xss($m->username) ?></td>
+                            <?php } else { ?>
+                                <td><?= xss($m->fullname) ?></td>
+                                <td><?= xss($m->username) ?></td>
+                            <?php } ?>
                             <td><?= xss($m->no_hp) ?></td>
 
                             <td class="text-center">
@@ -62,6 +69,12 @@
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
                                         <a class="dropdown-item" href="<?= base_url('/masyarakat/edit/' . $m->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
+
+                                        <?php if ($m->status == 'banned') { ?>
+                                            <a href="javascript:;" class="dropdown-item" onclick="unban(<?= $m->userid ?>)"><i class="dw dw-ban"></i> unBan!</a>
+                                        <?php } else { ?>
+                                            <a href="javascript:;" class="dropdown-item" onclick="banned(<?= $m->userid ?>)"><i class="dw dw-ban"></i> Ban!</a>
+                                        <?php } ?>
                                         <a href="<?= base_url('/masyarakat/delete/' . $m->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
@@ -139,8 +152,10 @@
     </div>
 </div>
 
+
+<div class="viewmodal" style="display: none;"></div>
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 
 <script>
     // Detail Data
@@ -165,6 +180,27 @@
             $('#alamat').val(alamat);
         });
     });
+
+    function banned(userid) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('/masyarakat/bannedForm/' . $m->userid) ?>",
+            data: {
+                userid: userid
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalbanned').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
 </script>
 
 <?= $this->endSection(); ?>

@@ -6,7 +6,7 @@
                 <h4 class="modal-title" id="myLargeModalLabel">Form Edit Kategori</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
-            <?= form_open('pengaduan-kategori/updatedata', ['class' => 'formKategori'], ['id_pengaduan_kategori' => $id_pengaduan_kategori]) ?>
+            <?= form_open(base_url('pengaduan-kategori/updatedata'), ['class' => 'formKategori'], ['id_pengaduan_kategori' => $id_pengaduan_kategori]) ?>
             <div class="modal-body">
                 <div class="wizard-content">
                     <section>

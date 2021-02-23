@@ -63,8 +63,8 @@ class Quotes extends BaseController
                     'rules' => 'required|min_length[20]|max_length[200]',
                     'errors' => [
                         'required'  => '{field} tidak boleh kosong',
-                        'min_Length' => '{field} minimal 20 karakter',
-                        'max_Length' => '{field} maximal 200 karakter',
+                        'min_length' => '{field} minimal 20 karakter',
+                        'max_length' => '{field} maximal 200 karakter',
                     ]
                 ]
             ]);
