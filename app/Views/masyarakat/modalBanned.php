@@ -12,6 +12,14 @@
                         <?= csrf_field() ?>
                         <div class="row">
                             <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <h4 class="alert-heading h4">Perhatian!</h4>
+                                    <p>User yang <a class="alert-link" href="javascript:;">dibanned</a> adalah yang melanggar <a class="alert-link" href="<?= base_url('/ketentuan') ?>" target="_blank">Ketentuan Pengguna</a>, dan tidak akan memiliki akses lagi terhadap akun beserta data-datanya.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="alasan">Alasan Ngebanned:</label>
                                     <input type="text" name="alasan" class="form-control <?php if (session('errors.alasan')) : ?>is-invalid <?php endif ?>" id="alasan" required data-parsley-required-message="Alasan harus diisi agar jelas" data-parsley-minlength="10" data-parsley-minlength-message="Terlalu singkat, Mohon isi dengan jelas" data-parsley-trigger="keyup">
