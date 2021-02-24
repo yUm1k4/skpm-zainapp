@@ -9,16 +9,6 @@
                     <h4><?= $title; ?></h4>
                 </div>
             </div>
-            <div class="col-auto">
-                <a href="<?= base_url('/alluser/create') ?>" class="btn btn-sm btn-primary btn-icon-split">
-                    <span class="icon">
-                        <i class="dw dw-add-user"></i>
-                    </span>
-                    <span class="text">
-                        Tambah Data
-                    </span>
-                </a>
-            </div>
         </div>
     </div>
     <div class="pb-20">
@@ -72,7 +62,15 @@
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $au->group_id; ?>">
+                                        <?php if ($au->group_id == 1) {
+                                            $role = 'Admin';
+                                        } elseif ($au->group_id == 2) {
+                                            $role = 'Petugas';
+                                        } else {
+                                            $role = 'Masyarakat';
+                                        } ?>
+
+                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $role; ?>">
                                             <i class="dw dw-eye"></i> Detail
                                         </a>
 

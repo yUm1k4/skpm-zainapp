@@ -41,11 +41,11 @@
                                             <ul class="submenu">
 
                                                 <?php if (in_groups('Admin')) : ?>
-                                                    <li><a href="<?= base_url('admin-profile/' . user()->id) ?>">Profil Saya</a></li>
-                                                    <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
+                                                    <li><a target="_blank" href="<?= base_url('admin-profile/' . user()->id) ?>">Profil Saya</a></li>
+                                                    <li><a target="_blank" href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
                                                 <?php elseif (in_groups('Petugas')) : ?>
-                                                    <li><a href="<?= base_url('petugas-profile/' . user()->id) ?>">Profil Saya</a></li>
-                                                    <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
+                                                    <li><a target="_blank" href="<?= base_url('petugas-profile/' . user()->id) ?>">Profil Saya</a></li>
+                                                    <li><a target="_blank" href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
                                                 <?php else : ?>
                                                     <li><a href="<?= base_url('laporan-saya/' . user()->id) ?>">Laporan Saya</a></li>
                                                     <li><a href="<?= base_url('user-profile') ?>" class="text-pink">Profil Saya</a></li>
