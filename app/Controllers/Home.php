@@ -8,6 +8,7 @@ use \App\Models\KategoriModel;
 use \App\Models\PercakapanModel;
 use \App\Models\SubscriberModel;
 use \App\Models\ContactModel;
+use \App\Models\TestimoniModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -15,7 +16,6 @@ use function Composer\Autoload\includeFile;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-
 
 class Home extends BaseController
 {
@@ -28,6 +28,7 @@ class Home extends BaseController
         $this->kategoriModel = new KategoriModel;
         $this->percakapanModel = new PercakapanModel;
         $this->subModel = new SubscriberModel;
+        $this->testimoni = new TestimoniModel;
         $this->config = config('Auth');
 
         // $this->session = service('session');
@@ -35,8 +36,18 @@ class Home extends BaseController
 
     public function index()
     {
-        $data['title'] = '';
-        $data['total_pengaduan'] = $this->pengaduanModel->countAll();
+        $testimoni = $this->testimoni->select('*')
+            ->join('users', 'users.id = testimoni.user_id')
+            ->join('auth_groups_users agu', 'agu.user_id = users.id')
+            ->join('auth_groups ag', 'ag.id = agu.group_id')
+            ->get()->getResultArray();
+
+        $data = [
+            'title'         => '',
+            'total_pengaduan' => $this->pengaduanModel->countAll(),
+            'testimoni'     => $testimoni
+        ];
+
         return view('home/index', $data);
     }
 

@@ -193,58 +193,37 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-10 col-md-9">
                     <div class="h1-testimonial-active">
-                        <!-- Single Testimonial -->
-                        <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <div class="testimonial-top-cap">
-                                    <p>Pemerintah yang modern mendengarkan keluhan rakyatnya melalui SKPM - Zain App, sebuah inovasi karya anak bangsa. Salut untuk SKPM - Zain App! </p>
-                                </div>
-                                <!-- founder -->
-                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                    <div class="founder-img">
-                                        <img src="<?= base_url() ?>/home/img/testmonial/testimonial.png" alt="">
+                        <?php foreach ($testimoni as $t) { ?>
+                            <div class="single-testimonial text-center">
+                                <div class="testimonial-caption ">
+                                    <div class="testimonial-top-cap">
+                                        <p><?= $t['testimoni'] ?></p>
                                     </div>
-                                    <div class="founder-text">
-                                        <span>Bu Olivia</span>
-                                        <p>Ibu Rumah Tangga</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- Single Testimonial 2 -->
-                        <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <div class="testimonial-top-cap">
-                                    <p>Program yang sangat baik, menjadi bukti pemerintah menjunjung tinggi nilai demokrasi. Kita dapat menyampaikan aspirasi, pengaduan dan meminta bantuan untuk menyelesaikan permasalahan warga. Serta sejalan dengan perkembangan zaman dengan memanfaatkan media elektronik dan media sosial yang diakrabi generasi muda.</p>
-                                </div>
-                                <!-- founder -->
-                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                    <div class="founder-img">
-                                        <img src="<?= base_url() ?>/home/img/testmonial/testi2.png" alt="">
-                                    </div>
-                                    <div class="founder-text">
-                                        <span>Seapudin</span>
-                                        <p>Mahasiswa</p>
+                                    <!-- founder -->
+                                    <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                        <div class="founder-img">
+                                            <?php if ($t['group_id'] == 3) { ?>
+                                                <?php if ($t['user_image'] == null) { ?>
+                                                    <img src="<?= base_url() ?>/images/avatar.png" class="img-fluid rounded-circle" width="90" alt="">
+                                                <?php } else { ?>
+                                                    <img src="<?= base_url() ?>/images/user-images/<?= $t['user_image'] ?>" class="img-fluid rounded-circle" width="90" alt="">
+                                                <?php } ?>
+                                            <?php } else { ?>
+                                                <?php if ($t['user_image'] == null) { ?>
+                                                    <img src="<?= base_url() ?>/images/avatar.png" class="img-fluid rounded-circle" width="90" alt="">
+                                                <?php } else { ?>
+                                                    <img src="<?= base_url() ?>/images/admin-images/<?= $t['user_image'] ?>" class="img-fluid rounded-circle" width="90" alt="">
+                                                <?php } ?>
+                                            <?php } ?>
+                                        </div>
+                                        <div class="founder-text">
+                                            <span><?= $t['fullname'] ?></span>
+                                            <p><?= $t['pekerjaan'] ?></p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div><!-- Single Testimonial 3 -->
-                        <div class="single-testimonial text-center">
-                            <div class="testimonial-caption ">
-                                <div class="testimonial-top-cap">
-                                    <p>SKPM - Zain App adalah sarana partisipasi masyarakat berbasis media sosial yang mudah dan terpadu untuk pengawasan pembangunan infrastruktur desa dan pelayanan publik di Indonesia. </p>
-                                </div>
-                                <!-- founder -->
-                                <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                    <div class="founder-img">
-                                        <img src="<?= base_url() ?>/home/img/testmonial/testi3.png" alt="">
-                                    </div>
-                                    <div class="founder-text">
-                                        <span>Mang Asep</span>
-                                        <p>Kuli Proyek</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
@@ -275,6 +254,9 @@
 </div>
 <!-- Saran End -->
 
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-js'); ?>
 <!-- Typed Script -->
 <script src="<?= base_url() ?>/home/js/typed.min.js"></script>
 <script type="text/javascript">

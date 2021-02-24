@@ -9,6 +9,11 @@
 // ---> Helper Salam
 //ambil jam dan menit
 
+function helper_test($isi)
+{
+    echo $isi . ' + isi';
+}
+
 function salam($jam)
 {
     //ambil jam dan menit

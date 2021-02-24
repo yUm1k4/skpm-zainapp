@@ -60,7 +60,8 @@
                 <li class="dropdown">
                     <a href="javascript:;" class="dropdown-toggle 
                     <?= uri_string() === 'contact' ||
-                        uri_string() === 'testimoni'
+                        uri_string() === 'testimoni' ||
+                        uri_string() === 'subscriber'
                         ? 'active' : '';
                     ?>">
                         <span class="micon dw dw-email1"></span><span class="mtext">Contact</span>
@@ -68,18 +69,13 @@
                     <ul class="submenu">
                         <li><a href="<?= base_url('/contact') ?>">Contact Us</a></li>
                         <li><a href="<?= base_url('/testimoni') ?>">Testimoni</a></li>
+                        <li><a href="<?= base_url('/subscriber') ?>">Subscriber</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
                     <?= uri_string() === 'quotes' ? 'active' : '' ?>">
                         <span class="micon dw dw-quotation"></span><span class="mtext">Quotes</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="<?= base_url('subscriber') ?>" class="dropdown-toggle no-arrow 
-                    <?= uri_string() === 'subscriber' ? 'active' : '' ?>">
-                        <span class="micon dw dw-star"></span><span class="mtext">Subscriber</span>
                     </a>
                 </li>
             </ul>
