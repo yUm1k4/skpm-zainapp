@@ -15,8 +15,11 @@ class Testimoni extends BaseController
 
     public function index()
     {
+        $this->db = \Config\Database::connect();
+        $this->builder = $this->db->table('testimoni');
         $data = [
-            'title' => 'Daftar Testimoni User'
+            'jmlData'   => $this->builder->countAll(),
+            'title'     => 'Daftar Testimoni User'
         ];
 
         return view('testimoni/index', $data);
@@ -40,39 +43,39 @@ class Testimoni extends BaseController
         }
     }
 
-    public function getUsers(){
+    public function getUsers()
+    {
 
         $request = service('request');
         $postData = $request->getPost();
         $response = array();
 
-        if(!isset($postData['searchTerm'])){
-           // Fetch record
+        if (!isset($postData['searchTerm'])) {
+            // Fetch record
             $userlist = $this->masyarakatModel->select('id,username')
                 ->orderBy('username')
                 ->findAll();
-        }else{
+        } else {
             $searchTerm = $postData['searchTerm'];
-    
+
             // Fetch record
             $userlist = $this->masyarakatModel->select('id,username')
-                ->like('username',$searchTerm)
+                ->like('username', $searchTerm)
                 ->orderBy('username')
                 // ->findAll(5);
                 ->findAll();
-        }  
+        }
         $data = array();
-        foreach($userlist as $user){
+        foreach ($userlist as $user) {
             $data[] = array(
                 "id" => $user['id'],
                 "text" => $user['username'],
-                
+
             );
         }
 
-        $response['data'] = $data;  
+        $response['data'] = $data;
         return $this->response->setJSON($response);
-
     }
 
     public function formtambah()
@@ -119,10 +122,10 @@ class Testimoni extends BaseController
                     ]
                 ]
             ]);
-            // if($this->request->getVar('user_id') == 0) {
-            //     session()->setFlashdata('error', 'User tidak boleh kosong');
-            //     return redirect()->back();
-            // }
+            if ($this->request->getVar('user_id') == 0) {
+                session()->setFlashdata('error', 'User tidak boleh kosong');
+                return redirect()->back();
+            }
 
             // jika tidak valid (Ada yg salah)
             if (!$valid) {
@@ -156,13 +159,15 @@ class Testimoni extends BaseController
     public function formedit()
     {
         if ($this->request->isAJAX()) {
-            $id_quotes = $this->request->getVar('id_quotes');
-            $row = $this->testimoni->find($id_quotes);
-            // d($data);
+            $id_testimoni = $this->request->getVar('id_testimoni');
+            $row = $this->testimoni->getJoin($id_testimoni);
 
             $data = [
-                'id_quotes' => $row['id_quotes'],
-                'quote' => $row['quote'],
+                'id_testimoni'  => $row['id_testimoni'],
+                'fullname'      => $row['fullname'],
+                'username'      => $row['username'],
+                'pekerjaan'     => $row['pekerjaan'],
+                'testimoni'     => $row['testimoni']
             ];
 
             $msg = [
@@ -179,14 +184,17 @@ class Testimoni extends BaseController
     public function updatedata()
     {
         if ($this->request->isAJAX()) {
+            $id_testimoni = $this->request->getVar('id_testimoni');
             $data = [
-                'id_quotes' =>  $this->request->getVar('id_quotes'),
-                'quote' =>  $this->request->getVar('quote'),
+                'id_testimoni' =>  $id_testimoni,
+                'fullname' =>  $this->request->getVar('fullname'),
+                'username' =>  $this->request->getVar('username'),
+                'pekerjaan' =>  $this->request->getVar('pekerjaan'),
+                'testimoni' =>  $this->request->getVar('testimoni'),
             ];
-            $id_quotes = $this->request->getVar('id_quotes');
 
-            $this->testimoni->update($id_quotes, $data);
-            $msg = ['sukses' => 'Quote berhasil diupdate'];
+            $this->testimoni->update($id_testimoni, $data);
+            $msg = ['sukses' => 'Testimoni berhasil diupdate'];
             echo json_encode($msg);
         } else {
             session()->setFlashdata('error', 'Maaf tidak dapat diproses');
@@ -197,8 +205,8 @@ class Testimoni extends BaseController
     public function hapus()
     {
         if ($this->request->isAJAX()) {
-            $id_quotes = $this->request->getVar('id_quotes');
-            $this->testimoni->delete($id_quotes);
+            $id_testimoni = $this->request->getVar('id_testimoni');
+            $this->testimoni->delete($id_testimoni);
 
             $msg = ['sukses' => "Quote berhasil dihapus"];
             echo json_encode($msg);

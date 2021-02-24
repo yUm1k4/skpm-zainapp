@@ -37,16 +37,16 @@
     </tbody>
 </table>
 <script>
-    $(document).ready(function() {
-        $('#tblTestimoni').DataTable();
-    })
+    // $(document).ready(function() {
+    //     $('#tblTestimoni').DataTable();
+    // })
 
-    function edit(id_quotes) {
+    function edit(id_testimoni) {
         $.ajax({
             type: "POST",
-            url: "<?= site_url('/quotes/formedit') ?>",
+            url: "<?= site_url('/testimoni/formedit') ?>",
             data: {
-                id_quotes: id_quotes
+                id_testimoni: id_testimoni
             },
             dataType: "json",
             success: function(response) {
@@ -62,7 +62,7 @@
         });
     }
 
-    function hapus(id_quotes) {
+    function hapus(id_testimoni) {
         Swal.fire({
             title: 'Hapus Data',
             text: `Yakin ingin menghapus data? Data yang terhapus tidak akan bisa dikembalikan`,
@@ -78,7 +78,7 @@
                     type: "POST",
                     url: "<?= site_url('/quotes/hapus') ?>",
                     data: {
-                        id_quotes: id_quotes
+                        id_testimoni: id_testimoni
                     },
                     dataType: "json",
                     success: function(response) {

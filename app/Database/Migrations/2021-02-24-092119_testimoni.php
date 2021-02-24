@@ -20,13 +20,12 @@ class Testimoni extends Migration
 				'constraint' => 11,
 				'unsigned' => TRUE,
 			],
-			'testimoni' => [
-				'type' => 'VARCHAR',
-				'constraint' => 255,
-			],
 			'pekerjaan' => [
 				'type'	=> 'VARCHAR',
 				'constraint' => 255
+			],
+			'testimoni' => [
+				'type' => 'TEXT',
 			],
 			'created_at'       => [
 				'type' => 'datetime', 'null' => true

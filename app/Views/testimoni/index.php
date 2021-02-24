@@ -9,16 +9,19 @@
                     <h4><?= $title; ?></h4>
                 </div>
             </div>
-            <div class="col-auto">
-                <button type="button" class="btn btn-sm btn-primary btn-icon-split tomboltambah">
-                    <span class="icon">
-                        <i class="dw dw-add"></i>
-                    </span>
-                    <span class="text">
-                        Custom Testimoni
-                    </span>
-                </button>
-            </div>
+            <?php
+            if ($jmlData < 7) { ?>
+                <div class="col-auto">
+                    <button type="button" class="btn btn-sm btn-primary btn-icon-split tomboltambah">
+                        <span class="icon">
+                            <i class="dw dw-add"></i>
+                        </span>
+                        <span class="text">
+                            Tambah Testimoni
+                        </span>
+                    </button>
+                </div>
+            <?php } ?>
         </div>
     </div>
     <div class="pb-20">
@@ -69,4 +72,5 @@
         });
     })
 </script>
+
 <?= $this->endSection(); ?>
