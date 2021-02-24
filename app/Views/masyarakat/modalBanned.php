@@ -14,7 +14,7 @@
                             <div class="col-md-12">
                                 <div class="alert alert-danger" role="alert">
                                     <h4 class="alert-heading h4">Perhatian!</h4>
-                                    <p>User yang <a class="alert-link" href="javascript:;">dibanned</a> adalah yang melanggar <a class="alert-link" href="<?= base_url('/ketentuan') ?>" target="_blank">Ketentuan Pengguna</a>, dan tidak akan memiliki akses lagi terhadap akun beserta data-datanya.</p>
+                                    <p>User yang <a class="alert-link" href="javascript:;">dibanned</a> adalah yang melanggar <a class="alert-link" href="<?= base_url('/ketentuan') ?>" target="_blank">Ketentuan Pengguna</a>. User tersebut tidak akan memiliki hak akses lagi terhadap akun beserta data-datanya.</p>
                                 </div>
                             </div>
                         </div>

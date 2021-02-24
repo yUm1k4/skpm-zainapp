@@ -129,8 +129,11 @@ $routes->post('/pengaduan-kategori/hapus', 'KategoriPengaduan::hapus', ['filter'
 $routes->get('report', 'Laporan::index', ['filter' => 'role:Admin,Petugas']);
 $routes->post('cetak', 'Laporan::cetak', ['filter' => 'role:Admin,Petugas']);
 
-// Contact
+// Contact Us
 $routes->get('contact', 'Contact::index', ['filter' => 'role:Admin,Petugas']);
+
+// Testimoni
+$routes->get('testimoni', 'Testimoni::index', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);

@@ -57,11 +57,18 @@
                         </a>
                     </li>
                 <?php endif ?>
-                <li>
-                    <a href="<?= base_url('contact') ?>" class="dropdown-toggle no-arrow 
-                    <?= uri_string() === 'contact' ? 'active' : '' ?>">
-                        <span class="micon dw dw-email1"></span><span class="mtext">Contact Us</span>
+                <li class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle 
+                    <?= uri_string() === 'contact' ||
+                        uri_string() === 'testimoni'
+                        ? 'active' : '';
+                    ?>">
+                        <span class="micon dw dw-email1"></span><span class="mtext">Contact</span>
                     </a>
+                    <ul class="submenu">
+                        <li><a href="<?= base_url('/contact') ?>">Contact Us</a></li>
+                        <li><a href="<?= base_url('/testimoni') ?>">Testimoni</a></li>
+                    </ul>
                 </li>
                 <li>
                     <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
