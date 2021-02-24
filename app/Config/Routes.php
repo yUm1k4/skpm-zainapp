@@ -139,6 +139,7 @@ $routes->post('testimoni/simpandata', 'Testimoni::simpandata', ['filter' => 'rol
 $routes->post('testimoni/getUsers', 'Testimoni::getUsers', ['filter' => 'role:Admin,Petugas']);
 $routes->post('testimoni/formedit', 'Testimoni::formedit', ['filter' => 'role:Admin,Petugas']);
 $routes->post('testimoni/updatedata', 'Testimoni::updatedata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('testimoni/delete', 'Testimoni::delete', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);

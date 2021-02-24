@@ -76,7 +76,7 @@
             if (result.value) {
                 $.ajax({
                     type: "POST",
-                    url: "<?= site_url('/quotes/hapus') ?>",
+                    url: "<?= site_url('/testimoni/hapus') ?>",
                     data: {
                         id_testimoni: id_testimoni
                     },
@@ -88,7 +88,7 @@
                                 title: 'Berhasil',
                                 text: response.sukses
                             })
-                            dataQuotes();
+                            dataTestimoni();
                         }
                     },
                     // menampilkan pesan error:

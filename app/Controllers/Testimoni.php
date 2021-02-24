@@ -208,7 +208,7 @@ class Testimoni extends BaseController
             $id_testimoni = $this->request->getVar('id_testimoni');
             $this->testimoni->delete($id_testimoni);
 
-            $msg = ['sukses' => "Quote berhasil dihapus"];
+            $msg = ['sukses' => "Testimoni berhasil dihapus"];
             echo json_encode($msg);
         } else {
             return redirect()->to(base_url('testimoni/index'));
