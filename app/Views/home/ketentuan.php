@@ -66,11 +66,6 @@
                     <li><span>Kebijakan ini berlaku untuk semua pengguna layanan SKPM - Zain App</span></li>
                 </ol>
             </li>
-            <li><span><b>Perubahan Ketentuan Penggunaan Layanan</b></span>
-                <ol class="ordered-list-alpha pl-0">
-                    <li><span>Penyedia layanan berhak untuk mengubah ketentuan penggunaan ini setiap saat dan memberitahukan setiap perubahan kepada pengguna. Ketentuan yang baru akan menggantikan ketentuan yang sebelumnya telah disetujui.</span></li>
-                </ol>
-            </li>
             <li><span><b>Syarat Penggunaan</b></span>
                 <ol class="ordered-list-alpha pl-0">
                     <li><span>Aplikasi SKPM - Zain App hanya digunakan untuk menyampaikan keluhan, aspirasi, laporan, pengaduan, komentar dan permintaan informasi terkait dengan pelayanan publik.</span></li>
@@ -87,9 +82,9 @@
                     <li><span>Dengan menggunakan layanan pengaduan ini, pengguna setuju dan memahami bahwa informasi yang terkait dengan data pribadi dan data pengaduan atau aspirasi dari pengguna akan diberikan kepada penyedia layanan. Namun demikian, pengelola layanan memberikan jaminan kerahasiaan data dan informasi pada SKPM - Zain App.</span></li>
                     <li><span>Layanan SKPM - Zain App mengumpulkan data pribadi pengguna sebagai jaminan keabsahan dari aduan atau aspirasi yang disampaikan. Adapun data pribadi yang dikumpulkan adalah sebagai berikut:</span>
                         <ol class="ordered-list-roman pl-0">
-                            <li><span>Nama pengguna sebagai pengenal identitas</span></li>
-                            <li><span>No Identitas meliputi no KTP, SIM, atau NIK sebagai pengenal identitas</span></li>
-                            <li><span>No telepon dan alamat email pengguna untuk memverifikasi akun dan mengirim notifikasi laporan</span></li>
+                            <li><span>Nama pengguna sebagai pengenal identitas.</span></li>
+                            <li><span>No identitas yang berupa Nomor Induk Penduduk (NIK) sebagai pengenal identitas.</span></li>
+                            <li><span>No handphone dan alamat email pengguna untuk memverifikasi akun dan mengirim notifikasi laporan.</span></li>
                         </ol>
                     </li>
                 </ol>
@@ -108,17 +103,9 @@
                 <ol class="ordered-list-alpha pl-0">
                     <li><span>Pengguna wajib menggunakan data pribadi milik sendiri.</span></li>
                     <li><span>Pengguna wajib menjaga kerahasiaan data pribadinya saat menggunakan layanan ini.</span></li>
-                    <li><span>Pengguna wajib menyampaikan laporan secara jelas.</span></li>
+                    <li><span>Pengguna wajib menyampaikan laporan secara jelas, lengkap, dan dapat dipertanggungjawabkan.</span></li>
                     <li><span>Pengguna wajib menjaga informasi yang didapatkan dari pelayanan pengaduan ini apabila informasi tersebut mengandung kerahasiaan data negara dan/atau pihak lain.</span></li>
                     <li><span>Jika akun pengguna diretas atau dicuri sehingga pengguna kehilangan kontrol atas akunnya, maka pengguna wajib memberitahu pengelola layanan sesegera mungkin agar pengelola layanan dapat menonaktifkan akun pengguna dan melakukan tindak pencegahan lainnya.</span></li>
-                </ol>
-            </li>
-            <li><span><b>Hak-hak Pengelola SKPM - Zain App</b></span>
-                <ol class="ordered-list-alpha pl-0">
-                    <li><span>Pengelola layanan berhak mengelola informasi yang disampaikan oleh pengguna dalam menyampaikan aduan atau aspirasi untuk kepentingan tindak lanjut.</span></li>
-                    <li><span>Pengelola layanan berhak menghapus aduan maupun aspirasi yang tidak sesuai dengan syarat penggunaan dan kewajiban pengguna.</span></li>
-                    <li><span>Pengelola layanan berhak menonaktifkan akun pengguna jika pengguna terbukti melanggar syarat penggunaan dan kewajiban pengguna.</span></li>
-                    <li><span>Pengelola layanan berhak membatalkan segala transaksi yang mencurigakan atau tidak sesuai dengan syarat penggunaan dan kewajiban pengguna.</span></li>
                 </ol>
             </li>
             <li><span><b>Kewajiban Pengelola SKPM - Zain App</b></span>
@@ -128,6 +115,14 @@
                     <li><span>Pengelola layanan wajib memiliki mekanisme yang mendukung pemenuhan hak-hak pengguna.</span></li>
                 </ol>
             </li>
+            <li><span><b>Hak-hak Pengelola SKPM - Zain App</b></span>
+                <ol class="ordered-list-alpha pl-0">
+                    <li><span>Pengelola layanan berhak mengelola informasi yang disampaikan oleh pengguna dalam menyampaikan aduan atau aspirasi untuk kepentingan tindak lanjut.</span></li>
+                    <li><span>Pengelola layanan berhak menghapus pengaduan yang tidak sesuai dengan syarat penggunaan dan kewajiban pengguna.</span></li>
+                    <li><span>Pengelola layanan berhak menonaktifkan akun pengguna jika pengguna terbukti melanggar syarat penggunaan dan kewajiban pengguna.</span></li>
+                    <li><span>Pengelola layanan berhak membatalkan segala transaksi yang mencurigakan atau tidak sesuai dengan syarat penggunaan dan kewajiban pengguna.</span></li>
+                </ol>
+            </li>
             <li><span><b>Pernyataan dan Pengecualian Kewajiban Penyedia Layanan</b></span>
                 <ol class="ordered-list-alpha pl-0">
                     <li><span>Pengelola layanan tidak menjamin bahwa SKPM - Zain App akan selalu dapat diakses, tanpa gangguan, tepat waktu, aman, bebas dari kesalahan atau bebas dari virus komputer atau hal yang merusak lainnya, dan atau bahwa layanan tidak akan terpengaruh oleh fasilitas infrastruktur, listrik atau telekomunikasi, kurangnya infrastruktur atau kegagalan teknologi informasi.</span></li>
@@ -135,6 +130,9 @@
                     <li><span>Jika pengguna terbukti menggunakan aplikasi untuk tujuan yang membahayakan, merugikan, atau di luar tujuan penggunaan yang dimaksudkan dalam aplikasi ini, maka penyedia layanan aplikasi tidak bertanggung jawab terhadap dampak yang ditimbulkan.</span></li>
                     <li><span>Pengelola layanan tidak memiliki kewajiban menghilangkan informasi pengguna atau laporan yang tampil pada hasil pencarian mesin pencari.</span></li>
                 </ol>
+            </li>
+            <li><span><b>Perubahan Ketentuan Penggunaan Layanan</b></span>
+                <span>Penyedia layanan berhak untuk mengubah ketentuan penggunaan ini setiap saat dan ketentuan yang baru akan menggantikan ketentuan yang sebelumnya telah disetujui.</span>
             </li>
             <li><span><b>Pelanggaran terhadap syarat dan ketentuan</b></span><br>
                 <span>Pelanggaran terhadap syarat dan ketentuan yang berlaku dapat dikenakan sanksi sesuai peraturan pengelola layanan, hukum dan/atau perundang-undangan yang berlaku.</span>
