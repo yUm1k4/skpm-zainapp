@@ -20,10 +20,13 @@ class Testimoni extends Migration
 				'constraint' => 11,
 				'unsigned' => TRUE,
 			],
-			'contact_id' => [
-				'type' => 'INT',
-				'constraint' => 11,
-				'unsigned' => TRUE,
+			'testimoni' => [
+				'type' => 'VARCHAR',
+				'constraint' => 255,
+			],
+			'pekerjaan' => [
+				'type'	=> 'VARCHAR',
+				'constraint' => 255
 			],
 			'created_at'       => [
 				'type' => 'datetime', 'null' => true
@@ -38,7 +41,6 @@ class Testimoni extends Migration
 
 		$this->forge->addKey('id_testimoni', TRUE);
 		$this->forge->addForeignKey('user_id', 'users', 'id');
-		$this->forge->addForeignKey('contact_id', 'contact', 'id_contact');
 		$this->forge->createTable('testimoni');
 	}
 
@@ -47,6 +49,5 @@ class Testimoni extends Migration
 	public function down()
 	{
 		$this->forge->dropTable('testimoni');
-		//
 	}
 }

@@ -25,11 +25,14 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/datatables/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
+    <link href="<?= base_url('/vendors/select2/dist/css/select2.min.css') ?>" rel="stylesheet" />
+    <link href="<?= base_url('/vendors/select2/dist/css/select2.min.css') ?>" rel="stylesheet" />
 
     <?= $this->renderSection('my-css') ?>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<?= base_url('/vendors/select2/dist/js/select2.full.min.js') ?>"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>

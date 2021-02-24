@@ -134,6 +134,9 @@ $routes->get('contact', 'Contact::index', ['filter' => 'role:Admin,Petugas']);
 
 // Testimoni
 $routes->get('testimoni', 'Testimoni::index', ['filter' => 'role:Admin,Petugas']);
+$routes->get('testimoni/formtambah', 'Testimoni::formtambah', ['filter' => 'role:Admin,Petugas']);
+$routes->post('testimoni/simpandata', 'Testimoni::simpandata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('testimoni/getUsers', 'Testimoni::getUsers', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes
 $routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);
