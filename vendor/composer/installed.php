@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '96891ffad320e3bc793648e33f7f72728e846908',
+    'reference' => 'd6ec6cfac4c1f74d43470bb2b1a840b144459fc8',
     'name' => 'codeigniter4/appstarter',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '96891ffad320e3bc793648e33f7f72728e846908',
+      'reference' => 'd6ec6cfac4c1f74d43470bb2b1a840b144459fc8',
     ),
     'codeigniter4/framework' => 
     array (
@@ -37,6 +37,15 @@
       array (
       ),
       'reference' => 'd56bf6102915de5702778fe20f2de3b2fe570b5b',
+    ),
+    'dompdf/dompdf' => 
+    array (
+      'pretty_version' => 'v1.0.2',
+      'version' => '1.0.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '8768448244967a46d6e67b891d30878e0e15d25c',
     ),
     'fzaninotto/faker' => 
     array (
@@ -149,6 +158,24 @@
       array (
       ),
       'reference' => '45a2ec53a73c70ce41d55cedef9063630abaf1b6',
+    ),
+    'phenx/php-font-lib' => 
+    array (
+      'pretty_version' => '0.5.2',
+      'version' => '0.5.2.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ca6ad461f032145fff5971b5985e5af9e7fa88d8',
+    ),
+    'phenx/php-svg-lib' => 
+    array (
+      'pretty_version' => 'v0.3.3',
+      'version' => '0.3.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '5fa61b65e612ce1ae15f69b3d223cb14ecc60e32',
     ),
     'phpdocumentor/reflection-common' => 
     array (
@@ -267,6 +294,15 @@
       ),
       'reference' => 'e75e5715e3b651ec20dee5844095aadefab81acb',
     ),
+    'sabberworm/php-css-parser' => 
+    array (
+      'pretty_version' => '8.3.1',
+      'version' => '8.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'd217848e1396ef962fb1997cf3e2421acba7f796',
+    ),
     'sebastian/code-unit-reverse-lookup' => 
     array (
       'pretty_version' => '1.0.1',
@@ -383,15 +419,6 @@
       array (
       ),
       'reference' => 'f4ba089a5b6366e453971d3aad5fe8e897b37f41',
-    ),
-    'tecnickcom/tcpdf' => 
-    array (
-      'pretty_version' => '6.3.5',
-      'version' => '6.3.5.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => '19a535eaa7fb1c1cac499109deeb1a7a201b4549',
     ),
     'theseer/tokenizer' => 
     array (

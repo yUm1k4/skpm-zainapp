@@ -134,22 +134,3 @@ footer {
   padding: 8px 0;
   text-align: center;
 }
-
-.text-center {
-  text-align: center !important;
-}
-
-.text-left {
-  text-align: left !important;
-}
-
-.dimension h1 {
-  font-size: 30px;
-  margin-bottom: 0px;
-  margin-top: 0px;
-}
-
-.dimension span {
-  font-size: 15px;
-  font-weight: bold;
-}

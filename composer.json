@@ -14,7 +14,7 @@
 		"monken/cli-create": "^0.3.1",
 		"pusher/pusher-php-server": "^4.1",
 		"phpmailer/phpmailer": "^6.3",
-		"tecnickcom/tcpdf": "^6.3"
+		"dompdf/dompdf": "^1.0"
 	},
 	"require-dev": {
 		"mikey179/vfsstream": "1.6.*",

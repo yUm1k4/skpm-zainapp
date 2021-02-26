@@ -54,7 +54,7 @@ class PengaduanModel extends Model
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
             ->where('pengaduan.created_at' . ' >=', $range['mulai'])
             ->where('pengaduan.created_at' . ' <=', $range['akhir'])
-            ->orderBy('id_pengaduan', 'DESC');
+            ->orderBy('pengaduan_dibuat', 'ASC');
         return $query->get()->getResultArray();
     }
 }

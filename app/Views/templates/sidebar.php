@@ -64,7 +64,7 @@
                         uri_string() === 'subscriber'
                         ? 'active' : '';
                     ?>">
-                        <span class="micon dw dw-email1"></span><span class="mtext">Contact</span>
+                        <span class="micon dw dw-email1"></span><span class="mtext">Feedback</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="<?= base_url('/contact') ?>">Contact Us</a></li>
