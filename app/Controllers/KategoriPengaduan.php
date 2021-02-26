@@ -22,7 +22,7 @@ class KategoriPengaduan extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'tampildata'    => $this->katModel->findAll()
+                'tampildata'    => $this->katModel->getCount()
             ];
 
             $msg = [

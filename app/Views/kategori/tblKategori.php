@@ -3,6 +3,7 @@
         <tr>
             <th>No.</th>
             <th>Nama Kategori</th>
+            <th>Jumlah Pengaduan</th>
             <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
         </tr>
     </thead>
@@ -13,7 +14,12 @@
         ?>
             <tr>
                 <td class="text-center" width="7%"><?= $i++ ?>.</td>
-                <td class="text-center"><?= $row['nama_kategori'] ?></td>
+                <td><?= $row['nama'] ?></td>
+                <?php if ($row['id_pengaduan'] == null) { ?>
+                    <td class="text-center">0</td>
+                <?php } else { ?>
+                    <td class="text-center"><?= $row['nama_kategori'] ?></td>
+                <?php } ?>
 
                 <td class="text-center" width="10%">
                     <div class="dropdown">
