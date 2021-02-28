@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\SettingModel;
 /* --- Daftar Helper ---
 1. Helper Anti Scrip XSS
 2. Helper Notifikasi
@@ -8,6 +9,15 @@
 
 // ---> Helper Salam
 //ambil jam dan menit
+
+function setting()
+{
+    $setting = new SettingModel;
+    $data = $setting->where('id_setting', 1)->get()->getRow();
+
+    return $data;
+}
+
 
 function helper_test($isi)
 {

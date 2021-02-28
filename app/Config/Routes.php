@@ -142,20 +142,23 @@ $routes->post('testimoni/updatedata', 'Testimoni::updatedata', ['filter' => 'rol
 $routes->post('testimoni/delete', 'Testimoni::delete', ['filter' => 'role:Admin,Petugas']);
 
 // Quotes
-$routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/ambildata', 'Quotes::ambildata', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/formtambah', 'Quotes::formtambah', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/simpandata', 'Quotes::simpandata', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin,Petugas']);
-$routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/quotes', 'Quotes::index', ['filter' => 'role:Admin']);
+$routes->get('/quotes/index', 'Quotes::index', ['filter' => 'role:Admin']);
+$routes->get('/quotes/ambildata', 'Quotes::ambildata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/formtambah', 'Quotes::formtambah', ['filter' => 'role:Admin']);
+$routes->get('/quotes/simpandata', 'Quotes::simpandata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/formedit', 'Quotes::formedit', ['filter' => 'role:Admin']);
+$routes->get('/quotes/updatedata', 'Quotes::updatedata', ['filter' => 'role:Admin']);
+$routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
 
 // Subscriber
 $routes->get('/subscriber', 'Subscriber::index', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/subscriber/delete/(:num)', 'Subscriber::delete/$1', ['filter' => 'role:Admin,Petugas']);
 
-
+// Settings
+$routes->get('setting', 'Setting::index', ['filter' => 'role:Admin']);
+$routes->get('setting/ambildata', 'Setting::ambildata', ['filter' => 'role:Admin']);
+$routes->post('setting/update', 'Setting::update', ['filter' => 'role:Admin']);
 /**
  * --------------------------------------------------------------------
  * Additional Routing

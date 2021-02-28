@@ -25,7 +25,7 @@
                         uri_string() === 'pengaduan-kategori'
                         ? 'active' : '';
                     ?>">
-                        <span class="micon dw dw-edit2"></span><span class="mtext">Pengaduan</span>
+                        <span class="micon dw dw-edit-2"></span><span class="mtext">Pengaduan</span>
                     </a>
                     <ul class="submenu">
                         <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
@@ -76,6 +76,12 @@
                     <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
                     <?= uri_string() === 'quotes' ? 'active' : '' ?>">
                         <span class="micon dw dw-quotation"></span><span class="mtext">Quotes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?= base_url('setting') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'setting' ? 'active' : '' ?>">
+                        <span class="micon dw dw-settings1"></span><span class="mtext">Settings</span>
                     </a>
                 </li>
             </ul>

@@ -10,7 +10,7 @@
                                 <!-- logo -->
                                 <div class="footer-logo">
                                     <a href="<?= base_url() ?>" class="text-primary">
-                                        <h5>SKPM - Zain App</h5>
+                                        <h5><?= setting()->nama_aplikasi_frontend ?></h5>
                                     </a>
                                 </div>
                                 <div class="footer-tittle">
