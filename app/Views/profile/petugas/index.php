@@ -109,7 +109,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Nama Lengkap</label>
-                                                            <input class="form-control form-control-lg <?php if (session('errors.fullname')) : ?>is-invalid <?php endif ?>" type="text" name="fullname" value="<?= xss($petugas[0]->fullname) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Nama harus diisi" data-parsley-length="[3,50]" data-parsley-length-message="Minimal 3 karakter, maksimal 50 karakter">
+                                                            <input class="form-control form-control-lg <?php if (session('errors.fullname')) : ?>is-invalid <?php endif ?>" type="text" name="fullname" value="<?= (old('fullname')) ? old('fullname') : xss($petugas[0]->fullname) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Nama harus diisi" data-parsley-length="[3,50]" data-parsley-length-message="Minimal 3 karakter, maksimal 50 karakter">
                                                             <div class="invalid-feedback">
                                                                 <?= session('errors.fullname') ?>
                                                             </div>
@@ -149,7 +149,7 @@
                                                     <div class="col-sm-12 col-md-6">
                                                         <div class="form-group">
                                                             <label>No Handphone</label>
-                                                            <input class="form-control form-control-lg <?php if (session('errors.no_hp')) : ?>is-invalid <?php endif ?>" name="no_hp" value="<?= xss($petugas[0]->no_hp) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="No HP harus diisi" data-parsley-length="[10,13]" data-parsley-length-message="No HP minimal 10 digit, maximal 13 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
+                                                            <input class="form-control form-control-lg <?php if (session('errors.no_hp')) : ?>is-invalid <?php endif ?>" name="no_hp" value="<?= (old('no_hp')) ? old('no_hp') : xss($petugas[0]->no_hp) ?>" required data-parsley-trigger="keyup" data-parsley-required-message="No HP harus diisi" data-parsley-length="[10,13]" data-parsley-length-message="No HP minimal 10 digit, maximal 13 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
                                                             <div class="invalid-feedback">
                                                                 <?= session('errors.no_hp') ?>
                                                             </div>
@@ -160,7 +160,7 @@
                                                     <div class="col-md-12">
                                                         <div class="form-group">
                                                             <label>Alamat Tempat Tinggal</label>
-                                                            <textarea class="form-control <?php if (session('errors.alamat')) : ?>is-invalid <?php endif ?>" name="alamat" required data-parsley-trigger="keyup" data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="200" data-parsley-maxlength-message="Alamat terlalu panjang"><?= xss($petugas[0]->alamat) ?></textarea>
+                                                            <textarea class="form-control <?php if (session('errors.alamat')) : ?>is-invalid <?php endif ?>" name="alamat" required data-parsley-trigger="keyup" data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="200" data-parsley-maxlength-message="Alamat terlalu panjang"><?= (old('alamat')) ? old('alamat') : xss($petugas[0]->alamat) ?></textarea>
                                                             <div class="invalid-feedback">
                                                                 <?= session('errors.alamat') ?>
                                                             </div>

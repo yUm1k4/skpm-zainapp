@@ -140,7 +140,7 @@ use CodeIgniter\I18n\Time;
 
 <body>
     <header class="clearfix">
-        <h1 class="text-center title">SKPM Zain App | <?= $title; ?></h1>
+        <h1 class="text-center title"><?= setting()->nama_aplikasi_frontend ?> | <?= $title; ?></h1>
         <p class="text-center mb-1"><?= date_indo($mulai) . ' s/d ' . date_indo($akhir) ?></p>
         <div class="informasi">
             <div class="float-left">
@@ -150,10 +150,10 @@ use CodeIgniter\I18n\Time;
                 <div><span>Hari/Tgl</span> <?= format_indo(Time::now()) ?></div>
             </div>
             <div class="float-right">
-                <div>SKPM - Zain App</div>
-                <div><a href="mailto:yumikasoftware@gmail.com">yumikasoftware@gmail.com</a></div>
-                <div>080808080808</div>
-                <div>Jl. Raya Narogong Km. 12 Rt. 03/01 No. 41</div>
+                <div><?= setting()->nama_aplikasi_frontend ?></div>
+                <div><?= setting()->nohp_setting ?></div>
+                <div><a href="mailto:<?= setting()->email_setting ?>"><?= setting()->email_setting ?></a></div>
+                <div><?= setting()->alamat_setting ?>1</div>
             </div>
         </div>
     </header>

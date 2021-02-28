@@ -207,7 +207,7 @@ class Home extends BaseController
         $this->subModel->save($saveSub);
 
         if ($saveSub) {
-            session()->setFlashdata('success', 'Terimakasih, selanjutnya Anda akan mendapatkan info terbaru mengenai SKPM Zain App ^_^');
+            session()->setFlashdata('success', 'Terimakasih, selanjutnya Anda akan mendapatkan info terbaru melalui Email ^_^');
             return redirect()->back();
         }
     }

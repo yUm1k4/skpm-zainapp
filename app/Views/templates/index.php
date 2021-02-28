@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8">
-    <title><?= $title; ?> | Zain App</title>
+    <title><?= $title; ?> | <?= setting()->nama_aplikasi_backend ?></title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/images/favicon.ico">
@@ -131,7 +131,8 @@
             <?= $this->renderSection('main-content') ?>
 
             <div class="footer-wrap pd-20 mb-20 card-box">
-                <small>Develop and Re-Design by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a> - UJIKOM | Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a></small>
+                <small><?= setting()->footer_backend ?></small>
+                <!-- <small>Develop and Re-Design by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a> - UJIKOM | Template By <a href="https://github.com/dropways" target="_blank">Ankit Hingarajiya</a></small> -->
             </div>
         </div>
     </div>

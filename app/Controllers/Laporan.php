@@ -55,6 +55,6 @@ class Laporan extends BaseController
 		$dompdf->loadHtml($html);
 		$dompdf->setPaper('A4');
 		$dompdf->render();
-		$dompdf->stream('Laporan Data Pengaduan | SKPM - Zain App.pdf', array("Attachment" => false));
+		$dompdf->stream('Laporan Data Pengaduan | ' . setting()->nama_aplikasi_frontend . '.pdf', array("Attachment" => false));
 	}
 }
