@@ -5,9 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <?php if ($title == null) { ?>
-        <title>SKPM - Zain App </title>
+        <title><?= setting()->nama_aplikasi_frontend ?></title>
     <?php } else { ?>
-        <title><?= $title; ?>SKPM - Zain App </title>
+        <title><?= $title; ?><?= setting()->nama_aplikasi_frontend ?> </title>
     <?php } ?>
 
     <!-- Site favicon -->
@@ -15,7 +15,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/images/favicon.ico">
 
-    <meta name="description" content="Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.">
+    <meta name="description" content="Sistem Keluhan dan Pengaduan Masyarakat <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSS here -->

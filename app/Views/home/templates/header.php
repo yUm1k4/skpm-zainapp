@@ -8,7 +8,7 @@
                     <div class="col-xl-2 col-lg-2 col-md-1">
                         <div class="logo">
                             <a href="<?= base_url('/') ?>" class="text-biru-tua">
-                                <h5 class="text--logo">SKPM - Zain App</h5>
+                                <h5 class="text--logo"><?= setting()->nama_aplikasi_frontend ?></h5>
                             </a>
                         </div>
                     </div>

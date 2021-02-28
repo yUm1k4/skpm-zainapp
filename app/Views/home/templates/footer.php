@@ -15,16 +15,21 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p class="info1">Jl. Lap. Bola Rawa Butun <br> Bekasi, 17153 - Indonesia</p>
-                                        <p class="info2">yumikasoftware@gmail.com</p>
+                                        <p class="info1"><?= setting()->nohp_setting ?></p>
+                                        <p class="info1"><?= setting()->email_setting ?></p>
+                                        <p class="info2"><?= setting()->alamat_setting ?></p>
                                     </div>
                                 </div>
                                 <div class="footer-social">
-                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                    <a href="#"><i class="fab fa-twitter"></i></a>
-                                    <a href="#"><i class="fas fa-globe"></i></a>
-                                    <a href="#"><i class="fab fa-behance"></i></a>
-                                    <a href="https://instagram.com/zaiabdullah_91/" target="_blank"><i class="fab fa-instagram"></i></a>
+                                    <a href="<?= setting()->somed_1_url ?>" target="_blank"><i class="<?= setting()->somed_1_font ?>"></i></a>
+                                    <a href="<?= setting()->somed_2_url ?>" target="_blank"><i class="<?= setting()->somed_2_font ?>"></i></a>
+                                    <a href="<?= setting()->somed_3_url ?>" target="_blank"><i class="<?= setting()->somed_3_font ?>"></i></a>
+                                    <?php if (setting()->somed_4_url && setting()->somed_4_font) { ?>
+                                        <a href="<?= setting()->somed_4_url ?>" target="_blank"><i class="<?= setting()->somed_4_font ?>"></i></a>
+                                    <?php } ?>
+                                    <?php if (setting()->somed_5_url && setting()->somed_5_font) { ?>
+                                        <a href="<?= setting()->somed_5_url ?>" target="_blank"><i class="<?= setting()->somed_5_font ?>"></i></a>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -34,11 +39,15 @@
                             <div class="footer-tittle">
                                 <h4>Link Cepat</h4>
                                 <ul>
-                                    <li><a href="<?= base_url() ?>">Home</a></li>
-                                    <li><a href="<?= base_url('/lapor') ?>">Lapor!</a></li>
-                                    <li><a href="<?= base_url('/cari-laporan') ?>">Cari Laporan</a></li>
-                                    <li><a href="<?= base_url('/tentang') ?>">Tentang Kami</a></li>
-                                    <li><a href="<?= base_url('/hubungi') ?>">Hubungi Kami</a></li>
+                                    <li><a href="<?= base_url(setting()->lc_1_url) ?>"><?= setting()->lc_1_nama ?></a></li>
+                                    <li><a href="<?= base_url(setting()->lc_2_url) ?>"><?= setting()->lc_2_nama ?></a></li>
+                                    <li><a href="<?= base_url(setting()->lc_3_url) ?>"><?= setting()->lc_3_nama ?></a></li>
+                                    <?php if (setting()->lc_4_url && setting()->lc_4_nama) { ?>
+                                        <li><a href="<?= setting()->lc_4_url ?>"><?= setting()->lc_4_nama ?></a></li>
+                                    <?php } ?>
+                                    <?php if (setting()->lc_5_url && setting()->lc_5_nama) { ?>
+                                        <li><a href="<?= setting()->lc_5_url ?>"><?= setting()->lc_5_nama ?></a></li>
+                                    <?php } ?>
                                 </ul>
                             </div>
                         </div>
@@ -47,7 +56,7 @@
                         <!-- <div class="single-footer-caption mb-50"> -->
                         <!-- <div id="show_maps" style="width:100%; height:100%;">
                         </div> -->
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2958866074787!2d106.98985671434191!3d-6.3557315639462155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c22161d4051%3A0x7a0a35b288779341!2sSMK%20Negeri%202%20Kota%20Bekasi!5e0!3m2!1sid!2sid!4v1607004479421!5m2!1sid!2sid" style="width:100%; height:100%;" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <iframe src="<?= setting()->map_link ?>" style="width:100%; height:80%;" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         <!-- </div> -->
                     </div>
                 </div>
@@ -61,11 +70,12 @@
                     <div class="row d-flex align-items-center">
                         <div class="col-xl-12 ">
                             <div class="footer-copy-right text-center">
-                                <p>
+                                <!-- <p>
 
                                     Copyright &copy; <?= date('Y') ?> All rights reserved | Template by <a href="https://colorlib.com" target="_blank">Colorlib</a> | Develop and Re-Design by <a href="https://instagram.com/zaiabdullah_91/" target="_blank">Zainudin Abdullah</a>
 
-                                </p>
+                                </p> -->
+                                <p><?= setting()->footer_frontend ?></p>
                             </div>
                         </div>
                     </div>

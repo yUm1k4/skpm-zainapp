@@ -1,3 +1,7 @@
+<?php
+helper('zain');
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,11 +9,11 @@
     <!-- Basic Page Info -->
     <meta charset="utf-8">
     <?php if (uri_string() === 'login') : ?>
-        <title>Login | Zain App</title>
+        <title>Login | <?= setting()->nama_aplikasi_frontend ?></title>
     <?php elseif (uri_string() === 'register') : ?>
-        <title>Register | Zain App</title>
+        <title>Register | <?= setting()->nama_aplikasi_frontend ?></title>
     <?php else : ?>
-        <title>Reset Password | Zain App</title>
+        <title>Reset Password | <?= setting()->nama_aplikasi_frontend ?></title>
     <?php endif; ?>
 
     <!-- Mobile Specific Metas -->
@@ -47,7 +51,7 @@
         <div class="container-fluid d-flex justify-content-between align-items-center">
             <div class="brand-logo">
                 <a href="<?= base_url('/') ?>" class="text-primary">
-                    SKPM - Zain App
+                    <?= setting()->nama_aplikasi_frontend ?>
                 </a>
             </div>
             <div class="login-menu">

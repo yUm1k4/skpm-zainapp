@@ -1,21 +1,21 @@
 <div class="media contact-info">
     <span class="contact-info__icon"><i class="fa fa-home"></i></span>
     <div class="media-body">
-        <h3>Jl. Lap. Bola Rawa Butun</h3>
-        <p>Bekasi, 17153 - Indonesia</p>
+        <h3><?= setting()->alamat_setting ?></h3>
+        <p>Alamat Kantor</p>
     </div>
 </div>
 <div class="media contact-info">
     <span class="contact-info__icon"><i class="fa fa-phone"></i></span>
     <div class="media-body">
-        <h3>+62 812 9267 6265</h3>
+        <h3><?= setting()->nohp_setting ?></h3>
         <p>Biasanya membalas cepat</p>
     </div>
 </div>
 <div class="media contact-info">
     <span class="contact-info__icon"><i class="fa fa-envelope"></i></span>
     <div class="media-body">
-        <h3>yumikasoftware@gmail.com</h3>
-        <p>Kirim pertanyaan mu!</p>
+        <h3><?= setting()->email_setting ?></h3>
+        <p>Kirim testimoni mu!</p>
     </div>
 </div>

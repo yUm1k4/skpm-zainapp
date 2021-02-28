@@ -1,3 +1,4 @@
+<?php helper('zain') ?>
 <?= $this->extend('auth/templates/index'); ?>
 
 <?= $this->section('content'); ?>
@@ -10,7 +11,7 @@
             <div class="col-md-6 col-lg-5">
                 <div class="login-box bg-white box-shadow border-radius-10">
                     <div class="login-title">
-                        <h2 class="text-center text-primary">Login To Zain App</h2>
+                        <h2 class="text-center text-primary">Login to <?= setting()->nama_aplikasi_frontend ?></h2>
                     </div>
 
                     <?php
