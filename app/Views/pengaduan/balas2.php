@@ -12,6 +12,7 @@
             <div class="pd-20 card-box">
                 <div class="profile-photo">
                     <?php if ($pengaduan[0]->user_image == null) : ?>
+                        <!-- jika user image nya kosong tampilkan default -->
                         <img src="<?= base_url('images/avatar.png/') ?>" class="avatar-photo">
                     <?php else : ?>
                         <img src="<?= base_url() . '/images/user-images/' . $pengaduan[0]->user_image ?>" alt="" class="avatar-photo">
@@ -19,6 +20,7 @@
                 </div>
                 <h5 class="text-center h5 mb-3">
                     <?php if ($pengaduan[0]->anonim == 1) : ?>
+                        <!-- jika melapor sebagai anonim -->
                         <?= (old('fullname')) ? old('fullname') : xss($pengaduan[0]->fullname) ?> <br><i>(Melapor sebagai Anonim)</i>
                     <?php else : ?>
                         <?= (old('fullname')) ? old('fullname') : xss($pengaduan[0]->fullname) ?>
@@ -97,7 +99,9 @@
                                                     <?php } ?>
                                                 </span>
                                                 <div class="chat-body clearfix">
-                                                    <div class="kepala"><strong class="primary-font"> Admin | </strong> <?= $chat->fullname ?>
+                                                    <div class="kepala">
+                                                        <strong class="primary-font"> Admin | </strong> <?= $chat->fullname ?>
+                                                        <a href="<?= base_url('pengaduan/hapusPesan/' . $chat->id_percakapan) ?>" class="dw dw-trash text-danger float-right mt-1 hapusPesan" type="button"></a>
                                                     </div>
                                                     <p class="msg m-0">
                                                         <?= nl2br_xss($chat->percakapan) ?>
@@ -115,7 +119,8 @@
                                                     <?php } ?>
                                                 </span>
                                                 <div class="chat-body clearfix">
-                                                    <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
+                                                    <div class="kepala">
+                                                        <strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
                                                     </div>
                                                     <p class="msg m-0">
                                                         <?= nl2br_xss($chat->percakapan) ?>
@@ -192,6 +197,9 @@
     </div>
 </div>
 
+
+<div class="viewmodal" style="display: none;"></div>
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('my-js'); ?>
@@ -203,4 +211,34 @@
 <!-- <script src="<?= base_url() ?>/public/js/chating.js"></script>chat_realtime -->
 <!-- <script type="text/javascript" src="<?= base_url() ?>/public/js/config.js"></script> -->
 <!-- <script type="text/javascript" src="<?= base_url() ?>/public/js/chat_realtime.js"></script> -->
+
+<script>
+    $(document).on('click', '.hapusPesan', function(e) {
+        e.preventDefault();
+        const href = $(this).attr('href');
+        Swal.fire({
+            title: 'Apakah Kamu Yakin?',
+            text: "Pesan akan dihapus secara permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            reverseButtons: true,
+        }).then((result) => {
+            if (result.value) {
+                document.location.href = href;
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                Swal.fire(
+                    'Batal Dihapus',
+                    'Pesan masih aman ^_^',
+                    'error'
+                )
+            }
+        })
+    })
+</script>
 <?= $this->endSection(); ?>

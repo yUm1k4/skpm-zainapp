@@ -229,4 +229,13 @@ class Pengaduan extends BaseController
             return redirect()->back();
         }
     }
+
+    public function hapusPesan($id_percakapan)
+    {
+        // hapus percakapan
+        $this->percakapanModel->where('id_percakapan', $id_percakapan)->delete();
+
+        session()->setFlashdata('message', 'Pesan anda berhasil dihapus');
+        return redirect()->back();
+    }
 }
