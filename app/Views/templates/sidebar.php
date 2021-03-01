@@ -56,7 +56,8 @@
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle align-content-center
                     <?= uri_string() === 'pengaduan' ||
-                        uri_string() === 'pengaduan-kategori'
+                        uri_string() === 'pengaduan-kategori' ||
+                        uri_string() === 'report'
                         ? 'active' : '';
                     ?>">
                             <span class="micon dw dw-edit-2"></span><span class="mtext">Pengaduan</span>
@@ -64,6 +65,7 @@
                         <ul class="submenu">
                             <li><a href="<?= base_url('pengaduan') ?>">Data Pengaduan</a></li>
                             <li><a href="<?= base_url('pengaduan-kategori') ?>">Kategori Pengaduan</a></li>
+                            <li><a href="<?= base_url('report') ?>">Laporan</a></li>
                         </ul>
                     </li>
 
@@ -83,12 +85,6 @@
                             <li><a href="<?= base_url('/masyarakat') ?>">Masyarakat</a></li>
                             <li><a href="<?= base_url('/all-user') ?>">Semua Pengguna</a></li>
                         </ul>
-                    </li>
-                    <li>
-                        <a href="<?= base_url('report') ?>" class="dropdown-toggle no-arrow 
-                        <?= uri_string() === 'report' ? 'active' : '' ?>">
-                            <span class="micon dw dw-invoice"></span><span class="mtext">Laporan</span>
-                        </a>
                     </li>
 
                     <li class="dropdown">
