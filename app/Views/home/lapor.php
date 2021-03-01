@@ -132,7 +132,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form d-flex mb-2">
-                                <label class="mr-2" data-toggle="tooltip" data-placement="top" title="Nama Anda tidak akan terpublikasikan di laporan">Lapor Sebagai Anonim <i class="fa fa-question"></i></label>
+                                <label class="mr-2">Lapor Sebagai Anonim <i class="dw dw-question" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Nama Anda tidak akan terpublikasikan di laporan" title="Informasi"></i></label>
                                 <div class="confirm-checkbox">
                                     <input type="checkbox" name="anonim" id="confirm-checkbox" <?php if (old('anonim')) : ?> checked <?php endif ?>>
                                     <label for="confirm-checkbox" style="border-color: #000;"></label>
@@ -197,5 +197,9 @@
     $(document).ready(function() {
         $('form').parsley();
     });
+    $(function() {
+        $('[data-toggle="popover"]').popover()
+    })
 </script>
+
 <?= $this->endSection(); ?>

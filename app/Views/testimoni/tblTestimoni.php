@@ -37,9 +37,9 @@
     </tbody>
 </table>
 <script>
-    // $(document).ready(function() {
-    //     $('#tblTestimoni').DataTable();
-    // })
+    $(document).ready(function() {
+        $('#tblTestimoni').DataTable();
+    })
 
     function edit(id_testimoni) {
         $.ajax({

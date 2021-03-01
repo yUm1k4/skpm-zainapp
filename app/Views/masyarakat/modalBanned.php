@@ -21,7 +21,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="alasan">Alasan Ngebanned:</label>
+                                    <label for="alasan">Alasan Banned:</label>
                                     <input type="text" name="alasan" class="form-control <?php if (session('errors.alasan')) : ?>is-invalid <?php endif ?>" id="alasan" required data-parsley-required-message="Alasan harus diisi agar jelas" data-parsley-minlength="10" data-parsley-minlength-message="Terlalu singkat, Mohon isi dengan jelas" data-parsley-trigger="keyup" autocomplete="off">
                                     <div class="invalid-feedback errorBan">
                                     </div>
