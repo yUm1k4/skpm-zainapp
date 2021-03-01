@@ -157,6 +157,9 @@ $routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
 $routes->get('/subscriber', 'Subscriber::index', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/subscriber/delete/(:num)', 'Subscriber::delete/$1', ['filter' => 'role:Admin,Petugas']);
 
+// Site Map
+$routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);
+
 // Settings
 $routes->get('setting', 'Setting::index', ['filter' => 'role:Admin']);
 $routes->get('setting/ambildata', 'Setting::ambildata', ['filter' => 'role:Admin']);

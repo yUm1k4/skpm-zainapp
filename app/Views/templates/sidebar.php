@@ -110,6 +110,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="<?= base_url('site-map') ?>" class="dropdown-toggle no-arrow 
+                    <?= uri_string() === 'site-map' ? 'active' : '' ?>">
+                            <span class="micon dw dw-diagram"></span><span class="mtext">Sitemap</span>
+                        </a>
+                    </li>
+                    <li>
                         <a href="<?= base_url('setting') ?>" class="dropdown-toggle no-arrow 
                     <?= uri_string() === 'setting' ? 'active' : '' ?>">
                             <span class="micon dw dw-settings1"></span><span class="mtext">Settings</span>
