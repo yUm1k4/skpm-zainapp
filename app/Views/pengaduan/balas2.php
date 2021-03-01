@@ -154,7 +154,9 @@
                                                 Pending
                                             <?php elseif ($pengaduan[0]->ket == 'proses') : ?>
                                                 Proses
-                                            <?php else : ?>
+                                            <?php elseif ($pengaduan[0]->ket == 'arsip') : ?>
+                                                Diarsipkan
+                                            <?php elseif ($pengaduan[0]->ket == 'selesai') : ?>
                                                 Selesai
                                             <?php endif; ?>
                                         </li>

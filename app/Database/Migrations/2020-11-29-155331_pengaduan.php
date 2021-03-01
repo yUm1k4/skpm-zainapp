@@ -32,12 +32,15 @@ class Pengaduan extends Migration
 				'type'			=> 'longtext',
 			],
 			'status'		=> [
-				'type'			=> 'varchar',
-				'constraint'	=> 255
+				'type'			=> 'enum',
+				'constraint'	=> ['arsip', 'pending', 'proses', 'selesai'],
+				'default'        => 'pending',
 			],
 			'anonim'		=> [
 				'type'			=> 'int',
-				'constraint'	=> 11
+				'constraint'	=> 11,
+				'null'			=> true,
+				'default'		=> 0
 			],
 			'lampiran'			=> [
 				'type'			=> 'varchar',
@@ -45,6 +48,7 @@ class Pengaduan extends Migration
 			],
 			'hasil_akhir'	=> [
 				'type'			=> 'text',
+				'null'			=> true,
 			],
 			'created_at'       => [
 				'type' => 'datetime', 'null' => true

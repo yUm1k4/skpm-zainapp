@@ -113,8 +113,10 @@ $routes->get('/pengaduan/create', 'Pengaduan::create', ['filter' => 'role:Admin,
 $routes->get('/pengaduan/balas/(:any)', 'Pengaduan::balas/$1', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/balas/(:num)/(:any)/(:num)', 'Pengaduan::kirimBalasan/$1/$2/$3', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/delete/(:num)/(:any)', 'Pengaduan::delete/$1/$2', ['filter' => 'role:Admin,Petugas']);
-$routes->post('/pengaduan/formSelesai/(:num)', 'Pengaduan::formSelesai/$1/$2', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/formSelesai/(:num)', 'Pengaduan::formSelesai/$1', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/updateSelesai', 'Pengaduan::updateSelesai', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/formArsip/(:num)', 'Pengaduan::formArsip/$1', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/pengaduan/updateArsip', 'Pengaduan::updateArsip', ['filter' => 'role:Admin,Petugas']);
 
 // Pengaduan Kategori
 $routes->get('/pengaduan-kategori', 'KategoriPengaduan::index', ['filter' => 'role:Admin,Petugas']);

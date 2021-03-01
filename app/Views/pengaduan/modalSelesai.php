@@ -2,8 +2,8 @@
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myLargeModalLabel">Konfirmasi Pengaduan</h4>
-                <button type="button" class="close" data-dismiss="modalselesai" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="myLargeModalLabel">Konfirmasi Pengaduan Selesai</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <?= form_open(base_url('pengaduan/updateSelesai'), ['class' => 'formSelesai', 'id' => 'form'], ['id_pengaduan' => $id_pengaduan]) ?>
             <div class="modal-body">
@@ -25,7 +25,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary btnsimpan">Simpan</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
             <?= form_close() ?>
         </div>

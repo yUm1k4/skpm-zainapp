@@ -1,5 +1,15 @@
 <?= $this->extend('templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    @media (min-width: 646px) {
+        td .badge {
+            width: 100%;
+        }
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('main-content'); ?>
 <div class="card-box mb-30">
     <div class="pd-20">
@@ -54,8 +64,10 @@
                             <?php elseif ($p->ket == 'proses') : ?>
                                 <!-- <td><a class="badge badge-success" href="javascript:;" data-toggle="modal" data-target="#modalselesai">Proses</a></td> -->
                                 <td><button class="badge badge-success" onclick="selesai(<?= $p->id_pengaduan ?>)">Proses</button></td>
-                            <?php else : ?>
+                            <?php elseif ($p->ket == 'selesai') : ?>
                                 <td><button class="badge badge-primary">Selesai</button></td>
+                            <?php elseif ($p->ket == 'arsip') : ?>
+                                <td><button class="badge badge-danger">Diarsipkan</button></td>
                             <?php endif; ?>
 
                             <td class="text-center">
@@ -70,6 +82,12 @@
 
                                         <a class="dropdown-item" href="<?= base_url('/pengaduan/balas/' . $p->kode_pengaduan) ?>"><i class="dw dw-chat3"></i> Balas</a>
 
+                                        <?php if ($p->ket == 'pending') : ?>
+                                            <a href="javascript:;" class="dropdown-item" onclick="arsipkan(<?= $p->id_pengaduan ?>)"><i class="dw dw-folder1"></i> Arsipkan</a>
+                                        <?php elseif ($p->ket == 'proses') : ?>
+                                            <a class="dropdown-item" href="javascript:;" onclick="selesai(<?= $p->id_pengaduan ?>)"><i class="dw dw-checked"></i> Selesai</a>
+                                            <a href="javascript:;" class="dropdown-item" onclick="arsipkan(<?= $p->id_pengaduan ?>)"><i class="dw dw-folder1"></i> Arsipkan</a>
+                                        <?php endif; ?>
                                         <a href="<?= base_url('/pengaduan/delete/' . $p->id_pengaduan . '/' . $p->kode_pengaduan) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
                                 </div>
@@ -143,7 +161,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Status Pengaduan :</label>
-                                    <input readonly type="text" class="form-control" id="status">
+                                    <input readonly type="text" class="form-control text-capitalize" id="status">
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -193,6 +211,27 @@
 <?= $this->section('my-js'); ?>
 
 <script>
+    function arsipkan(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formArsip/' . $p->id_pengaduan) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalarsip').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
     function selesai(id_pengaduan) {
         $.ajax({
             type: "POST",

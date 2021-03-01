@@ -189,4 +189,44 @@ class Pengaduan extends BaseController
             return redirect()->back();
         }
     }
+
+    public function formArsip()
+    {
+        if ($this->request->isAJAX()) {
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+            $row = $this->pengaduanModel->find($id_pengaduan);
+
+            $data = [
+                'id_pengaduan'      => $row['id_pengaduan'],
+                'kode_pengaduan'    => $row['kode_pengaduan']
+            ];
+
+            $msg = [
+                'sukses' => view('pengaduan/modalArsip', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function updateArsip()
+    {
+        if ($this->request->isAJAX()) {
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+            $data = [
+                'id_pengaduan'  =>  $id_pengaduan,
+                'status'        => 'arsip'
+            ];
+
+            $this->pengaduanModel->update($id_pengaduan, $data);
+            $msg = ['sukses' => 'Status Pengaduan telah berhasil diarsipkan!'];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
 }
