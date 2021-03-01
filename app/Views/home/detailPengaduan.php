@@ -21,6 +21,10 @@
         color: #6f42c1;
     }
 
+    .quote-wrapper .quotes.arsip {
+        border-left: 2px solid #dc3545 !important;
+    }
+
     @media (min-width: 320px) and (max-width: 425px) {
         .comments-area {
             padding: 30px 0px;
@@ -62,69 +66,67 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 posts-list">
-                <div>
-                    <div class="comments-area">
-                        <div class="comment-list">
-                            <div class="single-comment justify-content-between d-flex">
-                                <div class="user d-flex">
-                                    <div class="thumb thumb--img">
-                                        <?php if ($pengaduan->user_image == null) { ?>
-                                            <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
-                                        <?php } else { ?>
-                                            <?php if ($pengaduan->anonim == 1) : ?>
-                                                <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
-                                            <?php else : ?>
-                                                <img src="<?= base_url('images/user-images/' . $pengaduan->user_image) ?>" class="img--user" alt="">
-                                            <?php endif; ?>
-                                        <?php } ?>
-                                    </div>
-                                    <div class="desc">
+                <div class="comments-area">
+                    <div class="comment-list">
+                        <div class="single-comment justify-content-between d-flex">
+                            <div class="user d-flex">
+                                <div class="thumb thumb--img">
+                                    <?php if ($pengaduan->user_image == null) { ?>
+                                        <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
+                                    <?php } else { ?>
                                         <?php if ($pengaduan->anonim == 1) : ?>
-                                            <div class="comment mb-0">
-                                                <a href="javascript:;" class="text-success">Melapor sebagai Anonim</a>
-                                            </div>
+                                            <img src="<?= base_url('images/avatar.png') ?>" class="img--user" alt="">
                                         <?php else : ?>
-                                            <div class="comment mb-0">
-                                                <a href="javascript:;" class="text-biru-tua"><?= $pengaduan->fullname ?></a>
-                                            </div>
+                                            <img src="<?= base_url('images/user-images/' . $pengaduan->user_image) ?>" class="img--user" alt="">
                                         <?php endif; ?>
-                                        <p class="comment">
-                                            <?php if ($pengaduan->userid == user()->id) : ?>
-                                                <?= nl2br_xss(limit_word($pengaduan->isi_laporan, 50)) ?>
-                                            <?php else : ?>
-                                                <?= nl2br_xss($pengaduan->isi_laporan) ?>
-                                            <?php endif; ?>
-                                        </p>
-                                        <hr class="custom-hr">
-                                        <div class="row">
-                                            <p class="col-md-12 col-sm-12 date ml-0">Lamppiran: <a href="<?= base_url('laporan/lampiran/' . $pengaduan->lampiran) ?>" target="_blank"><?= $pengaduan->lampiran ?></a></p>
+                                    <?php } ?>
+                                </div>
+                                <div class="desc">
+                                    <?php if ($pengaduan->anonim == 1) : ?>
+                                        <div class="comment mb-0">
+                                            <a href="javascript:;" class="text-success">Melapor sebagai Anonim</a>
                                         </div>
-                                        <?php
-                                        $phpdate = strtotime($pengaduan->pengaduan_dibuat);
-                                        $tanggal = date('Y-m-d H:i:s', $phpdate)
-                                        ?>
-                                        <div class="row">
-                                            <p class="col-md-4 col-sm-12 date ml-0"><?= format_indo($tanggal) ?></p>
-                                            <p class="col-md-3 col-sm-12 date ml-0">Kode: <?= $pengaduan->kode_pengaduan ?></p>
-                                            <p class="col-md-5 col-sm-12 date ml-0">Kategori: <?= $pengaduan->nama_kategori ?></p>
+                                    <?php else : ?>
+                                        <div class="comment mb-0">
+                                            <a href="javascript:;" class="text-biru-tua"><?= $pengaduan->fullname ?></a>
                                         </div>
-                                        <div class="d-flex">
-                                            <div class="reply-btn">
-                                                <a href="<?= previous_url() ?>" class="btn-reply  pl-0 pr-3"><i class="fa fa-arrow-left"></i> Kembali</a>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <h5>
-                                                    <?php if ($pengaduan->ket == 'pending') : ?>
-                                                        <a href="javascript:;" class="text-warning text-uppercase">Pending</a>
-                                                    <?php elseif ($pengaduan->ket == 'arsip') : ?>
-                                                        <a href="javascript:;" class="text-danger text-uppercase">Diarsipkan</a>
-                                                    <?php elseif ($pengaduan->ket == 'proses') : ?>
-                                                        <a href="javascript:;" class="text-success text-uppercase">Ditanggapi</a>
-                                                    <?php else : ?>
-                                                        <a href="javascript:;" class="text-primary text-uppercase">Selesai</a>
-                                                    <?php endif; ?>
-                                                </h5>
-                                            </div>
+                                    <?php endif; ?>
+                                    <p class="comment">
+                                        <?php if ($pengaduan->userid == user()->id) : ?>
+                                            <?= nl2br_xss(limit_word($pengaduan->isi_laporan, 50)) ?>
+                                        <?php else : ?>
+                                            <?= nl2br_xss($pengaduan->isi_laporan) ?>
+                                        <?php endif; ?>
+                                    </p>
+                                    <hr class="custom-hr">
+                                    <div class="row">
+                                        <p class="col-md-12 col-sm-12 date ml-0">Lamppiran: <a href="<?= base_url('laporan/lampiran/' . $pengaduan->lampiran) ?>" target="_blank"><?= $pengaduan->lampiran ?></a></p>
+                                    </div>
+                                    <?php
+                                    $phpdate = strtotime($pengaduan->pengaduan_dibuat);
+                                    $tanggal = date('Y-m-d H:i:s', $phpdate)
+                                    ?>
+                                    <div class="row">
+                                        <p class="col-md-4 col-sm-12 date ml-0"><?= format_indo($tanggal) ?></p>
+                                        <p class="col-md-3 col-sm-12 date ml-0">Kode: <?= $pengaduan->kode_pengaduan ?></p>
+                                        <p class="col-md-5 col-sm-12 date ml-0">Kategori: <?= $pengaduan->nama_kategori ?></p>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="reply-btn">
+                                            <a href="<?= previous_url() ?>" class="btn-reply  pl-0 pr-3"><i class="fa fa-arrow-left"></i> Kembali</a>
+                                        </div>
+                                        <div class="d-flex align-items-center">
+                                            <h5>
+                                                <?php if ($pengaduan->ket == 'pending') : ?>
+                                                    <a href="javascript:;" class="text-warning text-uppercase">Pending</a>
+                                                <?php elseif ($pengaduan->ket == 'arsip') : ?>
+                                                    <a href="javascript:;" class="text-danger text-uppercase">Diarsipkan</a>
+                                                <?php elseif ($pengaduan->ket == 'proses') : ?>
+                                                    <a href="javascript:;" class="text-success text-uppercase">Ditanggapi</a>
+                                                <?php elseif ($pengaduan->ket == 'selesai') : ?>
+                                                    <a href="javascript:;" class="text-primary text-uppercase">Selesai</a>
+                                                <?php endif; ?>
+                                            </h5>
                                         </div>
                                     </div>
                                 </div>
@@ -132,6 +134,17 @@
                         </div>
                     </div>
                 </div>
+
+                <?php if ($pengaduan->ket == "arsip") { ?>
+                    <div class="blog_details">
+                        <h2 class="text-danger">Pengaduan Diarsipkan</h2>
+                        <div class="quote-wrapper">
+                            <div class="quotes arsip">
+                                <p>Pengaduan ini Diarsipkan karena mengandung SARA, Tidak Memiliki Bukti Dukung, Tidak Jelas, Tidak Relevan dengan Kinerja Pemerintah, atau Melanggar <a href="<?= base_url('/ketentuan') ?>">Ketentuan Pengguna</a></p>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
 
                 <!-- Chating -->
                 <div class="row mt-20">
@@ -264,7 +277,10 @@
                                                             <?php elseif ($pengaduan->ket == 'proses') : ?>
                                                                 <!-- Ditanggapi -->
                                                                 <a href="javascript:;" class="text-success text-uppercase">Ditanggapi</a>
-                                                            <?php else : ?>
+                                                            <?php elseif ($pengaduan->ket == 'arsip') : ?>
+                                                                <!-- Diarsipkan -->
+                                                                <a href="javascript:;" class="text-danger text-uppercase">Diarsipkan</a>
+                                                            <?php elseif ($pengaduan->ket == 'selesai') : ?>
                                                                 <!-- Selesai -->
                                                                 <a href="javascript:;" class="text-primary text-uppercase">Selesai</a>
                                                             <?php endif; ?>
@@ -309,7 +325,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- jika user pengaduan tdk sama dgn yg login -->
+
+                            <!-- 
+                                Jika user pengaduan tdk sama dgn yg login
+                            -->
                         <?php else : ?>
                             <div class="card-box overflow-hidden">
                                 <?php if ($pengaduan->anonim == 1) { ?>

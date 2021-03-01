@@ -45,7 +45,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label>Google Map Link <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Ambil link nya saja dari google map, yang iframe src"></i></label>
+                                            <label>Google Map Link <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil link nya saja dari google map, yang iframe src" title="Peraturan"></i></label>
                                             <textarea class="form-control" id="map_link" name="map_link" required data-parsley-trigger="keyup" data-parsley-required-message="Link harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Link terlalu singkat" data-parsley-maxlength="500" data-parsley-maxlength-message="Link terlalu panjang" data-parsley-type="url" data-parsley-type-message="Link tidak valid" placeholder="contoh: https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2958866074787!2d106.98985671434191!3d-6.3557315639462155!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698c22161d4051%3A0x7a0a35b288779341!2sSMK%20Negeri%202%20Kota%20Bekasi!5e0!3m2!1sid!2sid!4v1614485670237!5m2!1sid!2sid"><?= set_value('map_link', $map_link) ?></textarea>
                                             <div class="invalid-feedback errorMap">
                                             </div>
@@ -63,10 +63,9 @@
                                             </div>
                                         </div>
                                         <!-- Personal Setting End -->
-
                                         <!-- Buttun Update -->
                                         <div class="form-group mb-0">
-                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Save & Update</button>
+                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Update Inormasi</button>
                                         </div>
                                     </li>
                                     <li class="weight-500 col-md-6">
@@ -77,7 +76,7 @@
                                             <div class="col-md-12 d-flex">
                                                 <div class="col-md-6 p-0 mr-1">
                                                     <div class="form-group">
-                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Cek icon di website fontawesome.com"></i></label>
+                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil font icon di website fontawesome.com" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('somed_1_font', $somed_1_font) ?>" id="somed_1_font" name="somed_1_font" required data-parsley-required-message="Icon harus diisi" data-parsley-trigger="keyup" data-parsley-minlength="5" data-parsley-minlength-message="Icon terlalu singkat" data-parsley-maxlength="20" data-parsley-maxlength-message="Icon terlalu panjang">
                                                         <div class="invalid-feedback errorSm1Nama">
                                                         </div>
@@ -98,7 +97,7 @@
                                             <div class="col-md-12 d-flex">
                                                 <div class="col-md-6 p-0 mr-1">
                                                     <div class="form-group">
-                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Cek icon di website fontawesome.com"></i></label>
+                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil font icon di website fontawesome.com" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('somed_2_font', $somed_2_font) ?>" id="somed_2_font" name="somed_2_font" required data-parsley-required-message="Icon harus diisi" data-parsley-trigger="keyup" data-parsley-minlength="5" data-parsley-minlength-message="Icon terlalu singkat" data-parsley-maxlength="20" data-parsley-maxlength-message="Icon terlalu panjang">
                                                         <div class="invalid-feedback errorSm2Nama">
                                                         </div>
@@ -119,7 +118,7 @@
                                             <div class="col-md-12 d-flex">
                                                 <div class="col-md-6 p-0 mr-1">
                                                     <div class="form-group">
-                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Cek icon di website fontawesome.com"></i></label>
+                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil font icon di website fontawesome.com" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('somed_3_font', $somed_3_font) ?>" id="somed_3_font" name="somed_3_font" required data-parsley-required-message="Icon harus diisi" data-parsley-trigger="keyup" data-parsley-minlength="5" data-parsley-minlength-message="Icon terlalu singkat" data-parsley-maxlength="20" data-parsley-maxlength-message="Icon terlalu panjang">
                                                         <div class="invalid-feedback errorSm3Nama">
                                                         </div>
@@ -140,7 +139,7 @@
                                             <div class="col-md-12 d-flex">
                                                 <div class="col-md-6 p-0 mr-1">
                                                     <div class="form-group">
-                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Cek icon di website fontawesome.com"></i></label>
+                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil font icon di website fontawesome.com" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" <?php if ($somed_4_font) : ?>value="<?= set_value('somed_4_font', $somed_4_font) ?>" <?php endif ?> id="somed_4_font" name="somed_4_font" data-parsley-trigger="keyup" data-parsley-maxlength="20" data-parsley-maxlength-message="Icon terlalu panjang">
                                                         <div class="invalid-feedback errorSm4Nama">
                                                         </div>
@@ -161,7 +160,7 @@
                                             <div class="col-md-12 d-flex">
                                                 <div class="col-md-6 p-0 mr-1">
                                                     <div class="form-group">
-                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Cek icon di website fontawesome.com"></i></label>
+                                                        <label>Font Awesome Icon <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Ambil font icon di website fontawesome.com" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" <?php if ($somed_5_font) : ?>value="<?= set_value('somed_5_font', $somed_5_font) ?>" <?php endif ?> id="somed_5_font" name="somed_5_font" data-parsley-trigger="keyup" data-parsley-maxlength="20" data-parsley-maxlength-message="Icon terlalu panjang">
                                                         <div class="invalid-feedback errorSm5Nama">
                                                         </div>
@@ -180,7 +179,7 @@
                                         <!-- Social Media End -->
 
                                         <!-- Link Cepat Start -->
-                                        <h4 class="text-blue h5 mb-20 mt-1">Link Cepat <small class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Akan ditampilkan di home bagian footer"></small></h4>
+                                        <h4 class="text-blue h5 mb-20 mt-1">Link Cepat <small class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Akan ditampilkan di home bagian footer" title="Informasi"></small></h4>
                                         <label>Link Cepat 1</label>
                                         <div class="row">
                                             <div class="col-md-12 d-flex">
@@ -194,7 +193,7 @@
                                                 </div>
                                                 <div class="col-md-6 p-0">
                                                     <div class="form-group">
-                                                        <label>Url <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Url harus sudah terdaftar di Routes"></i></label>
+                                                        <label>Url <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Url harus sudah terdaftar di Routes" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('lc_1_url', $lc_1_url) ?>" id="lc_1_url" name="lc_1_url" required data-parsley-trigger="keyup" data-parsley-required-message="Url harus diisi" data-parsley-minlength="1" data-parsley-minlength-message="Url terlalu singkat" data-parsley-maxlength="50" data-parsley-maxlength-message="Url terlalu panjang">
                                                         <div class="invalid-feedback errorLc1Url">
                                                         </div>
@@ -215,7 +214,7 @@
                                                 </div>
                                                 <div class="col-md-6 p-0">
                                                     <div class="form-group">
-                                                        <label>Url <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Url harus sudah terdaftar di Routes"></i></label>
+                                                        <label>Url <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Url harus sudah terdaftar di Routes" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('lc_2_url', $lc_2_url) ?>" id="lc_2_url" name="lc_2_url" required data-parsley-trigger="keyup" data-parsley-required-message="Url harus diisi" data-parsley-minlength="1" data-parsley-minlength-message="Url terlalu singkat" data-parsley-maxlength="50" data-parsley-maxlength-message="Url terlalu panjang">
                                                         <div class="invalid-feedback errorLc2Url">
                                                         </div>
@@ -236,7 +235,7 @@
                                                 </div>
                                                 <div class="col-md-6 p-0">
                                                     <div class="form-group">
-                                                        <label>Url <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Url harus sudah terdaftar di Routes"></i></label>
+                                                        <label>Url <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Url harus sudah terdaftar di Routes" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" value="<?= set_value('lc_3_url', $lc_3_url) ?>" id="lc_3_url" name="lc_3_url" required data-parsley-trigger="keyup" data-parsley-required-message="Url harus diisi" data-parsley-minlength="1" data-parsley-minlength-message="Url terlalu singkat" data-parsley-maxlength="50" data-parsley-maxlength-message="Url terlalu panjang">
                                                         <div class="invalid-feedback errorLc3Url">
                                                         </div>
@@ -257,7 +256,7 @@
                                                 </div>
                                                 <div class="col-md-6 p-0">
                                                     <div class="form-group">
-                                                        <label>Url <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Url harus sudah terdaftar di Routes"></i></label>
+                                                        <label>Url <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Url harus sudah terdaftar di Routes" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" <?php if ($lc_4_url) : ?>value="<?= set_value('lc_4_url', $lc_4_url) ?>" <?php endif ?> id="lc_4_url" name="lc_4_url" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="Url terlalu panjang">
                                                         <div class="invalid-feedback errorLc4Url">
                                                         </div>
@@ -278,7 +277,7 @@
                                                 </div>
                                                 <div class="col-md-6 p-0">
                                                     <div class="form-group">
-                                                        <label>Url <i class="dw dw-question text-blue align-text-top" data-toggle="tooltip" title="Url harus sudah terdaftar di Routes"></i></label>
+                                                        <label>Url <i class="dw dw-question text-blue align-text-top" type="button" data-container="body" data-toggle="popover" data-placement="top" data-content="Url harus sudah terdaftar di Routes" title="Peraturan"></i></label>
                                                         <input type="text" class="form-control" <?php if ($lc_5_url) : ?>value="<?= set_value('lc_5_url', $lc_5_url) ?>" <?php endif ?> id="lc_5_url" name="lc_5_url" data-parsley-trigger="keyup" data-parsley-maxlength="50" data-parsley-maxlength-message="Url terlalu panjang">
                                                         <div class="invalid-feedback errorLc5Url">
                                                         </div>
@@ -287,6 +286,11 @@
                                             </div>
                                         </div>
                                         <!-- Link Cepat End -->
+
+                                        <!-- Buttun Update -->
+                                        <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Update Link</button>
+                                        </div>
                                     </li>
                                 </ul>
                                 <?= form_close() ?>
@@ -579,5 +583,9 @@
                 }
             });
         })
+    })
+
+    $(function() {
+        $('[data-toggle="popover"]').popover()
     })
 </script>

@@ -28,7 +28,7 @@
                     <tr>
                         <th>No.</th>
                         <th>Nama</th>
-                        <th>Kode Pengaduan</th>
+                        <th>Kode</th>
                         <th>Isi Laporan</th>
                         <th>Tanggal</th>
                         <th>Status</th>
@@ -41,7 +41,7 @@
                     foreach ($pengaduan as $p) :
                     ?>
                         <tr>
-                            <td class="text-center"><?= $i++ ?>.</td>
+                            <td class="text-center" width="7%"><?= $i++ ?>.</td>
 
                             <?php if ($p->anonim == 1) : ?>
                                 <td><?= $p->fullname ?> <i class="text-primary">(Anonim)</i></td>
@@ -49,15 +49,15 @@
                                 <td><?= $p->fullname ?></td>
                             <?php endif; ?>
 
-                            <td><?= $p->kode_pengaduan ?></td>
+                            <td class="text-nowrap"><?= $p->kode_pengaduan ?></td>
 
-                            <td><?= limit_word($p->isi_laporan, 10) ?></td>
+                            <td><?= limit_word($p->isi_laporan, 11) ?></td>
 
                             <?php
                             $phpdate = strtotime($p->pengaduan_dibuat);
-                            $tanggal = date('Y-m-d', $phpdate)
+                            $tanggal = date('Y-m-d', $phpdate);
                             ?>
-                            <td><?= mediumdate_indo($tanggal) ?></td>
+                            <td><?= str_replace('-', ' ', mediumdate_indo($tanggal)) ?></td>
 
                             <?php if ($p->ket == 'pending') : ?>
                                 <td><button class="badge badge-warning">Pending</button></td>

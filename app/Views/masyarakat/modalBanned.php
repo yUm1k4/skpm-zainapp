@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title" id="myLargeModalLabel">Konfirmasi Banned User</h4>
-                <button type="button" class="close" data-dismiss="modalbanned" aria-hidden="true">×</button>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <?= form_open(base_url('masyarakat/banned'), ['class' => 'formBanned', 'id' => 'form'], ['user_id' => $user_id]) ?>
             <div class="modal-body">
@@ -22,7 +22,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="alasan">Alasan Ngebanned:</label>
-                                    <input type="text" name="alasan" class="form-control <?php if (session('errors.alasan')) : ?>is-invalid <?php endif ?>" id="alasan" required data-parsley-required-message="Alasan harus diisi agar jelas" data-parsley-minlength="10" data-parsley-minlength-message="Terlalu singkat, Mohon isi dengan jelas" data-parsley-trigger="keyup">
+                                    <input type="text" name="alasan" class="form-control <?php if (session('errors.alasan')) : ?>is-invalid <?php endif ?>" id="alasan" required data-parsley-required-message="Alasan harus diisi agar jelas" data-parsley-minlength="10" data-parsley-minlength-message="Terlalu singkat, Mohon isi dengan jelas" data-parsley-trigger="keyup" autocomplete="off">
                                     <div class="invalid-feedback errorBan">
                                     </div>
                                 </div>
@@ -32,8 +32,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btnsimpan">Simpan</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-danger btnsimpan">Banned</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
             <?= form_close() ?>
         </div>

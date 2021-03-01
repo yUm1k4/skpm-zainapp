@@ -62,6 +62,9 @@
                                         <a href="javascript:;" class="text-success"><i class="dw dw-refresh1"></i> <?= $pengaduanProses ?> Ditanggapi</a>
                                     </li>
                                     <li>
+                                        <a href="javascript:;" class="text-danger"><i class="dw dw-folder"></i> <?= $pengaduanArsip ?> Diarsipkan</a>
+                                    </li>
+                                    <li>
                                         <a href="javascript:;" class="text-dark"><i class="dw dw-file-31"></i> <?= $pengaduanSelesai ?> Selesai</a>
                                     </li>
 
@@ -126,7 +129,7 @@
                                                         <a href="javascript:;" class="text-danger text-uppercase">Diarsipkan</a>
                                                     <?php elseif ($la['ket'] == 'proses') : ?>
                                                         <a href="javascript:;" class="text-success text-uppercase">Ditanggapi</a>
-                                                    <?php else : ?>
+                                                    <?php elseif ($la['ket'] == 'selesai') : ?>
                                                         <a href="javascript:;" class="text-primary text-uppercase">Selesai</a>
                                                     <?php endif; ?>
                                                 </h5>

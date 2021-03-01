@@ -29,7 +29,7 @@
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <?php if (in_groups('Admin')) { ?>
                         <a class="dropdown-item" href="<?= base_url('admin-profile/' . user()->id) ?>"><i class="dw dw-user1"></i>My Profile</a>
-                        <a class="dropdown-item" href="<?= base_url('logout') ?>"><i class="dw dw-settings2"></i> Setting</a>
+                        <a class="dropdown-item" href="<?= base_url('setting') ?>"><i class="dw dw-settings2"></i> Setting</a>
                     <?php } else { ?>
                         <a class="dropdown-item" href="<?= base_url('petugas-profile/' . user()->id) ?>"><i class="dw dw-user1"></i>My Profile</a>
                     <?php } ?>
