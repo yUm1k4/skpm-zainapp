@@ -5,8 +5,6 @@
         <div class="header-search">
             <form>
                 <div class="form-group mb-0">
-                    <!-- <i class="dw dw-search2 search-icon"></i>
-                    <input type="text" class="form-control search-input" placeholder="Cari sesuatu.."> -->
                     <?= "<span>" . format_indo(date('Y-m-d')) . " - <span id='jam'></span>"; ?>
                 </div>
             </form>

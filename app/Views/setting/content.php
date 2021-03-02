@@ -64,9 +64,9 @@
                                         </div>
                                         <!-- Personal Setting End -->
                                         <!-- Buttun Update -->
-                                        <div class="form-group mb-0">
-                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Update Inormasi</button>
-                                        </div>
+                                        <!-- <div class="form-group mb-0">
+                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Save & Update</button>
+                                        </div> -->
                                     </li>
                                     <li class="weight-500 col-md-6">
                                         <!-- Social Media Start -->
@@ -287,11 +287,11 @@
                                         </div>
                                         <!-- Link Cepat End -->
 
-                                        <!-- Buttun Update -->
-                                        <div class="form-group mb-0">
-                                            <button type="submit" class="btn btn-primary btnsimpan" id="form">Update Link</button>
-                                        </div>
                                     </li>
+                                    <!-- Buttun Update -->
+                                    <div class="form-group mb-0 ml-4 mt-n3">
+                                        <button type="submit" class="btn btn-primary btnsimpan" id="form">Save & Update</button>
+                                    </div>
                                 </ul>
                                 <?= form_close() ?>
                             </div>
