@@ -19,6 +19,19 @@
 </style>
 <?= $this->endSection(); ?>
 
+<?= $this->section('preloader'); ?>
+<div id="preloader-active">
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="preloader-inner position-relative">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img pere-text mx-auto my-auto">
+                <p><?= setting()->nama_aplikasi_backend ?></p>
+            </div>
+        </div>
+    </div>
+</div>
+<?= $this->endSection(); ?>
+
 <?= $this->section('content'); ?>
 
 <!-- Header Area Start-->

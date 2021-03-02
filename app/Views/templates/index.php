@@ -13,6 +13,8 @@
 
     <!-- Mobile Specific Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta property="og:site_name" content="<?= setting()->nama_aplikasi_frontend ?>">
+    <meta property="og:title" content="<?= $title; ?>">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -71,20 +73,7 @@
 <body>
 
     <!-- Loader -->
-    <!-- <div class="pre-loader">
-        <div class="pre-loader-box">
-            <div class="loader-logo">
-                <h5 class="text-blue">SKPM - Zain App</h5>
-            </div>
-            <div class='loader-progress' id="progress_div">
-                <div class='bar' id='bar1'></div>
-            </div>
-            <div class='percent' id='percent1'>0%</div>
-            <div class="loading-text">
-                Mohon Tunggu...
-            </div>
-        </div>
-    </div> -->
+    <?= $this->renderSection('preloader') ?>
 
     <!-- Sweet Alert login -->
     <div class="swal-loginSuccess" data-swallogin="<?= session()->get('successLogin'); ?>"></div>

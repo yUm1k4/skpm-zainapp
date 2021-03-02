@@ -31,7 +31,7 @@ helper('zain');
 
 <body class="login-page">
 
-    <!-- Loader -->
+    <!-- Pre-Loader -->
     <!-- <div class="pre-loader">
         <div class="pre-loader-box">
             <div class="loader-logo">

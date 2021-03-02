@@ -4,6 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title -->
     <?php if ($title == null) { ?>
         <title><?= setting()->nama_aplikasi_frontend ?></title>
     <?php } else { ?>
@@ -14,9 +17,22 @@
     <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url() ?>/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url() ?>/images/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url() ?>/images/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="<?= setting()->nama_aplikasi_frontend ?>">
+    <meta name="application-name" content="<?= setting()->nama_aplikasi_frontend ?>">
 
+    <!-- Meta -->
+    <!-- og : open graph -->
+    <meta property="og:site_name" content="<?= setting()->nama_aplikasi_frontend ?>">
+    <meta property="og:title" content="<?= setting()->nama_aplikasi_frontend ?>">
+    <meta property="og:url" content="<?= base_url('/') ?>">
+    <!-- belum buat -->
+    <meta property="og:image" content="<?= base_url('/') ?>">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="720">
+    <meta name="keywords" content="keluhan, pengaduan, masyarakat, berbagi, ponsel kamera, ponsel, gratis, upload, lapor, indonesia, layanan, aspirasi, pelaporan, laporan, website, web, anonim, peduli, zainudin, zainudin abdullah, zain">
+    <meta property="og:description" content="Sistem Keluhan dan Pengaduan Masyarakat <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.">
     <meta name="description" content="Sistem Keluhan dan Pengaduan Masyarakat <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
 
     <!-- CSS here -->
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/bootstrap.min.css">
@@ -53,6 +69,7 @@
             </div>
         </div>
     </div> -->
+    <?= $this->renderSection('preloader') ?>
     <!-- Preloader Start -->
 
     <!-- Sweet Alert login -->
