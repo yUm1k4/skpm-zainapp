@@ -26,7 +26,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-3 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -39,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -65,7 +65,23 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="widget-data">
+                        <div class="h4 mb-0"><?= $pengaduan_arsip ?></div>
+                        <div class="weight-600 font-14">Pengaduan Diarsipkan</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="dw dw-folder1 fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -78,10 +94,7 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-4 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -98,7 +111,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -115,7 +128,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-4 mb-30">
+        <div class="col-xl-3 col-md-6 mb-30">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">

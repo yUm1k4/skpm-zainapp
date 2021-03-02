@@ -28,11 +28,11 @@ class Dashboard extends BaseController
 
 		// Data Jumlah Pengaduan
 		$data['pengaduan_pending'] = $this->pengaduan->select('status')->where('status', 'pending')->countAllResults();
-		
 		$data['pengaduan_proses'] = $this->pengaduan->select('status')->where('status', 'proses')->countAllResults();
 		$data['pengaduan_selesai'] = $this->pengaduan->select('status')->where('status', 'selesai')->countAllResults();
+		$data['pengaduan_arsip'] = $this->pengaduan->select('status')->where('status', 'arsip')->countAllResults();
 		$data['total_pengaduan'] = $this->pengaduan->countAll();
-		$data['testing'] = $this->pengaduan->get()->getResultArray();
+		// $data['testing'] = $this->pengaduan->get()->getResultArray();
 
 		// Data User
 		$groupIdAdmin = 1;
