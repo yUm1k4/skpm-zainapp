@@ -1,9 +1,7 @@
 <?= $this->extend('templates/index'); ?>
 
-<link rel="stylesheet" href="<?= base_url('/vendors/styles/apexcharts.css') ?>">
-
 <?= $this->section('preloader'); ?>
-<div class="pre-loader">
+<!-- <div class="pre-loader">
     <div class="pre-loader-box">
         <div class="loader-logo">
             <h5 class="text-blue"><?= setting()->nama_aplikasi_frontend ?></h5>
@@ -16,7 +14,7 @@
             Mohon Tunggu...
         </div>
     </div>
-</div>
+</div> -->
 <?= $this->endSection(); ?>
 
 <?= $this->section('main-content'); ?>
@@ -166,11 +164,51 @@
 </div>
 
 <!-- Chart -->
-<!-- <div class="bg-white pd-20 card-box mb-30"> -->
-<!-- <h4 class="h4 text-blue">Laporan Masuk</h4>
-    <div id="chart2"></div> -->
-<!-- <canvas id="myChart" width="400" height="150"></canvas> -->
-<!-- </div> -->
+<!-- <div class="card-box mb-30">
+    <div class="pd-20">
+        <div class="row text-center">
+            <div class="col">
+                <div class="title">
+                    <h5>10 Data Pengaduan Terbaru</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pb-20 mx-3">
+        <canvas id="myChart" height="100"></canvas>
+    </div>
+</div> -->
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card-box mb-30 py-2">
+            <div class="pd-10">
+                <div class="text-center">
+                    <div class="col">
+                        <div class="title mb-3">
+                            <h5>Banyak Pengaduan per Kategori</h5>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="pengaduan_kategori" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card-box mb-30 py-2">
+            <div class="pd-10">
+                <div class="text-center">
+                    <div class="col">
+                        <div class="title mb-3">
+                            <h5>Banyak Pengaduan per Bulan</h5>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="pengaduan_bulan" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Data Laporan -->
 <div class="card-box mb-30">
@@ -225,45 +263,84 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('my-js'); ?>
-<script src="<?= base_url() ?>/vendors/chart/dist/Chart.min.js"></script>
+<script src="<?= base_url('/vendors/chart/Chart.bundle.min.js') ?>"></script>
 
 <script>
-    var ctx = document.getElementById('myChart');
-    var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-            datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
+    var pengaduan_kategori = document.getElementById('pengaduan_kategori');
+    var data_pengaduan_kategori = [];
+    var label_pengaduan_kategori = [];
+
+    <?php foreach ($pengaduan_per_kategori as $key => $value) : ?>
+        data_pengaduan_kategori.push(<?= $value->jumlah ?>);
+        // karena label itu minta string, kasih aja ''
+        label_pengaduan_kategori.push('<?= $value->nama_kategori ?>');
+    <?php endforeach; ?>
+    // Chart.defaults.global.legend.display = false;
+
+    var data_pengaduan_per_kategori = {
+        datasets: [{
+            data: data_pengaduan_kategori,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
+                'rgba(255, 206, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+                'rgba(153, 102, 255, 0.7)',
+                'rgba(255, 159, 64, 0.7)',
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
+                'rgba(255, 206, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+                'rgba(153, 102, 255, 0.7)',
+                'rgba(255, 159, 64, 0.7)',
+            ],
+        }],
+        labels: label_pengaduan_kategori,
+
+    }
+
+    var chart_pengaduan_kategori = new Chart(pengaduan_kategori, {
+        type: 'doughnut',
+        data: data_pengaduan_per_kategori,
         options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
+            legend: {
+                display: false,
+            },
+        },
+    })
+</script>
+
+<script>
+    var pengaduan_bulan = document.getElementById('pengaduan_bulan');
+    var data_pengaduan_bulan = [];
+    var label_pengaduan_bulan = [];
+
+    <?php
+    foreach ($pengaduan_dibuat as $key => $value) : ?>
+        data_pengaduan_bulan.push(<?= $value->jumlah ?>);
+        label_pengaduan_bulan.push('<?= bulan($value->bulan) ?>');
+    <?php endforeach; ?>
+
+    var data_pengaduan_per_bulan = {
+        datasets: [{
+            label: 'Jumlah',
+            data: data_pengaduan_bulan,
+            // backgroundColor: 'rgba(27, 0, 255, 0.7)',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            borderColor: 'rgba(27, 0, 255, 0.7)',
+        }],
+        labels: label_pengaduan_bulan,
+    }
+
+    var chart_pengaduan_bulan = new Chart(pengaduan_bulan, {
+        type: 'line',
+        data: data_pengaduan_per_bulan,
+        options: {
+            legend: {
+                display: false,
+            },
+        },
     });
 </script>
+
 <?= $this->endSection(); ?>

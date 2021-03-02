@@ -24,7 +24,15 @@ class Dashboard extends BaseController
 		// Quotes
 		$data['quote'] = $this->quotes->getRandom();
 
-		// $data['chartJumlah'] =  
+		// Chart
+		$data['pengaduan_per_kategori'] = $this->pengaduan->select('COUNT(pengaduan.kategori_id) AS jumlah, pk.nama_kategori')
+			->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id', 'left')
+			->groupBy('pengaduan.kategori_id')
+			->get()->getResult();
+		$data['pengaduan_dibuat'] = $this->pengaduan->select('MONTH(created_at) as bulan, COUNT(id_pengaduan) AS jumlah')
+			->groupBy('MONTH(created_at)')
+			->like('created_at', date('Y'))
+			->get()->getResult();
 
 		// Data Jumlah Pengaduan
 		$data['pengaduan_pending'] = $this->pengaduan->select('status')->where('status', 'pending')->countAllResults();
