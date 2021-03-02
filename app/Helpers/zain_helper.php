@@ -10,6 +10,23 @@ use App\Models\SettingModel;
 // ---> Helper Salam
 //ambil jam dan menit
 
+/**
+ * ex: url(2) == 'user' |
+ * $no = segment ke (sekian) |
+ * harus berupa nomor
+ */
+function url($no)
+{
+    $uri = current_url(true);
+    $url = $uri->getSegments()[$no];
+    return $url;
+}
+
+/**
+ * ex: setting()->nama_field |
+ * Utk tabel setting |
+ * Mengembalikan berupa object
+ */
 function setting()
 {
     $setting = new SettingModel;
@@ -18,17 +35,12 @@ function setting()
     return $data;
 }
 
-
-function helper_test($isi)
-{
-    echo $isi . ' + isi';
-}
-
+/**
+ * ex: salam() |
+ * Utk salam berdasarkan waktu |
+ */
 function salam($jam)
 {
-    //ambil jam dan menit
-    $jam = date('H:i');
-
     //atur salam menggunakan IF
     if ($jam > '05:00' && $jam < '09:30') {
         $salam = 'Pagi';
@@ -43,18 +55,32 @@ function salam($jam)
     return 'Selamat ' . $salam;
 }
 
+/**
+ * ex: nl2br_xss("kalimat_panjang") |
+ * $str = kalimat panjangnya |
+ * Berfungsi agar mencegah xss, tetapi masih bisa menampilkan tag html
+ */
 function nl2br_xss($str)
 {
     echo nl2br(htmlspecialchars($str, ENT_QUOTES));
 }
 
-// ---> Helper anti scrip XSS
+/**
+ * ex: xss("kalimat_panjang") |
+ * $str = kalimat panjangnya |
+ * Berfungsi agar mencegah xss saja
+ */
 function xss($str)
 {
     echo htmlentities($str, ENT_QUOTES, 'UTF-8');
 }
 
-// ---> Helper Limiter
+/**
+ * Berfungsi membatasi kata |
+ * $str = kalimat panjangnya |
+ * ex: limit_word('aku tidak makan nasi', 3) |
+ * Hasil aku tidak makan...
+ */
 function limit_word($string, $word_limit = null)
 {
     $words = explode(' ', $string);
@@ -76,10 +102,15 @@ function clean_text($text)
 #2. Short date, dengan format (‘5/09/2017’)                 | shortdate_indo()
 #3. Medium date, dengan format (‘5-Sep-2017’)               | mediumdate_indo()
 #4. Long date, dengan format (‘Selasa, 5 September 2017’)   | longdate_indo()
-#5. Waktu Format Indp, dgn format ("Selasa, 09 Des 2020 09:46) | format_indo($tanggal)
+#5. Waktu Format Indp, dgn format ("Selasa, 09 Des 2020 09:46") | format_indo($tanggal)
 
 // Waktu dan Tanggal
 if (!function_exists('format_indo')) {
+    /**
+     * ex: format_indo(date('d m Y')) |
+     * $date bisa berupa date() atau date_time() |
+     * Hasil: Selasa, 09 Des 2020 09:46
+     */
     function format_indo($date)
     {
         date_default_timezone_set('Asia/Jakarta');
@@ -100,6 +131,11 @@ if (!function_exists('format_indo')) {
 }
 
 if (!function_exists('tgl_indo')) {
+    /**
+     * ex: date_indo(date('d m Y')) |
+     * $date bisa berupa date() atau date_time() |
+     * Hasil: 5 September 2017
+     */
     function date_indo($tgl)
     {
         $ubah = gmdate($tgl, time() + 60 * 60 * 8);
@@ -156,6 +192,11 @@ if (!function_exists('bulan')) {
 
 //Format Shortdate
 if (!function_exists('shortdate_indo')) {
+    /**
+     * ex: shortdate_indo(date('d m Y')) |
+     * $date bisa berupa date() |
+     * Hasil: 5/09/2021
+     */
     function shortdate_indo($tgl)
     {
         $ubah = gmdate($tgl, time() + 60 * 60 * 8);
@@ -212,6 +253,11 @@ if (!function_exists('short_bulan')) {
 
 //Format Medium date
 if (!function_exists('mediumdate_indo')) {
+    /**
+     * ex: mediumdate_indo(date('d m Y')) |
+     * $date bisa berupa date() atau date_time() |
+     * Hasil: 10-Okt-2021
+     */
     function mediumdate_indo($tgl)
     {
         $ubah = gmdate($tgl, time() + 60 * 60 * 8);
@@ -268,6 +314,12 @@ if (!function_exists('medium_bulan')) {
 
 //Long date indo Format
 if (!function_exists('longdate_indo')) {
+    /**
+     * ex: longdate_indo(date('d m Y')) |
+     * $date bisa berupa date() atau date_time() |
+     * Tanpa menampilkan jam nya |
+     * Hasil: Selasa, 5 September 2017
+     */
     function longdate_indo($tanggal)
     {
         $ubah = gmdate($tanggal, time() + 60 * 60 * 8);

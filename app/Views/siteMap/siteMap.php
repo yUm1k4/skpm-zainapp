@@ -1,5 +1,22 @@
 <?= $this->extend('templates/index'); ?>
 
+<?= $this->section('preloader'); ?>
+<div class="pre-loader">
+    <div class="pre-loader-box">
+        <div class="loader-logo">
+            <h5 class="text-blue"><?= setting()->nama_aplikasi_frontend ?></h5>
+        </div>
+        <div class='loader-progress' id="progress_div">
+            <div class='bar' id='bar1'></div>
+        </div>
+        <div class='percent' id='percent1'>0%</div>
+        <div class="loading-text">
+            Mohon Tunggu...
+        </div>
+    </div>
+</div>
+<?= $this->endSection(); ?>
+
 <?= $this->section('main-content'); ?>
 <div class="min-height-200px">
     <!-- 

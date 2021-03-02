@@ -35,39 +35,6 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="<?= base_url('/vendors/select2/dist/js/select2.full.min.js') ?>"></script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-119386393-1');
-    </script> -->
-
-    <!-- Pusher -->
-    <!-- <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
-    <script>
-        Pusher.logToConsole = true;
-
-        var pusher = new Pusher('58fc28c4dc0c682f10c9', {
-            cluster: 'ap1'
-        });
-
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function(data) {
-            // alert(JSON.stringify(data));
-            xhr = $.ajax({
-                method: "POST",
-                url: "<?= base_url('notif/kirimNotif') ?>",
-                success: function(response) {
-                    $('.list-notifikasi').html(response);
-                }
-            })
-        });
-    </script> -->
 </head>
 
 <body>

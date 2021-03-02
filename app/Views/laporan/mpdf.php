@@ -153,7 +153,7 @@ use CodeIgniter\I18n\Time;
                 <div><?= setting()->nama_aplikasi_frontend ?></div>
                 <div><?= setting()->nohp_setting ?></div>
                 <div><a href="mailto:<?= setting()->email_setting ?>"><?= setting()->email_setting ?></a></div>
-                <div><?= setting()->alamat_setting ?>1</div>
+                <div><?= setting()->alamat_setting ?></div>
             </div>
         </div>
     </header>
