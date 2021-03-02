@@ -67,6 +67,7 @@ class Pengaduan extends BaseController
 
     public function kirimBalasan($id_pengaduan, $kode_pengaduan, $userid)
     {
+        $row = $this->pengaduanModel->where('id_pengaduan', $id_pengaduan)->get()->getRowArray();
         $rules = [
             'pesan' => [
                 'rules'     => 'required|max_length[65534]|min_length[3]',
@@ -84,10 +85,6 @@ class Pengaduan extends BaseController
             return redirect()->back();
         }
 
-        $savePengaduan = [
-            'status'            => 'proses'
-        ];
-
         $savePercakapan = [
             'kode_pengaduan'    => $kode_pengaduan,
             'user_id'           => $userid,
@@ -95,7 +92,14 @@ class Pengaduan extends BaseController
             'percakapan'        => $this->request->getPost('pesan')
         ];
 
-        $this->pengaduanModel->update($id_pengaduan, $savePengaduan);
+        // jika status sblmnya pending, ubah jadi proses 
+        if ($row['status'] == 'pending') {
+            $savePengaduan = [
+                'status'            => 'proses'
+            ];
+            $this->pengaduanModel->update($id_pengaduan, $savePengaduan);
+        }
+
         $this->percakapanModel->save($savePercakapan);
 
         if ($savePercakapan) {
