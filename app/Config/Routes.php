@@ -162,11 +162,10 @@ $routes->post('/subscriber/delete/(:num)', 'Subscriber::delete/$1', ['filter' =>
 $routes->get('filter-kata', 'FilterKata::index', ['filter' => 'role:Admin']);
 $routes->get('filter-kata/ambildata', 'FilterKata::ambildata', ['filter' => 'role:Admin']);
 $routes->get('filter-kata/formtambah', 'FilterKata::formtambah', ['filter' => 'role:Admin']);
-$routes->get('filter-kata/formtambah', 'FilterKata::formtambah', ['filter' => 'role:Admin']);
 $routes->post('filter-kata/simpandata', 'FilterKata::simpandata', ['filter' => 'role:Admin']);
-$routes->get('filter-kata/formedit', 'FilterKata::formedit', ['filter' => 'role:Admin']);
+$routes->post('filter-kata/formedit', 'FilterKata::formedit', ['filter' => 'role:Admin']);
 $routes->post('filter-kata/updatedata', 'FilterKata::updatedata', ['filter' => 'role:Admin']);
-$routes->get('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin']);
+$routes->post('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin']);
 
 
 // Site Map
