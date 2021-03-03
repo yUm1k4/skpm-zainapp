@@ -52,13 +52,12 @@ class Dashboard extends BaseController
 
 		// Data Pengaduan Terbaru
 		// $this->pengaduan->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
-		$this->pengaduan->select('fullname, kode_pengaduan, isi_laporan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
-		$this->pengaduan->join('users', 'users.id = pengaduan.user_id');
-		$this->pengaduan->orderBy('pengaduan_dibuat', 'DESC');
-		$this->pengaduan->limit(10);
+		$this->pengaduan->select('*, fullname, kode_pengaduan, isi_laporan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+			->join('users', 'users.id = pengaduan.user_id')
+			->orderBy('pengaduan_dibuat', 'ASC')
+			->limit(10);
 
-		$query = $this->pengaduan->get();
-		$data['pengaduan_terbaru'] = $query->getResult();
+		$data['pengaduan_terbaru'] = $this->pengaduan->get()->getResult();
 
 		return view('dashboard/index', $data);
 	}

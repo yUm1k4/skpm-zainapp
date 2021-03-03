@@ -1,5 +1,15 @@
 <?= $this->extend('templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    @media (min-width: 646px) {
+        td .badge {
+            width: 100%;
+        }
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('preloader'); ?>
 <!-- <div class="pre-loader">
     <div class="pre-loader-box">
@@ -252,7 +262,7 @@
                         <tr class="text-center">
                             <td><?= xss($pt->fullname) ?></td>
                             <td><?= xss($pt->kode_pengaduan) ?></td>
-                            <td><?= xss(limit_word($pt->isi_laporan, 20)) ?></td>
+                            <td><?= sensor(xss(limit_word($pt->isi_laporan, 20))) ?></td>
                             <?php
                             $phpdate = strtotime($pt->pengaduan_dibuat);
                             $tanggal = date('Y-m-d', $phpdate)
@@ -262,8 +272,10 @@
                                 <td><button class="badge badge-warning">Pending</button></td>
                             <?php elseif ($pt->ket == 'proses') : ?>
                                 <td><button class="badge badge-success">Proses</button></td>
-                            <?php else : ?>
+                            <?php elseif ($pt->ket == 'selesai') : ?>
                                 <td><button class="badge badge-primary">Selesai</button></td>
+                            <?php elseif ($pt->ket == 'arsip') : ?>
+                                <td><button class="badge badge-danger">Diarsipkan</button></td>
                             <?php endif; ?>
                         </tr>
                     <?php } ?>

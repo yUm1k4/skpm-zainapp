@@ -51,7 +51,7 @@
 
                             <td class="text-nowrap"><?= $p->kode_pengaduan ?></td>
 
-                            <td><?= limit_word($p->isi_laporan, 11) ?></td>
+                            <td><?= sensor(limit_word($p->isi_laporan, 15)) ?></td>
 
                             <?php
                             $phpdate = strtotime($p->pengaduan_dibuat);
@@ -76,7 +76,7 @@
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-detail-pengaduan" type="button" data-userid="<?= xss($p->id_pengaduan); ?>" data-username="<?= xss($p->username); ?>" data-email="<?= xss($p->email); ?>" data-fullname="<?= xss($p->fullname); ?>" data-nik="<?= xss($p->nik); ?>" data-nohp="<?= xss($p->no_hp); ?>" data-alamat="<?= xss($p->alamat); ?>" data-ket="<?= xss($p->ket) ?>" data-kode="<?= xss($p->kode_pengaduan) ?>" data-kategori="<?= xss($p->nama_kategori); ?>" data-tanggal="<?= xss(longdate_indo($tanggal)); ?>" data-isi="<?= xss($p->isi_laporan); ?>" data-lampiran="<?= xss($p->lampiran); ?>">
+                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-detail-pengaduan" type="button" data-userid="<?= xss($p->id_pengaduan); ?>" data-username="<?= xss($p->username); ?>" data-email="<?= xss($p->email); ?>" data-fullname="<?= xss($p->fullname); ?>" data-nik="<?= xss($p->nik); ?>" data-nohp="<?= xss($p->no_hp); ?>" data-alamat="<?= xss($p->alamat); ?>" data-ket="<?= xss($p->ket) ?>" data-kode="<?= xss($p->kode_pengaduan) ?>" data-kategori="<?= xss($p->nama_kategori); ?>" data-tanggal="<?= xss(longdate_indo($tanggal)); ?>" data-isi="<?= xss(sensor($p->isi_laporan)); ?>" data-lampiran="<?= xss($p->lampiran); ?>">
                                             <i class=" dw dw-eye"></i> Detail
                                         </a>
 
