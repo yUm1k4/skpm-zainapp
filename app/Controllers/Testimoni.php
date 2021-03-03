@@ -45,7 +45,6 @@ class Testimoni extends BaseController
 
     public function getUsers()
     {
-
         $request = service('request');
         $postData = $request->getPost();
         $response = array();

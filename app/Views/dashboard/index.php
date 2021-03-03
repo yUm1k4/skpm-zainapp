@@ -186,7 +186,7 @@
                 <div class="text-center">
                     <div class="col">
                         <div class="title mb-3">
-                            <h5>Banyak Pengaduan per Kategori</h5>
+                            <h5>Pengaduan per Kategori</h5>
                         </div>
                     </div>
                 </div>
@@ -197,10 +197,22 @@
     <div class="col-md-6">
         <div class="card-box mb-30 py-2">
             <div class="pd-10">
-                <div class="text-center">
+                <div class="row px-3">
                     <div class="col">
-                        <div class="title mb-3">
-                            <h5>Banyak Pengaduan per Bulan</h5>
+                        <div class="title mb-2">
+                            <h5>Pengaduan per Bulan</h5>
+                        </div>
+                    </div>
+                    <div class="col-auto text-right">
+                        <div class="dropdown">
+                            <a class="btn btn-primary dropdown-toggle py-1" href="#" role="button" data-toggle="dropdown">
+                                2020
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item text-center py-1" href="#">Tahun 2021</a>
+                                <a class="dropdown-item text-center py-1" href="#">Tahun 2022</a>
+                                <a class="dropdown-item text-center py-1" href="#">Tahun 2023</a>
+                            </div>
                         </div>
                     </div>
                 </div>

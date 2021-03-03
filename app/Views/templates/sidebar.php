@@ -22,6 +22,7 @@
                     </ul>
                 </li>
 
+                <!-- Sidebar Petugas start -->
                 <?php if (in_groups('Petugas')) { ?>
                     <li>
                         <a href="<?= base_url('pengaduan') ?>" class="dropdown-toggle no-arrow 
@@ -50,10 +51,10 @@
                             <span class="micon dw dw-star"></span><span class="mtext">Subscriber</span>
                         </a>
                     </li>
-
-
                 <?php } ?>
+                <!-- Sidebar Petugas end -->
 
+                <!-- Sidebar Admin start-->
                 <?php if (in_groups('Admin')) { ?>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle align-content-center
@@ -124,6 +125,7 @@
                         </a>
                     </li>
                 <?php } ?>
+                <!-- Sidebar Admin end -->
             </ul>
         </div>
     </div>
