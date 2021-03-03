@@ -107,17 +107,26 @@
                     </li>
 
                     <li>
+                        <a href="<?= base_url('filter-kata') ?>" class="dropdown-toggle no-arrow 
+                    <?= url(2) == 'filter-kata' ? 'active' : '' ?>">
+                            <span class="micon dw dw-filter1"></span><span class="mtext">Filter Kata Kotor</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="<?= base_url('quotes') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'quotes' ? 'active' : '' ?>">
                             <span class="micon dw dw-quotation"></span><span class="mtext">Quotes</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="<?= base_url('site-map') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'site-map' ? 'active' : '' ?>">
                             <span class="micon dw dw-diagram"></span><span class="mtext">Sitemap</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="<?= base_url('setting') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'setting' ? 'active' : '' ?>">

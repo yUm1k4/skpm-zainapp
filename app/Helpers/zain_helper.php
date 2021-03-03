@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\SettingModel;
+use App\Models\FilterKataModel;
 /* --- Daftar Helper ---
 1. Helper Anti Scrip XSS
 2. Helper Notifikasi
@@ -348,4 +349,24 @@ if (!function_exists('longdate_indo')) {
         }
         return $nama_hari . ', ' . $tgl . ' ' . $bulan . ' ' . $thn;
     }
+}
+
+/**
+ * ex: sensor($kalimat) |
+ * 
+ * Berfungsi untuk menyaring kata kotor yang terdapat di table filter_kata_kotor
+ */
+function sensor($kalimat)
+{
+    $filter = new FilterKataModel;
+    $data = $filter->findAll();
+
+    $katakotor = array_column($data, 'kata_kotor');
+    $filterkata = array_column($data, 'filter_kata');
+
+    $kalimat = strtolower($kalimat);
+
+    $hasil = str_replace($katakotor, $filterkata, $kalimat);
+
+    return $hasil;
 }

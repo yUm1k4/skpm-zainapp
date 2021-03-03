@@ -70,6 +70,7 @@
             <li><span><b>Gratis :</b> Penyedia layanan tidak memungut biaya sepeserpun terhadap penggunaan layanan. Kecuali kouta internet yang digunakan untuk mengakses halaman-halaman yang ada di SKPM - Zain App.</span></li>
             <li><span><b>Anonim :</b> Pengguna memiliki hak jaminan anonimitas dan kerahasiaan keluhan jika saat melapor memilih fitur anonim, memiliki fungsi yaitu data pelapor tidak dapat dilihat oleh khalayak umum kecuali Admin</span></li>
             <li><span><b>Tracking ID :</b> Kode Pengaduan yang berguna untuk meninjau proses tindak lanjut laporan yang disampaikan oleh masyarakat.</span></li>
+            <li><span><b>Chatting :</b> Pengguna dapat berbicara melalui aplikasi atau chatting kepada petugas, untuk menindaklanjuti laporannya.</span></li>
         </ol>
     </div>
 

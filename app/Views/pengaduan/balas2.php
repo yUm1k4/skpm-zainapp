@@ -104,7 +104,7 @@
                                                         <a href="<?= base_url('pengaduan/hapusPesan/' . $chat->id_percakapan) ?>" class="dw dw-trash text-danger float-right mt-1 hapusPesan" type="button"></a>
                                                     </div>
                                                     <p class="msg m-0">
-                                                        <?= nl2br_xss($chat->percakapan) ?>
+                                                        <?= nl2br_xss(sensor($chat->percakapan)) ?>
                                                     </p>
                                                 </div>
                                             </li>

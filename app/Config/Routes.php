@@ -158,6 +158,17 @@ $routes->get('/quotes/hapus', 'Quotes::hapus', ['filter' => 'role:Admin']);
 $routes->get('/subscriber', 'Subscriber::index', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/subscriber/delete/(:num)', 'Subscriber::delete/$1', ['filter' => 'role:Admin,Petugas']);
 
+// Filter Kata Kotor
+$routes->get('filter-kata', 'FilterKata::index', ['filter' => 'role:Admin']);
+$routes->get('filter-kata/ambildata', 'FilterKata::ambildata', ['filter' => 'role:Admin']);
+$routes->get('filter-kata/formtambah', 'FilterKata::formtambah', ['filter' => 'role:Admin']);
+$routes->get('filter-kata/formtambah', 'FilterKata::formtambah', ['filter' => 'role:Admin']);
+$routes->post('filter-kata/simpandata', 'FilterKata::simpandata', ['filter' => 'role:Admin']);
+$routes->get('filter-kata/formedit', 'FilterKata::formedit', ['filter' => 'role:Admin']);
+$routes->post('filter-kata/updatedata', 'FilterKata::updatedata', ['filter' => 'role:Admin']);
+$routes->get('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin']);
+
+
 // Site Map
 $routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);
 
