@@ -93,9 +93,9 @@
                                     <?php endif; ?>
                                     <p class="comment">
                                         <?php if ($pengaduan->userid == user()->id) : ?>
-                                            <?= nl2br_xss(limit_word($pengaduan->isi_laporan, 50)) ?>
+                                            <?= nl2br_xss(sensor(limit_word($pengaduan->isi_laporan, 50))) ?>
                                         <?php else : ?>
-                                            <?= nl2br_xss($pengaduan->isi_laporan) ?>
+                                            <?= nl2br_xss(sensor($pengaduan->isi_laporan)) ?>
                                         <?php endif; ?>
                                     </p>
                                     <hr class="custom-hr">
@@ -177,17 +177,14 @@
                                                     <li class="right clearfix bachors">
                                                         <span class="chat-img pull-right d-none d-md-block d-sm-block">
                                                             <!-- jika user punya foto profile -->
-                                                            <?php if ($pengaduan->user_image != null) { ?>
-                                                                <!-- jika melapor sebagai anonim -->
-                                                                <?php if ($pengaduan->anonim == 1) : ?>
-                                                                    <img src="<?= base_url('images/avatar.png/') ?>" alt="User Avatar">
-                                                                    <!-- jika tidak -->
-                                                                <?php else : ?>
-                                                                    <img src="<?= base_url() . '/images/user-images/' . $pengaduan->user_image ?>" alt="User Avatar">
-                                                                <?php endif; ?>
-                                                                <!-- jika user tdk punya foto profile -->
+                                                            <?php if ($pengaduan->user_image == null) { ?>
+                                                                <img src="<?= base_url('images/avatar.png') ?>" alt="">
                                                             <?php } else { ?>
-                                                                <img src="<?= base_url('images/avatar.png/') ?>" alt="User Avatar">
+                                                                <?php if ($pengaduan->anonim == 1) : ?>
+                                                                    <img src="<?= base_url('images/avatar.png') ?>" alt="">
+                                                                <?php else : ?>
+                                                                    <img src="<?= base_url('images/user-images/' . $pengaduan->user_image) ?>" alt="">
+                                                                <?php endif; ?>
                                                             <?php } ?>
                                                         </span>
                                                         <div class="chat-body clearfix mb-1">
@@ -201,7 +198,7 @@
                                                                 </div>
                                                             <?php endif; ?>
                                                             <p class="msg m-0">
-                                                                <?= nl2br_xss($pengaduan->isi_laporan) ?>
+                                                                <?= nl2br_xss(sensor($pengaduan->isi_laporan)) ?>
                                                             </p>
                                                         </div>
                                                     </li>
@@ -211,10 +208,14 @@
                                                         <?php if ($chat->petugas_id == 0) : ?>
                                                             <li class="right clearfix bachors">
                                                                 <span class="chat-img pull-right d-none d-md-block d-sm-block">
-                                                                    <?php if ($chat->user_image != null) { ?>
-                                                                        <img src="<?= base_url() . '/images/user-images/' . $chat->user_image ?>" alt="User Avatar">
+                                                                    <?php if ($pengaduan->user_image == null) { ?>
+                                                                        <img src="<?= base_url('images/avatar.png') ?>" alt="">
                                                                     <?php } else { ?>
-                                                                        <img src="<?= base_url('images/avatar.png/') ?>" alt="User Avatar">
+                                                                        <?php if ($pengaduan->anonim == 1) : ?>
+                                                                            <img src="<?= base_url('images/avatar.png') ?>" alt="">
+                                                                        <?php else : ?>
+                                                                            <img src="<?= base_url('images/user-images/' . $pengaduan->user_image) ?>" alt="">
+                                                                        <?php endif; ?>
                                                                     <?php } ?>
                                                                 </span>
                                                                 <div class="chat-body clearfix mb-1">
@@ -228,7 +229,7 @@
                                                                         </div>
                                                                     <?php endif; ?>
                                                                     <p class="msg m-0">
-                                                                        <?= nl2br(htmlspecialchars($chat->percakapan, ENT_QUOTES)) ?>
+                                                                        <?= nl2br_xss(sensor($chat->percakapan)) ?>
                                                                     </p>
                                                                 </div>
                                                             </li>
@@ -241,7 +242,7 @@
                                                                     <div class="kepala"><strong class="primary-font">Admin | </strong><?= $chat->fullname ?>
                                                                     </div>
                                                                     <p class="msg m-0">
-                                                                        <?= nl2br(htmlspecialchars($chat->percakapan, ENT_QUOTES)) ?>
+                                                                        <?= nl2br_xss(sensor($chat->percakapan)) ?>
                                                                     </p>
                                                                 </div>
                                                             </li>

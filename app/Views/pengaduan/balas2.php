@@ -82,7 +82,7 @@
                                         <div class="chat-body clearfix">
                                             <div class="kepala"><strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong></div>
                                             <p class="msg m-0">
-                                                <?= nl2br_xss($pengaduan[0]->isi_laporan) ?>
+                                                <?= nl2br_xss(sensor($pengaduan[0]->isi_laporan)) ?>
                                             </p>
                                         </div>
                                     </li>
@@ -123,7 +123,7 @@
                                                         <strong class="primary-font"><?= $pengaduan[0]->fullname ?></strong>
                                                     </div>
                                                     <p class="msg m-0">
-                                                        <?= nl2br_xss($chat->percakapan) ?>
+                                                        <?= nl2br_xss(sensor($chat->percakapan)) ?>
                                                         <?php // xss()->nama_field 
                                                         ?>
                                                     </p>

@@ -82,7 +82,7 @@
                                                 </div>
                                             <?php endif; ?>
                                             <p class="comment">
-                                                <?= xss(limit_word($la['isi_laporan'], 50)) ?>
+                                                <?= xss(sensor(limit_word($la['isi_laporan'], 50))) ?>
                                             </p>
                                             <?php
                                             $phpdate = strtotime($la['pengaduan_dibuat']);

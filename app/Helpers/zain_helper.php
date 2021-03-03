@@ -364,7 +364,7 @@ function sensor($kalimat)
     $katakotor = array_column($data, 'kata_kotor');
     $filterkata = array_column($data, 'filter_kata');
 
-    $kalimat = strtolower($kalimat);
+    $kecil = strtolower($kalimat);
 
     $hasil = str_replace($katakotor, $filterkata, $kalimat);
 
