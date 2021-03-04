@@ -234,6 +234,47 @@ class Pengaduan extends BaseController
         }
     }
 
+    public function formBatalArsip()
+    {
+        if ($this->request->isAJAX()) {
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+            $row = $this->pengaduanModel->find($id_pengaduan);
+
+            $data = [
+                'id_pengaduan'      => $row['id_pengaduan'],
+                'kode_pengaduan'    => $row['kode_pengaduan']
+            ];
+
+            $msg = [
+                'sukses' => view('pengaduan/modalBatalArsip', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function updateBatalArsip()
+    {
+        if ($this->request->isAJAX()) {
+            $id_pengaduan = $this->request->getVar('id_pengaduan');
+            $data = [
+                'id_pengaduan'  =>  $id_pengaduan,
+                'status'        => 'proses'
+            ];
+
+            $this->pengaduanModel->update($id_pengaduan, $data);
+            $msg = ['sukses' => 'Pengaduan batal diarsipkan, status menjadi Proses'];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+
     public function hapusPesan($id_percakapan)
     {
         // hapus percakapan

@@ -62,8 +62,7 @@
                             <?php if ($p->ket == 'pending') : ?>
                                 <td><button class="badge badge-warning">Pending</button></td>
                             <?php elseif ($p->ket == 'proses') : ?>
-                                <!-- <td><a class="badge badge-success" href="javascript:;" data-toggle="modal" data-target="#modalselesai">Proses</a></td> -->
-                                <td><button class="badge badge-success" onclick="selesai(<?= $p->id_pengaduan ?>)">Proses</button></td>
+                                <td><button class="badge badge-success">Proses</button></td>
                             <?php elseif ($p->ket == 'selesai') : ?>
                                 <td><button class="badge badge-primary">Selesai</button></td>
                             <?php elseif ($p->ket == 'arsip') : ?>
@@ -87,6 +86,8 @@
                                         <?php elseif ($p->ket == 'proses') : ?>
                                             <a class="dropdown-item" href="javascript:;" onclick="selesai(<?= $p->id_pengaduan ?>)"><i class="dw dw-checked"></i> Selesai</a>
                                             <a href="javascript:;" class="dropdown-item" onclick="arsipkan(<?= $p->id_pengaduan ?>)"><i class="dw dw-folder1"></i> Arsipkan</a>
+                                        <?php elseif ($p->ket == 'arsip') : ?>
+                                            <a href="javascript:;" class="dropdown-item" onclick="batalarsip(<?= $p->id_pengaduan ?>)"><i class="dw dw-undo2"></i> Batal Arsip</a>
                                         <?php endif; ?>
                                         <a href="<?= base_url('/pengaduan/delete/' . $p->id_pengaduan . '/' . $p->kode_pengaduan) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                     </div>
@@ -223,6 +224,27 @@
                 if (response.sukses) {
                     $('.viewmodal').html(response.sukses).show();
                     $('#modalarsip').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function batalarsip(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formBatalArsip/' . $p->id_pengaduan) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalbatalarsip').modal('show');
                 }
             },
             // menampilkan pesan error:
