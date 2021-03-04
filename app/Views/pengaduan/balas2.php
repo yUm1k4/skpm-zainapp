@@ -6,6 +6,10 @@
     .blockquote-footer small.text-muted {
         font-size: 100% !important;
     }
+
+    textarea.form-control {
+        height: 87px;
+    }
 </style>
 <?= $this->endSection(); ?>
 
