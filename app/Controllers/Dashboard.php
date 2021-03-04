@@ -54,7 +54,7 @@ class Dashboard extends BaseController
 		// $this->pengaduan->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
 		$this->pengaduan->select('*, fullname, kode_pengaduan, isi_laporan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
 			->join('users', 'users.id = pengaduan.user_id')
-			->orderBy('pengaduan_dibuat', 'ASC')
+			->orderBy('pengaduan_dibuat', 'DESC')
 			->limit(10);
 
 		$data['pengaduan_terbaru'] = $this->pengaduan->get()->getResult();

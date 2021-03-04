@@ -12,7 +12,7 @@ class PengaduanSeeder extends \CodeIgniter\Database\Seeder
     {
         $faker = \Faker\Factory::create('id_ID');
 
-        for ($i = 0; $i < 3; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             $id_user = rand(21, 30);
             $status = ['pending', 'proses', 'arsip'];
             $data = [
@@ -24,8 +24,8 @@ class PengaduanSeeder extends \CodeIgniter\Database\Seeder
                 'anonim'            => rand(0, 1),
                 'lampiran'          => $faker->imageUrl(800, 450, 'people', true, 'SKPM - Zain App'),
                 'hasil_akhir'       => null,
-                'created_at'        => Time::now(),
-                'updated_at'        => Time::now(),
+                'created_at'        => '2021-01-02 18:22:04',
+                'updated_at'        => '2021-01-02 18:22:04',
             ];
 
             $this->db->table('pengaduan')->insert($data);

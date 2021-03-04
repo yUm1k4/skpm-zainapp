@@ -2,6 +2,11 @@
 
 <?= $this->section('my-css'); ?>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/public/css/chating.css">
+<style>
+    .blockquote-footer small.text-muted {
+        font-size: 100% !important;
+    }
+</style>
 <?= $this->endSection(); ?>
 
 <?= $this->section('main-content'); ?>
@@ -66,6 +71,11 @@
                             <li class="nav-item hr-right">
                                 <a class="nav-link" data-toggle="tab" href="#info" role="tab">Info Pengaduan</a>
                             </li>
+                            <?php if ($pengaduan[0]->hasil_akhir && $pengaduan[0]->ket == "selesai") { ?>
+                                <li class="nav-item hr-right">
+                                    <a class="nav-link" data-toggle="tab" href="#hasil" role="tab">Hasil Akhir</a>
+                                </li>
+                            <?php } ?>
                         </ul>
                         <div class="tab-content">
                             <!-- Chat Pengaduan start -->
@@ -189,6 +199,23 @@
                                 </div>
                             </div>
                             <!-- Setting Tab End -->
+                            <?php if ($pengaduan[0]->hasil_akhir && $pengaduan[0]->ket == "selesai") { ?>
+                                <!-- Hasil Tab start -->
+                                <div class="tab-pane fade height-100-p p-3" id="hasil" role="tabpanel">
+                                    <div class="profile-setting">
+                                        <div class="alert alert-primary" role="alert">
+                                            <h4 class="alert-heading h4">Hasil Akhir!</h4>
+                                            <p><?= nl2br_xss($pengaduan[0]->hasil_akhir) ?></p>
+                                            <hr>
+                                            <footer class="blockquote-footer">
+                                                <small class="text-muted"><cite title="Source Title"><?= setting()->nama_aplikasi_frontend ?></cite>
+                                                </small>
+                                            </footer>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Hasil Tab end -->
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
