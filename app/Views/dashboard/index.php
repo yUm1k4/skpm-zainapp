@@ -51,7 +51,7 @@
     </div>
 
     <div class="row">
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -64,7 +64,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -77,7 +77,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -90,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -103,10 +103,10 @@
                 </div>
             </div>
         </div>
-    </div>
+        <!-- </div>
 
-    <div class="row">
-        <div class="col-xl-3 col-md-6 mb-30">
+    <div class="row"> -->
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -119,7 +119,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'd-none'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -136,7 +136,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'd-none'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -153,7 +153,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-3 col-md-6 mb-30">
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-3 col-md-4' : 'col-xl-4 col-md-4'; ?>">
             <div class="card-box height-100-p widget-style1">
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="widget-data">
@@ -172,22 +172,6 @@
         </div>
     </div>
 </div>
-
-<!-- Chart -->
-<!-- <div class="card-box mb-30">
-    <div class="pd-20">
-        <div class="row text-center">
-            <div class="col">
-                <div class="title">
-                    <h5>10 Data Pengaduan Terbaru</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="pb-20 mx-3">
-        <canvas id="myChart" height="100"></canvas>
-    </div>
-</div> -->
 
 <div class="row">
     <div class="col-md-6">
@@ -208,12 +192,12 @@
         <div class="card-box mb-30 py-2">
             <div class="pd-10">
                 <div class="row px-3">
-                    <div class="col">
-                        <div class="title mb-2">
+                    <div class="col text-center">
+                        <div class="title mb-3">
                             <h5>Pengaduan per Bulan</h5>
                         </div>
                     </div>
-                    <div class="col-auto text-right">
+                    <!-- <div class="col-auto text-right">
                         <div class="dropdown">
                             <a class="btn btn-primary dropdown-toggle py-1" href="#" role="button" data-toggle="dropdown">
                                 2020
@@ -224,7 +208,7 @@
                                 <a class="dropdown-item text-center py-1" href="#">Tahun 2023</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <canvas id="pengaduan_bulan" height="200"></canvas>
             </div>
@@ -232,61 +216,127 @@
     </div>
 </div>
 
-<!-- Data Laporan -->
-<div class="card-box mb-30">
-    <div class="pd-20">
-        <div class="row text-center">
-            <div class="col">
-                <div class="title">
-                    <h5>10 Data Pengaduan Terbaru</h5>
+
+<!-- Pengaduan Terbaru start -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box mb-30">
+            <div class="pd-20">
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="title">
+                            <h5>10 Pengaduan Terbaru</h5>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="pb-20">
+                <small>
+                    <div class="table-responsive">
+                        <table class="table hover" cellspacing="0">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Tgl</th>
+                                    <th>Nama</th>
+                                    <th>Kode</th>
+                                    <th>Laporan</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($pengaduan_terbaru as $pt) {
+                                ?>
+                                    <tr class="text-center">
+                                        <?php
+                                        $phpdate = strtotime($pt->pengaduan_dibuat);
+                                        $tanggal = date('Y-m-d', $phpdate)
+                                        ?>
+                                        <td><?= xss(shortdate_indo($tanggal)) ?></td>
+                                        <td><?= xss($pt->fullname) ?></td>
+                                        <td><?= xss($pt->kode_pengaduan) ?></td>
+                                        <td width="50%"><?= xss(sensor(limit_word($pt->isi_laporan, 11))) ?></td>
+                                        <?php if ($pt->ket == 'pending') : ?>
+                                            <td><button class="badge badge-warning">Pending</button></td>
+                                        <?php elseif ($pt->ket == 'proses') : ?>
+                                            <td><button class="badge badge-success">Proses</button></td>
+                                        <?php elseif ($pt->ket == 'selesai') : ?>
+                                            <td><button class="badge badge-primary">Selesai</button></td>
+                                        <?php elseif ($pt->ket == 'arsip') : ?>
+                                            <td><button class="badge badge-danger">Diarsipkan</button></td>
+                                        <?php endif; ?>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </small>
             </div>
         </div>
     </div>
-    <div class="pb-20">
-        <div class="table-responsive">
-            <table class="data-table table hover" cellspacing="0">
-                <thead class="text-center">
-                    <tr>
-                        <th>Nama</th>
-                        <th>Kode Pengaduan</th>
-                        <th>Isi Laporan</th>
-                        <th>Hari/Tgl</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($pengaduan_terbaru as $pt) {
-                    ?>
-                        <tr class="text-center">
-                            <td><?= xss($pt->fullname) ?></td>
-                            <td><?= xss($pt->kode_pengaduan) ?></td>
-                            <td><?= xss(sensor(limit_word($pt->isi_laporan, 20))) ?></td>
-                            <?php
-                            $phpdate = strtotime($pt->pengaduan_dibuat);
-                            $tanggal = date('Y-m-d', $phpdate)
-                            ?>
-                            <td><?= xss(mediumdate_indo($tanggal)) ?></td>
-                            <?php if ($pt->ket == 'pending') : ?>
-                                <td><button class="badge badge-warning">Pending</button></td>
-                            <?php elseif ($pt->ket == 'proses') : ?>
-                                <td><button class="badge badge-success">Proses</button></td>
-                            <?php elseif ($pt->ket == 'selesai') : ?>
-                                <td><button class="badge badge-primary">Selesai</button></td>
-                            <?php elseif ($pt->ket == 'arsip') : ?>
-                                <td><button class="badge badge-danger">Diarsipkan</button></td>
-                            <?php endif; ?>
-                        </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
+</div>
+<!-- Pengaduan Terbaru end -->
+
+<!-- Login Terbaru start -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card-box mb-30">
+            <div class="pd-20">
+                <div class="row text-center">
+                    <div class="col">
+                        <div class="title">
+                            <h5>10 Login Terbaru</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pb-20">
+                <small>
+                    <div class="table-responsive">
+                        <table class="table hover" cellspacing="0">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>Tanggal</th>
+                                    <th class="datatable-nosort">Username</th>
+                                    <th class="datatable-nosort">Email</th>
+                                    <th class="datatable-nosort">IP Address</th>
+                                    <th class="datatable-nosort">Role</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($user_log_terbaru as $ult) {
+                                ?>
+                                    <tr class="text-center">
+                                        <td><?= format_indo($ult->date) ?></td>
+                                        <td><?= $ult->username ?></td>
+                                        <td><?= $ult->e_mail ?></td>
+                                        <td><?= $ult->ip_address ?></td>
+                                        <td>
+                                            <?php if ($ult->group_id == 1) { ?>
+                                                <button class="badge badge-primary">Admin</button>
+                                            <?php } elseif ($ult->group_id == 2) { ?>
+                                                <button class="badge badge-success">Petugas</button>
+                                            <?php } elseif ($ult->group_id == 3) { ?>
+                                                <button class="badge badge-warning">Masyarakat</button>
+                                            <?php } ?>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </small>
+            </div>
         </div>
     </div>
 </div>
+<!-- Login Terbaru end -->
+
 <?= $this->endSection(); ?>
 
 <?= $this->section('my-js'); ?>
+</script>
 <script src="<?= base_url('/vendors/chart/Chart.bundle.min.js') ?>"></script>
 
 <script>
