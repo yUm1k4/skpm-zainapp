@@ -27,6 +27,7 @@ class Percakapan extends Migration
 			'petugas_id' => [
 				'type' => 'INT',
 				'constraint' => 11,
+				'unsigned' => TRUE,
 			],
 			'percakapan' => [
 				'type' => 'TEXT',

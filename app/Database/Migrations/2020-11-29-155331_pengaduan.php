@@ -62,6 +62,7 @@ class Pengaduan extends Migration
 		]);
 		$this->forge->addKey('id_pengaduan', true);
 		$this->forge->addForeignKey('user_id', 'users', 'id');
+		$this->forge->addForeignKey('kategori_id', 'pengaduan_kategori', 'id_pengaduan_kategori');
 		$this->forge->createTable('pengaduan');
 	}
 
