@@ -176,9 +176,9 @@ class PetugasProfile extends BaseController
             'username'  => $this->request->getVar('username'),
             'email'     => $this->request->getVar('email'),
             'nik'       => $this->request->getVar('nik'),
-            'fullname'  => $this->request->getVar('fullname'),
+            'fullname'  => ucwords($this->request->getVar('fullname')),
             'no_hp'     => $this->request->getVar('no_hp'),
-            'alamat'    => $this->request->getVar('alamat')
+            'alamat'    => ucfirst($this->request->getVar('alamat'))
         ];
         // dd($save);
         $this->userModel->save($save);
