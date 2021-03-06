@@ -49,7 +49,7 @@
                     <div class="col-lg-7 col-md-9 ">
                         <div class="hero__caption">
                             <h2 data-animation="fadeInLeft" data-delay=".4s"> Sampaikan <span id="typed"></span> Anda</h2>
-                            <p data-animation="fadeInLeft" data-delay=".4s">Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
+                            <p data-animation="fadeInLeft" data-delay=".4s">Sistem Keluhan dan Pengaduan Masyarakat <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
                             <div class="hero__btn" data-animation="fadeInLeft" data-delay=".4s">
                                 <a href="<?= base_url('lapor') ?>" class="btn hero-btn">LAPOR!</a>
                             </div>
@@ -69,7 +69,7 @@
                     <div class="col-lg-7 col-md-9 ">
                         <div class="hero__caption">
                             <h1 data-animation="fadeInLeft" data-delay=".4s">Sampaikan<br> Pengaduan Anda</h1>
-                            <p data-animation="fadeInLeft" data-delay=".6s">Sistem Keluhan dan Pengaduan Masyarakat (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
+                            <p data-animation="fadeInLeft" data-delay=".6s">Sistem Keluhan dan Pengaduan Masyarakat <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan masyarakat.</p>
                             <!-- Hero-btn -->
                             <div class="hero__btn" data-animation="fadeInLeft" data-delay=".8s">
                                 <a href="<?= base_url() ?>" class="btn hero-btn">Cari Pengaduan</a>
@@ -168,7 +168,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="we-create-cap">
                     <h3 class="mb-5">Kami Sangat Peduli Dengan Keluh Kesah Anda</h3>
-                    <p>Untuk itulah kami membuat aplikasi ini. Sistem Keluhan dan Pengaduan Masyarak (SKPM) - Zain App adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan untuk masyarakat Indonesia, yang dapat diakses Online dengan mudah melalui web browser.</p>
+                    <p>Untuk itulah kami membuat aplikasi ini. Sistem Keluhan dan Pengaduan Masyarak <?= setting()->nama_aplikasi_frontend ?> adalah layanan penyampaian semua aspirasi, pelaporan, pengaduan, dan keluhan untuk masyarakat Indonesia, yang dapat diakses Online dengan mudah melalui web browser.</p>
                     <div></div>
                     <!-- <a href="#" class="btn">Contact Us</a> -->
                 </div>
