@@ -170,6 +170,57 @@
                 </div>
             </div>
         </div>
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-4 col-md-4' : 'col-xl-4 col-md-4'; ?>">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="widget-data">
+                        <?php if ($pengunjunghariini == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($pengunjunghariini); ?></div>
+                        <?php endif ?>
+                        <div class="weight-600 font-14">Pengunjung Hari Ini</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="dw dw-meeting fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-4 col-md-4' : 'col-xl-4 col-md-4'; ?>">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="widget-data">
+                        <?php if ($totalpengunjung == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($totalpengunjung); ?></div>
+                        <?php endif ?>
+                        <div class="weight-600 font-14">Total Pengunjung</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="dw dw-deal fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mb-30 <?= in_groups('Admin') ? 'col-xl-4 col-md-4' : 'col-xl-4 col-md-4'; ?>">
+            <div class="card-box height-100-p widget-style1">
+                <div class="d-flex flex-wrap align-items-center">
+                    <div class="widget-data">
+                        <?php if ($pengunjungonline == null) : ?>
+                            <div class="h4 mb-0">0</div>
+                        <?php else : ?>
+                            <div class="h4 mb-0"><?= xss($pengunjungonline); ?></div>
+                        <?php endif ?>
+                        <div class="weight-600 font-14">Pengunjung Online</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="dw dw-counterclockwise fa-2x text-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

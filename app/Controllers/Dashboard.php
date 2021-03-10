@@ -6,6 +6,7 @@ use App\Models\MyUserModel;
 use App\Models\PengaduanModel;
 use App\Models\QuotesModel;
 use App\Models\AuthLoginModel;
+use App\Models\PengunjungModel;
 
 class Dashboard extends BaseController
 {
@@ -17,6 +18,7 @@ class Dashboard extends BaseController
 		$this->pengaduan = new PengaduanModel;
 		$this->quotes = new QuotesModel;
 		$this->login = new AuthLoginModel;
+		$this->pengunjung = new PengunjungModel;
 	}
 
 	public function index()
@@ -59,14 +61,35 @@ class Dashboard extends BaseController
 			->limit(10);
 		$data['pengaduan_terbaru'] = $this->pengaduan->get()->getResult();
 
+		// Login Terbaru
 		$this->login->select('username, group_id, date, ip_address, auth_logins.email as e_mail')
 			->join('users u', 'u.id = auth_logins.user_id')
 			->join('auth_groups_users agu', 'agu.user_id = u.id')
 			->join('auth_groups ag', 'ag.id = agu.group_id')
 			->where('success', 1)
 			->orderBy('date', 'DESC')
-			->limit(10);
+			->limit(5);
 		$data['user_log_terbaru'] = $this->login->get()->getResult();
+
+		// Data Pengunjung
+		$date  = date("Y-m-d");
+		$pengunjunghariini = $this->pengunjung->select('*')
+			->where('date', $date)
+			->groupBy('ip_address')
+			->countAllResults();
+		// $dbpengunjung = $this->db->query("SELECT COUNT(hits) as hits FROM visitor")->row();
+		$dbpengunjung = $this->pengunjung->selectCount('hits')->get()->getRow();
+		$totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
+		$bataswaktu = time() - 300;
+		// $pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
+		$pengunjungonline  = $this->pengunjung->select('*')
+			->where('online >', $bataswaktu)
+			->countAllResults();
+
+		// dd($bataswaktu);
+		$data['pengunjunghariini'] = $pengunjunghariini;
+		$data['totalpengunjung'] = $totalpengunjung;
+		$data['pengunjungonline'] = $pengunjungonline;
 
 		return view('dashboard/index', $data);
 	}

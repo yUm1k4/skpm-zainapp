@@ -9,6 +9,7 @@ use \App\Models\PercakapanModel;
 use \App\Models\SubscriberModel;
 use \App\Models\ContactModel;
 use \App\Models\TestimoniModel;
+use \App\Models\PengunjungModel;
 use Myth\Auth\Entities\User;
 use CodeIgniter\I18n\Time;
 use phpDocumentor\Reflection\Types\Nullable;
@@ -29,6 +30,7 @@ class Home extends BaseController
         $this->percakapanModel = new PercakapanModel;
         $this->subModel = new SubscriberModel;
         $this->testimoni = new TestimoniModel;
+        $this->pengunjung = new PengunjungModel;
         $this->config = config('Auth');
 
         // $this->session = service('session');
@@ -36,11 +38,16 @@ class Home extends BaseController
 
     public function index()
     {
+        // Testimoni start
         $testimoni = $this->testimoni->select('*')
             ->join('users', 'users.id = testimoni.user_id')
             ->join('auth_groups_users agu', 'agu.user_id = users.id')
             ->join('auth_groups ag', 'ag.id = agu.group_id')
             ->get()->getResultArray();
+        // Testimoni end
+
+        // pengunjung
+        $this->_pengungjung();
 
         $data = [
             'title'         => '',
@@ -54,18 +61,27 @@ class Home extends BaseController
     public function tentang()
     {
         $data['title'] = 'Tentang Kami | ';
+        // pengunjung
+        $this->_pengungjung();
+
         return view('home/tentang', $data);
     }
 
     public function ketentuan()
     {
         $data['title'] = "Ketentuan Pengguna (Terms of Use) | ";
+        // pengunjung
+        $this->_pengungjung();
+
         return view('home/ketentuan', $data);
     }
 
     public function hubungi()
     {
         $data['title'] = 'Hubungi Kami | ';
+        // pengunjung
+        $this->_pengungjung();
+
         return view('home/Hubungi', $data);
     }
 
@@ -214,6 +230,9 @@ class Home extends BaseController
 
     public function lapor()
     {
+        // pengunjung
+        $this->_pengungjung();
+
         $this->pengaduanModel->select('*, pengaduan.created_at as pengaduan_dibuat');
         $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');
         $this->pengaduanModel->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id');
@@ -241,6 +260,10 @@ class Home extends BaseController
 
     public function laporanDetail($idPengaduan, $kodePengaduan)
     {
+        // pengunjung
+        $this->_pengungjung();
+
+        // laporan detail
         $query = $this->pengaduanModel
             ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat, users.id as userid')
             ->join('users', 'users.id = pengaduan.user_id')
@@ -344,6 +367,9 @@ class Home extends BaseController
 
     public function laporanSaya($id_user)
     {
+        // pengunjung
+        $this->_pengungjung();
+
         $query = $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
             ->join('users', 'users.id = pengaduan.user_id')
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
@@ -368,6 +394,9 @@ class Home extends BaseController
 
     public function cariLaporan()
     {
+        // pengunjung
+        $this->_pengungjung();
+        
         $keyword = $this->request->getVar('keyword');
 
         // jika ada inputan searching
@@ -398,6 +427,46 @@ class Home extends BaseController
                 'listKategori'      => $this->kategoriModel->get()->getResult(),
             ];
             return view('home/cariLaporan', $data);
+        }
+    }
+
+    // -----------------------------------------------------------------------------------------
+
+    private function _pengungjung()
+    {
+        // Data Pengunjung start
+        $ip    = $this->request->getIPAddress(); // Mendapatkan IP user
+        $date  = date("Y-m-d"); // Mendapatkan tanggal sekarang
+        $waktu = time(); //
+        $timeinsert = date("Y-m-d H:i:s");
+        $dataPengunjung = [
+            'ip_address'    => $ip,
+            'date'          => $date,
+            'hits'          => 1,
+            'online'        => $waktu,
+            'time'          => $timeinsert
+        ];
+
+        // Cek berdasarkan IP, apakah user sudah pernah mengakses hari ini
+        // $s = $this->db->query("SELECT * FROM visitor WHERE ip='" . $ip . "' AND date='" . $date . "'")->num_rows();
+        $s = $this->pengunjung->select('*')
+            ->where('ip_address', $ip)
+            ->where('date', $date)
+            ->countAllResults();
+        $ss = isset($s) ? ($s) : 0;
+
+        // Kalau belum ada, simpan data user tersebut ke database
+        if ($ss == 0) {
+            // $this->db->query("INSERT INTO visitor(ip, date, hits, online, time) VALUES('" . $ip . "','" . $date . "','1','" . $waktu . "','" . $timeinsert . "')");
+            $this->pengunjung->insert($dataPengunjung);
+        } else {
+            // Jika sudah ada, update
+            // $this->db->query("UPDATE visitor SET hits=hits+1, online='" . $waktu . "' WHERE ip='" . $ip . "' AND date='" . $date . "'");
+            $this->pengunjung->set('hits', 'hits+1')
+                ->set('online', $waktu)
+                ->where('ip_address', $ip)
+                ->where('date', $date)
+                ->update();
         }
     }
 }
