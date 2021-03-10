@@ -35,6 +35,14 @@
         .we-padding {
             padding-bottom: 70px;
         }
+
+        .testimonial-caption .testimonial-founder .founder-text span {
+            font-size: 18px !important;
+        }
+
+        .testimonial-area .testimonial-main .testimonial-title {
+            margin-bottom: -30px;
+        }
     }
 </style>
 <?= $this->endSection(); ?>
@@ -184,14 +192,14 @@
         <div class="testimonial-main">
             <!-- Section-tittle -->
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-5  col-md-8 pr-0">
+                <div class="col-md-12 px-0 testimonial-title">
                     <div class="section-tittle text-center">
                         <h2>Apa Kata Mereka?</h2>
                     </div>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class="col-lg-10 col-md-9">
+                <div class="col-lg-10 col-md-10">
                     <div class="h1-testimonial-active">
                         <?php foreach ($testimoni as $t) { ?>
                             <div class="single-testimonial text-center">
