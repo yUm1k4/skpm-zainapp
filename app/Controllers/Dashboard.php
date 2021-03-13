@@ -68,7 +68,7 @@ class Dashboard extends BaseController
 			->join('auth_groups ag', 'ag.id = agu.group_id')
 			->where('success', 1)
 			->orderBy('date', 'DESC')
-			->limit(5);
+			->limit(10);
 		$data['user_log_terbaru'] = $this->login->get()->getResult();
 
 		// Data Pengunjung
@@ -80,7 +80,7 @@ class Dashboard extends BaseController
 		// $dbpengunjung = $this->db->query("SELECT COUNT(hits) as hits FROM visitor")->row();
 		$dbpengunjung = $this->pengunjung->selectCount('hits')->get()->getRow();
 		$totalpengunjung = isset($dbpengunjung->hits) ? ($dbpengunjung->hits) : 0; // hitung total pengunjung
-		$bataswaktu = time() - 300;
+		$bataswaktu = time() - 60;
 		// $pengunjungonline  = $this->db->query("SELECT * FROM visitor WHERE online > '" . $bataswaktu . "'")->num_rows(); // hitung pengunjung online
 		$pengunjungonline  = $this->pengunjung->select('*')
 			->where('online >', $bataswaktu)

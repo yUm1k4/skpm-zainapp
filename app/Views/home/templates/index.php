@@ -47,6 +47,7 @@
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/style.css">
     <link rel="stylesheet" href="<?= base_url() ?>/home/css/responsive.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/icon-font.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- JS here -->
@@ -92,6 +93,33 @@
     <!-- Footer -->
     <?= $this->include('home/templates/footer'); ?>
 
+    <!-- Detec Connection start -->
+    <!-- <div class="wrapper">
+        <div class="toast">
+            <div class="content">
+                <div class="icon"><i class="uil uil-wifi"></i></div>
+                <div class="details">
+                    <span>You Online</span>
+                    <p>internet connected!.</p>
+                </div>
+            </div>
+            <div class="close-icon"><i class="uil uil-times"></i></div>
+        </div>
+    </div> -->
+    <!-- Detec Connection end -->
+
+    <!-- Chatbot -->
+    <script type="text/javascript">
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "d56324e3-78c2-44d8-8a6c-218d92457764";
+        (function() {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
     <!-- All JS Custom Plugins Link Here here -->
     <script src="<?= base_url() ?>/home/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->

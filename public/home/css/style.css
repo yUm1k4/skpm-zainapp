@@ -23,13 +23,26 @@ a,.button{-webkit-transition:all .3s ease-out 0s;-moz-transition:all .3s ease-ou
 
 .header-btn{background:#4043bc;padding:20px 11px;min-width:120px;position:relative}.header-btn::before{background:#ec4683}.btn-ans{background:#fff;position:relative;color:#7b40c0}.btn-ans::before{background:#ec4683;color:#7b40c0}.btn.focus,.btn:focus{outline:0;box-shadow:none}.hero-btn{padding:30px 56px}.border-btn{background:none;-moz-user-select:none;border:2px solid #4043bc;padding:18px 38px;margin:10px;text-transform:capitalize;color:#4043bc;cursor:pointer;display:inline-block;font-size:14px;font-weight:500;letter-spacing:1px;margin-bottom:0;border-radius:5px;position:relative;transition:color 0.4s linear;position:relative;overflow:hidden;margin:0}.border-btn::before{border:2px solid transparent;content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:#6f42c1;z-index:-1;transition:transform 0.5s;transition-timing-function:ease;transform-origin:0 0;transition-timing-function:cubic-bezier(0.5, 1.6, 0.4, 0.7);transform:scaleY(0)}.border-btn:hover::before{transform:scaleY(1);order:2px solid transparent}.border-btn.border-btn2{padding:17px 52px}.send-btn{background:#6f42c1;color:#fff;font-size:14px;width:100%;height:55px;border:none;border-radius:5px;cursor:pointer;transition:color 0.4s linear;position:relative;overflow:hidden;z-index:1}.send-btn::before{border:2px solid transparent;content:"";position:absolute;left:0;top:0;width:100%;height:100%;background:#e6373d;color:#6f42c1;z-index:-1;transition:transform 0.5s;transition-timing-function:ease;transform-origin:0 0;transition-timing-function:cubic-bezier(0.5, 1.6, 0.4, 0.7);transform:scaleX(0)}.send-btn:hover::before{transform:scaleY(1);order:2px solid transparent;color:red}.breadcrumb>.active{color:#888}
 
-#scrollUp{background:#6f42c1;height:50px;width:50px;right:31px;bottom:18px;color:#fff;font-size:20px;text-align:center;border-radius:50%;line-height:48px;border:2px solid transparent}
+#scrollUp{
+    background:#6f42c1;
+    height:50px;
+    width:50px;
+    left:31px;
+    /* right:31px; */
+    bottom:18px;
+    color:#fff;
+    font-size:20px;
+    text-align:center;
+    border-radius:50%;
+    line-height:48px;
+    border:2px solid transparent}
 @media (max-width: 767px){#scrollUp{right:16px}}
 #scrollUp:hover{color:#fff}
 
 @media (max-width: 425px) {
     #scrollUp {
-        right: 14px;
+        /* right: 14px; */
+        left: 14px;
         height: 40px;
         width: 40px;
         line-height: 36px;

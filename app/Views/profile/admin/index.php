@@ -13,7 +13,7 @@
                     <?php if ($admin[0]->user_image == null) { ?>
                         <img src="<?= base_url('images/avatar.png/') ?>" class="avatar-photo img-fluid">
                     <?php } else { ?>
-                        <img src="<?= base_url() ?>/images/admin-images/<?= user()->user_image ?>" alt="" class="avatar-photo" img-fluid>
+                        <img src="<?= base_url() ?>/images/admin-images/<?= user()->user_image ?>" alt="" class="avatar-photo img-fluid">
                     <?php } ?>
 
                     <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
