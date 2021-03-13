@@ -59,19 +59,7 @@
 
 <body>
 
-    <!-- Preloader Start -->
-    <!-- <div id="preloader-active">
-        <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner position-relative">
-                <div class="preloader-circle"></div>
-                <div class="preloader-img pere-text mx-auto my-auto">
-                    <p>Zain App</p>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <?= $this->renderSection('preloader') ?>
-    <!-- Preloader Start -->
 
     <!-- Sweet Alert login -->
     <div class="swal-loginSuccess" data-swallogin="<?= session()->get('successLogin'); ?>"></div>
@@ -153,9 +141,6 @@
     <script src="<?= base_url() ?>/vendors/scripts/sweetalert2.custom.js"></script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
 
     <?= $this->renderSection('my-js') ?>
 </body>

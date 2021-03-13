@@ -265,7 +265,9 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('my-js'); ?>
-<!-- Typed Script -->
+<script>
+    AOS.init();
+</script>
 <script src="<?= base_url() ?>/home/js/typed.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
