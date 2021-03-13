@@ -96,18 +96,22 @@
     </div> -->
     <!-- Detec Connection end -->
 
-    <!-- Chatbot -->
-    <script type="text/javascript">
-        window.$crisp = [];
-        window.CRISP_WEBSITE_ID = "d56324e3-78c2-44d8-8a6c-218d92457764";
-        (function() {
-            d = document;
-            s = d.createElement("script");
-            s.src = "https://client.crisp.chat/l.js";
-            s.async = 1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
-    </script>
+    <?php if (in_groups('Admin') || in_groups('Petugas')) { ?>
+
+    <?php } else { ?>
+        <!-- Chatbot -->
+        <script type="text/javascript">
+            window.$crisp = [];
+            window.CRISP_WEBSITE_ID = "d56324e3-78c2-44d8-8a6c-218d92457764";
+            (function() {
+                d = document;
+                s = d.createElement("script");
+                s.src = "https://client.crisp.chat/l.js";
+                s.async = 1;
+                d.getElementsByTagName("head")[0].appendChild(s);
+            })();
+        </script>
+    <?php } ?>
     <!-- All JS Custom Plugins Link Here here -->
     <script src="<?= base_url() ?>/home/js/vendor/modernizr-3.5.0.min.js"></script>
     <!-- Jquery, Popper, Bootstrap -->
