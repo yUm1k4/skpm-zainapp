@@ -80,7 +80,7 @@ function xss($str)
  * Berfungsi membatasi kata |
  * $str = kalimat panjangnya |
  * ex: limit_word('aku tidak makan nasi', 3) |
- * Hasil aku tidak makan...
+ * Hasil: aku tidak makan...
  */
 function limit_word($string, $word_limit = null)
 {
@@ -90,7 +90,7 @@ function limit_word($string, $word_limit = null)
         return clean_text($kata) . "...";
     else :
         $kata = implode(' ', array_slice($words, 0, $word_limit));
-        return clean_text($kata) . "...";
+        return clean_text($kata);
     endif;
 }
 function clean_text($text)

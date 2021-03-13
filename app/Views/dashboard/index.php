@@ -225,13 +225,30 @@
 </div>
 
 <div class="row">
+    <div class="col-md-12">
+        <div class="card-box mb-30 py-2">
+            <div class="pd-10">
+                <div class="text-center">
+                    <div class="col">
+                        <div class="title mb-3">
+                            <h5>Pengunjung dan Pengaduan per Bulan di Tahun <?= date('Y') ?></h5>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="pengunjung_bulan" height="130"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
     <div class="col-md-6">
         <div class="card-box mb-30 py-2">
             <div class="pd-10">
                 <div class="text-center">
                     <div class="col">
                         <div class="title mb-3">
-                            <h5>Pengaduan per Kategori</h5>
+                            <h5>Top 5 Kategori Pengaduan</h5>
                         </div>
                     </div>
                 </div>
@@ -248,18 +265,6 @@
                             <h5>Pengaduan per Bulan</h5>
                         </div>
                     </div>
-                    <!-- <div class="col-auto text-right">
-                        <div class="dropdown">
-                            <a class="btn btn-primary dropdown-toggle py-1" href="#" role="button" data-toggle="dropdown">
-                                2020
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item text-center py-1" href="#">Tahun 2021</a>
-                                <a class="dropdown-item text-center py-1" href="#">Tahun 2022</a>
-                                <a class="dropdown-item text-center py-1" href="#">Tahun 2023</a>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
                 <canvas id="pengaduan_bulan" height="200"></canvas>
             </div>
@@ -276,7 +281,7 @@
                 <div class="row text-center">
                     <div class="col">
                         <div class="title">
-                            <h5>10 Pengaduan Terbaru</h5>
+                            <h5>Pengaduan Hari Ini</h5>
                         </div>
                     </div>
                 </div>
@@ -284,7 +289,7 @@
             <div class="pb-20">
                 <small>
                     <div class="table-responsive">
-                        <table class="table hover" cellspacing="0">
+                        <table class="data-table table hover" cellspacing="0">
                             <thead class="text-center">
                                 <tr>
                                     <th>Tgl</th>
@@ -300,11 +305,11 @@
                                 ?>
                                     <tr class="text-center">
                                         <?php
-                                        $phpdate = strtotime($pt->pengaduan_dibuat);
-                                        $tanggal = date('Y-m-d', $phpdate)
+                                        // $phpdate = strtotime($pt->pengaduan_dibuat);
+                                        // $tanggal = date('Y-m-d', $phpdate)
                                         ?>
-                                        <td><?= xss(shortdate_indo($tanggal)) ?></td>
-                                        <td><?= xss($pt->fullname) ?></td>
+                                        <td><?= xss(format_indo($pt->pengaduan_dibuat)) ?></td>
+                                        <td><?= xss(limit_word($pt->fullname, 2)) ?></td>
                                         <td><?= xss($pt->kode_pengaduan) ?></td>
                                         <td width="50%"><?= xss(sensor(limit_word($pt->isi_laporan, 11))) ?></td>
                                         <?php if ($pt->ket == 'pending') : ?>
@@ -336,7 +341,7 @@
                 <div class="row text-center">
                     <div class="col">
                         <div class="title">
-                            <h5>10 Login Terbaru</h5>
+                            <h5>Login Hari Ini</h5>
                         </div>
                     </div>
                 </div>
@@ -344,7 +349,7 @@
             <div class="pb-20">
                 <small>
                     <div class="table-responsive">
-                        <table class="table hover" cellspacing="0">
+                        <table class="data-table table hover" cellspacing="0">
                             <thead class="text-center">
                                 <tr>
                                     <th>Tanggal</th>
@@ -400,7 +405,6 @@
         // karena label itu minta string, kasih aja ''
         label_pengaduan_kategori.push('<?= $value->nama_kategori ?>');
     <?php endforeach; ?>
-    // Chart.defaults.global.legend.display = false;
 
     var data_pengaduan_per_kategori = {
         datasets: [{
@@ -411,60 +415,104 @@
                 'rgba(255, 206, 86, 0.7)',
                 'rgba(75, 192, 192, 0.7)',
                 'rgba(153, 102, 255, 0.7)',
-                'rgba(255, 159, 64, 0.7)',
-                'rgba(255, 99, 132, 0.7)',
-                'rgba(54, 162, 235, 0.7)',
-                'rgba(255, 206, 86, 0.7)',
-                'rgba(75, 192, 192, 0.7)',
-                'rgba(153, 102, 255, 0.7)',
-                'rgba(255, 159, 64, 0.7)',
             ],
         }],
         labels: label_pengaduan_kategori,
-
     }
 
     var chart_pengaduan_kategori = new Chart(pengaduan_kategori, {
         type: 'doughnut',
         data: data_pengaduan_per_kategori,
         options: {
-            legend: {
-                display: false,
-            },
+            // legend: {
+            //     display: false,
+            // },
         },
     })
 </script>
 
 <script>
-    var pengaduan_bulan = document.getElementById('pengaduan_bulan');
+    var pengunjung_bulan = document.getElementById('pengunjung_bulan').getContext('2d');
+    var data_pengunjung_bulan = [];
     var data_pengaduan_bulan = [];
+    var label_pengunjung_bulan = [];
     var label_pengaduan_bulan = [];
 
     <?php
+    foreach ($pengunjung_per_bulan as $key => $value) : ?>
+        data_pengunjung_bulan.push(<?= $value->jumlah ?>);
+        label_pengunjung_bulan.push('<?= bulan($value->bulan) ?>');
+    <?php endforeach; ?>
+
+    <?php
     foreach ($pengaduan_dibuat as $key => $value) : ?>
-        data_pengaduan_bulan.push(<?= $value->jumlah ?>);
+        data_pengaduan_bulan.push('<?= $value->jumlah ?>');
         label_pengaduan_bulan.push('<?= bulan($value->bulan) ?>');
     <?php endforeach; ?>
 
-    var data_pengaduan_per_bulan = {
+    var data_pengunjung_dan_pengaduan = {
+        labels: label_pengunjung_bulan,
         datasets: [{
-            label: 'Jumlah',
+            label: 'Pengunjung',
+            fill: true,
+            data: data_pengunjung_bulan,
+            backgroundColor: 'rgb(0, 227, 150, 0.1)',
+            borderColor: 'rgb(0, 227, 150)',
+            // backgroundColor: window.chartColors.red,
+            // borderColor: window.chartColors.red,
+        }, {
+            label: 'Pengaduan',
+            fill: true,
             data: data_pengaduan_bulan,
-            // backgroundColor: 'rgba(27, 0, 255, 0.7)',
             backgroundColor: 'rgba(0, 0, 0, 0.1)',
             borderColor: 'rgba(27, 0, 255, 0.7)',
+            // backgroundColor: window.chartColors.blue,
+            // borderColor: window.chartColors.blue,
         }],
-        labels: label_pengaduan_bulan,
     }
 
-    var chart_pengaduan_bulan = new Chart(pengaduan_bulan, {
+    var chart_pengunjung_bulan = new Chart(pengunjung_bulan, {
         type: 'line',
-        data: data_pengaduan_per_bulan,
+        data: data_pengunjung_dan_pengaduan,
         options: {
-            legend: {
-                display: false,
+            // legend: {
+            //     display: false,
+            // },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+                // callbacks: {
+                //     label: function(tooltipItem, data) {
+                //         return tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                //     },
+                // },
             },
-        },
+            responsive: true,
+            // title: {
+            //     display: true,
+            //     text: 'Pengunjung dan Pengaduan per Bulan di Tahun <?= date('Y') ?>'
+            // },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Bulan'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Jumlah'
+                    }
+                }]
+            }
+        }
     });
 </script>
 

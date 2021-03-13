@@ -7,6 +7,7 @@ use App\Models\PengaduanModel;
 use App\Models\QuotesModel;
 use App\Models\AuthLoginModel;
 use App\Models\PengunjungModel;
+use CodeIgniter\I18n\Time;
 
 class Dashboard extends BaseController
 {
@@ -43,35 +44,47 @@ class Dashboard extends BaseController
 		$groupIdMasyarakat = 3;
 		$data['total_masyarakat'] = $this->user->getTotal($groupIdMasyarakat);
 
-		// Chart
+		// Chart start
+		$data['pengunjung_per_bulan'] = $this->pengunjung->select('MONTH(date) as bulan, COUNT(id_pengunjung) AS jumlah')
+			->groupBy('MONTH(date)')
+			->like('date', date('Y'))
+			->get()->getResult();
 		$data['pengaduan_per_kategori'] = $this->pengaduan->select('COUNT(pengaduan.kategori_id) AS jumlah, pk.nama_kategori')
 			->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id', 'left')
 			->groupBy('pengaduan.kategori_id')
+			->limit(5)
+			->orderBy('jumlah', 'desc')
 			->get()->getResult();
 		$data['pengaduan_dibuat'] = $this->pengaduan->select('MONTH(created_at) as bulan, COUNT(id_pengaduan) AS jumlah')
 			->groupBy('MONTH(created_at)')
 			->like('created_at', date('Y'))
 			->get()->getResult();
+		// Chart end
 
-		// Data Pengaduan Terbaru
+		// Data Pengaduan Terbaru start
 		// $this->pengaduan->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
 		$this->pengaduan->select('*, fullname, kode_pengaduan, isi_laporan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
 			->join('users', 'users.id = pengaduan.user_id')
-			->orderBy('pengaduan.id_pengaduan', 'DESC')
-			->limit(10);
+			->like('pengaduan.created_at', date('d'))
+			->orderBy('pengaduan.created_at', 'DESC');
+		// ->limit(10);
 		$data['pengaduan_terbaru'] = $this->pengaduan->get()->getResult();
+		// Data Pengaduan Terbaru end
 
-		// Login Terbaru
+		// Login Terbaru start
+		// $lastmonth = date("d");
 		$this->login->select('username, group_id, date, ip_address, auth_logins.email as e_mail')
 			->join('users u', 'u.id = auth_logins.user_id')
 			->join('auth_groups_users agu', 'agu.user_id = u.id')
 			->join('auth_groups ag', 'ag.id = agu.group_id')
 			->where('success', 1)
-			->orderBy('date', 'DESC')
-			->limit(10);
+			->like('date', date('d'))
+			->orderBy('date', 'DESC');
+		// ->limit(10);
 		$data['user_log_terbaru'] = $this->login->get()->getResult();
+		// Login Terbaru end
 
-		// Data Pengunjung
+		// Data Pengunjung start
 		$date  = date("Y-m-d");
 		$pengunjunghariini = $this->pengunjung->select('*')
 			->where('date', $date)
@@ -90,6 +103,7 @@ class Dashboard extends BaseController
 		$data['pengunjunghariini'] = $pengunjunghariini;
 		$data['totalpengunjung'] = $totalpengunjung;
 		$data['pengunjungonline'] = $pengunjungonline;
+		// Data Pengunjung end
 
 		return view('dashboard/index', $data);
 	}
