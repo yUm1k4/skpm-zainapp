@@ -2,7 +2,10 @@
 
 namespace Config;
 
+helper('zain');
+
 use CodeIgniter\Config\BaseConfig;
+
 
 class Email extends BaseConfig
 {
@@ -15,7 +18,7 @@ class Email extends BaseConfig
 	/**
 	 * @var string
 	 */
-	public $fromName = 'Zainudin - Ujikom';
+	public $fromName = 'SKPM - Zain App';
 
 	/**
 	 * @var string

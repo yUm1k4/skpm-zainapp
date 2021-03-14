@@ -1,3 +1,4 @@
+<?php helper('zain') ?>
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -14,9 +15,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Zain App - Reset Password</title>
+    <title><?= setting()->nama_aplikasi_frontend ?> - Reset Password</title>
     <!--[if !mso]>
-      <!-- -->
+     -->
     <link href='https://fonts.googleapis.com/css?family=Asap:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     <!--<![endif]-->
     <style type="text/css">
@@ -517,7 +518,7 @@
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; display: block; color: #f57153;
  font-weight: normal; text-decoration: none; font-weight: normal;letter-spacing:
  1px;line-height: 100%;text-align: center;text-decoration: none;color:
- #FFFFFF; text-transform:uppercase;" target="_blank" title="Zain App | Reset Password">Reset password</a>
+ #FFFFFF; text-transform:uppercase;" target="_blank" title="<?= setting()->nama_aplikasi_frontend ?> | Reset Password">Reset password</a>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
@@ -574,7 +575,7 @@
                                                             <h3 style='color: #2a2a2a; font-family: "Asap", Helvetica, sans-serif;
  font-size: 20px; font-style: normal; font-weight: normal; line-height: 125%;
  letter-spacing: normal; text-align: center; display: block; margin: 0; padding:
- 0; text-align: left; width: 100%; font-size: 16px; font-weight: bold; '>Zain App - Ujikom</h3>
+ 0; text-align: left; width: 100%; font-size: 16px; font-weight: bold; '><?= setting()->nama_aplikasi_frontend ?></h3>
 
                                                             <p style='margin: 10px 0; padding: 0; mso-line-height-rule: exactly;
  -ms-text-size-adjust: 100%; -webkit-text-size-adjust: 100%; color: #2a2a2a;
@@ -590,13 +591,9 @@
  100%; -webkit-text-size-adjust: 100%; ">
                                                     <tbody>
                                                         <tr>
-                                                            <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%">
-                                                                <a href="https://www.instagram.com/zaiabdullah_91/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;
- -webkit-text-size-adjust: 100%; color: #f57153; font-weight: normal; text-decoration:
- none" target="_blank">
-                                                                    <img alt="Instagram" height="32" src="https://static.lingoapp.com/assets/images/email/instagram-ic-32x32-email@2x.png" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none;
- text-decoration: none" width="32" />
+                                                            <td style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%">
+                                                                <a href="https://www.instagram.com/zaiabdullah_91/" style="mso-line-height-rule: exactly; -ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%; color: #f57153; font-weight: normal; text-decoration:none" target="_blank">
+                                                                    <img alt="Instagram" height="32" src="https://static.lingoapp.com/assets/images/email/instagram-ic-32x32-email@2x.png" style="-ms-interpolation-mode: bicubic; border: 0; height: auto; outline: none;text-decoration: none" width="32" />
                                                                 </a>
                                                             </td>
                                                         </tr>

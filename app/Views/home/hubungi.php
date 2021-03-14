@@ -10,19 +10,6 @@
 </style>
 <?= $this->endSection(); ?>
 
-<?= $this->section('preloader'); ?>
-<div id="preloader-active">
-    <div class="preloader d-flex align-items-center justify-content-center">
-        <div class="preloader-inner position-relative">
-            <div class="preloader-circle"></div>
-            <div class="preloader-img pere-text mx-auto my-auto">
-                <p><?= setting()->nama_aplikasi_backend ?></p>
-            </div>
-        </div>
-    </div>
-</div>
-<?= $this->endSection(); ?>
-
 <?= $this->section('content'); ?>
 
 <!-- Header Area Start-->
@@ -55,6 +42,18 @@
         <div class="row">
             <div class="col-12">
                 <h2 class="contact-title">Hubungi Kami</h2>
+                <?php if (in_groups(['Admin', 'Petugas', 'Masyarakat'])) {
+                } else { ?>
+                    <div class="row col-12">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">x</span>
+                            </button>
+                            Mohon Maap, jika ingin mengirim email harap Log In terlebih dahulu
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
             <div class="col-lg-8">
                 <form class="form-contact" action="<?= base_url('home/kirimEmail') ?>" method="post">
@@ -79,7 +78,7 @@
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <input class="form-control <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'contoh@gmail.com'" placeholder="contoh@gmail.com" value="<?= old('email') ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
+                                <input class="form-control <?php if (session('errors.email')) : ?>is-invalid <?php endif ?>" name="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Alamat Email Anda'" placeholder="Alamat Email Anda" value="<?= old('email') ?>" required data-parsley-trigger="keyup" data-parsley-required-message="Email harus diisi" data-parsley-length="[10,100]" data-parsley-length-message="Minimal 10 karakter, maksimal 100 karakter" data-parsley-type="email" data-parsley-type-message="Email tidak valid">
                                 <div class="invalid-feedback">
                                     <?= session('errors.email') ?>
                                 </div>

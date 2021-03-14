@@ -262,7 +262,7 @@
                 <div class="row px-3">
                     <div class="col text-center">
                         <div class="title mb-3">
-                            <h5>Data Pengaduan</h5>
+                            <h5>Data Status Pengaduan</h5>
                         </div>
                     </div>
                 </div>

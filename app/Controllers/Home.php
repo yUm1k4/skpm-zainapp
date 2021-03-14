@@ -161,7 +161,7 @@ class Home extends BaseController
                 $mail->SMTPSecure = 'ssl';
                 $mail->Port       = 465;
 
-                $mail->setFrom($email, $nama_lengkap);
+                $mail->setFrom($email);
                 $mail->addReplyTo($email, $nama_lengkap);
                 $mail->addAddress('yumikasoftware@gmail.com');
                 // Content
@@ -396,7 +396,7 @@ class Home extends BaseController
     {
         // pengunjung
         $this->_pengungjung();
-        
+
         $keyword = $this->request->getVar('keyword');
 
         // jika ada inputan searching
