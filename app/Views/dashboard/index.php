@@ -424,9 +424,10 @@
         type: 'doughnut',
         data: data_pengaduan_per_kategori,
         options: {
-            // legend: {
-            //     display: false,
-            // },
+            legend: {
+                display: true,
+                position: 'bottom',
+            },
         },
     })
 </script>
@@ -451,7 +452,8 @@
     <?php endforeach; ?>
 
     var data_pengunjung_dan_pengaduan = {
-        labels: label_pengunjung_bulan,
+        // labels: label_pengunjung_bulan,
+        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
         datasets: [{
             label: 'Pengunjung',
             fill: true,
@@ -509,6 +511,10 @@
                     scaleLabel: {
                         display: true,
                         labelString: 'Jumlah'
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 10 // this worked as expected
                     }
                 }]
             }

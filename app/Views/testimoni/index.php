@@ -6,7 +6,8 @@
         <div class="row">
             <div class="col">
                 <div class="title">
-                    <h4><?= $title; ?></h4>
+                    <h4><?= $title; ?> </h4>
+                    <code>Maksimal 7 testimoni</code>
                 </div>
             </div>
             <?php
