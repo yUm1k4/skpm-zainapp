@@ -59,6 +59,10 @@ class Dashboard extends BaseController
 			->groupBy('MONTH(created_at)')
 			->like('created_at', date('Y'))
 			->get()->getResult();
+		$data['pengaduan_per_status'] = $this->pengaduan->select('COUNT(id_pengaduan) as jumlah, status')
+			->groupBy('id_pengaduan')
+			->orderBy('jumlah', 'desc')
+			->get()->getResult();
 		// Chart end
 
 		// Data Pengaduan Terbaru start

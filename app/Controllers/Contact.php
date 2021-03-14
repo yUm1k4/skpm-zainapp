@@ -13,7 +13,7 @@ class Contact extends BaseController
 
     public function index()
     {
-        $data['title'] = 'Data Contact';
+        $data['title'] = 'Pesan Masuk';
 
         $this->contactModel->select('*, contact.email as contact_email, contact.created_at as terbaru');
         $this->contactModel->join('users', 'users.id = contact.user_id');

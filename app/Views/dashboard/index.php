@@ -262,11 +262,11 @@
                 <div class="row px-3">
                     <div class="col text-center">
                         <div class="title mb-3">
-                            <h5>Pengaduan per Bulan</h5>
+                            <h5>Data Pengaduan</h5>
                         </div>
                     </div>
                 </div>
-                <canvas id="pengaduan_bulan" height="200"></canvas>
+                <canvas id="data_pengaduan" height="200"></canvas>
             </div>
         </div>
     </div>
@@ -395,6 +395,86 @@
 </script>
 <script src="<?= base_url('/vendors/chart/Chart.bundle.min.js') ?>"></script>
 
+<!-- Chart Pengunjung dan Pengaduan start -->
+<script>
+    var pengunjung_bulan = document.getElementById('pengunjung_bulan').getContext('2d');
+    var data_pengunjung_bulan = [];
+    var data_pengaduan_bulan = [];
+    var label_pengunjung_bulan = [];
+    var label_pengaduan_bulan = [];
+
+    <?php
+    foreach ($pengunjung_per_bulan as $key => $value) : ?>
+        data_pengunjung_bulan.push(<?= $value->jumlah ?>);
+        label_pengunjung_bulan.push('<?= bulan($value->bulan) ?>');
+    <?php endforeach; ?>
+
+    <?php
+    foreach ($pengaduan_dibuat as $key => $value) : ?>
+        data_pengaduan_bulan.push('<?= $value->jumlah ?>');
+        label_pengaduan_bulan.push('<?= bulan($value->bulan) ?>');
+    <?php endforeach; ?>
+
+    var data_pengunjung_dan_pengaduan = {
+        // labels: label_pengunjung_bulan,
+        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+        datasets: [{
+            label: 'Pengunjung',
+            fill: true,
+            data: data_pengunjung_bulan,
+            backgroundColor: 'rgb(0, 227, 150, 0.1)',
+            borderColor: 'rgb(0, 227, 150)'
+        }, {
+            label: 'Pengaduan',
+            fill: true,
+            data: data_pengaduan_bulan,
+            backgroundColor: 'rgba(0, 0, 0, 0.1)',
+            borderColor: 'rgba(27, 0, 255, 0.7)'
+        }],
+    }
+
+    var chart_pengunjung_bulan = new Chart(pengunjung_bulan, {
+        type: 'line',
+        data: data_pengunjung_dan_pengaduan,
+        options: {
+            // legend: {
+            //     display: false,
+            // },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            responsive: true,
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Bulan'
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Jumlah'
+                    },
+                    ticks: {
+                        beginAtZero: true,
+                        stepSize: 10
+                    }
+                }]
+            }
+        }
+    });
+</script>
+<!-- Chart Pengunjung dan Pengaduan end -->
+
+<!-- Chart Kategori start -->
 <script>
     var pengaduan_kategori = document.getElementById('pengaduan_kategori');
     var data_pengaduan_kategori = [];
@@ -431,95 +511,47 @@
         },
     })
 </script>
+<!-- Chart Kategori end -->
 
+<!-- Chart Data Pengaduan start -->
 <script>
-    var pengunjung_bulan = document.getElementById('pengunjung_bulan').getContext('2d');
-    var data_pengunjung_bulan = [];
-    var data_pengaduan_bulan = [];
-    var label_pengunjung_bulan = [];
-    var label_pengaduan_bulan = [];
+    var chart_data_pengaduan = document.getElementById('data_pengaduan');
+    var data_pengaduan = [];
+    var label_pengaduan = [];
 
-    <?php
-    foreach ($pengunjung_per_bulan as $key => $value) : ?>
-        data_pengunjung_bulan.push(<?= $value->jumlah ?>);
-        label_pengunjung_bulan.push('<?= bulan($value->bulan) ?>');
+    <?php foreach ($pengaduan_per_status as $key => $value) : ?>
+        data_pengaduan.push(<?= $value->jumlah ?>);
+        label_pengaduan.push('<?= $value->status ?>');
     <?php endforeach; ?>
 
-    <?php
-    foreach ($pengaduan_dibuat as $key => $value) : ?>
-        data_pengaduan_bulan.push('<?= $value->jumlah ?>');
-        label_pengaduan_bulan.push('<?= bulan($value->bulan) ?>');
-    <?php endforeach; ?>
-
-    var data_pengunjung_dan_pengaduan = {
-        // labels: label_pengunjung_bulan,
-        labels: ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"],
+    var data_pengaduan_per_status = {
+        labels: ['Pending', 'Proses', 'Arsip', 'Selesai'],
         datasets: [{
-            label: 'Pengunjung',
-            fill: true,
-            data: data_pengunjung_bulan,
-            backgroundColor: 'rgb(0, 227, 150, 0.1)',
-            borderColor: 'rgb(0, 227, 150)',
-            // backgroundColor: window.chartColors.red,
-            // borderColor: window.chartColors.red,
-        }, {
-            label: 'Pengaduan',
-            fill: true,
-            data: data_pengaduan_bulan,
-            backgroundColor: 'rgba(0, 0, 0, 0.1)',
-            borderColor: 'rgba(27, 0, 255, 0.7)',
-            // backgroundColor: window.chartColors.blue,
-            // borderColor: window.chartColors.blue,
+            data: [
+                <?= $pengaduan_pending ?>,
+                <?= $pengaduan_proses ?>,
+                <?= $pengaduan_arsip ?>,
+                <?= $pengaduan_selesai ?>,
+            ],
+            backgroundColor: [
+                'rgba(255, 206, 86, 0.7)',
+                'rgba(75, 192, 192, 0.7)',
+                'rgba(255, 99, 132, 0.7)',
+                'rgba(54, 162, 235, 0.7)',
+            ],
         }],
     }
 
-    var chart_pengunjung_bulan = new Chart(pengunjung_bulan, {
-        type: 'line',
-        data: data_pengunjung_dan_pengaduan,
+    var chart_pengaduan = new Chart(chart_data_pengaduan, {
+        type: 'doughnut',
+        data: data_pengaduan_per_status,
         options: {
-            // legend: {
-            //     display: false,
-            // },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-                // callbacks: {
-                //     label: function(tooltipItem, data) {
-                //         return tooltipItem.yLabel.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                //     },
-                // },
+            legend: {
+                display: true,
+                position: 'bottom',
             },
-            responsive: true,
-            // title: {
-            //     display: true,
-            //     text: 'Pengunjung dan Pengaduan per Bulan di Tahun <?= date('Y') ?>'
-            // },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Bulan'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Jumlah'
-                    },
-                    ticks: {
-                        beginAtZero: true,
-                        stepSize: 10 // this worked as expected
-                    }
-                }]
-            }
-        }
-    });
+        },
+    })
 </script>
-
+<!-- Chart Data Pengaduan end -->
 <?= $this->endSection(); ?>
