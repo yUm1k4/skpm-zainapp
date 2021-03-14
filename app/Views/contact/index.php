@@ -31,9 +31,9 @@
                     ?>
                         <tr>
                             <td class="text-center" width="7%"><?= $i++ ?>.</td>
-                            <td><?= $c->nama_lengkap ?></td>
+                            <td><?= xss(limit_word($c->nama_lengkap, 3)) ?></td>
                             <td><?= $c->contact_email ?></td>
-                            <td><?= $c->subject ?></td>
+                            <td><?= xss($c->subject) ?></td>
                             <td><?= format_indo($c->terbaru) ?></td>
                             <td class="text-center">
                                 <div class="dropdown">

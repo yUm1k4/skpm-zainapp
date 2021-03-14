@@ -18,8 +18,8 @@
                     <tr>
                         <th>No.</th>
                         <th>Foto</th>
-                        <th>NIK</th>
                         <th>Nama</th>
+                        <th>NIK</th>
                         <th>No HP</th>
                         <th>Role</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
@@ -43,8 +43,12 @@
                                     <?php } ?>
                                 <?php endif; ?>
                             </td>
+                            <?php if ($au->status == 'banned') { ?>
+                                <td class="text-danger"><?= xss(limit_word($au->fullname, 2)) ?> <i>(Banned)</i></td>
+                            <?php } else { ?>
+                                <td><?= xss(limit_word($au->fullname, 2)) ?></td>
+                            <?php } ?>
                             <td><?= xss($au->nik) ?></td>
-                            <td><?= xss($au->fullname) ?></td>
                             <td><?= xss($au->no_hp) ?></td>
                             <td>
                                 <?php if ($au->group_id == 1) { ?>

@@ -44,9 +44,9 @@
                             <td class="text-center" width="7%"><?= $i++ ?>.</td>
 
                             <?php if ($p->anonim == 1) : ?>
-                                <td><?= $p->fullname ?> <i class="text-primary">(Anonim)</i></td>
+                                <td><?= limit_word($p->fullname, 2) ?> <i class="text-primary">(Anonim)</i></td>
                             <?php else : ?>
-                                <td><?= $p->fullname ?></td>
+                                <td><?= limit_word($p->fullname, 2) ?></td>
                             <?php endif; ?>
 
                             <td class="text-nowrap"><?= $p->kode_pengaduan ?></td>

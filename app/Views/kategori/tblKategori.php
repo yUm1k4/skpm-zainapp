@@ -29,7 +29,11 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                             <button class="dropdown-item" onclick="edit(<?= $row['id_pengaduan_kategori'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
 
-                            <button type="button" onclick="hapus(<?= $row['id_pengaduan_kategori'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php if ($row['id_pengaduan'] == null) { ?>
+                                <button type="button" onclick="hapus(<?= $row['id_pengaduan_kategori'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php } else { ?>
+                                <button type="button" class="dropdown-item disabled" data-toggle="tooltip" title="Kategori sudah terpakai, jadi tidak bisa dihapus"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php } ?>
                         </div>
                     </div>
                 </td>

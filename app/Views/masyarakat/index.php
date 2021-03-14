@@ -28,8 +28,8 @@
                     <tr>
                         <th>No.</th>
                         <th>Foto</th>
-                        <th>NIK</th>
                         <th>Nama</th>
+                        <th>NIK</th>
                         <th>Username</th>
                         <th>No HP</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
@@ -49,14 +49,14 @@
                                     <img src="<?= base_url('images/user-images/' . $m->user_image) ?>" width="90" class="img-fluid">
                                 <?php endif; ?>
                             </td>
-                            <td><?= xss($m->nik) ?></td>
                             <?php if ($m->status == 'banned') { ?>
-                                <td class="text-danger"><?= xss($m->fullname) ?></td>
+                                <td class="text-danger"><?= xss(limit_word($m->fullname, 2)) ?> <i>(Banned)</i></td>
                                 <td class="text-danger"><?= xss($m->username) ?></td>
                             <?php } else { ?>
-                                <td><?= xss($m->fullname) ?></td>
+                                <td><?= xss(limit_word($m->fullname, 2)) ?></td>
                                 <td><?= xss($m->username) ?></td>
                             <?php } ?>
+                            <td><?= xss($m->nik) ?></td>
                             <td><?= xss($m->no_hp) ?></td>
 
                             <td class="text-center">

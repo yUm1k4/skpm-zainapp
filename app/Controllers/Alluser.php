@@ -18,7 +18,7 @@ class Alluser extends BaseController
     {
         $data['title'] = 'Data Semua Pengguna';
 
-        $this->userModel->select('users.id as userid, username, email, fullname, nik, user_image, no_hp, alamat, name, group_id');
+        $this->userModel->select('users.id as userid, username, email, fullname, nik, user_image, no_hp, alamat, name, group_id, status');
         $this->userModel->join('auth_groups_users agu', 'agu.user_id = users.id');
         $this->userModel->join('auth_groups ag', 'ag.id = agu.group_id');
         $this->userModel->orderBy('fullname', 'ASC');

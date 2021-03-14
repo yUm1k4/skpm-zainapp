@@ -7,6 +7,7 @@
             <div class="col">
                 <div class="title">
                     <h4><?= $title; ?></h4>
+                    <code>Kategori yg sudah terpakai tidak bisa dihapus</code>
                 </div>
             </div>
             <div class="col-auto">

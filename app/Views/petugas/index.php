@@ -28,8 +28,8 @@
                     <tr>
                         <th>No.</th>
                         <th>Foto</th>
-                        <th>NIK</th>
                         <th>Nama</th>
+                        <th>NIK</th>
                         <th>No HP</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
                     </tr>
@@ -48,8 +48,8 @@
                                     <img src="<?= base_url('images/admin-images/' . $p->user_image) ?>" width="90" class="img-fluid">
                                 <?php endif; ?>
                             </td>
+                            <td><?= xss(limit_word($p->fullname, 2)) ?></td>
                             <td><?= xss($p->nik) ?></td>
-                            <td><?= xss($p->fullname) ?></td>
                             <td><?= xss($p->no_hp) ?></td>
 
                             <td class="text-center">
