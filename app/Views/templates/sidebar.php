@@ -32,6 +32,13 @@
                     </li>
 
                     <li>
+                        <a href="<?= base_url('kk') ?>" class="dropdown-toggle no-arrow 
+                    <?= url(2) == 'kk' ? 'active' : '' ?>">
+                            <span class="micon dw dw-card"></span><span class="mtext">Kartu Keluarga</span>
+                        </a>
+                    </li>
+
+                    <li>
                         <a href="<?= base_url('contact') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'contact' ? 'active' : '' ?>">
                             <span class="micon dw dw-email1"></span><span class="mtext">Contact Us</span>
@@ -110,6 +117,13 @@
                         <a href="<?= base_url('filter-kata') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'filter-kata' ? 'active' : '' ?>">
                             <span class="micon dw dw-filter1"></span><span class="mtext">Filter Kata Kotor</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="<?= base_url('kk') ?>" class="dropdown-toggle no-arrow 
+                    <?= url(2) == 'kk' ? 'active' : '' ?>">
+                            <span class="micon dw dw-id-card"></span><span class="mtext">Kartu Keluarga</span>
                         </a>
                     </li>
 
