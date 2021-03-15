@@ -86,6 +86,7 @@ class Quotes extends BaseController
             }
             echo json_encode($msg);
         } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
             return redirect()->back();
         }
     }

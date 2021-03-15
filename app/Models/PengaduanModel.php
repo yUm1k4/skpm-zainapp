@@ -46,6 +46,17 @@ class PengaduanModel extends Model
             ->orderBy('pengaduan_dibuat', 'DESC')->like('kode_pengaduan', $keyword);
     }
 
+    public function cariBerdasarNikUsername($keyword)
+    {
+        return $this->table('pengaduan')
+            ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->where('nik', $keyword)
+            ->orWhere('username', $keyword)
+            ->orderBy('pengaduan_dibuat', 'desc');
+    }
+
     public function cetakRangeTanggal($range)
     {
         $query = $this->table('pengaduan')

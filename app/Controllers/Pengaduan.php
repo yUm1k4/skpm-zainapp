@@ -283,4 +283,45 @@ class Pengaduan extends BaseController
         session()->setFlashdata('message', 'Pesan anda berhasil dihapus');
         return redirect()->back();
     }
+
+    public function formCariPengaduan()
+    {
+        if ($this->request->isAJAX()) {
+            $msg = [
+                'sukses' => view('pengaduan/modalCariPengaduan')
+            ];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function cariPengaduan()
+    {
+        $keyword = $this->request->getVar('cariPengaduan');
+
+        if ($keyword) {
+            $jmlHasil = $this->pengaduanModel->cariBerdasarNikUsername($keyword)->countAllResults();
+            if ($jmlHasil != 0) { // jika jumlah hasil inputan tdk kosong
+                $hasil = $this->pengaduanModel->cariBerdasarNikUsername($keyword)->get()->getRowArray();
+                $pengaduan = $this->pengaduanModel->cariBerdasarNikUsername($keyword)->get()->getResultArray();
+                // dd($pengaduan);
+                $data = [
+                    'title'             => 'Data Pengaduan ' . limit_word($hasil['fullname'], 3),
+                    'hasil'             => $hasil,
+                    'pengaduan'         => $pengaduan,
+                    'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $hasil['user_id'])->countAllResults(),
+                    'pengaduanProses'   => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $hasil['user_id'])->where('status', 'proses')->countAllResults(),
+                    'pengaduanPending'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $hasil['user_id'])->where('status', 'pending')->countAllResults(),
+                    'pengaduanArsip'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $hasil['user_id'])->where('status', 'arsip')->countAllResults(),
+                    'pengaduanSelesai'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $hasil['user_id'])->where('status', 'selesai')->countAllResults()
+                ];
+                return view('pengaduan/hasilCariPengaduan', $data);
+            } else { // jika hasil inputan kosong
+                session()->setFlashdata('error', 'Maaf, Pengaduan yang Anda cari tidak ada, silahkan cek nik / username nya. Atau user tersebut belum membuat pengaduan');
+                return redirect()->back();
+            }
+        }
+    }
 }

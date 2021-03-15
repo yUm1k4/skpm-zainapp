@@ -19,6 +19,16 @@
                     <h4><?= $title; ?></h4>
                 </div>
             </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-sm btn-primary btn-icon-split" onclick="cariPengaduan()">
+                    <span class="icon">
+                        <i class="fa fa-fw fa-search"></i>
+                    </span>
+                    <span class="text">
+                        Cari Berdasarkan NIK/Username
+                    </span>
+                </button>
+            </div>
         </div>
     </div>
     <div class="pb-20">
@@ -27,6 +37,7 @@
                 <thead class="text-center">
                     <tr>
                         <th>No.</th>
+                        <th>Username</th>
                         <th>Nama</th>
                         <th>Kode</th>
                         <th>Isi Laporan</th>
@@ -42,6 +53,8 @@
                     ?>
                         <tr>
                             <td class="text-center" width="7%"><?= $i++ ?>.</td>
+
+                            <td><?= $p->username ?></td>
 
                             <?php if ($p->anonim == 1) : ?>
                                 <td><?= limit_word($p->fullname, 2) ?> <i class="text-primary">(Anonim)</i></td>
@@ -266,6 +279,24 @@
                 if (response.sukses) {
                     $('.viewmodal').html(response.sukses).show();
                     $('#modalselesai').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function cariPengaduan() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formCariPengaduan') ?>",
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalCariPengaduan').modal('show');
                 }
             },
             // menampilkan pesan error:

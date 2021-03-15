@@ -11,7 +11,7 @@
 <?= $this->endSection(); ?>
 
 <?= $this->section('preloader'); ?>
-<!-- <div class="pre-loader">
+<div class="pre-loader">
     <div class="pre-loader-box">
         <div class="loader-logo">
             <h5 class="text-blue"><?= setting()->nama_aplikasi_frontend ?></h5>
@@ -24,7 +24,7 @@
             Mohon Tunggu...
         </div>
     </div>
-</div> -->
+</div>
 <?= $this->endSection(); ?>
 
 <?= $this->section('main-content'); ?>
@@ -37,7 +37,7 @@
             </div>
             <div class="col-md-8">
                 <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                    <?= salam(date('H:i')) ?>, <div class="weight-600 font-30 text-blue"><?= xss(user()->fullname) ?>!</div>
+                    <?= salam(date('H:i')) ?>, <div class="weight-600 font-30 text-blue"><?= xss(limit_word(user()->fullname, 4)) ?>!</div>
                 </h4>
                 <p class="font-18 max-width-600">
                     <i class="fa fa-quote-left"></i>

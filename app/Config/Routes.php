@@ -119,6 +119,8 @@ $routes->post('/pengaduan/formArsip/(:num)', 'Pengaduan::formArsip/$1', ['filter
 $routes->post('/pengaduan/updateArsip', 'Pengaduan::updateArsip', ['filter' => 'role:Admin,Petugas']);
 $routes->post('/pengaduan/formBatalArsip', 'Pengaduan::formBatalArsip', ['filter' => 'role:Admin,Petugas']);
 $routes->get('/pengaduan/hapusPesan/(:num)', 'Pengaduan::hapusPesan/$1', ['filter' => 'role:Admin,Petugas']);
+$routes->post('pengaduan/formCariPengaduan', 'Pengaduan::formCariPengaduan', ['filter' => 'role:Admin,Petugas']);
+$routes->get('pengaduan/cariPengaduan', 'Pengaduan::cariPengaduan', ['filter' => 'role:Admin,Petugas']);
 
 // Pengaduan Kategori
 $routes->get('/pengaduan-kategori', 'KategoriPengaduan::index', ['filter' => 'role:Admin,Petugas']);
