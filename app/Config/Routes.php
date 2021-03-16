@@ -170,6 +170,10 @@ $routes->post('filter-kata/formedit', 'FilterKata::formedit', ['filter' => 'role
 $routes->post('filter-kata/updatedata', 'FilterKata::updatedata', ['filter' => 'role:Admin']);
 $routes->post('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin']);
 
+// Kartu Keluarga
+$routes->get('kk', 'KartuKeluarga::index', ['filter' => 'role:Admin,Petugas']);
+$routes->get('kk/ambildata', 'KartuKeluarga::ambildata', ['filter' => 'role:Admin,Petugas']);
+
 
 // Site Map
 $routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);

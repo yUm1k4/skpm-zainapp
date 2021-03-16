@@ -16,7 +16,7 @@
                         <i class="dw dw-add"></i>
                     </span>
                     <span class="text">
-                        Tambah Quotes
+                        Tambah KK
                     </span>
                 </button>
             </div>
@@ -32,9 +32,9 @@
 <div class="viewmodal" style="display: none;"></div>
 
 <script type="text/javascript">
-    function dataQuotes() {
+    function dataKK() {
         $.ajax({
-            url: "<?= site_url('quotes/ambildata') ?>",
+            url: "<?= site_url('kk/ambildata') ?>",
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
@@ -47,7 +47,7 @@
     }
 
     $(document).ready(function() {
-        dataQuotes();
+        dataKK();
 
         $('.tomboltambah').click(function(e) {
             e.preventDefault();

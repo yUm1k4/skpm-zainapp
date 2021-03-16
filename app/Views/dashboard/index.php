@@ -41,8 +41,12 @@
                 </h4>
                 <p class="font-18 max-width-600">
                     <i class="fa fa-quote-left"></i>
-                    <?php foreach ($quote as $quotes) { ?>
-                        <?= $quotes->quote ?>
+                    <?php if ($quote) { ?>
+                        <?php foreach ($quote as $quotes) { ?>
+                            <?= $quotes->quote ?>
+                        <?php } ?>
+                    <?php } else { ?>
+                        Yakin kepada Allah, bermimpi yang besar, kerja keras, maka kesuksesan akan datang kepadamu
                     <?php } ?>
                     <i class="fa fa-quote-right"></i>
                 </p>
