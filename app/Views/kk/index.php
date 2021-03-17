@@ -16,7 +16,7 @@
                         <i class="dw dw-add"></i>
                     </span>
                     <span class="text">
-                        Tambah KK
+                        Tambah KK Baru
                     </span>
                 </button>
             </div>
@@ -52,7 +52,7 @@
         $('.tomboltambah').click(function(e) {
             e.preventDefault();
             $.ajax({
-                url: "<?= site_url('quotes/formtambah') ?>",
+                url: "<?= site_url('kk/formtambah') ?>",
                 dataType: "json",
                 success: function(response) {
                     $('.viewmodal').html(response.data).show();

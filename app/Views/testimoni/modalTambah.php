@@ -68,6 +68,14 @@
 <script>
     $(document).ready(function() {
         $('.formTestimoni').submit(function(e) {
+            if (jQuery('#user_id').val() == 0) {
+                $('#user_id').addClass('is-invalid');
+                $('.errorUser').html("User harus dipilih");
+            } else {
+                $('#user_id').removeClass('is-invalid');
+                $('.errorUser').html('');
+            }
+
             e.preventDefault();
             $.ajax({
                 type: "POST",
@@ -125,9 +133,9 @@
                     }
                 },
                 // menampilkan pesan error:
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
+                // error: function(xhr, ajaxOptions, thrownError) {
+                //     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                // }
             });
         })
     })

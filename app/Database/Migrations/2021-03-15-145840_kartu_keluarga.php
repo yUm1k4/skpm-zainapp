@@ -16,9 +16,8 @@ class KartuKeluarga extends Migration
 				'auto_increment'	=> TRUE,
 			],
 			'no_kk' => [
-				'type' => 'INT',
+				'type' => 'VARCHAR',
 				'constraint' => 16,
-				'unsigned' => TRUE,
 			],
 			'user_id' => [
 				'type' => 'INT',
@@ -60,6 +59,6 @@ class KartuKeluarga extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('kartu_keluarga');
+		$this->forge->dropTable('kartu_keluarga', TRUE);
 	}
 }

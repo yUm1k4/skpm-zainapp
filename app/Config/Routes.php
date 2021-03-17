@@ -173,7 +173,9 @@ $routes->post('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin
 // Kartu Keluarga
 $routes->get('kk', 'KartuKeluarga::index', ['filter' => 'role:Admin,Petugas']);
 $routes->get('kk/ambildata', 'KartuKeluarga::ambildata', ['filter' => 'role:Admin,Petugas']);
-
+$routes->get('kk/formtambah', 'KartuKeluarga::formtambah', ['filter' => 'role:Admin']);
+$routes->post('kk/simpandata', 'KartuKeluarga::simpandata', ['filter' => 'role:Admin']);
+$routes->post('kk/getUsers', 'KartuKeluarga::getUsers', ['filter' => 'role:Admin,Petugas']);
 
 // Site Map
 $routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);
