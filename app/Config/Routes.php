@@ -170,12 +170,33 @@ $routes->post('filter-kata/formedit', 'FilterKata::formedit', ['filter' => 'role
 $routes->post('filter-kata/updatedata', 'FilterKata::updatedata', ['filter' => 'role:Admin']);
 $routes->post('filter-kata/hapus', 'FilterKata::hapus', ['filter' => 'role:Admin']);
 
+// Rukun Tetangga
+$routes->get('/rt', 'RukunTetangga::index', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rt/getRW', 'RukunTetangga::getRW', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/rt/ambildata', 'RukunTetangga::ambildata', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/rt/formtambah', 'RukunTetangga::formtambah', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rt/simpandata', 'RukunTetangga::simpandata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rt/formedit', 'RukunTetangga::formedit', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rt/updatedata', 'RukunTetangga::updatedata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rt/hapus', 'RukunTetangga::hapus', ['filter' => 'role:Admin,Petugas']);
+// Rukun Warga
+$routes->get('/rw', 'RukunWarga::index', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/rw/ambildata', 'RukunWarga::ambildata', ['filter' => 'role:Admin,Petugas']);
+$routes->get('/rw/formtambah', 'RukunWarga::formtambah', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rw/simpandata', 'RukunWarga::simpandata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rw/formedit', 'RukunWarga::formedit', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rw/updatedata', 'RukunWarga::updatedata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('/rw/hapus', 'RukunWarga::hapus', ['filter' => 'role:Admin,Petugas']);
+
 // Kartu Keluarga
 $routes->get('kk', 'KartuKeluarga::index', ['filter' => 'role:Admin,Petugas']);
 $routes->get('kk/ambildata', 'KartuKeluarga::ambildata', ['filter' => 'role:Admin,Petugas']);
-$routes->get('kk/formtambah', 'KartuKeluarga::formtambah', ['filter' => 'role:Admin']);
-$routes->post('kk/simpandata', 'KartuKeluarga::simpandata', ['filter' => 'role:Admin']);
+$routes->get('kk/formtambah', 'KartuKeluarga::formtambah', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/simpandata', 'KartuKeluarga::simpandata', ['filter' => 'role:Admin,Petugas']);
 $routes->post('kk/getUsers', 'KartuKeluarga::getUsers', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/formedit', 'KartuKeluarga::formedit', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/updatedata', 'KartuKeluarga::updatedata', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/hapus', 'KartuKeluarga::hapus', ['filter' => 'role:Admin,Petugas']);
 
 // Site Map
 $routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);

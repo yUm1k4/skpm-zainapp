@@ -70,7 +70,7 @@
                         url(2) == 'report'
                         ? 'active' : '';
                     ?>">
-                            <span class="micon dw dw-edit-2"></span><span class="mtext">Pengaduan</span>
+                            <span class="micon dw dw-edit-2"></span><span class="mtext">Data Pengaduan</span>
                         </a>
                         <ul class="submenu">
                             <li><a href="<?= base_url('pengaduan') ?>" class="<?= url(2) == 'pengaduan' ? 'active' : ''; ?>">Data Pengaduan</a></li>
@@ -99,6 +99,22 @@
 
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle 
+                        <?= url(2) == 'kk' ||
+                            url(2) == 'rt' ||
+                            url(2) == 'rw'
+                            ? 'active' : '';
+                        ?>">
+                            <span class="micon dw dw-police-box"></span><span class="mtext">Data Pemerintahan</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="<?= base_url('/rt') ?>" class="<?= url(2) == 'rt' ? 'active' : ''; ?>">Data RT</a></li>
+                            <li><a href="<?= base_url('/rw') ?>" class="<?= url(2) == 'rw' ? 'active' : ''; ?>">Data RW</a></li>
+                            <li><a href="<?= base_url('/kk') ?>" class="<?= url(2) == 'kk' ? 'active' : ''; ?>">Kartu Keluarga</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle 
                     <?= url(2) == 'contact' ||
                         url(2) == 'testimoni' ||
                         url(2) == 'subscriber'
@@ -117,13 +133,6 @@
                         <a href="<?= base_url('filter-kata') ?>" class="dropdown-toggle no-arrow 
                     <?= url(2) == 'filter-kata' ? 'active' : '' ?>">
                             <span class="micon dw dw-filter1"></span><span class="mtext">Filter Kata Kotor</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="<?= base_url('kk') ?>" class="dropdown-toggle no-arrow 
-                    <?= url(2) == 'kk' ? 'active' : '' ?>">
-                            <span class="micon dw dw-id-card"></span><span class="mtext">Kartu Keluarga</span>
                         </a>
                     </li>
 

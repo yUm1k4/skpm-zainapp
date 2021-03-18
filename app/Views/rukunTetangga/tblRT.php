@@ -1,11 +1,10 @@
-<table class="data-table table hover" id="tblKK">
+<table class="data-table table hover" id="tblRT">
     <thead class="text-center">
         <tr>
             <th>#</th>
-            <th>No. KK</th>
-            <th>Nama Lengkap</th>
-            <th>NIK</th>
-            <th>Status</th>
+            <th>Nomor RT</th>
+            <th>Nama RT</th>
+            <th>Bagian Dari RW</th>
             <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
         </tr>
     </thead>
@@ -16,21 +15,20 @@
         ?>
             <tr>
                 <td class="text-center"><?= $i++ ?>.</td>
-                <td><?= $row['no_kk'] ?></td>
-                <td><?= $row['fullname'] ?></td>
-                <td><?= $row['nik'] ?></td>
-                <td><?= $row['status_hubungan'] ?></td>
+                <td class="text-center"><?= $row['no_rt'] ?></td>
+                <td><?= $row['nama_rt'] ?></td>
+                <td class="text-center"><?= $row['no_rw'] ?></td>
 
                 <td class="text-center">
                     <div class="dropdown">
-                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" href="javascript:;" role="button" data-toggle="dropdown">
                             <i class="dw dw-more"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 
-                            <button class="dropdown-item" onclick="edit(<?= $row['id_kk'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
+                            <button class="dropdown-item" onclick="edit(<?= $row['id_rt'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
 
-                            <button type="button" onclick="hapus(<?= $row['id_kk'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <button type="button" onclick="hapus(<?= $row['id_rt'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
                         </div>
                     </div>
                 </td>
@@ -40,15 +38,16 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#tblKK').DataTable();
+        $('#tblRT').DataTable();
     })
 
-    function edit(id_kk) {
+
+    function edit(id_rt) {
         $.ajax({
             type: "POST",
-            url: "<?= site_url('kk/formedit') ?>",
+            url: "<?= site_url('/rt/formedit') ?>",
             data: {
-                id_kk: id_kk
+                id_rt: id_rt
             },
             dataType: "json",
             success: function(response) {
@@ -56,9 +55,14 @@
                     $('.viewmodal').html(response.sukses).show();
                     $('#modaledit').modal('show');
 
-                    // console.log(response.sukses);
-                    var selectKepalaKeluarga = new Option(response.kepalaText, response.kepalaId, true, true);
-                    $('#kepala_keluarga').append(selectKepalaKeluarga).trigger('change');
+                    // console.log(response);
+                    var dataRW = new Option(response.selectText, response.selectId, true, true);
+                    // var text = response.dataRW.text;
+                    // console.log(response.selectText);
+
+                    // Create a DOM Option and pre-select by default
+                    // var newOption = new Option(dataRW.text, dataRW.id, true, true);
+                    $('#rw_id').append(dataRW).trigger('change');
                 }
             },
             // menampilkan pesan error:
@@ -68,7 +72,7 @@
         });
     }
 
-    function hapus(id_kk) {
+    function hapus(id_rt) {
         Swal.fire({
             title: 'Hapus Data',
             text: `Yakin ingin menghapus data? Data yang terhapus tidak akan bisa dikembalikan`,
@@ -82,9 +86,9 @@
             if (result.value) {
                 $.ajax({
                     type: "POST",
-                    url: "<?= site_url('/kk/hapus') ?>",
+                    url: "<?= site_url('/rt/hapus') ?>",
                     data: {
-                        id_kk: id_kk
+                        id_rt: id_rt
                     },
                     dataType: "json",
                     success: function(response) {
@@ -94,7 +98,7 @@
                                 title: 'Berhasil',
                                 text: response.sukses
                             })
-                            dataKK();
+                            dataRT();
                         }
                     },
                     // menampilkan pesan error:

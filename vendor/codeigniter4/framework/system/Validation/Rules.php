@@ -93,10 +93,8 @@ class Rules
 	public function exact_length(string $str = null, string $val): bool
 	{
 		$val = explode(',', $val);
-		foreach ($val as $tmp)
-		{
-			if (is_numeric($tmp) && (int)$tmp === mb_strlen($str))
-			{
+		foreach ($val as $tmp) {
+			if (is_numeric($tmp) && (int)$tmp === mb_strlen($str)) {
 				return true;
 			}
 		}
@@ -162,20 +160,18 @@ class Rules
 		$db = Database::connect($data['DBGroup'] ?? null);
 
 		$row = $db->table($table)
-				  ->select('1')
-				  ->where($field, $str)
-				  ->limit(1);
+			->select('1')
+			->where($field, $str)
+			->limit(1);
 
-		if (! empty($where_field) && ! empty($where_value))
-		{
-			if (! preg_match('/^\{(\w+)\}$/', $where_value))
-			{
+		if (!empty($where_field) && !empty($where_value)) {
+			if (!preg_match('/^\{(\w+)\}$/', $where_value)) {
 				$row = $row->where($where_field, $where_value);
 			}
 		}
 
 		return (bool) ($row->get()
-						->getRow() !== null);
+			->getRow() !== null);
 	}
 
 	//--------------------------------------------------------------------
@@ -225,20 +221,18 @@ class Rules
 		$db = Database::connect($data['DBGroup'] ?? null);
 
 		$row = $db->table($table)
-				  ->select('1')
-				  ->where($field, $str)
-				  ->limit(1);
+			->select('1')
+			->where($field, $str)
+			->limit(1);
 
-		if (! empty($ignoreField) && ! empty($ignoreValue))
-		{
-			if (! preg_match('/^\{(\w+)\}$/', $ignoreValue))
-			{
+		if (!empty($ignoreField) && !empty($ignoreValue)) {
+			if (!preg_match('/^\{(\w+)\}$/', $ignoreValue)) {
 				$row = $row->where("{$ignoreField} !=", $ignoreValue);
 			}
 		}
 
 		return (bool) ($row->get()
-						->getRow() === null);
+			->getRow() === null);
 	}
 
 	//--------------------------------------------------------------------
@@ -343,12 +337,11 @@ class Rules
 	 */
 	public function required($str = null): bool
 	{
-		if (is_object($str))
-		{
+		if (is_object($str)) {
 			return true;
 		}
 
-		return is_array($str) ? ! empty($str) : (trim($str) !== '');
+		return is_array($str) ? !empty($str) : (trim($str) !== '');
 	}
 
 	//--------------------------------------------------------------------
@@ -376,8 +369,7 @@ class Rules
 		// search field is present or not.
 		$present = $this->required($str ?? '');
 
-		if ($present)
-		{
+		if ($present) {
 			return true;
 		}
 
@@ -386,10 +378,8 @@ class Rules
 		// as $fields is the lis
 		$requiredFields = [];
 
-		foreach ($fields as $field)
-		{
-			if (array_key_exists($field, $data))
-			{
+		foreach ($fields as $field) {
+			if (array_key_exists($field, $data)) {
 				$requiredFields[] = $field;
 			}
 		}
@@ -397,7 +387,7 @@ class Rules
 		// Remove any keys with empty values since, that means they
 		// weren't truly there, as far as this is concerned.
 		$requiredFields = array_filter($requiredFields, function ($item) use ($data) {
-			return ! empty($data[$item]);
+			return !empty($data[$item]);
 		});
 
 		return empty($requiredFields);
@@ -428,17 +418,14 @@ class Rules
 		// search field is present or not.
 		$present = $this->required($str ?? '');
 
-		if ($present)
-		{
+		if ($present) {
 			return true;
 		}
 
 		// Still here? Then we fail this test if
 		// any of the fields are not present in $data
-		foreach ($fields as $field)
-		{
-			if (! array_key_exists($field, $data))
-			{
+		foreach ($fields as $field) {
+			if (!array_key_exists($field, $data)) {
 				return false;
 			}
 		}

@@ -15,14 +15,14 @@
  */
 
 return [
-	// Core Messages
+   // Core Messages
    'noRuleSets'            => 'No rulesets specified in Validation configuration.',
    'ruleNotFound'          => '{0} is not a valid rule.',
    'groupNotFound'         => '{0} is not a validation rules group.',
    'groupNotArray'         => '{0} rule group must be an array.',
    'invalidTemplate'       => '{0} is not a valid Validation template.',
 
-	// Rule Messages
+   // Rule Messages
    'alpha'                 => 'The {field} field may only contain alphabetical characters.',
    'alpha_dash'            => 'The {field} field may only contain alphanumeric, underscore, and dash characters.',
    'alpha_numeric'         => 'The {field} field may only contain alphanumeric characters.',
@@ -42,6 +42,7 @@ return [
    'is_natural_no_zero'    => 'The {field} field must only contain digits and must be greater than zero.',
    'is_not_unique'         => 'The {field} field must contain a previously existing value in the database.',
    'is_unique'             => 'The {field} field must contain a unique value.',
+   'unique_rt_rw'          => 'The {field} field must contain a unique value.',
    'less_than'             => 'The {field} field must contain a number less than {param}.',
    'less_than_equal_to'    => 'The {field} field must contain a number less than or equal to {param}.',
    'matches'               => 'The {field} field does not match the {param} field.',
@@ -62,10 +63,10 @@ return [
    'valid_url'             => 'The {field} field must contain a valid URL.',
    'valid_date'            => 'The {field} field must contain a valid date.',
 
-	// Credit Cards
+   // Credit Cards
    'valid_cc_num'          => '{field} does not appear to be a valid credit card number.',
 
-	// Files
+   // Files
    'uploaded'              => '{field} is not a valid uploaded file.',
    'max_size'              => '{field} is too large of a file.',
    'is_image'              => '{field} is not a valid, uploaded image file.',

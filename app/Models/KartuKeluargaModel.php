@@ -25,4 +25,13 @@ class KartuKeluargaModel extends Model
             ->join('users', 'users.id = kartu_keluarga.user_id')
             ->get()->getResultArray();
     }
+
+    public function dataNIK($row)
+    {
+        return $this->table('kartu_keluarga')
+            ->select('users.id, nik, fullname, user_id')
+            ->join('users', 'users.id = kartu_keluarga.user_id')
+            ->where('user_id', $row)
+            ->get()->getRowArray();
+    }
 }

@@ -59,6 +59,6 @@ class KartuKeluarga extends Migration
 
 	public function down()
 	{
-		$this->forge->dropTable('kartu_keluarga', TRUE);
+		$this->forge->dropTable('kartu_keluarga');
 	}
 }
