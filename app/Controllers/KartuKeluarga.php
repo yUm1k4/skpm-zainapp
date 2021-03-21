@@ -27,7 +27,7 @@ class KartuKeluarga extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'tampildata'    => $this->kkModel->getData()
+                'tampildata'    => $this->kkModel->getKepalaKeluarga()
             ];
 
             $msg = [
@@ -268,6 +268,7 @@ class KartuKeluarga extends BaseController
                         'kepala_keluarga'  => $validation->getError('kepala_keluarga'),
                         'agama'  => $validation->getError('agama'),
                         'pekerjaan'  => $validation->getError('pekerjaan'),
+                        'jenis_kelamin'  => $validation->getError('jenis_kelamin'),
                     ]
                 ];
             } else {
@@ -303,4 +304,291 @@ class KartuKeluarga extends BaseController
             return redirect()->back();
         }
     }
+
+    /*
+    * #
+    * ########### Detail Kartu Keluarga start
+    * #
+    */
+
+    public function detailFormKK($no_kk)
+    {
+        $data = [
+            'title' => 'Detail Kartu Keluarga No ' . $no_kk,
+            'no_kk' => $no_kk
+        ];
+
+        return view('kk/formDetail', $data);
+    }
+
+    public function tblDetailKK()
+    {
+        if ($this->request->isAJAX()) {
+            $no_kk = $this->request->getVar('no_kk');
+
+            $result = $this->kkModel->getDetailKK($no_kk);
+
+            $data = [
+                'detaildata'    => $result
+            ];
+
+            $msg = [
+                'data' => view('kk/detailPage', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function formTambahDetail()
+    {
+        if ($this->request->isAJAX()) {
+            $no_kk = $this->request->getVar('no_kk');
+            $data = [
+                'no_kk'    => $no_kk
+            ];
+            $msg = [
+                'data' => view('kk/modalTambahDetail', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function simpanDataDetail()
+    {
+        if ($this->request->isAJAX()) {
+            $no_kk = $this->request->getVar('no_kk');
+            // Validasi
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'no_kk' => [
+                    'label' => 'No Kepala Keluarga',
+                    'rules' => 'required|min_length[16]|max_length[16]|numeric',
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'min_length' => '{field} harus 16 digit',
+                        'max_length' => '{field} harus 16 digit',
+                    ]
+                ],
+                'anggota_keluarga' => [
+                    'rules' => 'required|is_unique[kartu_keluarga.user_id]',
+                    'errors' => [
+                        'required' => 'Anggota Keluarga tidak boleh kosong',
+                        'is_unique' => 'Anggota Keluarga sudah terdaftar'
+                    ]
+                ],
+                'jenis_kelamin' => [
+                    'rules' => 'required',
+                    'errors' => 'Jenis Kelamin harus dipilih'
+                ],
+                'agama' => [
+                    'rules' => 'required',
+                    'errors' => 'Agama harus dipilih'
+                ],
+                'status' => [
+                    'rules' => 'required',
+                    'errors' => 'Status harus dipilih'
+                ],
+                'pekerjaan'  => [
+                    'label' => 'Pekerjaan',
+                    'rules' => 'required|min_length[5]|max_length[50]',
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'min_length' => '{field} minimal 5 karakter',
+                        'max_length' => '{field} maximal 50 karakter',
+                    ]
+                ]
+            ]);
+            // $log = 'console.log(' . $this->request->getVar('kartu_keluarga') . ');';
+            // echo $log;
+
+            // jika tidak valid (Ada yg salah)
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'no_kk'  => $validation->getError('no_kk'),
+                        'anggota_keluarga'  => $validation->getError('anggota_keluarga'),
+                        'jenis_kelamin'  => $validation->getError('jenis_kelamin'),
+                        'agama'  => $validation->getError('agama'),
+                        'status'  => $validation->getError('status'),
+                        'pekerjaan'  => $validation->getError('pekerjaan'),
+                    ]
+                ];
+            } else {
+                // jika validasi sukses (benar)
+                $simpandata = [
+                    'no_kk' =>  $no_kk,
+                    'user_id' =>  $this->request->getVar('anggota_keluarga'),
+                    'jenis_kelamin' =>  $this->request->getVar('jenis_kelamin'),
+                    'agama' =>  $this->request->getVar('agama'),
+                    'pekerjaan' =>  $this->request->getVar('pekerjaan'),
+                    'status_hubungan' => $this->request->getVar('status'),
+                ];
+                $this->kkModel->where('no_kk', $no_kk)->save($simpandata);
+                $msg = [
+                    'sukses' => 'Anggota Keluarga baru berhasil ditambahkan',
+                ];
+            }
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function formEditDetail()
+    {
+        if ($this->request->isAJAX()) {
+            $id_kk = $this->request->getVar('id_kk');
+            $row = $this->kkModel->find($id_kk);
+
+            $dataNIK = $this->kkModel->dataNIK($row['user_id']);
+            $anggotaText = $dataNIK['nik'] . ' - ' . $dataNIK['fullname'];
+
+            $data = [
+                'id_kk'         => $id_kk,
+                'no_kk'         => $row['no_kk'],
+                'jenis_kelamin' => $row['jenis_kelamin'],
+                'pekerjaan'     => $row['pekerjaan'],
+                'agama'         => $row['agama'],
+                'status'        => $row['status_hubungan'],
+            ];
+
+            $msg = [
+                'sukses'    => view('kk/modalEditDetail', $data),
+                'anggotaId'  => $dataNIK['user_id'],
+                'anggotaText' => $anggotaText,
+            ];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function updateDataDetail()
+    {
+        if ($this->request->isAJAX()) {
+            $id_kk = $this->request->getVar('id_kk');
+            $row = $this->kkModel->find($id_kk);
+
+            // validasi untuk field yg unique
+            // jika no_rt yg lama sama dengan no_rt yg baru (artinya tdk diubah)
+            if ($row['no_kk'] == $this->request->getVar('no_kk')) {
+                // wajib di isi aja
+                $rule_no_kk = 'required|numeric|min_length[16]|max_length[16]';
+            } else {
+                // sedangkan kalo beda, harus unique, artinya tidak ada yg sama dengan no_kk lain selain no_kk sebelumnya
+                $rule_no_kk = 'required|numeric|min_length[16]|max_length[16]|is_unique[kartu_keluarga.no_kk]';
+            }
+            if ($row['user_id'] == $this->request->getVar('anggota_keluarga')) {
+                $rule_anggota_keluarga = 'required';
+            } else {
+                $rule_anggota_keluarga = 'required|is_unique[kartu_keluarga.user_id]';
+            }
+
+            // Validasi
+            $validation = \Config\Services::validation();
+            $valid = $this->validate([
+                'no_kk'  => [
+                    'label' => 'Nomor KK',
+                    'rules' => $rule_no_kk,
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'min_length' => '{field} minimal 16 digit',
+                        'max_length' => '{field} maximal 16 digit',
+                        'is_unique' => '{field} sudah terdaftar',
+                    ]
+                ],
+                'anggota_keluarga'  => [
+                    'label' => 'Anggota Keluarga',
+                    'rules' => $rule_anggota_keluarga,
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'is_unique' => '{field} sudah terdaftar',
+                    ]
+                ],
+                'agama'  => [
+                    'label' => 'Agama',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                    ]
+                ],
+                'jenis_kelamin' => [
+                    'rules' => 'required',
+                    'errors' => 'Jenis Kelamin harus dipilih'
+                ],
+                'status' => [
+                    'rules' => 'required',
+                    'errors' => 'Status Hubungan harus dipilih'
+                ],
+                'pekerjaan'  => [
+                    'label' => 'Nama Pekerjaan',
+                    'rules' => 'required|min_length[5]|max_length[50]',
+                    'errors' => [
+                        'required'  => '{field} tidak boleh kosong',
+                        'min_length' => '{field} minimal 5 karakter',
+                        'max_length' => '{field} maximal 50 karakter',
+                    ]
+                ]
+            ]);
+
+            // jika tidak valid (Ada yg salah)
+            if (!$valid) {
+                $msg = [
+                    'error' => [
+                        'no_kk'  => $validation->getError('no_kk'),
+                        'anggota_keluarga'  => $validation->getError('anggota_keluarga'),
+                        'agama'  => $validation->getError('agama'),
+                        'pekerjaan'  => $validation->getError('pekerjaan'),
+                        'status'  => $validation->getError('status'),
+                        'jenis_kelamin'  => $validation->getError('jenis_kelamin'),
+                    ]
+                ];
+            } else {
+                $data = [
+                    'id_kk' =>  $id_kk,
+                    'no_kk' =>  $this->request->getVar('no_kk'),
+                    'user_id' =>  $this->request->getVar('anggota_keluarga'),
+                    'agama' =>  $this->request->getVar('agama'),
+                    'jenis_kelamin' =>  ucwords($this->request->getVar('jenis_kelamin')),
+                    'pekerjaan' =>  ucwords($this->request->getVar('pekerjaan')),
+                    'status_hubungan' =>  ucwords($this->request->getVar('status')),
+                ];
+
+                $this->kkModel->update($id_kk, $data);
+                $msg = ['sukses' => 'Anggota Keluarga berhasil diupdate'];
+            }
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function hapusDetailKK()
+    {
+        if ($this->request->isAJAX()) {
+            $id_kk = $this->request->getVar('id_kk');
+            $this->kkModel->delete($id_kk);
+
+            $msg = ['sukses' => "Anggota Keluarga berhasil dihapus"];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    /*
+    * ####### Detail Kartu Keluarga end
+    */
 }

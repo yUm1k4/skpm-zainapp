@@ -148,7 +148,7 @@ class Auth extends BaseConfig
     // The amount of time, in seconds, that you want a login to last for.
     // Defaults to 30 days.
     //
-    public $rememberLength = 7 * DAY;
+    public $rememberLength = 30 * DAY;
 
     //--------------------------------------------------------------------
     // Error handling

@@ -34,6 +34,18 @@ class MyUserModel extends Model
         return $query->getResult();
     }
 
+    public function getDetailMasyarakat($username)
+    {
+        return $this->table('users')
+            ->select('*, users.id as userid, name as role')
+            // ->join('kartu_keluarga kk', 'kk.user_id = users.id', 'left')
+            ->join('auth_groups_users agu', 'agu.user_id = users.id')
+            ->join('auth_groups ag', 'ag.id = agu.group_id')
+            ->where('ag.id =', 3)
+            ->where('users.username =', $username)
+            ->get()->getRowArray();
+    }
+
     public function getTotal($group_id)
     {
         $this->builder = $this->db->table('users');

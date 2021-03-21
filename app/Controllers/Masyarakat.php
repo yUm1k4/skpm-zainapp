@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\MasyarakatModel;
 use App\Models\MyUserModel;
+use App\Models\PengaduanModel;
+use App\Models\KartuKeluargaModel;
 use Myth\Auth\Models\UserModel;
 use Myth\Auth\Entities\User;
 
@@ -14,6 +16,8 @@ class Masyarakat extends BaseController
         $this->userModel = new MyUserModel;
         $this->mythUserModel = new UserModel;
         $this->masyarakatModel = new MasyarakatModel;
+        $this->pengaduanModel = new PengaduanModel;
+        $this->kkModel = new KartuKeluargaModel;
         $this->config = config('Auth');
     }
 
@@ -141,6 +145,29 @@ class Masyarakat extends BaseController
             session()->setFlashdata('message', 'Data berhasil ditambahkan');
             return redirect()->route('masyarakat');
         }
+    }
+
+    public function detail($username)
+    {
+        $pengaduan = $this->pengaduanModel->cariBerdasarNikUsername($username)->get()->getResultArray();
+        $masyarakat = $this->userModel->getDetailMasyarakat($username);
+        $kk = $this->kkModel->dataNIK($masyarakat['userid']);
+        $keluarga = $this->kkModel->getDetailKK($kk['no_kk']);
+        // dd($kk);
+        $data = [
+            'title'         => 'Detail Masyarakat ' . $masyarakat['fullname'],
+            'masyarakat'    => $masyarakat,
+            'pengaduan'     => $pengaduan,
+            'kk'            => $kk,
+            'keluarga'      => $keluarga,
+            'totalPengaduan'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $masyarakat['user_id'])->countAllResults(),
+            'pengaduanProses'   => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $masyarakat['user_id'])->where('status', 'proses')->countAllResults(),
+            'pengaduanPending'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $masyarakat['user_id'])->where('status', 'pending')->countAllResults(),
+            'pengaduanArsip'    => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $masyarakat['user_id'])->where('status', 'arsip')->countAllResults(),
+            'pengaduanSelesai'  => $this->pengaduanModel->select('id_pengaduan')->where('user_id =', $masyarakat['user_id'])->where('status', 'selesai')->countAllResults()
+        ];
+
+        return view('masyarakat/detail', $data);
     }
 
     public function edit($id)

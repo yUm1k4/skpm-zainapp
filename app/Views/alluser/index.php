@@ -74,16 +74,19 @@
                                             $role = 'Masyarakat';
                                         } ?>
 
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $role; ?>">
-                                            <i class="dw dw-eye"></i> Detail
-                                        </a>
-
                                         <?php if ($au->group_id == 1) { ?>
+                                            <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $role; ?>">
+                                                <i class="dw dw-eye"></i> Detail
+                                            </a>
                                             <a href="<?= base_url('/admin/delete/' . $au->userid) . '/' . $au->username ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                         <?php } elseif ($au->group_id == 2) { ?>
+                                            <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-alluser-modal" type="button" data-userid="<?= $au->userid; ?>" data-username="<?= $au->username; ?>" data-email="<?= $au->email; ?>" data-fullname="<?= $au->fullname; ?>" data-nik="<?= $au->nik; ?>" data-nohp="<?= $au->no_hp; ?>" data-alamat="<?= $au->alamat; ?>" data-role="<?= $role; ?>">
+                                                <i class="dw dw-eye"></i> Detail
+                                            </a>
                                             <a class="dropdown-item" href="<?= base_url('/petugas/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
                                             <a href="<?= base_url('/petugas/delete/' . $au->userid . '/' . $au->username) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
-                                        <?php } else { ?>
+                                        <?php } elseif ($au->group_id == 3) { ?>
+                                            <a class="dropdown-item" href="<?= base_url('/masyarakat/detail/' . $au->username) ?>"><i class="dw dw-eye"></i> Detail</a>
                                             <a class="dropdown-item" href="<?= base_url('/masyarakat/edit/' . $au->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
                                             <a href="<?= base_url('/masyarakat/delete/' . $au->userid) ?>" class="dropdown-item btn-delete"><i class="dw dw-delete-3"></i> Hapus</a>
                                         <?php } ?>

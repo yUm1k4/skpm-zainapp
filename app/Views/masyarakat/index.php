@@ -29,8 +29,8 @@
                         <th>No.</th>
                         <th>Foto</th>
                         <th>Nama</th>
-                        <th>NIK</th>
                         <th>Username</th>
+                        <th>NIK</th>
                         <th>No HP</th>
                         <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
                     </tr>
@@ -50,7 +50,7 @@
                                 <?php endif; ?>
                             </td>
                             <?php if ($m->status == 'banned') { ?>
-                                <td class="text-danger"><?= xss(limit_word($m->fullname, 2)) ?> <i>(Banned)</i></td>
+                                <td class="text-danger"><?= xss(limit_word($m->fullname, 3)) ?> <i>(Banned)</i></td>
                                 <td class="text-danger"><?= xss($m->username) ?></td>
                             <?php } else { ?>
                                 <td><?= xss(limit_word($m->fullname, 2)) ?></td>
@@ -65,9 +65,12 @@
                                         <i class="dw dw-more"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                        <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-masyarakat-modal" type="button" data-userid="<?= $m->userid; ?>" data-username="<?= $m->username; ?>" data-email="<?= $m->email; ?>" data-fullname="<?= $m->fullname; ?>" data-nik="<?= $m->nik; ?>" data-nohp="<?= $m->no_hp; ?>" data-alamat="<?= $m->alamat; ?>">
+                                        <!-- <a href="#" class="dropdown-item" id="detailData" data-toggle="modal" data-target="#show-masyarakat-modal" type="button" data-userid="<?= $m->userid; ?>" data-username="<?= $m->username; ?>" data-email="<?= $m->email; ?>" data-fullname="<?= $m->fullname; ?>" data-nik="<?= $m->nik; ?>" data-nohp="<?= $m->no_hp; ?>" data-alamat="<?= $m->alamat; ?>">
                                             <i class="dw dw-eye"></i> Detail
-                                        </a>
+                                        </a> -->
+
+                                        <a class="dropdown-item" href="<?= base_url('/masyarakat/detail/' . $m->username) ?>"><i class="dw dw-eye"></i> Detail</a>
+
                                         <a class="dropdown-item" href="<?= base_url('/masyarakat/edit/' . $m->userid) ?>"><i class="dw dw-edit2"></i> Edit</a>
 
                                         <?php if ($m->status == 'banned') { ?>

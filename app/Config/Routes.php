@@ -103,6 +103,7 @@ $routes->post('/masyarakat/delete/(:num)', 'Masyarakat::delete/$1', ['filter' =>
 $routes->post('/masyarakat/bannedForm', 'Masyarakat::bannedForm', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/banned', 'Masyarakat::banned', ['filter' => 'role:Admin']);
 $routes->post('/masyarakat/unban/(:num)', 'Masyarakat::unban/$1', ['filter' => 'role:Admin']);
+$routes->get('/masyarakat/detail/(:any)', 'Masyarakat::detail/$1', ['filter' => 'role:Admin,Petugas']);
 
 // Data Semua Pengguna
 $routes->get('/all-user', 'Alluser::index', ['filter' => 'role:Admin']);
@@ -197,6 +198,14 @@ $routes->post('kk/getUsers', 'KartuKeluarga::getUsers', ['filter' => 'role:Admin
 $routes->post('kk/formedit', 'KartuKeluarga::formedit', ['filter' => 'role:Admin,Petugas']);
 $routes->post('kk/updatedata', 'KartuKeluarga::updatedata', ['filter' => 'role:Admin,Petugas']);
 $routes->post('kk/hapus', 'KartuKeluarga::hapus', ['filter' => 'role:Admin,Petugas']);
+// Detail KK
+$routes->get('kk/detailFormKK/(:any)', 'KartuKeluarga::detailFormKK/$1', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/tblDetailKK', 'KartuKeluarga::tblDetailKK', ['filter' => 'role:Admin,Petugas']);
+$routes->get('kk/formTambahDetail', 'KartuKeluarga::formTambahDetail', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/simpanDataDetail', 'KartuKeluarga::simpanDataDetail', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/formEditDetail', 'KartuKeluarga::formEditDetail', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/updateDataDetail', 'KartuKeluarga::updateDataDetail', ['filter' => 'role:Admin,Petugas']);
+$routes->post('kk/hapusDetailKK', 'KartuKeluarga::hapusDetailKK', ['filter' => 'role:Admin,Petugas']);
 
 // Site Map
 $routes->get('site-map', 'SiteMap::index', ['filter' => 'role:Admin']);
