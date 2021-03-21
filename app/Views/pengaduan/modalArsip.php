@@ -13,7 +13,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <div class="alert alert-primary" role="alert">
+                                    <div class="alert alert-warning" role="alert">
                                         <h6 class="alert-heading h4">Apakah kamu yakin ingin mengarsipkan pengaduan ini? </h6>
                                         <p>Pengaduan yang di arsipkan adalah pengaduan yang mengandung SARA, Tidak Memiliki Bukti Dukung, Tidak Jelas, Tidak Relevan dengan Kinerja Pemerintah, atau Melanggar <a class="alert-link" href="<?= base_url('/ketentuan') ?>" target="_blank">Ketentuan Pengguna</a></p>
                                     </div>
@@ -25,7 +25,7 @@
             </div>
             <div class="modal-footer">
                 <p></p>
-                <button type="submit" class="btn btn-primary btnsimpan">Ya, Arsipkan</button>
+                <button type="submit" class="btn btn-warning btnsimpan">Ya, Arsipkan</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
             <?= form_close() ?>

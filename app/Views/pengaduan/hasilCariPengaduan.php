@@ -167,4 +167,231 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="show-detail-pengaduan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Detail Pengaduan</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="wizard-content">
+                    <section>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nama Lengkap :</label>
+                                    <input readonly type="text" class="form-control" id="fullname">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>No Induk Kependudukan :</label>
+                                    <input readonly type="number" class="form-control" id="nik">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Username :</label>
+                                    <input readonly type="hidden" class="form-control" name="userid" id="userid">
+                                    <input readonly type="text" class="form-control" id="username">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Alamat Pelapor :</label>
+                                    <input class="form-control" id="alamat" rows="2" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Nomor Handphone :</label>
+                                    <input readonly type="text" class="form-control" id="no_hp">
+                                </div>
+                            </div>
+                            <div class=" col-md-6">
+                                <div class="form-group">
+                                    <label>Email :</label>
+                                    <input readonly type="email" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status Pengaduan :</label>
+                                    <input readonly type="text" class="form-control text-capitalize" id="status">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kode Pengaduan :</label>
+                                    <input readonly type="text" class="form-control" id="kode">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Kategori Pengaduan :</label>
+                                    <input readonly type="text" class="form-control" id="kategori">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Tanggal Pengaduan :</label>
+                                    <input readonly type="text" class="form-control" id="tanggal">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Isi Pengaduan :</label>
+                                <textarea class="form-control" id="isi_laporan" readonly></textarea>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="viewmodal" style="display: none;"></div>
+<!-- End Modal -->
+
+<?= $this->endSection(); ?>
+
+<?= $this->section('my-js'); ?>
+
+<script>
+    function arsipkan(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formArsip/' . $p['id_pengaduan']) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalarsip').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function batalarsip(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formBatalArsip/' . $p['id_pengaduan']) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalbatalarsip').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function selesai(id_pengaduan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formSelesai/' . $p['id_pengaduan']) ?>",
+            data: {
+                id_pengaduan: id_pengaduan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalselesai').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function cariPengaduan() {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('pengaduan/formCariPengaduan') ?>",
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalCariPengaduan').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    // Detail Data
+    $(document).ready(function() {
+        $(document).on('click', '#detailData', function() {
+            // mendeklarasikan variable
+            var userid = $(this).data('userid');
+            var username = $(this).data('username');
+            var email = $(this).data('email');
+            var fullname = $(this).data('fullname');
+            var nik = $(this).data('nik');
+            var nohp = $(this).data('nohp');
+            var alamat = $(this).data('alamat');
+            var status = $(this).data('ket');
+            var kode = $(this).data('kode');
+            var kategori = $(this).data('kategori');
+            var tanggal = $(this).data('tanggal');
+            var isi = $(this).data('isi');
+            // var lampiran = $(this).data('lampiran');
+
+            // mengirim ke modal sesuai nama idnya
+            $('#userid').val(userid);
+            $('#username').val(username);
+            $('#email').val(email);
+            $('#fullname').val(fullname);
+            $('#nik').val(nik);
+            $('#no_hp').val(nohp);
+            $('#alamat').val(alamat);
+            $('#status').val(status);
+            $('#kode').val(kode);
+            $('#kategori').val(kategori);
+            $('#tanggal').val(tanggal);
+            $('#isi_laporan').val(isi);
+            // $('#lampiran').href(lampiran);
+        });
+    });
+</script>
 <?= $this->endSection(); ?>
