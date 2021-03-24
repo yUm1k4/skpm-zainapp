@@ -20,7 +20,7 @@ class Laporan extends BaseController
 		return view('laporan/index', $data);
 	}
 
-	public function cetak()
+	public function cetakTgl()
 	{
 		$rules = [
 			'tanggal' => [
@@ -49,12 +49,53 @@ class Laporan extends BaseController
 			'data'		=> $this->pengaduanModel->cetakRangeTanggal(['mulai' => $mulai, 'akhir' => $akhir]),
 		];
 
-		$html = view('laporan/mpdf', $data);
+		$html = view('laporan/cetakTgl', $data);
 
 		$dompdf = new \Dompdf\Dompdf();
 		$dompdf->loadHtml($html);
 		$dompdf->setPaper('A4');
 		$dompdf->render();
 		$dompdf->stream('Laporan Data Pengaduan | ' . setting()->nama_aplikasi_frontend . '.pdf', array("Attachment" => false));
+	}
+
+	public function cetakKK()
+	{
+		$rules = [
+			'no_kk' => [
+				'rules'     => 'required|numeric',
+				'errors'    => [
+					'required'  => 'Harap masukkan No. KK',
+					'numeric'	=> 'Harus berupa nomor'
+				]
+			]
+		];
+
+		// jika tdk tervalidasi, kembalikan dan tampilkan errors
+		if (!$this->validate($rules)) {
+			return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+		}
+
+		$no_kk = $this->request->getPost('no_kk');
+		$data = $this->pengaduanModel->cetakKK($no_kk);
+		$row = $data->countAllResults();
+
+		// dd($data);
+		if ($row == null) {
+			session()->setFlashdata('error', 'Maaf Laporan yang anda cari tidak ada. Silahkan cek No. Kartu Keluarga nya.');
+			return redirect()->to(base_url('report'));
+		} else {
+			$data = [
+				'title'		=> 'Laporan Data Pengaduan',
+				'data'		=> $data->get()->getResultArray()
+			];
+
+			$html = view('laporan/cetakKK', $data);
+
+			$dompdf = new \Dompdf\Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4');
+			$dompdf->render();
+			$dompdf->stream('Laporan Data Pengaduan | ' . setting()->nama_aplikasi_frontend . '.pdf', array("Attachment" => false));
+		}
 	}
 }

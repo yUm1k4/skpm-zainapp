@@ -134,7 +134,8 @@ $routes->post('/pengaduan-kategori/hapus', 'KategoriPengaduan::hapus', ['filter'
 
 // Laporan
 $routes->get('report', 'Laporan::index', ['filter' => 'role:Admin,Petugas']);
-$routes->post('cetak', 'Laporan::cetak', ['filter' => 'role:Admin,Petugas']);
+$routes->post('cetakTgl', 'Laporan::cetakTgl', ['filter' => 'role:Admin,Petugas']);
+$routes->post('cetakKK', 'Laporan::cetakKK', ['filter' => 'role:Admin,Petugas']);
 
 // Contact Us
 $routes->get('contact', 'Contact::index', ['filter' => 'role:Admin,Petugas']);

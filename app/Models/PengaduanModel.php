@@ -68,4 +68,16 @@ class PengaduanModel extends Model
             ->orderBy('pengaduan_dibuat', 'ASC');
         return $query->get()->getResultArray();
     }
+
+    public function cetakKK($no_kk)
+    {
+        $query = $this->table('pengaduan')
+            ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->join('kartu_keluarga kk', 'kk.user_id = users.id')
+            ->where('no_kk', $no_kk)
+            ->orderBy('pengaduan_dibuat', 'ASC');
+        return $query;
+    }
 }

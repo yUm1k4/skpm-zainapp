@@ -75,7 +75,7 @@
                         <ul class="submenu">
                             <li><a href="<?= base_url('pengaduan') ?>" class="<?= url(2) == 'pengaduan' ? 'active' : ''; ?>">Data Pengaduan</a></li>
                             <li><a href="<?= base_url('pengaduan-kategori') ?>" class="<?= url(2) == 'pengaduan-kategori' ? 'active' : ''; ?>">Kategori Pengaduan</a></li>
-                            <li><a href="<?= base_url('report') ?>" class="<?= url(2) == 'report' ? 'active' : ''; ?>">Laporan</a></li>
+                            <li><a href="<?= base_url('report') ?>" class="<?= url(2) == 'report' ? 'active' : ''; ?>">Cetak PDF</a></li>
                         </ul>
                     </li>
 

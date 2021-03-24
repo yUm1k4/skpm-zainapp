@@ -139,6 +139,21 @@ class RukunTetangga extends BaseController
                 ],
             ]);
 
+            $no_rt = $this->request->getPost('no_rt');
+            $rw_id = $this->request->getPost('rw_id');
+
+            $cek = $this->rtModel->where('no_rt', $no_rt)
+                ->where('rw_id', $rw_id)
+                ->get()->getRowArray();
+
+            // jika no_rt dan rw_id sudah terdaftar
+            if ($cek != null) {
+                $msg = [
+                    'not_valid'     => 'Maaf No. RT sudah terdaftar'
+                ];
+                return json_encode($msg);
+            }
+
             // jika tidak valid (Ada yg salah)
             if (!$valid) {
                 $msg = [
@@ -155,7 +170,10 @@ class RukunTetangga extends BaseController
                     'nama_rt' =>  ucwords($this->request->getVar('nama_rt'))
                 ];
                 $this->rtModel->insert($simpandata);
-                $msg = ['sukses' => 'RT baru berhasil ditambahkan'];
+                $msg = [
+                    'sukses' => 'RT baru berhasil ditambahkan',
+                    'dd'     => $cek
+                ];
             }
             echo json_encode($msg);
         } else {

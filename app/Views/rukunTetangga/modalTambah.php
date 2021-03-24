@@ -123,9 +123,19 @@
                             $('#nama_rt').addClass('is-valid');
                             $('.errorNama').html('');
                         }
+                    } else if (response.not_valid) {
+                        // console.log(response.not_valid);
+                        if (response.not_valid) {
+                            // jika ada error maka tampilkan pesan errornya
+                            $('#no_rt').addClass('is-invalid');
+                            $('.errorNo').html(response.not_valid);
+                        } else {
+                            // jika tdk ada error
+                            $('#no_rt').removeClass('is-invalid');
+                            $('#no_rt').addClass('is-valid');
+                            $('.errorNo').html('');
+                        }
                     } else {
-                        // jika tidak ada error
-                        // munculkan pesan sukses
                         Swal.fire({
                             icon: 'success',
                             title: 'Berhasil',
