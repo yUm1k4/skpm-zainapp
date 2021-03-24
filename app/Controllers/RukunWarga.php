@@ -24,9 +24,9 @@ class RukunWarga extends BaseController
     {
         if ($this->request->isAJAX()) {
             $data = [
-                'tampildata'    => $this->rwModel->orderBy('no_rw', 'asc')
-                    ->findAll()
-                // 'tampildata'    => $this->rwModel->getCount()
+                // 'tampildata'    => $this->rwModel->orderBy('no_rw', 'asc')
+                //     ->findAll()
+                'tampildata'    => $this->rwModel->getCount()
             ];
 
             $msg = [

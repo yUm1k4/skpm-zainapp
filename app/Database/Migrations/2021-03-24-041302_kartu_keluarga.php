@@ -15,6 +15,16 @@ class KartuKeluarga extends Migration
 				'unsigned'			=> TRUE,
 				'auto_increment'	=> TRUE,
 			],
+			'rw_id' => [
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
+			],
+			'rt_id' => [
+				'type' => 'INT',
+				'constraint' => 11,
+				'unsigned' => TRUE,
+			],
 			'no_kk' => [
 				'type' => 'VARCHAR',
 				'constraint' => 16,
@@ -52,6 +62,8 @@ class KartuKeluarga extends Migration
 		]);
 		$this->forge->addKey('id_kk', TRUE);
 		$this->forge->addForeignKey('user_id', 'users', 'id');
+		$this->forge->addForeignKey('rw_id', 'rukun_warga', 'id_rw');
+		$this->forge->addForeignKey('rt_id', 'rukun_tetangga', 'id_rt');
 		$this->forge->createTable('kartu_keluarga');
 	}
 

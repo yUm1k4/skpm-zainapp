@@ -33,6 +33,8 @@ class RukunTetanggaModel extends Model
         return $this->table('rukun_tetangga')
             ->select('*')
             ->join('rukun_warga', 'rukun_warga.id_rw = rukun_tetangga.rw_id')
+            ->orderBy('no_rw', 'asc')
+            ->orderBy('no_rt', 'asc')
             ->get()->getResultArray();
     }
 

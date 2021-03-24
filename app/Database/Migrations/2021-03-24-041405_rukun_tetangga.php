@@ -39,7 +39,7 @@ class RukunTetangga extends Migration
 			]
 		]);
 		$this->forge->addKey('id_rt', TRUE);
-		$this->forge->addForeignKey('rw_id', 'rukun_tetangga', 'id_rw');
+		$this->forge->addForeignKey('rw_id', 'rukun_warga', 'id_rw');
 		$this->forge->createTable('rukun_tetangga');
 	}
 

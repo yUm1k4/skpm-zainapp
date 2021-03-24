@@ -4,6 +4,7 @@
             <th>#</th>
             <th>Nomor RW</th>
             <th>Nama RW</th>
+            <th>Jumlah RT</th>
             <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
         </tr>
     </thead>
@@ -14,8 +15,13 @@
         ?>
             <tr>
                 <td class="text-center"><?= $i++ ?>.</td>
-                <td class="text-center"><?= $row['no_rw'] ?></td>
+                <td class="text-center"><?= $row['no'] ?></td>
                 <td><?= $row['nama_rw'] ?></td>
+                <?php if ($row['id_rt'] == null) { ?>
+                    <td class="text-center">0</td>
+                <?php } else { ?>
+                    <td class="text-center"><?= $row['no_rw'] ?></td>
+                <?php } ?>
 
                 <td class="text-center">
                     <div class="dropdown">
