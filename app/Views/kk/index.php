@@ -40,9 +40,9 @@
                 $('.viewdata').html(response.data);
             },
             // menampilkan pesan error:
-            error: function(xhr, ajaxOptions, thrownError) {
-                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            }
+            // error: function(xhr, ajaxOptions, thrownError) {
+            //     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            // }
         });
     }
 
@@ -59,9 +59,9 @@
                     $('#modaltambah').modal('show');
                 },
                 // menampilkan pesan error:
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
+                // error: function(xhr, ajaxOptions, thrownError) {
+                //     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                // }
             });
         });
     })
