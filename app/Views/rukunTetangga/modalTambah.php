@@ -124,7 +124,7 @@
                             $('.errorNama').html('');
                         }
                     } else if (response.not_valid) {
-                        // console.log(response.not_valid);
+                        console.log(response.not_valid);
                         if (response.not_valid) {
                             // jika ada error maka tampilkan pesan errornya
                             $('#no_rt').addClass('is-invalid');

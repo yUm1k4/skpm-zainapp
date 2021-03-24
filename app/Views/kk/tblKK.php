@@ -58,6 +58,13 @@
                     // console.log(response.sukses);
                     var selectKepalaKeluarga = new Option(response.kepalaText, response.kepalaId, true, true);
                     $('#kepala_keluarga').append(selectKepalaKeluarga).trigger('change');
+
+                    var selectRW = new Option(response.rwText, response.rwId, true, true);
+                    $('#rw_id').append(selectRW).trigger('change');
+
+                    var selectRT = new Option(response.rtText, response.rtId, true, true);
+                    $('#rt_id').append(selectRT).trigger('change');
+
                 }
             },
             // menampilkan pesan error:

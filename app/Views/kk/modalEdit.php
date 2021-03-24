@@ -8,9 +8,10 @@
             </div>
             <?= form_open(base_url('kk/updatedata'), ['class' => 'formKK'], ['id_kk' => $id_kk]) ?>
             <div class="modal-body">
+                <?= csrf_field() ?>
                 <div class="wizard-content">
                     <section>
-                        <?= csrf_field() ?>
+                        <h6 class="text-blue">Section Kartu Keluarga</h6>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -22,6 +23,33 @@
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="rw_id">Rukun Warga</label>
+                                    <select name="rw_id" id="rw_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Warga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
+                                        <option value="0" selected>Cari Nomor RW</option>
+                                    </select>
+                                    <div class="invalid-feedback errorRW">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="rt_id">Rukun Tetangga <sup class="text-small font-italic text-danger">(Pilih rukun warga dahulu)</sup></label>
+                                    <select name="rt_id" id="rt_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Tetangga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
+                                        <option value="0">Cari Nomor RT</option>
+                                    </select>
+                                    <div class="invalid-feedback errorRT">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h6 class="text-blue">Section Data Kepala Keluarga</h6>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -40,13 +68,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Jenis Kelamin</label>
-                                    <div class="custom-control custom-radio mb-5">
-                                        <input type="radio" id="laki_laki" <?= $jenis_kelamin == 'l' ? "checked"  : ''; ?> name="jenis_kelamin" value="l" class="custom-control-input">
-                                        <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
-                                    </div>
-                                    <div class="custom-control custom-radio mb-5">
-                                        <input type="radio" id="perempuan" <?= $jenis_kelamin == 'p' ? "checked"  : ''; ?> name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
-                                        <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                    <div class="d-flex">
+                                        <div class="custom-control custom-radio mr-4">
+                                            <input type="radio" id="laki_laki" <?= $jenis_kelamin == 'l' ? "checked"  : ''; ?> name="jenis_kelamin" value="l" class="custom-control-input">
+                                            <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="perempuan" <?= $jenis_kelamin == 'p' ? "checked"  : ''; ?> name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
+                                            <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                        </div>
                                     </div>
                                     <div class="invalid-feedback errorJK">
 
@@ -87,7 +117,7 @@
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary btnsimpan">Update</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
             </div>
             <?= form_close() ?>
         </div>
@@ -117,6 +147,27 @@
             } else {
                 $('#kepala_keluarga').removeClass('is-invalid');
                 $('.errorKepala').html('');
+            }
+            if (jQuery('#rw_id').val() == 0) {
+                $('#rw_id').addClass('is-invalid');
+                $('.errorRW').html("RW harus dipilih");
+            } else {
+                $('#rw_id').removeClass('is-invalid');
+                $('.errorRW').html('');
+            }
+            if (jQuery('#rt_id').val() == 0) {
+                $('#rt_id').addClass('is-invalid');
+                $('.errorRT').html("RT harus dipilih");
+            } else {
+                $('#rt_id').removeClass('is-invalid');
+                $('.errorRT').html('');
+            }
+            if (jQuery('#rt_id').val() == 'kosong') {
+                $('#rt_id').addClass('is-invalid');
+                $('.errorRT').html("Belum ada RT");
+            } else {
+                $('#rt_id').removeClass('is-invalid');
+                $('.errorRT').html('');
             }
 
             e.preventDefault();
@@ -177,6 +228,36 @@
                             $('#agama').addClass('is-valid');
                             $('.errorAgama').html('');
                         }
+                        if (response.error.pekerjaan) {
+                            // jika ada error maka tampilkan pesan errornya
+                            $('#pekerjaan').addClass('is-invalid');
+                            $('.errorPekerjaan').html(response.error.pekerjaan);
+                        } else {
+                            // jika tdk ada error
+                            $('#pekerjaan').removeClass('is-invalid');
+                            $('#pekerjaan').addClass('is-valid');
+                            $('.errorPekerjaan').html('');
+                        }
+                        if (response.error.rw_id) {
+                            // jika ada error maka tampilkan pesan errornya
+                            $('#rw_id').addClass('is-invalid');
+                            $('.errorRW').html(response.error.rw_id);
+                        } else {
+                            // jika tdk ada error
+                            $('#rw_id').removeClass('is-invalid');
+                            $('#rw_id').addClass('is-valid');
+                            $('.errorRW').html('');
+                        }
+                        if (response.error.rt_id) {
+                            // jika ada error maka tampilkan pesan errornya
+                            $('#rt_id').addClass('is-invalid');
+                            $('.errorRt').html(response.error.rt_id);
+                        } else {
+                            // jika tdk ada error
+                            $('#rt_id').removeClass('is-invalid');
+                            $('#rt_id').addClass('is-valid');
+                            $('.errorRt').html('');
+                        }
                     } else {
                         // jika tidak ada error
                         // munculkan pesan sukses
@@ -192,9 +273,9 @@
                     }
                 },
                 // menampilkan pesan error:
-                error: function(xhr, ajaxOptions, thrownError) {
-                    alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-                }
+                // error: function(xhr, ajaxOptions, thrownError) {
+                //     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                // }
             });
         })
     })
@@ -222,6 +303,44 @@
                 cache: true
             }
         });
+        $("#rw_id").select2({
+            ajax: {
+                url: "<?= site_url('kk/getRW') ?>",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term, // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response.data
+                    };
+                },
+                cache: true
+            }
+        });
+        $("#rw_id").change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('kk/getRT') ?>",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                delay: 250,
+                success: function(response) {
+                    console.log(response.data);
+                    $('#rt_id').html(response.data);
+
+                }
+            });
+
+        });
+        $("#rt_id").select2();
         $("#agama").select2();
     });
 </script>

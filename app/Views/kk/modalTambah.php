@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="modaltambah" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg pl-0" id="modaltambah" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,10 +7,11 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <form class="formKK" id="form" action="<?= site_url('kk/simpandata') ?>">
+                <?= csrf_field() ?>
                 <div class="modal-body">
                     <div class="wizard-content">
                         <section>
-                            <?= csrf_field() ?>
+                            <h6 class="text-blue">Section Kartu Keluarga</h6>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -21,7 +22,32 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="rw_id">Pilih Rukun Warga</label>
+                                        <select name="rw_id" id="rw_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Warga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
+                                            <option value="0" selected>Cari Nomor RW</option>
+                                        </select>
+                                        <div class="invalid-feedback errorRW">
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="rt_id">Pilih Rukun Tetangga <sup class="text-small font-italic text-danger">(Pilih rukun warga dahulu)</sup></label>
+                                        <select name="rt_id" id="rt_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Tetangga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
+                                            <option value="0">Cari Nomor RT</option>
+                                        </select>
+                                        <div class="invalid-feedback errorRT">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h6 class="text-blue">Section Data Kepala Keluarga</h6>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -40,13 +66,15 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
-                                        <div class="custom-control custom-radio mb-5">
-                                            <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input">
-                                            <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
-                                        </div>
-                                        <div class="custom-control custom-radio mb-5">
-                                            <input type="radio" id="perempuan" name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
-                                            <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                        <div class="d-flex">
+                                            <div class="custom-control custom-radio mr-4">
+                                                <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input">
+                                                <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="perempuan" name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
+                                                <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                            </div>
                                         </div>
                                         <div class="invalid-feedback errorJK">
 
@@ -118,6 +146,27 @@
                 $('#kepala_keluarga').removeClass('is-invalid');
                 $('.errorKepala').html('');
             }
+            if (jQuery('#rw_id').val() == 0) {
+                $('#rw_id').addClass('is-invalid');
+                $('.errorRW').html("RW harus dipilih");
+            } else {
+                $('#rw_id').removeClass('is-invalid');
+                $('.errorRW').html('');
+            }
+            if (jQuery('#rt_id').val() == 0) {
+                $('#rt_id').addClass('is-invalid');
+                $('.errorRT').html("RT harus dipilih");
+            } else {
+                $('#rt_id').removeClass('is-invalid');
+                $('.errorRT').html('');
+            }
+            if (jQuery('#rt_id').val() == 'kosong') {
+                $('#rt_id').addClass('is-invalid');
+                $('.errorRT').html("Belum ada RT");
+            } else {
+                $('#rt_id').removeClass('is-invalid');
+                $('.errorRT').html('');
+            }
 
             e.preventDefault();
             $.ajax({
@@ -134,6 +183,7 @@
                     $('.btnsimpan').html('Simpan');
                 },
                 success: function(response) {
+                    // console.log(response.rt_id);
                     // jika ada error
                     if (response.error) {
                         // respon quote
@@ -176,6 +226,16 @@
                             $('#agama').removeClass('is-invalid');
                             $('#agama').addClass('is-valid');
                             $('.errorAgama').html('');
+                        }
+                        if (response.error.pekerjaan) {
+                            // jika ada error maka tampilkan pesan errornya
+                            $('#pekerjaan').addClass('is-invalid');
+                            $('.errorPekerjaan').html(response.error.pekerjaan);
+                        } else {
+                            // jika tdk ada error
+                            $('#pekerjaan').removeClass('is-invalid');
+                            $('#pekerjaan').addClass('is-valid');
+                            $('.errorPekerjaan').html('');
                         }
                     } else {
                         // jika tidak ada error
@@ -222,6 +282,65 @@
                 cache: true
             }
         });
+        $("#rw_id").select2({
+            ajax: {
+                url: "<?= site_url('kk/getRW') ?>",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term, // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response.data
+                    };
+                },
+                cache: true
+            }
+        });
+        $("#rw_id").change(function() {
+            var id = $(this).val();
+            $.ajax({
+                type: "POST",
+                url: "<?= base_url('kk/getRT') ?>",
+                data: {
+                    id: id
+                },
+                dataType: "json",
+                delay: 250,
+                success: function(response) {
+                    // var option = new Option(response.data.text, response.data.id, true, true);
+                    // $('#rt_id').append(option).trigger('change');
+                    console.log(response.data);
+                    $('#rt_id').html(response.data);
+
+                    // var selectValues = response.data;
+                    // $.each(selectValues, function(key, value) {
+                    //     $('#rt_id').append($("<option></option>")
+                    //         .attr("value", key)
+                    //         .text(value));
+                    // });
+                }
+            });
+            // var selectValues = result.get_data;
+
+            // $("#select--product option").remove();
+            // $('#select--product').append($("<option></option>")
+            //     .attr("value", '')
+            //     .text('Pilih Nama Product'));
+            // console.log(selectValues);
+            // $.each(selectValues, function(key, value) {
+            //     $('#select--product')
+            //         .append($("<option></option>")
+            //             .attr("value", key)
+            //             .text(value));
+            // });
+
+        });
+        $("#rt_id").select2();
         $("#agama").select2();
     });
 </script>

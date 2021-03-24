@@ -46,4 +46,13 @@ class RukunTetanggaModel extends Model
             ->where('rw_id', $row)
             ->get()->getRowArray();
     }
+
+    public function getDynamicDataRT($rw_id)
+    {
+        return $this->table('rukun_tetangga')
+            ->select('id_rt, no_rt, nama_rt')
+            ->where(['rw_id' => $rw_id])
+            ->orderBy('no_rt', 'asc')
+            ->get()->getResultArray();
+    }
 }
