@@ -99,4 +99,46 @@ class Laporan extends BaseController
 			$dompdf->stream('Laporan Data Pengaduan | ' . setting()->nama_aplikasi_frontend . '.pdf', array("Attachment" => false));
 		}
 	}
+
+	public function cetakRW()
+	{
+		$rules = [
+			'rw_id' => [
+				'rules'     => 'required',
+				'errors'    => [
+					'required'  => 'Nomor RW harus dipilih'
+				]
+			]
+		];
+
+		// jika tdk tervalidasi, kembalikan dan tampilkan errors
+		if (!$this->validate($rules)) {
+			return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+		}
+
+		$rw_id = $this->request->getPost('rw_id');
+		$result = $this->pengaduanModel->cetakRW($rw_id)->countAllResults();
+
+		// dd($data);
+		if ($result == null) {
+			session()->setFlashdata('error', 'Maaf Laporan yang anda cari tidak ada. Kemungkinan RW tersebut belum memiliki laporan.');
+			return redirect()->to(base_url('report'));
+		} else {
+			$pengaduanBerdasarRW = $this->pengaduanModel->cetakRW($rw_id)->get()->getResultArray();
+
+			$data = [
+				'title'			=> 'Laporan Data Pengaduan',
+				'pengaduan'		=> $pengaduanBerdasarRW
+			];
+			// dd($pengaduanBerdasarRW);
+
+			$html = view('laporan/cetakRW', $data);
+
+			$dompdf = new \Dompdf\Dompdf();
+			$dompdf->loadHtml($html);
+			$dompdf->setPaper('A4');
+			$dompdf->render();
+			$dompdf->stream('Laporan Data Pengaduan | ' . setting()->nama_aplikasi_frontend . '.pdf', array("Attachment" => false));
+		}
+	}
 }

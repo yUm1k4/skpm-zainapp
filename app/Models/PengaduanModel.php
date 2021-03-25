@@ -75,8 +75,21 @@ class PengaduanModel extends Model
             ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
             ->join('users', 'users.id = pengaduan.user_id')
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
-            ->join('kartu_keluarga kk', 'kk.user_id = users.id', 'left')
+            ->join('kartu_keluarga kk', 'kk.user_id = users.id')
             ->where('no_kk', $no_kk)
+            ->orderBy('pengaduan_dibuat', 'ASC');
+        return $query;
+    }
+
+    public function cetakRW($rw_id)
+    {
+        $query = $this->table('pengaduan')
+            ->select('fullname, nik, no_rw, pengaduan.kode_pengaduan, nama_kategori, kode_pengaduan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
+            ->join('users', 'users.id = pengaduan.user_id')
+            ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
+            ->join('kartu_keluarga kk', 'kk.user_id = users.id')
+            ->join('rukun_warga rw', 'rw.id_rw = kk.rw_id')
+            ->where('kk.rw_id', $rw_id)
             ->orderBy('pengaduan_dibuat', 'ASC');
         return $query;
     }

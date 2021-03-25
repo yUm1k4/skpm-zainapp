@@ -48,15 +48,16 @@
                 <div class="col-md-6 col-sm-12">
                     <div class="pb-20">
                         <div class="col-md-12 col-sm-12">
-                            <form action="<?= base_url('/cetakKK') ?>" method="POST" target="_blank">
+                            <form action="<?= base_url('/cetakRW') ?>" method="POST" target="_blank" class="formRW">
                                 <?= csrf_field() ?>
                                 <div class="form-group">
-                                    <label>Berdasarkan Nomor RT</label>
-                                    <select name="no_rt" id="no_rt" class="form-control">
-                                        <option value="0">Pilih No. RT</option>
+                                    <label>Berdasarkan Nomor RW</label>
+                                    <select name="rw_id" id="rw_id" class="form-control m-0 wide" required data-parsley-required-message="Nomor RW harus dipilih" data-parsley-errors-container="#select-errors" style="width: 100%">
+                                        <option value="" selected>Cari No. RW</option>
                                     </select>
+                                    <div id="select-errors"></div>
                                     <div class="invalid-feedback">
-                                        <?= session('errors.no_rt') ?>
+                                        <?= session('errors.rw_id') ?>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-primary">Cetak</button>
@@ -77,6 +78,27 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('form').parsley();
+
+        $("#rw_id").select2({
+            ajax: {
+                url: "<?= site_url('kk/getRW') ?>",
+                type: "post",
+                dataType: 'json',
+                delay: 250,
+                data: function(params) {
+                    return {
+                        searchTerm: params.term, // search term
+                    };
+                },
+                processResults: function(response) {
+                    return {
+                        results: response.data
+                    };
+                },
+                cache: true
+            }
+        });
     });
 </script>
+
 <?= $this->endSection(); ?>
