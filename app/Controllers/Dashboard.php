@@ -65,14 +65,17 @@ class Dashboard extends BaseController
 			->get()->getResult();
 		// Chart end
 
+		$date = new Time('now');
+		$curr_date = $date->format('Y-m-d');
 		// Data Pengaduan Terbaru start
 		// $this->pengaduan->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat');
 		$this->pengaduan->select('*, fullname, kode_pengaduan, isi_laporan, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
 			->join('users', 'users.id = pengaduan.user_id')
-			->like('pengaduan.created_at', date('d'))
+			->like('pengaduan.created_at', $curr_date)
 			->orderBy('pengaduan.created_at', 'DESC');
 		// ->limit(10);
 		$data['pengaduan_terbaru'] = $this->pengaduan->get()->getResult();
+		// dd($data['pengaduan_terbaru']);
 		// Data Pengaduan Terbaru end
 
 		// Login Terbaru start
@@ -82,7 +85,7 @@ class Dashboard extends BaseController
 			->join('auth_groups_users agu', 'agu.user_id = u.id')
 			->join('auth_groups ag', 'ag.id = agu.group_id')
 			->where('success', 1)
-			->like('date', date('d'))
+			->like('date', $curr_date)
 			->orderBy('date', 'DESC');
 		// ->limit(10);
 		$data['user_log_terbaru'] = $this->login->get()->getResult();
