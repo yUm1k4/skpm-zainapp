@@ -75,7 +75,7 @@ class PengaduanModel extends Model
             ->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat')
             ->join('users', 'users.id = pengaduan.user_id')
             ->join('pengaduan_kategori pk', 'pk.id_pengaduan_kategori = pengaduan.kategori_id')
-            ->join('kartu_keluarga kk', 'kk.user_id = users.id')
+            ->join('kartu_keluarga kk', 'kk.user_id = users.id', 'left')
             ->where('no_kk', $no_kk)
             ->orderBy('pengaduan_dibuat', 'ASC');
         return $query;

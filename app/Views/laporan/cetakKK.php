@@ -141,12 +141,12 @@ use CodeIgniter\I18n\Time;
 <body>
     <header class="clearfix">
         <h1 class="text-center title"><?= setting()->nama_aplikasi_frontend ?> | <?= $title; ?></h1>
-        <p class="text-center mb-1">Kartu Keluarga No. <?= $data[0]['no_kk'] ?></p>
+        <p class="text-center mb-1">Kartu Keluarga No. <?= $pengaduan[0]['no_kk'] ?></p>
         <div class="informasi">
             <div class="float-left">
                 <div><span>By</span> <?= user()->fullname ?></div>
                 <div><span>No HP</span> <?= user()->no_hp ?></div>
-                <div><span>Email</span> <?= user()->email ?></div>
+                <div><span>Email</span> <a href="mailto:<?= user()->email ?>"><?= user()->email ?></a></div>
                 <div><span>Hari/Tgl</span> <?= format_indo(Time::now()) ?></div>
             </div>
             <div class="float-right">
@@ -158,7 +158,7 @@ use CodeIgniter\I18n\Time;
         </div>
     </header>
     <main>
-        <?php if ($data) { ?>
+        <?php if ($pengaduan) { ?>
             <table>
                 <thead>
                     <tr>
@@ -174,25 +174,25 @@ use CodeIgniter\I18n\Time;
                 <tbody>
                     <?php
                     $no = 1;
-                    foreach ($data as $d) { ?>
+                    foreach ($pengaduan as $p) { ?>
                         <tr>
                             <td width="3%"><?= $no++ ?>.</td>
                             <?php
-                            $phpdate = strtotime($d['pengaduan_dibuat']);
+                            $phpdate = strtotime($p['pengaduan_dibuat']);
                             $tanggal = date('Y-m-d', $phpdate);
                             ?>
                             <td width="15%"><?= shortdate_indo($tanggal) ?></td>
-                            <td width="23%" class="text-left"><?= $d['fullname'] ?></td>
-                            <td><?= $d['nik'] ?></td>
-                            <td><?= $d['kode_pengaduan'] ?></td>
-                            <td class="text-left"><?= $d['nama_kategori'] ?></td>
-                            <td class="text-capitalize"><?= $d['ket'] ?></td>
+                            <td width="23%" class="text-left"><?= $p['fullname'] ?></td>
+                            <td><?= $p['nik'] ?></td>
+                            <td><?= $p['kode_pengaduan'] ?></td>
+                            <td class="text-left"><?= $p['nama_kategori'] ?></td>
+                            <td class="text-capitalize"><?= $p['ket'] ?></td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
         <?php } else { ?>
-            <h3 class="text-center">Maaf data laporan dari <?= date_indo($mulai) . ' s/d ' . date_indo($akhir) ?> tidak ada</h3>
+            <h3 class="text-center">Maaf data laporan dari Kartu Keluarga dengan Nomor <?= $pengaduan['no_kk'] ?> tidak ada</h3>
         <?php } ?>
     </main>
 </body>

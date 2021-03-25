@@ -76,18 +76,19 @@ class Laporan extends BaseController
 		}
 
 		$no_kk = $this->request->getPost('no_kk');
-		$data = $this->pengaduanModel->cetakKK($no_kk);
-		$row = $data->countAllResults();
+		$result = $this->pengaduanModel->cetakKK($no_kk)->countAllResults();
 
 		// dd($data);
-		if ($row == null) {
-			session()->setFlashdata('error', 'Maaf Laporan yang anda cari tidak ada. Silahkan cek No. Kartu Keluarga nya.');
+		if ($result == null) {
+			session()->setFlashdata('error', 'Maaf Laporan yang anda cari tidak ada. Silahkan cek No. Kartu Keluarga nya atau No KK tersebut belum memiliki laporan.');
 			return redirect()->to(base_url('report'));
 		} else {
+			$pengaduanBerdasarKK = $this->pengaduanModel->cetakKK($no_kk)->get()->getResultArray();
 			$data = [
-				'title'		=> 'Laporan Data Pengaduan',
-				'data'		=> $data->get()->getResultArray()
+				'title'			=> 'Laporan Data Pengaduan',
+				'pengaduan'		=> $pengaduanBerdasarKK
 			];
+			// dd($result);
 
 			$html = view('laporan/cetakKK', $data);
 
