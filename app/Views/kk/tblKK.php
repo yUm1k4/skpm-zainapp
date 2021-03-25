@@ -3,9 +3,9 @@
         <tr>
             <th>#</th>
             <th>No. KK</th>
-            <th>Nama Lengkap</th>
+            <th>RT/RW</th>
+            <th>Kepala Keluarga</th>
             <th>NIK</th>
-            <th>Status</th>
             <th class="datatable-nosort"><i class="dw dw-settings1"></i></th>
         </tr>
     </thead>
@@ -17,9 +17,9 @@
             <tr>
                 <td class="text-center"><?= $i++ ?>.</td>
                 <td><?= $row['no_kk'] ?></td>
+                <td><?= $row['no_rt'] ?>/<?= $row['no_rw'] ?></td>
                 <td><?= $row['fullname'] ?></td>
                 <td><?= $row['nik'] ?></td>
-                <td><?= $row['status_hubungan'] ?></td>
 
                 <td class="text-center">
                     <div class="dropdown">
@@ -29,7 +29,7 @@
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                             <a class="dropdown-item" href="<?= base_url('/kk/detailFormKK/' . $row['no_kk']) ?>"><i class="dw dw-eye"></i> Detail</a>
                             <button class="dropdown-item" onclick="edit(<?= $row['id_kk'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
-                            <button type="button" onclick="hapus(<?= $row['id_kk'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <button type="button" onclick="hapus(<?= $row['no_kk'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
                         </div>
                     </div>
                 </td>
@@ -39,7 +39,29 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#tblKK').DataTable();
+        $('.data-table').DataTable({
+            "destroy": true, //use for reinitialize datatable
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "language": {
+                "info": "_START_-_END_ dari _TOTAL_ data",
+                "infoEmpty": "Menampilkan 0 data",
+                "emptyTable": "Maaf, data kosong. :/",
+                "lengthMenu": "Tampilkan _MENU_ data",
+                "search": "Cari:",
+                "zeroRecords": "Tidak ditemukan keyword yang cocok",
+                searchPlaceholder: "Keyword",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>'
+                }
+            },
+        });
     })
 
     function edit(id_kk) {
@@ -74,10 +96,10 @@
         });
     }
 
-    function hapus(id_kk) {
+    function hapus(no_kk) {
         Swal.fire({
             title: 'Hapus Data',
-            text: `Yakin ingin menghapus data? Data yang terhapus tidak akan bisa dikembalikan`,
+            text: `Yakin ingin menghapus data? Kepala Keluarga dan semua anggota keluarga akan dihapus dan tidak akan bisa dikembalikan`,
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -90,7 +112,7 @@
                     type: "POST",
                     url: "<?= site_url('/kk/hapus') ?>",
                     data: {
-                        id_kk: id_kk
+                        no_kk: no_kk
                     },
                     dataType: "json",
                     success: function(response) {

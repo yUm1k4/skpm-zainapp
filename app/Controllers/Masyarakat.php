@@ -151,7 +151,7 @@ class Masyarakat extends BaseController
     {
         $pengaduan = $this->pengaduanModel->cariBerdasarNikUsername($username)->get()->getResultArray();
         $masyarakat = $this->userModel->getDetailMasyarakat($username);
-        $kk = $this->kkModel->dataNIK($masyarakat['userid']);
+        $kk = $this->kkModel->editDataNIK($masyarakat['userid']);
         $keluarga = $this->kkModel->getDetailKK($kk['no_kk']);
         // dd($kk);
         $data = [

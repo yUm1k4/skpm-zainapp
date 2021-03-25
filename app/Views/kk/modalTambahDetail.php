@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="modaltambahdetail" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg pl-0" id="modaltambahdetail" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -11,6 +11,8 @@
                     <div class="wizard-content">
                         <section>
                             <?= csrf_field() ?>
+                            <input type="hidden" readonly required name="rw_id" value="<?= $rw_id ?>">
+                            <input type="hidden" readonly required name="rt_id" value="<?= $rt_id ?>">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -23,9 +25,10 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="anggota_keluarga">Pilih Anggota Keluarga <sup class="text-small font-italic text-danger">(Harus sudah memiliki akun)</sup></label>
+                                        <label for="anggota_keluarga" class="mb-2">Pilih Anggota Keluarga</label>
+                                        <p class="my-0"><sup class="text-small font-italic text-danger">(Hanya menampilkan yang belum terdaftar di KK, dan Harus sudah memiliki akun)</sup></p>
                                         <select name="anggota_keluarga" id="anggota_keluarga" class="form-control m-0 wide" required data-parsley-required-message="Anggota Keluarga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
                                             <option value="0" selected>Cari berdasarkan NIK</option>
                                         </select>
@@ -34,6 +37,9 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="status">Status Hubungan Dalam Keluarga</label>
@@ -49,21 +55,21 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
-                                        <div class="custom-control custom-radio mb-5">
-                                            <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input">
-                                            <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
+                                        <div class="d-flex">
+                                            <div class="custom-control custom-radio mr-4">
+                                                <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input">
+                                                <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="perempuan" name="jenis_kelamin" value="p" class="custom-control-input" data-parsley-required-message="Harus dipilih" required data-parsley-errors-container="#errorJK">
+                                                <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                            </div>
                                         </div>
-                                        <div class="custom-control custom-radio mb-5">
-                                            <input type="radio" id="perempuan" name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
-                                            <label class="custom-control-label" for="perempuan">Perempuan</label>
-                                        </div>
-                                        <div class="invalid-feedback errorJK">
+                                        <div class="invalid-feedback errorJK" id="errorJK">
 
                                         </div>
                                     </div>
@@ -112,7 +118,19 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('form').parsley();
+        var parsleyConfig = {
+            errorsContainer: function(parsleyField) {
+                var fieldSet = parsleyField.$element.closest('fieldset');
+
+                if (fieldSet.length > 0) {
+                    return fieldSet.find('#errorJK');
+                }
+
+                return parsleyField;
+            }
+        };
+
+        $('form').parsley(parsleyConfig);
     });
 </script>
 
@@ -267,7 +285,7 @@
                     };
                 },
                 processResults: function(response) {
-                    // console.log(response.data);
+                    console.log(response.data);
                     return {
                         results: response.data
                     };

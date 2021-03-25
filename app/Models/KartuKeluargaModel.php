@@ -23,7 +23,10 @@ class KartuKeluargaModel extends Model
         return $this->table($this->table)
             ->select('*')
             ->join('users', 'users.id = kartu_keluarga.user_id')
+            ->join('rukun_warga', 'rukun_warga.id_rw = kartu_keluarga.rw_id')
+            ->join('rukun_tetangga', 'rukun_tetangga.id_rt = kartu_keluarga.rt_id')
             ->where('status_hubungan', 'Kepala Keluarga')
+            ->orderBy('no_kk', 'asc')
             ->get()->getResultArray();
     }
     public function getDetailKK($no_kk)
@@ -31,6 +34,8 @@ class KartuKeluargaModel extends Model
         return $this->table($this->table)
             ->select('*, kartu_keluarga.created_at as anggota_dibuat')
             ->join('users', 'users.id = kartu_keluarga.user_id')
+            ->join('rukun_warga', 'rukun_warga.id_rw = kartu_keluarga.rw_id')
+            ->join('rukun_tetangga', 'rukun_tetangga.id_rt = kartu_keluarga.rt_id')
             ->where('no_kk', $no_kk)
             ->orderBy('anggota_dibuat', 'ASC')
             ->get()->getResultArray();

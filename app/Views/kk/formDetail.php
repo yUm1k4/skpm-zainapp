@@ -1,13 +1,22 @@
 <?= $this->extend('templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    .form-group p.my-0 {
+        line-height: 1;
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('main-content'); ?>
 
 <div class="card-box mb-30">
-    <div class="pd-20">
+    <div class="px-3 pt-3 pb-1">
         <div class="row">
             <div class="col">
                 <div class="title">
                     <h4>KK No. <?= $no_kk ?></h4>
+                    <p>RT: <?= $no_rt ?> - RW: <?= $no_rw ?></p>
                 </div>
             </div>
             <div class="col-auto">

@@ -149,25 +149,40 @@ class KartuKeluarga extends BaseController
         $postData = $request->getPost();
         $response = array();
 
+        $keluarga = $this->kkModel->findAll();
+
+        foreach ($keluarga as $k) {
+            $userTerdaftar[] = $k['user_id'];
+        }
+
         if (!isset($postData['searchTerm'])) {
             // Fetch record
-            $userlist = $this->masyarakatModel->select('id,nik,fullname')
-                ->orderBy('nik')
-                ->findAll();
+            // hanya menampilkan user masyarakat(ag.id = 3), dan juga dimana bukan user yang sudah terdaftar di tbl kartu_keluarga
+            $userlist = $this->masyarakatModel->select('*, users.id as userid')
+                ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                ->join('auth_groups ag', 'ag.id = agu.group_id')
+                ->where('ag.id', 3)
+                ->whereNotIn('users.id', $userTerdaftar)
+                ->orderBy('users.nik')
+                ->findAll(20);
         } else {
             $searchTerm = $postData['searchTerm'];
 
             // Fetch record
-            $userlist = $this->masyarakatModel->select('id,nik,fullname')
-                ->like('nik', $searchTerm)
-                ->orderBy('nik')
-                // ->findAll(5);
-                ->findAll();
+            $userlist = $this->masyarakatModel->select('*, users.id as userid')
+                ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                ->join('auth_groups ag', 'ag.id = agu.group_id')
+                ->where('ag.id', 3)
+                ->whereNotIn('users.id', $userTerdaftar)
+                ->like('users.nik', $searchTerm)
+                ->orderBy('users.nik')
+                ->findAll(10);
+            // ->findAll();
         }
         $data = array();
         foreach ($userlist as $user) {
             $data[] = array(
-                "id" => $user['id'],
+                "id" => $user['userid'],
                 "text" => $user['nik'] . ' - ' . $user['fullname'],
             );
         }
@@ -397,10 +412,10 @@ class KartuKeluarga extends BaseController
     public function hapus()
     {
         if ($this->request->isAJAX()) {
-            $id_kk = $this->request->getVar('id_kk');
-            $this->kkModel->delete($id_kk);
+            $no_kk = $this->request->getVar('no_kk');
+            $this->kkModel->where('no_kk', $no_kk)->delete();
 
-            $msg = ['sukses' => "Kartu Keluarga berhasil dihapus"];
+            $msg = ['sukses' => "Kartu Keluarga beserta Anggota Keluarga nya berhasil dihapus"];
             echo json_encode($msg);
         } else {
             session()->setFlashdata('error', 'Maaf tidak dapat diproses');
@@ -416,9 +431,13 @@ class KartuKeluarga extends BaseController
 
     public function detailFormKK($no_kk)
     {
+        $result = $this->kkModel->getDetailKK($no_kk);
+        // dd($result);
         $data = [
             'title' => 'Detail Kartu Keluarga No ' . $no_kk,
-            'no_kk' => $no_kk
+            'no_kk' => $no_kk,
+            'no_rt' => $result[0]['no_rt'],
+            'no_rw' => $result[0]['no_rw'],
         ];
 
         return view('kk/formDetail', $data);
@@ -450,8 +469,12 @@ class KartuKeluarga extends BaseController
     {
         if ($this->request->isAJAX()) {
             $no_kk = $this->request->getVar('no_kk');
+            $result = $this->kkModel->getDetailKK($no_kk);
+
             $data = [
-                'no_kk'    => $no_kk
+                'no_kk' => $no_kk,
+                'rw_id' => $result[0]['rw_id'],
+                'rt_id' => $result[0]['rt_id'],
             ];
             $msg = [
                 'data' => view('kk/modalTambahDetail', $data)
@@ -484,7 +507,7 @@ class KartuKeluarga extends BaseController
                     'rules' => 'required|is_unique[kartu_keluarga.user_id]',
                     'errors' => [
                         'required' => 'Anggota Keluarga tidak boleh kosong',
-                        'is_unique' => 'Anggota Keluarga sudah terdaftar'
+                        'is_unique' => 'Anggota Keluarga sudah terdaftar di KK ini atau yang lain'
                     ]
                 ],
                 'jenis_kelamin' => [
@@ -529,6 +552,8 @@ class KartuKeluarga extends BaseController
                 $simpandata = [
                     'no_kk' =>  $no_kk,
                     'user_id' =>  $this->request->getVar('anggota_keluarga'),
+                    'rw_id' =>  $this->request->getVar('rw_id'),
+                    'rt_id' =>  $this->request->getVar('rt_id'),
                     'jenis_kelamin' =>  $this->request->getVar('jenis_kelamin'),
                     'agama' =>  $this->request->getVar('agama'),
                     'pekerjaan' =>  $this->request->getVar('pekerjaan'),

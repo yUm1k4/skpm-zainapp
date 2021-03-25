@@ -38,7 +38,29 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#tblRT').DataTable();
+        $('.data-table').DataTable({
+            "destroy": true, //use for reinitialize datatable
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "language": {
+                "info": "_START_-_END_ dari _TOTAL_ data",
+                "infoEmpty": "Menampilkan 0 data",
+                "emptyTable": "Maaf, data kosong. :/",
+                "lengthMenu": "Tampilkan _MENU_ data",
+                "search": "Cari:",
+                "zeroRecords": "Tidak ditemukan keyword yang cocok",
+                searchPlaceholder: "Keyword",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>'
+                }
+            },
+        });
     })
 
 

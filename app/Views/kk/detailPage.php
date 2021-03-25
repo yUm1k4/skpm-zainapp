@@ -35,8 +35,11 @@
                             <i class="dw dw-more"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                            <a class="dropdown-item" href="<?= base_url() ?>/masyarakat/detail/<?= $row['username'] ?>"><i class="dw dw-eye"></i> Cek Akun</a>
                             <button class="dropdown-item" onclick="edit(<?= $row['id_kk'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
-                            <button type="button" onclick="hapus(<?= $row['id_kk'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php if ($row['status_hubungan'] != 'Kepala Keluarga') { ?>
+                                <button type="button" onclick="hapus(<?= $row['id_kk'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php } ?>
                         </div>
                     </div>
                 </td>
@@ -46,7 +49,29 @@
 </table>
 <script>
     $(document).ready(function() {
-        $('#tblDetailKK').DataTable();
+        $('.data-table').DataTable({
+            "destroy": true, //use for reinitialize datatable
+            scrollCollapse: true,
+            autoWidth: false,
+            responsive: true,
+            columnDefs: [{
+                targets: "datatable-nosort",
+                orderable: false,
+            }],
+            "language": {
+                "info": "_START_-_END_ dari _TOTAL_ data",
+                "infoEmpty": "Menampilkan 0 data",
+                "emptyTable": "Maaf, data kosong. :/",
+                "lengthMenu": "Tampilkan _MENU_ data",
+                "search": "Cari:",
+                "zeroRecords": "Tidak ditemukan keyword yang cocok",
+                searchPlaceholder: "Keyword",
+                paginate: {
+                    next: '<i class="ion-chevron-right"></i>',
+                    previous: '<i class="ion-chevron-left"></i>'
+                }
+            },
+        });
     })
 
     function edit(id_kk) {

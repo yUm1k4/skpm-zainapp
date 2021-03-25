@@ -1,5 +1,13 @@
 <?= $this->extend('templates/index'); ?>
 
+<?= $this->section('my-css'); ?>
+<style>
+    .form-group p.my-0 {
+        line-height: 1;
+    }
+</style>
+<?= $this->endSection(); ?>
+
 <?= $this->section('main-content'); ?>
 
 <div class="card-box mb-30">
@@ -40,9 +48,9 @@
                 $('.viewdata').html(response.data);
             },
             // menampilkan pesan error:
-            // error: function(xhr, ajaxOptions, thrownError) {
-            //     alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
-            // }
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
         });
     }
 

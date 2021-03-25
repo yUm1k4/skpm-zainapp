@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="modaleditdetail" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg pl-0" id="modaleditdetail" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -39,10 +39,14 @@
                                     <label for="status">Status Hubungan Dalam Keluarga</label>
                                     <select name="status" id="status" class="form-control m-0 wide" required data-parsley-required-message="Status harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
                                         <option value="0" selected>Pilih Status Hubungan</option>
-                                        <option <?= $status == 'Suami' ? "selected" : '' ?> value="Suami">Suami</option>
-                                        <option <?= $status == 'Istri' ? "selected" : '' ?> value="Istri">Istri</option>
-                                        <option <?= $status == 'Anak' ? "selected" : '' ?> value="Anak">Anak</option>
-                                        <option <?= $status == 'Famili Lain' ? "selected" : '' ?> value="Famili Lain">Famili Lain</option>
+                                        <?php if ($status == 'Kepala Keluarga') { ?>
+                                            <option value="Kepala Keluarga" selected>Kepala Keluarga (tidak bisa dirubah)</option>
+                                        <?php } else { ?>
+                                            <option <?= $status == 'Suami' ? "selected" : '' ?> value="Suami">Suami</option>
+                                            <option <?= $status == 'Istri' ? "selected" : '' ?> value="Istri">Istri</option>
+                                            <option <?= $status == 'Anak' ? "selected" : '' ?> value="Anak">Anak</option>
+                                            <option <?= $status == 'Famili Lain' ? "selected" : '' ?> value="Famili Lain">Famili Lain</option>
+                                        <?php } ?>
                                     </select>
                                     <div class="invalid-feedback errorStatus">
 
@@ -55,13 +59,15 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Jenis Kelamin</label>
-                                    <div class="custom-control custom-radio mb-5">
-                                        <input type="radio" id="laki_laki" <?= $jenis_kelamin == 'l' ? "checked"  : ''; ?> name="jenis_kelamin" value="l" class="custom-control-input">
-                                        <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
-                                    </div>
-                                    <div class="custom-control custom-radio mb-5">
-                                        <input type="radio" id="perempuan" <?= $jenis_kelamin == 'p' ? "checked"  : ''; ?> name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
-                                        <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                    <div class="d-flex">
+                                        <div class="custom-control custom-radio mr-4">
+                                            <input type="radio" id="laki_laki" <?= $jenis_kelamin == 'l' ? "checked"  : ''; ?> name="jenis_kelamin" value="l" class="custom-control-input">
+                                            <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="perempuan" <?= $jenis_kelamin == 'p' ? "checked"  : ''; ?> name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
+                                            <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                        </div>
                                     </div>
                                     <div class="invalid-feedback errorJK">
 

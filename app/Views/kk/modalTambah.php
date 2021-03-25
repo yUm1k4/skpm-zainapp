@@ -51,7 +51,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="kepala_keluarga">Pilih Kepala Keluarga <sup class="text-small font-italic text-danger">(Harus sudah memiliki akun)</sup></label>
+                                        <label for="kepala_keluarga" class="mb-2">Pilih Kepala Keluarga</label>
+                                        <p class="my-0"><sup class="text-small font-italic text-danger">(Hanya menampilkan yang belum terdaftar di KK, dan Harus sudah memiliki akun)</sup></p>
                                         <select name="kepala_keluarga" id="kepala_keluarga" class="form-control m-0 wide" required data-parsley-required-message="Kepala Keluarga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
                                             <option value="0" selected>Cari berdasarkan NIK</option>
                                         </select>

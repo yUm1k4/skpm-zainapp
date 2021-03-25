@@ -45,6 +45,9 @@
             dataType: "json",
             success: function(response) {
                 $('.viewdata').html(response.data);
+                // $('#tblTestimoni').DataTable({
+                //     "destroy": true, //use for reinitialize datatable
+                // });
             },
             // menampilkan pesan error:
             error: function(xhr, ajaxOptions, thrownError) {

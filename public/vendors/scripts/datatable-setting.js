@@ -1,5 +1,25 @@
 $('document').ready(function(){
+	// $('.data-table').DataTable({
+	// 	scrollCollapse: true,
+	// 	autoWidth: false,
+	// 	responsive: true,
+	// 	columnDefs: [{
+	// 		targets: "datatable-nosort",
+	// 		orderable: false,
+	// 	}],
+	// 	"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+	// 	"language": {
+	// 		"info": "_START_-_END_ of _TOTAL_ entries",
+	// 		searchPlaceholder: "Search",
+	// 		paginate: {
+	// 			next: '<i class="ion-chevron-right"></i>',
+	// 			previous: '<i class="ion-chevron-left"></i>'  
+	// 		}
+	// 	},
+	// });
+
 	$('.data-table').DataTable({
+		"destroy": true, //use for reinitialize datatable
 		scrollCollapse: true,
 		autoWidth: false,
 		responsive: true,
@@ -7,13 +27,21 @@ $('document').ready(function(){
 			targets: "datatable-nosort",
 			orderable: false,
 		}],
-		"lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+		// "lengthMenu": [
+		//     [10, 25, 50, -1],
+		//     [10, 25, 50, "All"]
+		// ],
 		"language": {
-			"info": "_START_-_END_ of _TOTAL_ entries",
-			searchPlaceholder: "Search",
+			"info": "_START_-_END_ dari _TOTAL_ data",
+			"infoEmpty": "Menampilkan 0 data",
+			"emptyTable": "Maaf, data kosong. :/",
+			"lengthMenu": "Tampilkan _MENU_ data",
+			"search": "Cari:",
+			"zeroRecords": "Tidak ditemukan keyword yang cocok",
+			searchPlaceholder: "Keyword",
 			paginate: {
 				next: '<i class="ion-chevron-right"></i>',
-				previous: '<i class="ion-chevron-left"></i>'  
+				previous: '<i class="ion-chevron-left"></i>'
 			}
 		},
 	});
