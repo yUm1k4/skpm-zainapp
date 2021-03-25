@@ -24,8 +24,8 @@ class RukunWargaModel extends Model
         return $this->table('rukun_warga')
             ->select('*, no_rw as no')
             ->selectCount('no_rw')
-            ->groupBy('no_rw')
             ->join('rukun_tetangga', 'rukun_tetangga.rw_id = rukun_warga.id_rw', 'left')
+            ->groupBy('no_rw')
             ->get()->getResultArray();
     }
 }

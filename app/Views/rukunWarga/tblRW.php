@@ -15,8 +15,11 @@
         ?>
             <tr>
                 <td class="text-center"><?= $i++ ?>.</td>
+
                 <td class="text-center"><?= $row['no'] ?></td>
+
                 <td><?= $row['nama_rw'] ?></td>
+
                 <?php if ($row['id_rt'] == null) { ?>
                     <td class="text-center">0</td>
                 <?php } else { ?>
@@ -32,7 +35,12 @@
 
                             <button class="dropdown-item" onclick="edit(<?= $row['id_rw'] ?>)"><i class="dw dw-edit2"></i> Edit</button>
 
-                            <button type="button" onclick="hapus(<?= $row['id_rw'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php if ($row['id_rt'] == null) { ?>
+                                <button type="button" onclick="hapus(<?= $row['id_rw'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
+                            <?php } else { ?>
+
+                            <?php } ?>
+
                         </div>
                     </div>
                 </td>
