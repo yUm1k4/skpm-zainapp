@@ -28,6 +28,7 @@ class Testimoni extends BaseController
     public function ambildata()
     {
         if ($this->request->isAJAX()) {
+
             $data = [
                 'tampildata'    => $this->testimoni->getData()
             ];
@@ -49,25 +50,42 @@ class Testimoni extends BaseController
         $postData = $request->getPost();
         $response = array();
 
+        $testi = $this->testimoni->get()->getResultArray();
+
+        if ($testi) {
+            foreach ($testi as $t) {
+                $testiTerdaftar[] = $t['user_id'];
+            }
+        } else {
+            $testiTerdaftar = ['1'];
+        }
+
         if (!isset($postData['searchTerm'])) {
             // Fetch record
-            $userlist = $this->masyarakatModel->select('id,username')
-                ->orderBy('username')
-                ->findAll();
+            $userlist = $this->masyarakatModel->select('*, users.id as userid')
+                ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                ->join('auth_groups ag', 'ag.id = agu.group_id')
+                ->where('ag.id', 3)
+                ->whereNotIn('users.id', $testiTerdaftar)
+                ->orderBy('users.username')
+                ->findAll(20);
         } else {
             $searchTerm = $postData['searchTerm'];
 
             // Fetch record
-            $userlist = $this->masyarakatModel->select('id,username')
+            $userlist = $this->masyarakatModel->select('*, users.id as userid')
+                ->join('auth_groups_users agu', 'agu.user_id = users.id')
+                ->join('auth_groups ag', 'ag.id = agu.group_id')
+                ->where('ag.id', 3)
+                ->whereNotIn('users.id', $testiTerdaftar)
                 ->like('username', $searchTerm)
                 ->orderBy('username')
-                // ->findAll(5);
-                ->findAll();
+                ->findAll(10);
         }
         $data = array();
         foreach ($userlist as $user) {
             $data[] = array(
-                "id" => $user['id'],
+                "id" => $user['userid'],
                 "text" => $user['username'],
 
             );
@@ -104,11 +122,12 @@ class Testimoni extends BaseController
                 ],
                 'testimoni'  => [
                     'label' => 'Testimoni',
-                    'rules' => 'required|min_length[130]|max_length[300]',
+                    'rules' => 'required|min_length[130]|max_length[300]|is_unique[testimoni.testimoni]',
                     'errors' => [
                         'required'  => '{field} tidak boleh kosong',
                         'min_length' => '{field} minimal 130 karakter',
                         'max_length' => '{field} maximal 300 karakter',
+                        'is_unique' => '{field} kalimat tersebut sudah terdaftar',
                     ]
                 ],
                 'pekerjaan'  => [

@@ -7,7 +7,7 @@
             <div class="col">
                 <div class="title">
                     <h4><?= $title; ?> </h4>
-                    <code>Maksimal 7 testimoni</code>
+                    <code>Maksimal 7 testimoni, minimal 1 testimoni</code>
                 </div>
             </div>
             <?php

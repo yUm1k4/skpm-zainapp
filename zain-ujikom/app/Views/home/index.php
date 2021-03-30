@@ -18,6 +18,20 @@
         padding-bottom: 140px;
     }
 
+    .img-testimoni {
+        object-fit: cover;
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+    }
+
+    @media (max-width: 425px) {
+        .img-testimoni {
+            height: 70px;
+            width: 70px;
+        }
+    }
+
     @media (max-width: 767px) {
         .numberDiv {
             padding-bottom: 80px;
@@ -186,59 +200,62 @@
 </div>
 <!-- We Create End -->
 
-<!-- Testimonial Start -->
-<div class="testimonial-area">
-    <div class="container">
-        <div class="testimonial-main">
-            <!-- Section-tittle -->
-            <div class="row d-flex justify-content-center">
-                <div class="col-md-12 px-0 testimonial-title">
-                    <div class="section-tittle text-center">
-                        <h2>Apa Kata Mereka?</h2>
+<?php if ($testimoni) { ?>
+    <!-- Testimonial Start -->
+    <div class="testimonial-area">
+        <div class="container">
+            <div class="testimonial-main">
+                <!-- Section-tittle -->
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-12 px-0 testimonial-title">
+                        <div class="section-tittle text-center">
+                            <h2>Apa Kata Mereka?</h2>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row d-flex justify-content-center">
-                <div class="col-lg-10 col-md-10">
-                    <div class="h1-testimonial-active">
-                        <?php foreach ($testimoni as $t) { ?>
-                            <div class="single-testimonial text-center">
-                                <div class="testimonial-caption ">
-                                    <div class="testimonial-top-cap">
-                                        <p><?= $t['testimoni'] ?></p>
-                                    </div>
-                                    <!-- founder -->
-                                    <div class="testimonial-founder d-flex align-items-center justify-content-center">
-                                        <div class="founder-img">
-                                            <?php if ($t['group_id'] == 3) { ?>
-                                                <?php if ($t['user_image'] == null) { ?>
-                                                    <img src="<?= base_url() ?>/images/avatar.png" class="img-fluid rounded-circle" width="90" alt="">
-                                                <?php } else { ?>
-                                                    <img src="<?= base_url() ?>/images/user-images/<?= $t['user_image'] ?>" class="img-fluid rounded-circle" width="90" alt="">
-                                                <?php } ?>
-                                            <?php } else { ?>
-                                                <?php if ($t['user_image'] == null) { ?>
-                                                    <img src="<?= base_url() ?>/images/avatar.png" class="img-fluid rounded-circle" width="90" alt="">
-                                                <?php } else { ?>
-                                                    <img src="<?= base_url() ?>/images/admin-images/<?= $t['user_image'] ?>" class="img-fluid rounded-circle" width="90" alt="">
-                                                <?php } ?>
-                                            <?php } ?>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-10 col-md-10">
+                        <div class="h1-testimonial-active">
+                            <?php
+                            foreach ($testimoni as $t) { ?>
+                                <div class="single-testimonial text-center">
+                                    <div class="testimonial-caption ">
+                                        <div class="testimonial-top-cap">
+                                            <p><?= $t['testimoni'] ?></p>
                                         </div>
-                                        <div class="founder-text">
-                                            <span><?= $t['fullname'] ?></span>
-                                            <p><?= $t['pekerjaan'] ?></p>
+                                        <!-- founder -->
+                                        <div class="testimonial-founder d-flex align-items-center justify-content-center">
+                                            <div class="founder-img">
+                                                <?php if ($t['group_id'] == 3) { ?>
+                                                    <?php if ($t['user_image'] == null) { ?>
+                                                        <img src="<?= base_url() ?>/images/avatar.png" class="img-testimoni rounded-circle" alt="">
+                                                    <?php } else { ?>
+                                                        <img src="<?= base_url() ?>/images/user-images/<?= $t['user_image'] ?>" class="img-testimoni rounded-circle" alt="">
+                                                    <?php } ?>
+                                                <?php } else { ?>
+                                                    <?php if ($t['user_image'] == null) { ?>
+                                                        <img src="<?= base_url() ?>/images/avatar.png" class="img-testimoni rounded-circle" alt="">
+                                                    <?php } else { ?>
+                                                        <img src="<?= base_url() ?>/images/admin-images/<?= $t['user_image'] ?>" class="img-testimoni rounded-circle" alt="">
+                                                    <?php } ?>
+                                                <?php } ?>
+                                            </div>
+                                            <div class="founder-text">
+                                                <span><?= $t['fullname'] ?></span>
+                                                <p><?= $t['pekerjaan'] ?></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        <?php } ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Testimonial End -->
+    <!-- Testimonial End -->
+<?php } ?>
 
 <!-- Saran Start-->
 <div class="have-project footer-padding">

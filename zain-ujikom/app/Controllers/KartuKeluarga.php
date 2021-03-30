@@ -151,8 +151,12 @@ class KartuKeluarga extends BaseController
 
         $keluarga = $this->kkModel->findAll();
 
-        foreach ($keluarga as $k) {
-            $userTerdaftar[] = $k['user_id'];
+        if ($keluarga) {
+            foreach ($keluarga as $k) {
+                $userTerdaftar[] = $k['user_id'];
+            }
+        } else {
+            $userTerdaftar = ['1'];
         }
 
         if (!isset($postData['searchTerm'])) {
@@ -304,16 +308,6 @@ class KartuKeluarga extends BaseController
             } else {
                 $rule_kepala_keluarga = 'required|is_unique[kartu_keluarga.user_id]';
             }
-            if ($row['rw_id'] == $this->request->getVar('rw_id')) {
-                $rule_rw = 'required';
-            } else {
-                $rule_rw = 'required|is_unique[kartu_keluarga.rw_id]';
-            }
-            if ($row['rt_id'] == $this->request->getVar('rt_id')) {
-                $rule_rt = 'required';
-            } else {
-                $rule_rt = 'required|is_unique[kartu_keluarga.rt_id]';
-            }
 
             // Validasi
             $validation = \Config\Services::validation();
@@ -331,22 +325,6 @@ class KartuKeluarga extends BaseController
                 'kepala_keluarga'  => [
                     'label' => 'Kepala Keluarga',
                     'rules' => $rule_kepala_keluarga,
-                    'errors' => [
-                        'required'  => '{field} tidak boleh kosong',
-                        'is_unique' => '{field} sudah terdaftar',
-                    ]
-                ],
-                'rw_id'  => [
-                    'label' => 'Rukun Warga',
-                    'rules' => $rule_rw,
-                    'errors' => [
-                        'required'  => '{field} tidak boleh kosong',
-                        'is_unique' => '{field} sudah terdaftar',
-                    ]
-                ],
-                'rt_id'  => [
-                    'label' => 'Rukun Tetangga',
-                    'rules' => $rule_rt,
                     'errors' => [
                         'required'  => '{field} tidak boleh kosong',
                         'is_unique' => '{field} sudah terdaftar',

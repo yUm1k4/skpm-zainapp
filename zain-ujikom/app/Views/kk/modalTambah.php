@@ -26,9 +26,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="rw_id">Pilih Rukun Warga</label>
-                                        <select name="rw_id" id="rw_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Warga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
-                                            <option value="0" selected>Cari Nomor RW</option>
+                                        <select name="rw_id" id="rw_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Warga harus dipilih" data-parsley-trigger="keyup" style="width: 100%" data-parsley-errors-container="#errorRW">
+                                            <option value="" selected>Cari Nomor RW</option>
                                         </select>
+                                        <div id="errorRW"></div>
                                         <div class="invalid-feedback errorRW">
 
                                         </div>
@@ -37,9 +38,10 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="rt_id">Pilih Rukun Tetangga <sup class="text-small font-italic text-danger">(Pilih rukun warga dahulu)</sup></label>
-                                        <select name="rt_id" id="rt_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Tetangga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
-                                            <option value="0">Cari Nomor RT</option>
+                                        <select name="rt_id" id="rt_id" class="form-control m-0 wide" required data-parsley-required-message="Rukun Tetangga harus dipilih" data-parsley-trigger="keyup" style="width: 100%" data-parsley-errors-container="#errorRT">
+                                            <option value="">Cari Nomor RT</option>
                                         </select>
+                                        <div id="errorRT"></div>
                                         <div class="invalid-feedback errorRT">
 
                                         </div>
@@ -53,9 +55,10 @@
                                     <div class="form-group">
                                         <label for="kepala_keluarga" class="mb-2">Pilih Kepala Keluarga</label>
                                         <p class="my-0"><sup class="text-small font-italic text-danger">(Hanya menampilkan yang belum terdaftar di KK, dan Harus sudah memiliki akun)</sup></p>
-                                        <select name="kepala_keluarga" id="kepala_keluarga" class="form-control m-0 wide" required data-parsley-required-message="Kepala Keluarga harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
-                                            <option value="0" selected>Cari berdasarkan NIK</option>
+                                        <select name="kepala_keluarga" id="kepala_keluarga" class="form-control m-0 wide" required data-parsley-required-message="Kepala Keluarga harus dipilih" data-parsley-trigger="keyup" style="width: 100%" data-parsley-errors-container="#errorKepala">
+                                            <option value="" selected>Cari berdasarkan NIK</option>
                                         </select>
+                                        <div id="errorKepala"></div>
                                         <div class="invalid-feedback errorKepala">
 
                                         </div>
@@ -67,16 +70,17 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Jenis Kelamin</label>
-                                        <div class="d-flex">
+                                        <fieldset class="d-flex">
                                             <div class="custom-control custom-radio mr-4">
-                                                <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input">
+                                                <input type="radio" id="laki_laki" name="jenis_kelamin" value="l" class="custom-control-input" data-parsley-required-message="Jenis Kelamin Harus dipilih" required data-parsley-errors-container="#errorJK">
                                                 <label class="custom-control-label" for="laki_laki">Laki-Laki</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="perempuan" name="jenis_kelamin" required data-parsley-required-message="Harus dipilih" value="p" class="custom-control-input">
+                                                <input type="radio" id="perempuan" name="jenis_kelamin" value="p" class="custom-control-input">
                                                 <label class="custom-control-label" for="perempuan">Perempuan</label>
                                             </div>
-                                        </div>
+                                        </fieldset>
+                                        <div id="errorJK"></div>
                                         <div class="invalid-feedback errorJK">
 
                                         </div>
@@ -88,8 +92,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="agama">Agama</label>
-                                        <select name="agama" id="agama" class="form-control m-0 wide" required data-parsley-required-message="Agama harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
-                                            <option value="0" selected>Pilih Agama</option>
+                                        <select name="agama" id="agama" class="form-control m-0 wide" required data-parsley-required-message="Agama harus dipilih" data-parsley-trigger="keyup" style="width: 100%" data-parsley-errors-container="#errorAgama">
+                                            <option value="" selected>Pilih Agama</option>
                                             <option value="islam">Islam</option>
                                             <option value="protestan">Protestan</option>
                                             <option value="katolik">Katolik</option>
@@ -97,6 +101,7 @@
                                             <option value="buddha">Buddha</option>
                                             <option value="konghucu">Konghucu</option>
                                         </select>
+                                        <div id="errorAgama"></div>
                                         <div class="invalid-feedback errorAgama">
 
                                         </div>
@@ -126,35 +131,47 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('form').parsley();
+        var parsleyConfig = {
+            errorsContainer: function(parsleyField) {
+                var fieldSet = parsleyField.$element.closest('fieldset');
+
+                if (fieldSet.length > 0) {
+                    return fieldSet.find('#errorJK');
+                }
+
+                return parsleyField;
+            }
+        };
+
+        $('form').parsley(parsleyConfig);
     });
 </script>
 
 <script>
     $(document).ready(function() {
         $('.formKK').submit(function(e) {
-            if (jQuery('#agama').val() == 0) {
+            if (jQuery('#agama').val() == null) {
                 $('#agama').addClass('is-invalid');
                 $('.errorAgama').html("Agama harus dipilih");
             } else {
                 $('#agama').removeClass('is-invalid');
                 $('.errorAgama').html('');
             }
-            if (jQuery('#kepala_keluarga').val() == 0) {
+            if (jQuery('#kepala_keluarga').val() == null) {
                 $('#kepala_keluarga').addClass('is-invalid');
                 $('.errorKepala').html("Kepala Keluarga harus dipilih");
             } else {
                 $('#kepala_keluarga').removeClass('is-invalid');
                 $('.errorKepala').html('');
             }
-            if (jQuery('#rw_id').val() == 0) {
+            if (jQuery('#rw_id').val() == null) {
                 $('#rw_id').addClass('is-invalid');
                 $('.errorRW').html("RW harus dipilih");
             } else {
                 $('#rw_id').removeClass('is-invalid');
                 $('.errorRW').html('');
             }
-            if (jQuery('#rt_id').val() == 0) {
+            if (jQuery('#rt_id').val() == null) {
                 $('#rt_id').addClass('is-invalid');
                 $('.errorRT').html("RT harus dipilih");
             } else {
