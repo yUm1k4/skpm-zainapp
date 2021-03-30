@@ -1,7 +1,0 @@
-    public function update($id = null){
-        return $this->respond([
-            "status" => true,
-            "id" => $id,
-            "msg" => "update method successful."
-        ]);
-    }

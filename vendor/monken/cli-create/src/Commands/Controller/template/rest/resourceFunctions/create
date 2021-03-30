@@ -1,6 +1,0 @@
-    public function create(){
-        return $this->respond([
-            "status" => true,
-            "msg" => "create method successful."
-        ]);
-    }
