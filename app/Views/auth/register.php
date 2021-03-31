@@ -39,7 +39,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-4 col-form-label"><?= lang('Auth.password') ?><i class="text-danger">*</i></label>
                                         <div class="col-sm-8">
-                                            <input type="password" id="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" autocomplete="off" value="<?= old('password') ?>" required data-parsley-required-message="Password harus diisi" minlength="6" data-parsley-minlength-message="Password terlalu singkat" data-parsley-trigger="keyup">
+                                            <input type="password" id="password" name="password" class="form-control  <?php if (session('errors.password')) : ?>is-invalid<?php endif ?>" autocomplete="off" value="<?= old('password') ?>" required data-parsley-required-message="Password harus diisi" minlength="4" data-parsley-minlength-message="Password terlalu singkat" data-parsley-trigger="keyup">
                                             <div class="invalid-feedback">
                                                 <?= session('errors.password') ?>
                                             </div>
