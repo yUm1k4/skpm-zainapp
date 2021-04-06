@@ -157,11 +157,12 @@ class AuthController extends Controller
 		// like the password, can only be validated properly here.
 		$rules = [
 			'username'  => [
-				'rules' 	=> 'required|alpha_numeric|min_length[3]|is_unique[users.username]',
+				'rules' 	=> 'required|alpha_numeric|min_length[3]|max_length[15]|is_unique[users.username]',
 				'errors' 	=> [
 					'required'		=> 'Username harus di isi',
 					'alpha_numeric' => 'Username tidak boleh spesial',
 					'min_length'	=> 'Username minimal 3 karakter',
+					'max_length'	=> 'Username maximal 15 karakter',
 					'is_unique'		=> 'Username sudah terdaftar'
 				]
 			],

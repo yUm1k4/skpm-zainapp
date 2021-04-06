@@ -28,7 +28,6 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors/parsley/custom.css">
     <link href="<?= base_url('/vendors/select2/dist/css/select2.min.css') ?>" rel="stylesheet" />
-    <link href="<?= base_url('/vendors/select2/dist/css/select2.min.css') ?>" rel="stylesheet" />
 
     <?= $this->renderSection('my-css') ?>
 
@@ -37,7 +36,7 @@
     <script src="<?= base_url('/vendors/select2/dist/js/select2.full.min.js') ?>"></script>
 </head>
 
-<body>
+<body class="header-light sidebar-dark">
 
     <!-- Loader -->
     <?= $this->renderSection('preloader') ?>

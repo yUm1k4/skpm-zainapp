@@ -51,7 +51,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Password :</label>
-                            <input type="password" id="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid <?php endif ?>" name="password" value="<?= old('password') ?>" autocomplete="off" required data-parsley-trigger="keyup" data-parsley-required-message="Password harus diisi" minlength="6" data-parsley-minlength-message="Password terlalu singkat">
+                            <input type="password" id="password" class="form-control <?php if (session('errors.password')) : ?>is-invalid <?php endif ?>" name="password" value="<?= old('password') ?>" autocomplete="off" required data-parsley-trigger="keyup" data-parsley-required-message="Password harus diisi" minlength="4" data-parsley-minlength-message="Password terlalu singkat">
                             <div class="invalid-feedback">
                                 <?= session('errors.password') ?>
                             </div>

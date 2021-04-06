@@ -2,6 +2,13 @@
 
 <?= $this->section('my-css'); ?>
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/public/css/chating.css">
+<style>
+    .img-fluid {
+        height: 170px;
+        width: 170px;
+        object-fit: cover;
+    }
+</style>
 <?= $this->endSection(); ?>
 
 <?= $this->section('main-content'); ?>
@@ -13,9 +20,9 @@
                 <div class="profile-photo">
                     <?php if ($hasil['user_image'] == null) : ?>
                         <!-- jika user image nya kosong tampilkan default -->
-                        <img src="<?= base_url('images/avatar.png/') ?>" class="avatar-photo">
+                        <img src="<?= base_url('images/avatar.png/') ?>" class="avatar-photo img-fluid">
                     <?php else : ?>
-                        <img src="<?= base_url() . '/images/user-images/' . $hasil['user_image'] ?>" alt="" class="avatar-photo">
+                        <img src="<?= base_url() . '/images/user-images/' . $hasil['user_image'] ?>" alt="" class="avatar-photo img-fluid">
                     <?php endif; ?>
                 </div>
                 <h5 class="text-center h5 mb-0 text-blue"><?= $hasil['username'] ?></h5>

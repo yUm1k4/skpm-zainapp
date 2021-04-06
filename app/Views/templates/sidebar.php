@@ -1,7 +1,7 @@
 <div class="left-side-bar">
     <div class="brand-logo">
         <a href="<?= base_url('dashboard') ?>">
-            <p class="text-white text-center align-center mx-auto my-auto"><?= setting()->nama_aplikasi_backend ?></p>
+            <p class="text-center mx-auto my-auto light-logo"><?= setting()->nama_aplikasi_backend ?></p>
         </a>
         <div class="close-sidebar" data-toggle="left-sidebar-close">
             <i class="ion-close-round"></i>

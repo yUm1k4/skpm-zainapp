@@ -50,8 +50,6 @@ class Pengaduan extends BaseController
         $petugasid = user_id();
 
         $data['percakapan'] = $this->percakapanModel->getPercakapan($kode_pengaduan, $petugasid);
-        // var_dump($data['percakapan']);
-        // exit();
 
         $this->pengaduanModel->select('*, pengaduan.status as ket, pengaduan.created_at as pengaduan_dibuat, users.id as userid');
         $this->pengaduanModel->join('users', 'users.id = pengaduan.user_id');

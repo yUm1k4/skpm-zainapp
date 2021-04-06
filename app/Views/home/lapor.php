@@ -14,7 +14,7 @@
             <div class="col-lg-8">
                 <div class="section-tittle text-center mb-40">
                     <h1>Lapor!</h1>
-                    <span>Sampaikan keluhan Anda langsung kepada pemerintah berwenang</span>
+                    <span>Sampaikan pengaduan Anda langsung kepada pemerintah berwenang</span>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
     <div class="container">
         <div class="row">
             <!-- <div class="col-sm-12">
-                <h2 class="contact-title">Sampaikan Keluhan Anda</h2>
+                <h2 class="contact-title">Sampaikan pengaduan Anda</h2>
             </div> -->
 
             <!-- Sweet Alert login -->
@@ -78,7 +78,7 @@
                             </div>
                         </div>
                     </div>
-                    <h3>Sampaikan Keluhan Anda :</h3>
+                    <h3>Sampaikan Pengaduan Anda :</h3>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
@@ -108,7 +108,7 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="form-group">
-                                <label>Isi Laporan</label>
+                                <label>Isi Pengaduan</label>
                                 <textarea class="form-control w-100 is-invalid" name="isi_laporan" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Lebih terperinci anda menginput, lebih baik'" required data-parsley-required-message="Laporan harus di isi" data-parsley-minlength="110" data-parsley-minlength-message="Isi Laporan terlalu singkat, isi secara terperinci dan lengkap"><?= set_value('isi_laporan'); ?></textarea>
                                 <div class="invalid-feedback">
                                     <?= session('errors.isi_laporan') ?>
